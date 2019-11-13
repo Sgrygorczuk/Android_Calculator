@@ -14,6 +14,7 @@ They're broken down into 4 types
 
 package com.example.calculator
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -197,6 +198,11 @@ class MainActivity : AppCompatActivity() {
             d("Admin", "MainActivity: negButton was clicked")
             calculatorView.text = logicUnit.negation()
             resultsView.text = logicUnit.performOperation()
+        }
+
+        conversionButton.setOnClickListener {
+            d("Admin", "MainActivity: conversionButton was clicked")
+            startActivity(Intent(this, ConversionActivity::class.java))
         }
     }
 }
