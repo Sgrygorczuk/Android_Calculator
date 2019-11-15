@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,7 +14,8 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/unitScroll">
 
         <Button
             android:id="@+id/backButton"
@@ -48,12 +48,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backLayout"
+        app:layout_constraintBottom_toTopOf="@+id/topDivider"
         tools:layout_editor_absoluteY="49dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/areaButton"
@@ -85,14 +86,14 @@
                 android:id="@+id/temperatureButton"
                 android:layout_width="125dp"
                 android:layout_height="50dp"
-                android:layout_weight="1"
-                android:background="@drawable/black_selector"
-                android:textColor="#FFFFFF"
-                android:text="@string/temperature"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="2dp"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/black_selector"
+                android:text="@string/temperature"
+                android:textColor="#FFFFFF" />
 
             <Button
                 android:id="@+id/volumeButton"
@@ -124,41 +125,40 @@
                 android:id="@+id/dataButton"
                 android:layout_width="75dp"
                 android:layout_height="50dp"
-                android:layout_weight="1"
-                android:background="@drawable/black_selector"
-                android:textColor="#FFFFFF"
-                android:text="@string/data"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="2dp"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/black_selector"
+                android:text="@string/data"
+                android:textColor="#FFFFFF" />
 
             <Button
                 android:id="@+id/speedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_weight="1"
-                android:background="@drawable/black_selector"
-                android:textColor="#FFFFFF"
-                android:text="@string/speed"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="2dp"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/black_selector"
+                android:text="@string/speed"
+                android:textColor="#FFFFFF" />
 
             <Button
                 android:id="@+id/timeButton"
                 android:layout_width="75dp"
                 android:layout_height="50dp"
-                android:layout_weight="1"
-                android:background="@drawable/black_selector"
-                android:textColor="#FFFFFF"
-                android:text="@string/time"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="2dp"
-                android:layout_marginBottom="5dp"/>
-
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/black_selector"
+                android:text="@string/time"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -166,125 +166,904 @@
         android:id="@+id/topDivider"
         android:layout_width="409dp"
         android:layout_height="1dp"
-        android:layout_marginTop="2dp"
+        android:layout_margin="5dp"
         android:background="@color/cardview_light_background"
-        app:layout_constraintBottom_toTopOf="@+id/topSpinner"
+        app:layout_constraintBottom_toTopOf="@+id/conversionScroll"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/unitScroll"
-        app:layout_constraintVertical_bias="0.72" />
+        app:layout_constraintTop_toBottomOf="@+id/unitScroll"/>
 
-    <Spinner
-        android:id="@+id/topSpinner"
-        android:layout_width="match_parent"
+    <HorizontalScrollView
+        android:id="@+id/conversionScroll"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topDivider"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="153dp" />
+        app:layout_constraintBottom_toTopOf="@+id/bottomDivider"
+        tools:layout_editor_absoluteY="49dp">
 
-    <LinearLayout
-        android:id="@+id/topLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topSpinner"
-        tools:layout_editor_absoluteY="161dp">
-
-
-        <EditText
-            android:id="@+id/topTextEditor"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="10"
-            android:ems="10"
-            android:gravity="end"
-            android:importantForAutofill="no"
-            android:inputType="number"
-            android:text="1"
-            android:textColor="#FFFFFF"
-            android:textSize="40sp" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/topTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textColor="#FFFFFF"
-            android:gravity="end"
-            android:text="TextView" />
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/conversionArea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-    <View
-        android:id="@+id/middleDivider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="2dp"
-        android:background="@color/cardview_light_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topLayout"
-        app:layout_constraintBottom_toTopOf="@+id/bottomSpinner"/>
+                <Spinner
+                    android:id="@+id/topSpinnerArea"
+                    android:layout_width="410dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="0dp"
+                    android:background="#FFFFFF"
+                    app:layout_constraintBottom_toTopOf="@id/topLayoutArea"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
-    <Spinner
-        android:id="@+id/bottomSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/middleDivider"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="153dp" />
-
-    <LinearLayout
-        android:id="@+id/bottomLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bottomSpinner"
-        tools:layout_editor_absoluteY="161dp">
+                <LinearLayout
+                    android:id="@+id/topLayoutArea"
+                    android:layout_width="400dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/topSpinnerArea">
 
 
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="10"
-            android:ems="10"
-            android:textColor="#FFFFFF"
-            android:inputType="none"
-            android:gravity="end"
-            android:text="1"
-            android:textSize="40sp"/>
+                    <EditText
+                        android:id="@+id/topTextEditorArea"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="10"
+                        android:ems="10"
+                        android:gravity="end"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:text="1"
+                        android:textColor="#FFFFFF"
+                        android:textSize="40sp" />
 
-        <TextView
-            android:id="@+id/textViewa2"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textColor="#FFFFFF"
-            android:gravity="end"
-            android:text="TextView" />
-    </LinearLayout>
+                    <TextView
+                        android:id="@+id/topTextViewArea"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom"
+                        android:text="Area"
+                        android:textSize="25sp"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/middleDividerArea"
+                    android:layout_width="410dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/cardview_light_background"
+                    app:layout_constraintBottom_toTopOf="@+id/bottomSpinnerArea"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/topLayoutArea" />
+
+                <Spinner
+                    android:id="@+id/bottomSpinnerArea"
+                    android:layout_width="410dp"
+                    android:layout_height="40dp"
+                    android:layout_margin = "0dp"
+                    android:background="#FFFFFF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/middleDividerArea"
+                    tools:layout_editor_absoluteY="153dp" />
+
+                <LinearLayout
+                    android:id="@+id/bottomLayoutArea"
+                    android:layout_width="400dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/bottomSpinnerArea"
+                    tools:layout_editor_absoluteY="161dp">
+
+
+                    <EditText
+                        android:id="@+id/bottomTextEditorArea"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="10"
+                        android:ems="10"
+                        android:gravity="end"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:text="1"
+                        android:textColor="#FFFFFF"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/textViewa2Area"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="TextView"
+                        android:textColor="#FFFFFF"  />
+                </LinearLayout>
+            </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/conversionLayoutLength"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Spinner
+                        android:id="@+id/topSpinnerLength"
+                        android:layout_width="410dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="0dp"
+                        android:background="#FFFFFF"
+                        app:layout_constraintBottom_toTopOf="@id/topLayoutArea"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <LinearLayout
+                        android:id="@+id/topLayoutLength"
+                        android:layout_width="400dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/topSpinnerArea">
+
+
+                        <EditText
+                            android:id="@+id/topTextEditorLength"
+                            android:layout_width="350dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="10"
+                            android:ems="10"
+                            android:gravity="end"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:text="1"
+                            android:textColor="#FFFFFF"
+                            android:textSize="40sp" />
+
+                        <TextView
+                            android:id="@+id/topTextViewLength"
+                            android:layout_width="50dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="Length"
+                            android:textColor="#FFFFFF" />
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/middleDividerLength"
+                        android:layout_width="410dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/cardview_light_background"
+                        app:layout_constraintBottom_toTopOf="@+id/bottomSpinnerLength"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/topLayoutLength" />
+
+                    <Spinner
+                        android:id="@+id/bottomSpinnerLength"
+                        android:layout_width="410dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="0dp"
+                        android:background="#FFFFFF"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/middleDividerLength"
+                        tools:layout_editor_absoluteY="153dp" />
+
+                    <LinearLayout
+                        android:id="@+id/bottomLayoutLength"
+                        android:layout_width="400dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/bottomSpinnerLength"
+                        tools:layout_editor_absoluteY="161dp">
+
+
+                        <EditText
+                            android:id="@+id/bottomTextEditorLength"
+                            android:layout_width="350dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="10"
+                            android:ems="10"
+                            android:gravity="end"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:text="1"
+                            android:textColor="#FFFFFF"
+                            android:textSize="40sp" />
+
+                        <TextView
+                            android:id="@+id/textViewa2Length"
+                            android:layout_width="50dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="TextView"
+                            android:textColor="#FFFFFF"  />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/conversionLayoutTemperature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Spinner
+                        android:id="@+id/topSpinnerTemperature"
+                        android:layout_width="410dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="0dp"
+                        android:background="#FFFFFF"
+                        app:layout_constraintBottom_toTopOf="@id/topLayoutArea"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <LinearLayout
+                        android:id="@+id/topLayoutTemperature"
+                        android:layout_width="400dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/topSpinnerArea">
+
+
+                        <EditText
+                            android:id="@+id/topTextEditorTemperature"
+                            android:layout_width="350dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="10"
+                            android:ems="10"
+                            android:gravity="end"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:text="1"
+                            android:textColor="#FFFFFF"
+                            android:textSize="40sp" />
+
+                        <TextView
+                            android:id="@+id/topTextViewTemperature"
+                            android:layout_width="50dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="Temp"
+                            android:textColor="#FFFFFF" />
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/middleDividerTemperature"
+                        android:layout_width="410dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/cardview_light_background"
+                        app:layout_constraintBottom_toTopOf="@+id/bottomSpinnerArea"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/topLayoutArea" />
+
+                    <Spinner
+                        android:id="@+id/bottomSpinnerTemperature"
+                        android:layout_width="410dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="0dp"
+                        android:background="#FFFFFF"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/middleDividerArea"
+                        tools:layout_editor_absoluteY="153dp" />
+
+                    <LinearLayout
+                        android:id="@+id/bottomLayoutTemperature"
+                        android:layout_width="400dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/bottomSpinnerArea"
+                        tools:layout_editor_absoluteY="161dp">
+
+
+                        <EditText
+                            android:id="@+id/bottomTextEditorTemperature"
+                            android:layout_width="350dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="10"
+                            android:ems="10"
+                            android:gravity="end"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:text="1"
+                            android:textColor="#FFFFFF"
+                            android:textSize="40sp" />
+
+                        <TextView
+                            android:id="@+id/textViewa2Temperature"
+                            android:layout_width="50dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="TextView"
+                            android:textColor="#FFFFFF"  />
+                        </LinearLayout>
+                </LinearLayout>
+            <LinearLayout
+                android:id="@+id/conversionVolume"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Spinner
+                    android:id="@+id/topSpinnerVolume"
+                    android:layout_width="410dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="0dp"
+                    android:background="#FFFFFF"
+                    app:layout_constraintBottom_toTopOf="@id/topLayoutVolume"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/topLayoutVolume"
+                    android:layout_width="400dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/topSpinnerVolume">
+
+
+                    <EditText
+                        android:id="@+id/topTextEditorVolume"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="10"
+                        android:ems="10"
+                        android:gravity="end"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:text="1"
+                        android:textColor="#FFFFFF"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/topTextViewVolume"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="Volume"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/middleDividerVolume"
+                    android:layout_width="410dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/cardview_light_background"
+                    app:layout_constraintBottom_toTopOf="@+id/bottomSpinnerVolume"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/topLayoutVolume" />
+
+                <Spinner
+                    android:id="@+id/bottomSpinnerVolume"
+                    android:layout_width="410dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="0dp"
+                    android:background="#FFFFFF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/middleDividerVolume"
+                    tools:layout_editor_absoluteY="153dp" />
+
+                <LinearLayout
+                    android:id="@+id/bottomLayoutVolume"
+                    android:layout_width="400dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/bottomSpinnerVolume"
+                    tools:layout_editor_absoluteY="161dp">
+
+
+                    <EditText
+                        android:id="@+id/bottomTextEditorVolume"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="10"
+                        android:ems="10"
+                        android:gravity="end"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:text="1"
+                        android:textColor="#FFFFFF"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/textViewa2Volume"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="TextView"
+                        android:textColor="#FFFFFF"  />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/conversionLayoutMass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Spinner
+                    android:id="@+id/topSpinnerMass"
+                    android:layout_width="410dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="0dp"
+                    android:background="#FFFFFF"
+                    app:layout_constraintBottom_toTopOf="@id/topLayoutMass"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/topLayoutMass"
+                    android:layout_width="400dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/topSpinnerMass">
+
+
+                    <EditText
+                        android:id="@+id/topTextEditorMass"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="10"
+                        android:ems="10"
+                        android:gravity="end"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:text="1"
+                        android:textColor="#FFFFFF"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/topTextViewMass"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="Mass"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/middleDividerMass"
+                    android:layout_width="410dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/cardview_light_background"
+                    app:layout_constraintBottom_toTopOf="@+id/bottomSpinnerMass"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/topLayoutMass" />
+
+                <Spinner
+                    android:id="@+id/bottomSpinnerMass"
+                    android:layout_width="410dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="0dp"
+                    android:background="#FFFFFF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/middleDividerMass"
+                    tools:layout_editor_absoluteY="153dp" />
+
+                <LinearLayout
+                    android:id="@+id/bottomLayoutMass"
+                    android:layout_width="400dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/bottomSpinnerArea"
+                    tools:layout_editor_absoluteY="161dp">
+
+
+                    <EditText
+                        android:id="@+id/bottomTextEditorMass"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="10"
+                        android:ems="10"
+                        android:gravity="end"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:text="1"
+                        android:textColor="#FFFFFF"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/textViewa2Mass"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="TextView"
+                        android:textColor="#FFFFFF"  />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/conversionLayoutData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Spinner
+                    android:id="@+id/topSpinnerData"
+                    android:layout_width="410dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="0dp"
+                    android:background="#FFFFFF"
+                    app:layout_constraintBottom_toTopOf="@id/topLayoutData"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/topLayoutData"
+                    android:layout_width="400dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/topSpinnerData">
+
+
+                    <EditText
+                        android:id="@+id/topTextEditorData"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="10"
+                        android:ems="10"
+                        android:gravity="end"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:text="1"
+                        android:textColor="#FFFFFF"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/topTextViewData"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="Data"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/middleDividerData"
+                    android:layout_width="410dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/cardview_light_background"
+                    app:layout_constraintBottom_toTopOf="@+id/bottomSpinnerData"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/topLayoutData" />
+
+                <Spinner
+                    android:id="@+id/bottomSpinnerData"
+                    android:layout_width="410dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="0dp"
+                    android:background="#FFFFFF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/middleDividerData"
+                    tools:layout_editor_absoluteY="153dp" />
+
+                <LinearLayout
+                    android:id="@+id/bottomLayoutData"
+                    android:layout_width="400dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/bottomSpinnerArea"
+                    tools:layout_editor_absoluteY="161dp">
+
+
+                    <EditText
+                        android:id="@+id/bottomTextEditorData"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="10"
+                        android:ems="10"
+                        android:gravity="end"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:text="1"
+                        android:textColor="#FFFFFF"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/textViewa2Data"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="TextView"
+                        android:textColor="#FFFFFF"  />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/conversionLayoutSpeed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Spinner
+                    android:id="@+id/topSpinnerSpeed"
+                    android:layout_width="410dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="0dp"
+                    android:background="#FFFFFF"
+                    app:layout_constraintBottom_toTopOf="@id/topLayoutSpeed"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/topLayoutSpeed"
+                    android:layout_width="400dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/topSpinnerSpeed">
+
+
+                    <EditText
+                        android:id="@+id/topTextEditorSpeed"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="10"
+                        android:ems="10"
+                        android:gravity="end"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:text="1"
+                        android:textColor="#FFFFFF"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/topTextViewSpeed"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="Speed"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/middleDividerSpeed"
+                    android:layout_width="410dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/cardview_light_background"
+                    app:layout_constraintBottom_toTopOf="@+id/bottomSpinnerSpeed"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/topLayoutSpeed" />
+
+                <Spinner
+                    android:id="@+id/bottomSpinnerSpeed"
+                    android:layout_width="410dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="0dp"
+                    android:background="#FFFFFF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/middleDividerSpeed"
+                    tools:layout_editor_absoluteY="153dp" />
+
+                <LinearLayout
+                    android:id="@+id/bottomLayoutSpeed"
+                    android:layout_width="400dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/bottomSpinnerSpeed"
+                    tools:layout_editor_absoluteY="161dp">
+
+
+                    <EditText
+                        android:id="@+id/bottomTextEditorSpeed"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="10"
+                        android:ems="10"
+                        android:gravity="end"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:text="1"
+                        android:textColor="#FFFFFF"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/textViewa2Speed"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="TextView"
+                        android:textColor="#FFFFFF"  />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/conversionLayoutTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Spinner
+                    android:id="@+id/topSpinnerTime"
+                    android:layout_width="410dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="0dp"
+                    android:background="#FFFFFF"
+                    app:layout_constraintBottom_toTopOf="@id/topLayoutTime"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/topLayoutTime"
+                    android:layout_width="400dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/topSpinnerTime">
+
+
+                    <EditText
+                        android:id="@+id/topTextEditorTime"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="10"
+                        android:ems="10"
+                        android:gravity="end"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:text="1"
+                        android:textColor="#FFFFFF"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/topTextViewTime"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="Time"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/middleDividerTime"
+                    android:layout_width="410dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/cardview_light_background"
+                    app:layout_constraintBottom_toTopOf="@+id/bottomSpinnerTime"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/topLayoutTime" />
+
+                <Spinner
+                    android:id="@+id/bottomSpinnerTime"
+                    android:layout_width="410dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="0dp"
+                    android:background="#FFFFFF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/middleDividerTime"
+                    tools:layout_editor_absoluteY="153dp" />
+
+                <LinearLayout
+                    android:id="@+id/bottomLayoutTime"
+                    android:layout_width="400dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/bottomSpinnerTime"
+                    tools:layout_editor_absoluteY="161dp">
+
+
+                    <EditText
+                        android:id="@+id/bottomTextEditorTime"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="10"
+                        android:ems="10"
+                        android:gravity="end"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:text="1"
+                        android:textColor="#FFFFFF"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/textViewa2Time"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="TextView"
+                        android:textColor="#FFFFFF"  />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
 
     <View
         android:id="@+id/bottomDivider"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="1dp"
         android:layout_marginTop="2dp"
         android:background="@color/cardview_light_background"
@@ -292,15 +1071,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bottomLayout"
+        app:layout_constraintTop_toBottomOf="@+id/conversionScroll"
         app:layout_constraintVertical_bias="0.72" />
 
     <LinearLayout
         android:id="@+id/buttonLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/black"
         android:layout_marginTop="6dp"
+        android:background="@android:color/black"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

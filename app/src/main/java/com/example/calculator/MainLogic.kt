@@ -123,7 +123,7 @@ class MainLogic {
                 "." -> if (inputOne == "") inputOne += "0." else inputOne += "."
             }
             //If the user input 0 followed by any number other than '.' it deletes the 0
-            if(inputOne.length >= 2 && inputOne[0] == '0'  && inputOne[1] != '.') { inputOne.replaceFirst("0", "")}
+            if(inputOne.length >= 2 && inputOne[0] == '0'  && inputOne[1] != '.') { inputOne = inputOne.replaceFirst("0", "")}
             //Depending on if a mod or operation was input it will display different format
             if(mod.isNotEmpty()) {writeMod(mod)} else {inputString = inputTwo + operation + inputOne}
         }
