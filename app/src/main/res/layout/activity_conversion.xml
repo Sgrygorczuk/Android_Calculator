@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:id="@+id/backLayout"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,14 +31,14 @@
         <TextView
             android:id="@+id/textView2"
             android:layout_width="fill_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="5dp"
             android:layout_marginTop="4dp"
             android:layout_weight="1"
             android:text="@string/unit_converter"
             android:textColor="#FFFFFF"
-            android:textSize="25sp" />
+            android:textSize="22sp" />
     </LinearLayout>
 
     <HorizontalScrollView
@@ -59,7 +59,7 @@
             <Button
                 android:id="@+id/areaButton"
                 android:layout_width="75dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="2dp"
@@ -72,7 +72,7 @@
             <Button
                 android:id="@+id/lengthButton"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="2dp"
@@ -85,7 +85,7 @@
             <Button
                 android:id="@+id/temperatureButton"
                 android:layout_width="125dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="2dp"
@@ -98,7 +98,7 @@
             <Button
                 android:id="@+id/volumeButton"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="2dp"
@@ -111,7 +111,7 @@
             <Button
                 android:id="@+id/massButton"
                 android:layout_width="75dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="2dp"
@@ -124,7 +124,7 @@
             <Button
                 android:id="@+id/dataButton"
                 android:layout_width="75dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="2dp"
@@ -137,7 +137,7 @@
             <Button
                 android:id="@+id/speedButton"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="2dp"
@@ -150,7 +150,7 @@
             <Button
                 android:id="@+id/timeButton"
                 android:layout_width="75dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="2dp"
@@ -191,7 +191,7 @@
 
             <LinearLayout
                 android:id="@+id/conversionArea"
-                android:layout_width="wrap_content"
+                android:layout_width="410dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
@@ -234,9 +234,10 @@
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:text="Test"
+                        android:layout_marginBottom="15dp"
                         android:gravity="bottom"
-                        android:text="Area"
-                        android:textSize="25sp"
+                        android:textSize="22sp"
                         android:textColor="#FFFFFF" />
                 </LinearLayout>
 
@@ -244,7 +245,8 @@
                     android:id="@+id/middleDividerArea"
                     android:layout_width="410dp"
                     android:layout_height="1dp"
-                    android:layout_marginTop="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     android:background="@color/cardview_light_background"
                     app:layout_constraintBottom_toTopOf="@+id/bottomSpinnerArea"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -289,18 +291,20 @@
                         android:textSize="40sp" />
 
                     <TextView
-                        android:id="@+id/textViewa2Area"
+                        android:id="@+id/bottomTextViewArea"
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="end"
-                        android:text="TextView"
+                        android:text="Test"
+                        android:layout_marginBottom="15dp"
+                        android:gravity="bottom"
+                               android:textSize="22sp"
                         android:textColor="#FFFFFF"  />
                 </LinearLayout>
             </LinearLayout>
                 <LinearLayout
                     android:id="@+id/conversionLayoutLength"
-                    android:layout_width="match_parent"
+                    android:layout_width="410dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
@@ -343,8 +347,10 @@
                             android:layout_width="50dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:gravity="end"
-                            android:text="Length"
+                            android:text="Test"
+                            android:layout_marginBottom="15dp"
+                            android:gravity="bottom"
+                                   android:textSize="22sp"
                             android:textColor="#FFFFFF" />
                     </LinearLayout>
 
@@ -352,7 +358,8 @@
                         android:id="@+id/middleDividerLength"
                         android:layout_width="410dp"
                         android:layout_height="1dp"
-                        android:layout_marginTop="1dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
                         android:background="@color/cardview_light_background"
                         app:layout_constraintBottom_toTopOf="@+id/bottomSpinnerLength"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -397,19 +404,21 @@
                             android:textSize="40sp" />
 
                         <TextView
-                            android:id="@+id/textViewa2Length"
+                            android:id="@+id/bottomTextViewLength"
                             android:layout_width="50dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:gravity="end"
-                            android:text="TextView"
+                            android:text="Test"
+                            android:layout_marginBottom="15dp"
+                            android:gravity="bottom"
+                                   android:textSize="22sp"
                             android:textColor="#FFFFFF"  />
                     </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/conversionLayoutTemperature"
-                    android:layout_width="match_parent"
+                    android:layout_width="410dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
@@ -452,8 +461,10 @@
                             android:layout_width="50dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:gravity="end"
-                            android:text="Temp"
+                            android:text="Test"
+                            android:layout_marginBottom="15dp"
+                            android:gravity="bottom"
+                                   android:textSize="22sp"
                             android:textColor="#FFFFFF" />
                     </LinearLayout>
 
@@ -461,7 +472,8 @@
                         android:id="@+id/middleDividerTemperature"
                         android:layout_width="410dp"
                         android:layout_height="1dp"
-                        android:layout_marginTop="1dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
                         android:background="@color/cardview_light_background"
                         app:layout_constraintBottom_toTopOf="@+id/bottomSpinnerArea"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -506,18 +518,20 @@
                             android:textSize="40sp" />
 
                         <TextView
-                            android:id="@+id/textViewa2Temperature"
+                            android:id="@+id/bottomTextViewTemperature"
                             android:layout_width="50dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:gravity="end"
-                            android:text="TextView"
+                            android:text="Test"
+                            android:layout_marginBottom="15dp"
+                            android:gravity="bottom"
+                                   android:textSize="22sp"
                             android:textColor="#FFFFFF"  />
                         </LinearLayout>
                 </LinearLayout>
             <LinearLayout
                 android:id="@+id/conversionVolume"
-                android:layout_width="wrap_content"
+                android:layout_width="410dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
@@ -560,8 +574,10 @@
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="end"
-                        android:text="Volume"
+                        android:text="Test"
+                        android:layout_marginBottom="15dp"
+                        android:gravity="bottom"
+                               android:textSize="22sp"
                         android:textColor="#FFFFFF" />
                 </LinearLayout>
 
@@ -569,7 +585,8 @@
                     android:id="@+id/middleDividerVolume"
                     android:layout_width="410dp"
                     android:layout_height="1dp"
-                    android:layout_marginTop="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     android:background="@color/cardview_light_background"
                     app:layout_constraintBottom_toTopOf="@+id/bottomSpinnerVolume"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -614,18 +631,20 @@
                         android:textSize="40sp" />
 
                     <TextView
-                        android:id="@+id/textViewa2Volume"
+                        android:id="@+id/bottomTextViewVolume"
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="end"
-                        android:text="TextView"
+                        android:text="Test"
+                        android:layout_marginBottom="15dp"
+                        android:gravity="bottom"
+                               android:textSize="22sp"
                         android:textColor="#FFFFFF"  />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/conversionLayoutMass"
-                android:layout_width="match_parent"
+                android:layout_width="410dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
@@ -643,7 +662,8 @@
                     android:id="@+id/topLayoutMass"
                     android:layout_width="400dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -668,8 +688,10 @@
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="end"
-                        android:text="Mass"
+                        android:text="Test"
+                        android:layout_marginBottom="15dp"
+                        android:gravity="bottom"
+                               android:textSize="22sp"
                         android:textColor="#FFFFFF" />
                 </LinearLayout>
 
@@ -677,7 +699,7 @@
                     android:id="@+id/middleDividerMass"
                     android:layout_width="410dp"
                     android:layout_height="1dp"
-                    android:layout_marginTop="1dp"
+                    android:layout_margin="5dp"
                     android:background="@color/cardview_light_background"
                     app:layout_constraintBottom_toTopOf="@+id/bottomSpinnerMass"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -722,19 +744,21 @@
                         android:textSize="40sp" />
 
                     <TextView
-                        android:id="@+id/textViewa2Mass"
+                        android:id="@+id/bottomTextViewMass"
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="end"
-                        android:text="TextView"
+                        android:text="Test"
+                        android:layout_marginBottom="15dp"
+                        android:gravity="bottom"
+                               android:textSize="22sp"
                         android:textColor="#FFFFFF"  />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/conversionLayoutData"
-                android:layout_width="match_parent"
+                android:layout_width="410dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
@@ -777,8 +801,10 @@
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="end"
-                        android:text="Data"
+                        android:text="Test"
+                        android:layout_marginBottom="15dp"
+                        android:gravity="bottom"
+                               android:textSize="22sp"
                         android:textColor="#FFFFFF" />
                 </LinearLayout>
 
@@ -786,7 +812,8 @@
                     android:id="@+id/middleDividerData"
                     android:layout_width="410dp"
                     android:layout_height="1dp"
-                    android:layout_marginTop="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     android:background="@color/cardview_light_background"
                     app:layout_constraintBottom_toTopOf="@+id/bottomSpinnerData"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -831,19 +858,21 @@
                         android:textSize="40sp" />
 
                     <TextView
-                        android:id="@+id/textViewa2Data"
+                        android:id="@+id/bottomTextViewData"
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="end"
-                        android:text="TextView"
+                        android:text="Test"
+                        android:layout_marginBottom="15dp"
+                        android:gravity="bottom"
+                               android:textSize="22sp"
                         android:textColor="#FFFFFF"  />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/conversionLayoutSpeed"
-                android:layout_width="match_parent"
+                android:layout_width="410dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
@@ -886,8 +915,10 @@
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="end"
-                        android:text="Speed"
+                        android:text="Test"
+                        android:layout_marginBottom="15dp"
+                        android:gravity="bottom"
+                               android:textSize="22sp"
                         android:textColor="#FFFFFF" />
                 </LinearLayout>
 
@@ -895,7 +926,8 @@
                     android:id="@+id/middleDividerSpeed"
                     android:layout_width="410dp"
                     android:layout_height="1dp"
-                    android:layout_marginTop="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     android:background="@color/cardview_light_background"
                     app:layout_constraintBottom_toTopOf="@+id/bottomSpinnerSpeed"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -940,19 +972,21 @@
                         android:textSize="40sp" />
 
                     <TextView
-                        android:id="@+id/textViewa2Speed"
+                        android:id="@+id/bottomTextViewSpeed"
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="end"
-                        android:text="TextView"
+                        android:text="Test"
+                        android:layout_marginBottom="15dp"
+                        android:gravity="bottom"
+                               android:textSize="22sp"
                         android:textColor="#FFFFFF"  />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/conversionLayoutTime"
-                android:layout_width="match_parent"
+                android:layout_width="410dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
@@ -1004,7 +1038,8 @@
                     android:id="@+id/middleDividerTime"
                     android:layout_width="410dp"
                     android:layout_height="1dp"
-                    android:layout_marginTop="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     android:background="@color/cardview_light_background"
                     app:layout_constraintBottom_toTopOf="@+id/bottomSpinnerTime"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -1049,7 +1084,7 @@
                         android:textSize="40sp" />
 
                     <TextView
-                        android:id="@+id/textViewa2Time"
+                        android:id="@+id/bottomTextViewTime"
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -1076,7 +1111,7 @@
 
     <LinearLayout
         android:id="@+id/buttonLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:background="@android:color/black"
@@ -1094,11 +1129,8 @@
             <Button
                 android:id="@+id/sevenButton"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/white_selector"
                 android:text="@string/_7"
@@ -1108,11 +1140,8 @@
             <Button
                 android:id="@+id/eightButton"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/white_selector"
                 android:text="@string/_8"
@@ -1122,11 +1151,8 @@
             <Button
                 android:id="@+id/nineButton"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/white_selector"
                 android:text="@string/_9"
@@ -1136,11 +1162,8 @@
             <Button
                 android:id="@+id/timesButton"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="Del"
@@ -1157,11 +1180,8 @@
             <Button
                 android:id="@+id/fourButton"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/white_selector"
                 android:text="@string/_4"
@@ -1171,11 +1191,8 @@
             <Button
                 android:id="@+id/fiveButton"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/white_selector"
                 android:text="@string/_5"
@@ -1185,11 +1202,8 @@
             <Button
                 android:id="@+id/sixButton"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/white_selector"
                 android:text="@string/_6"
@@ -1199,11 +1213,8 @@
             <Button
                 android:id="@+id/minusButton"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/c"
@@ -1221,11 +1232,8 @@
             <Button
                 android:id="@+id/oneButton"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/white_selector"
                 android:text="@string/_1"
@@ -1235,11 +1243,8 @@
             <Button
                 android:id="@+id/twoButton"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/white_selector"
                 android:text="@string/_2"
@@ -1249,11 +1254,8 @@
             <Button
                 android:id="@+id/threeButton"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/white_selector"
                 android:text="@string/_3"
@@ -1263,11 +1265,8 @@
             <Button
                 android:id="@+id/plusButton"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="∧"
@@ -1284,11 +1283,8 @@
             <Button
                 android:id="@+id/clearButton"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/plusMinus"
@@ -1298,11 +1294,8 @@
             <Button
                 android:id="@+id/zeroButton"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/white_selector"
                 android:text="@string/_0"
@@ -1312,11 +1305,8 @@
             <Button
                 android:id="@+id/decimalButton"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/white_selector"
                 android:text="@string/decimal"
@@ -1326,11 +1316,8 @@
             <Button
                 android:id="@+id/equalButton"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="v"

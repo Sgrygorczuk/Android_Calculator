@@ -8,6 +8,15 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_conversion.*
 import kotlin.math.abs
 import android.text.InputType
+import android.view.MotionEvent
+import android.view.View.OnTouchListener
+import androidx.core.app.ComponentActivity
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.view.View
+import android.widget.AdapterView
+
 
 class ConversionActivity: AppCompatActivity() {
 
@@ -35,71 +44,239 @@ class ConversionActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_conversion)
+        //Sets the Area button to be selected as that's the screen we start from
         areaButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
 
+        /*
+        Set up and Functionality of the Spinners
+            First 3 Lines connect the spinner to the array that will be displayed in the drop down menu
+            Then we have the object that will handle the clicking and selecting that will change information
+            in the text boxes
+         */
+
+        /*
+        Top Area Spinner
+         */
         val areaTop = ArrayAdapter(this, android.R.layout.simple_spinner_item, areaTypes)
         areaTop.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         topSpinnerArea!!.adapter = areaTop
 
+        topSpinnerArea.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                topTextViewArea.text = areaUnits[position]
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
+        /*
+        Bottom Area Spinner
+        */
         val areaBottom = ArrayAdapter(this, android.R.layout.simple_spinner_item, areaTypes)
         areaBottom.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         bottomSpinnerArea!!.adapter = areaBottom
 
+        bottomSpinnerArea.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                bottomTextViewArea.text = areaUnits[position]
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
+        /*
+        Top Length Spinner
+        */
         val lengthTop = ArrayAdapter(this, android.R.layout.simple_spinner_item, lengthTypes)
         lengthTop.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         topSpinnerLength!!.adapter = lengthTop
 
+        topSpinnerLength.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                topTextViewLength.text = lengthUnits[position]
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
+        /*
+        Bottom Length Spinner
+        */
         val lengthBottom = ArrayAdapter(this, android.R.layout.simple_spinner_item, lengthTypes)
         lengthBottom.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         bottomSpinnerLength!!.adapter = lengthBottom
 
+        bottomSpinnerLength.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                bottomTextViewLength.text = lengthUnits[position]
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
+        /*
+        Top Temperature Spinner
+        */
         val temperatureTop = ArrayAdapter(this, android.R.layout.simple_spinner_item, temperatureTypes)
         temperatureTop.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         topSpinnerTemperature!!.adapter = temperatureTop
 
+        topSpinnerTemperature.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                topTextViewTemperature.text = temperatureUnits[position]
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
+        /*
+        Bottom Temperature Spinner
+        */
         val temperatureBottom = ArrayAdapter(this, android.R.layout.simple_spinner_item, temperatureTypes)
         temperatureBottom.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         bottomSpinnerTemperature!!.adapter = temperatureBottom
 
+        bottomSpinnerTemperature.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                bottomTextViewTemperature.text = temperatureUnits[position]
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
+        /*
+        Top Volume Spinner
+        */
         val volumeTop = ArrayAdapter(this, android.R.layout.simple_spinner_item, volumeTypes)
         volumeTop.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         topSpinnerVolume!!.adapter = volumeTop
 
+        topSpinnerVolume.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                topTextViewVolume.text = volumeUnits[position]
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
+        /*
+        Bottom Volume Spinner
+        */
         val volumeBottom = ArrayAdapter(this, android.R.layout.simple_spinner_item, volumeTypes)
         volumeBottom.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         bottomSpinnerVolume!!.adapter = volumeBottom
 
+        bottomSpinnerVolume.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                bottomTextViewVolume.text = volumeUnits[position]
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
+        /*
+        Top Mass Spinner
+        */
         val massTop = ArrayAdapter(this, android.R.layout.simple_spinner_item, massTypes)
         massTop.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         topSpinnerMass!!.adapter = massTop
 
+        topSpinnerMass.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                topTextViewMass.text = massUnits[position]
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
+        /*
+        Bottom Mass Spinner
+        */
         val massBottom = ArrayAdapter(this, android.R.layout.simple_spinner_item, massTypes)
         massBottom.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         bottomSpinnerMass!!.adapter = massBottom
 
+        bottomSpinnerMass.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                bottomTextViewMass.text = massUnits[position]
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
+        /*
+        Top Data Spinner
+        */
         val dataTop = ArrayAdapter(this, android.R.layout.simple_spinner_item, dataTypes)
         dataTop.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         topSpinnerData!!.adapter = dataTop
 
+        topSpinnerData.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                topTextViewData.text = dataUnits[position]
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
+        /*
+        Bottom Data Spinner
+        */
         val dataBottom = ArrayAdapter(this, android.R.layout.simple_spinner_item, dataTypes)
         dataBottom.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         bottomSpinnerData!!.adapter = dataBottom
 
+        bottomSpinnerData.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                bottomTextViewData.text = dataUnits[position]
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
+        /*
+        Top Speed Spinner
+        */
         val speedTop = ArrayAdapter(this, android.R.layout.simple_spinner_item, speedTypes)
         speedTop.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         topSpinnerSpeed!!.adapter = speedTop
 
+        topSpinnerSpeed.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                topTextViewSpeed.text = speedUnits[position]
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
+        /*
+        Bottom Speed Spinner
+        */
         val speedBottom = ArrayAdapter(this, android.R.layout.simple_spinner_item, speedTypes)
         speedBottom.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         bottomSpinnerSpeed!!.adapter = speedBottom
 
+        bottomSpinnerSpeed.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                bottomTextViewSpeed.text = speedUnits[position]
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
+        /*
+        Top Time Spinner
+        */
         val timeTop = ArrayAdapter(this, android.R.layout.simple_spinner_item, timeTypes)
         timeTop.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         topSpinnerTime!!.adapter = timeTop
 
+        topSpinnerTime.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                topTextViewTime.text = timeUnits[position]
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
+        /*
+        Bottom Time Spinner
+        */
         val timeBottom = ArrayAdapter(this, android.R.layout.simple_spinner_item, timeTypes)
         timeBottom.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         bottomSpinnerTime!!.adapter = timeBottom
+
+        bottomSpinnerTime.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                bottomTextViewTime.text = timeUnits[position]
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
 
         /*
         Disabling the keyboard when selecting the textEditors
