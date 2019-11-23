@@ -87,6 +87,22 @@ class MainActivity : AppCompatActivity() {
             resultsView.text = logicUnit.performOperation()
         }
 
+        fun equalAnimation() {
+            resultsView.animate()
+                .translationY(-200F)
+                .scaleY(2F)
+                .scaleX(2F)
+                .duration = 200
+        }
+
+        fun equalBackAnimation(){
+            resultsView.animate()
+                .translationY(0F)
+                .scaleY(1F)
+                .scaleX(1F)
+                .duration = 0
+        }
+
         /*
         The string forming buttons all use the clickedNumberButton() function
         */
