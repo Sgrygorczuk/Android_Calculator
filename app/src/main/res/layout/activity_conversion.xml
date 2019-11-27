@@ -174,7 +174,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/unitScroll"/>
 
-    <HorizontalScrollView
+    <LinearLayout
         android:id="@+id/conversionScroll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -190,7 +190,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/conversionArea"
+                android:id="@+id/conversionLayoutArea"
                 android:layout_width="410dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -226,6 +226,7 @@
                         android:importantForAutofill="no"
                         android:inputType="number"
                         android:text="1"
+                        android:onClick="updateLocationTop"
                         android:textColor="#FFFFFF"
                         android:textSize="40sp" />
 
@@ -287,6 +288,7 @@
                         android:importantForAutofill="no"
                         android:inputType="number"
                         android:text="1"
+                        android:onClick="updateLocationBottom"
                         android:textColor="#FFFFFF"
                         android:textSize="40sp" />
 
@@ -339,6 +341,7 @@
                             android:importantForAutofill="no"
                             android:inputType="number"
                             android:text="1"
+                            android:onClick="updateLocationTop"
                             android:textColor="#FFFFFF"
                             android:textSize="40sp" />
 
@@ -350,7 +353,7 @@
                             android:text="Test"
                             android:layout_marginBottom="15dp"
                             android:gravity="bottom"
-                                   android:textSize="22sp"
+                            android:textSize="22sp"
                             android:textColor="#FFFFFF" />
                     </LinearLayout>
 
@@ -396,6 +399,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="10"
                             android:ems="10"
+                            android:onClick="updateLocationBottom"
                             android:gravity="end"
                             android:importantForAutofill="no"
                             android:inputType="number"
@@ -449,6 +453,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="10"
                             android:ems="10"
+                            android:onClick="updateLocationTop"
                             android:gravity="end"
                             android:importantForAutofill="no"
                             android:inputType="number"
@@ -510,6 +515,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="10"
                             android:ems="10"
+                            android:onClick="updateLocationBottom"
                             android:gravity="end"
                             android:importantForAutofill="no"
                             android:inputType="number"
@@ -561,6 +567,7 @@
                         android:layout_width="350dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="10"
+                        android:onClick="updateLocationTop"
                         android:ems="10"
                         android:gravity="end"
                         android:importantForAutofill="no"
@@ -622,6 +629,7 @@
                         android:layout_width="350dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="10"
+                        android:onClick="updateLocationBottom"
                         android:ems="10"
                         android:gravity="end"
                         android:importantForAutofill="no"
@@ -642,6 +650,7 @@
                         android:textColor="#FFFFFF"  />
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/conversionLayoutMass"
                 android:layout_width="410dp"
@@ -676,6 +685,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="10"
                         android:ems="10"
+                        android:onClick="updateLocationTop"
                         android:gravity="end"
                         android:importantForAutofill="no"
                         android:inputType="number"
@@ -736,6 +746,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="10"
                         android:ems="10"
+                        android:onClick="updateLocationBottom"
                         android:gravity="end"
                         android:importantForAutofill="no"
                         android:inputType="number"
@@ -789,6 +800,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="10"
                         android:ems="10"
+                        android:onClick="updateLocationTop"
                         android:gravity="end"
                         android:importantForAutofill="no"
                         android:inputType="number"
@@ -850,6 +862,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="10"
                         android:ems="10"
+                        android:onClick="updateLocationBottom"
                         android:gravity="end"
                         android:importantForAutofill="no"
                         android:inputType="number"
@@ -903,6 +916,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="10"
                         android:ems="10"
+                        android:onClick="updateLocationTop"
                         android:gravity="end"
                         android:importantForAutofill="no"
                         android:inputType="number"
@@ -964,6 +978,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="10"
                         android:ems="10"
+                        android:onClick="updateLocationBottom"
                         android:gravity="end"
                         android:importantForAutofill="no"
                         android:inputType="number"
@@ -979,7 +994,7 @@
                         android:text="Test"
                         android:layout_marginBottom="15dp"
                         android:gravity="bottom"
-                               android:textSize="22sp"
+                        android:textSize="22sp"
                         android:textColor="#FFFFFF"  />
                 </LinearLayout>
             </LinearLayout>
@@ -1017,6 +1032,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="10"
                         android:ems="10"
+                        android:onClick="updateLocationTop"
                         android:gravity="end"
                         android:importantForAutofill="no"
                         android:inputType="number"
@@ -1029,8 +1045,10 @@
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="end"
-                        android:text="Time"
+                        android:text="Test"
+                        android:layout_marginBottom="15dp"
+                        android:gravity="bottom"
+                        android:textSize="22sp"
                         android:textColor="#FFFFFF" />
                 </LinearLayout>
 
@@ -1077,6 +1095,7 @@
                         android:layout_weight="10"
                         android:ems="10"
                         android:gravity="end"
+                        android:onClick="updateLocationBottom"
                         android:importantForAutofill="no"
                         android:inputType="number"
                         android:text="1"
@@ -1088,13 +1107,15 @@
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="end"
-                        android:text="TextView"
+                        android:text="Test"
+                        android:layout_marginBottom="15dp"
+                        android:gravity="bottom"
+                        android:textSize="22sp"
                         android:textColor="#FFFFFF"  />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </HorizontalScrollView>
+    </LinearLayout>
 
     <View
         android:id="@+id/bottomDivider"
@@ -1132,9 +1153,9 @@
                 android:layout_height="55dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/white_selector"
+                android:background="@drawable/gray_selector"
                 android:text="@string/_7"
-                android:textColor="@android:color/black"
+                android:textColor="#FFFFFF"
                 android:textSize="40sp" />
 
             <Button
@@ -1143,9 +1164,9 @@
                 android:layout_height="55dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/white_selector"
+                android:background="@drawable/gray_selector"
                 android:text="@string/_8"
-                android:textColor="@android:color/black"
+                android:textColor="#FFFFFF"
                 android:textSize="40sp" />
 
             <Button
@@ -1154,13 +1175,13 @@
                 android:layout_height="55dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/white_selector"
+                android:background="@drawable/gray_selector"
                 android:text="@string/_9"
-                android:textColor="@android:color/black"
+                android:textColor="#FFFFFF"
                 android:textSize="40sp" />
 
             <Button
-                android:id="@+id/timesButton"
+                android:id="@+id/deleteButton"
                 android:layout_width="wrap_content"
                 android:layout_height="55dp"
                 android:layout_margin="2dp"
@@ -1183,9 +1204,9 @@
                 android:layout_height="55dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/white_selector"
+                android:background="@drawable/gray_selector"
                 android:text="@string/_4"
-                android:textColor="@android:color/black"
+                android:textColor="#FFFFFF"
                 android:textSize="40sp" />
 
             <Button
@@ -1194,9 +1215,9 @@
                 android:layout_height="55dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/white_selector"
+                android:background="@drawable/gray_selector"
                 android:text="@string/_5"
-                android:textColor="@android:color/black"
+                android:textColor="#FFFFFF"
                 android:textSize="40sp" />
 
             <Button
@@ -1205,13 +1226,13 @@
                 android:layout_height="55dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/white_selector"
+                android:background="@drawable/gray_selector"
                 android:text="@string/_6"
-                android:textColor="@android:color/black"
+                android:textColor="#FFFFFF"
                 android:textSize="40sp" />
 
             <Button
-                android:id="@+id/minusButton"
+                android:id="@+id/clearButton"
                 android:layout_width="wrap_content"
                 android:layout_height="55dp"
                 android:layout_margin="2dp"
@@ -1235,9 +1256,9 @@
                 android:layout_height="55dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/white_selector"
+                android:background="@drawable/gray_selector"
                 android:text="@string/_1"
-                android:textColor="@android:color/black"
+                android:textColor="#FFFFFF"
                 android:textSize="40sp" />
 
             <Button
@@ -1246,9 +1267,9 @@
                 android:layout_height="55dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/white_selector"
+                android:background="@drawable/gray_selector"
                 android:text="@string/_2"
-                android:textColor="@android:color/black"
+                android:textColor="#FFFFFF"
                 android:textSize="40sp" />
 
             <Button
@@ -1257,19 +1278,20 @@
                 android:layout_height="55dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/white_selector"
+                android:background="@drawable/gray_selector"
                 android:text="@string/_3"
-                android:textColor="@android:color/black"
+                android:textColor="#FFFFFF"
                 android:textSize="40sp" />
 
             <Button
-                android:id="@+id/plusButton"
+                android:id="@+id/topButton"
                 android:layout_width="wrap_content"
                 android:layout_height="55dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="∧"
+                android:onClick="updateLocationTop"
                 android:textColor="#00C604"
                 android:textSize="40sp" />
 
@@ -1281,14 +1303,14 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/clearButton"
+                android:id="@+id/plusMinusButton"
                 android:layout_width="wrap_content"
                 android:layout_height="55dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/plusMinus"
-                android:textColor="#00C604"
+                android:textColor="#FFFFFF"
                 android:textSize="40sp" />
 
             <Button
@@ -1297,9 +1319,9 @@
                 android:layout_height="55dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/white_selector"
+                android:background="@drawable/gray_selector"
                 android:text="@string/_0"
-                android:textColor="@android:color/black"
+                android:textColor="#FFFFFF"
                 android:textSize="40sp" />
 
             <Button
@@ -1308,19 +1330,20 @@
                 android:layout_height="55dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/white_selector"
+                android:background="@drawable/gray_selector"
                 android:text="@string/decimal"
-                android:textColor="@android:color/black"
+                android:textColor="#FFFFFF"
                 android:textSize="40sp" />
 
             <Button
-                android:id="@+id/equalButton"
+                android:id="@+id/bottomButton"
                 android:layout_width="wrap_content"
                 android:layout_height="55dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="v"
+                android:onClick="updateLocationBottom"
                 android:textColor="#00C604"
                 android:textSize="40sp" />
 

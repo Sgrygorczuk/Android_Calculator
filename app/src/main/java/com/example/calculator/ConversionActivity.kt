@@ -1,20 +1,15 @@
 package com.example.calculator
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_conversion.*
-import kotlin.math.abs
 import android.text.InputType
-import android.view.MotionEvent
-import android.view.View.OnTouchListener
-import androidx.core.app.ComponentActivity
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.view.View
+import android.view.View.*
 import android.widget.AdapterView
 
 
@@ -39,13 +34,151 @@ class ConversionActivity: AppCompatActivity() {
     val timeTypes = arrayOf("Milliseconds (ms)", "Seconds (s)", "Minutes (m)", "Hours (h)", "Days (d)", "Weeks (wk)")
     val timeUnits = arrayOf("ms", "s", "min", "h", "d", "wk")
 
-    var currentPosition = 0
+
+    var conversionLogicUnit = ConversionLogic()
+    var isTop: Boolean = true
+    var currentTop : Int = 0
+    var currentBottom : Int = 0
+    var currentButton : String = "areaButton"
+    var currentPosition : Int = 0
+
+    fun buttonHighlight(type : String) : Unit {
+        areaButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
+        lengthButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
+        temperatureButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
+        volumeButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
+        massButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
+        dataButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
+        speedButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
+        timeButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
+
+        Log.d("Admin", "$type")
+        when (type) {
+            "areaButton" -> areaButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
+            "lengthButton" -> lengthButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
+            "temperatureButton" -> temperatureButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
+            "volumeButton" -> volumeButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
+            "massButton" -> massButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
+            "dataButton" -> dataButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
+            "speedButton" -> speedButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
+            "timeButton" -> timeButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
+        }
+    }
+
+    fun showLayout(type : String) : Unit {
+        conversionLayoutArea.visibility = GONE
+        conversionLayoutLength.visibility = GONE
+        conversionLayoutTemperature.visibility = GONE
+        conversionVolume.visibility = GONE
+        conversionLayoutMass.visibility = GONE
+        conversionLayoutData.visibility = GONE
+        conversionLayoutSpeed.visibility = GONE
+        conversionLayoutTime.visibility = GONE
+
+        when (type) {
+            "areaButton" -> conversionLayoutArea.visibility = VISIBLE
+            "lengthButton" -> conversionLayoutLength.visibility = VISIBLE
+            "temperatureButton" -> conversionLayoutTemperature.visibility = VISIBLE
+            "volumeButton" -> conversionVolume.visibility = VISIBLE
+            "massButton" -> conversionLayoutMass.visibility = VISIBLE
+            "dataButton" -> conversionLayoutData.visibility = VISIBLE
+            "speedButton" -> conversionLayoutSpeed.visibility = VISIBLE
+            "timeButton" -> conversionLayoutTime.visibility = VISIBLE
+        }
+    }
+
+    fun inputFocus(type : String) : Unit{
+        if(isTop)
+        {
+            when (type) {
+                "areaButton" -> topTextEditorArea.requestFocus()
+                "lengthButton" -> topTextEditorLength.requestFocus()
+                "temperatureButton" -> topTextEditorTemperature.requestFocus()
+                "volumeButton" -> topTextEditorVolume.requestFocus()
+                "massButton" -> topTextEditorMass.requestFocus()
+                "dataButton" -> topTextEditorData.requestFocus()
+                "speedButton" -> topTextEditorSpeed.requestFocus()
+                "timeButton" -> topTextEditorTime.requestFocus()
+            }
+        }
+        else
+        {
+            when (type) {
+                "areaButton" -> bottomTextEditorArea.requestFocus()
+                "lengthButton" -> bottomTextEditorLength.requestFocus()
+                "temperatureButton" -> bottomTextEditorTemperature.requestFocus()
+                "volumeButton" -> bottomTextEditorVolume.requestFocus()
+                "massButton" -> bottomTextEditorMass.requestFocus()
+                "dataButton" -> bottomTextEditorData.requestFocus()
+                "speedButton" -> bottomTextEditorSpeed.requestFocus()
+                "timeButton" -> bottomTextEditorTime.requestFocus()
+            }
+        }
+    }
+
+    fun plusMinusAble(){
+        if(currentPosition == 2){
+            plusMinusButton.setBackgroundDrawable(resources.getDrawable(R.drawable.gray_selector))
+            plusMinusButton.setTextColor(Color.parseColor("#FFFFFF"))
+            plusMinusButton.isEnabled = true
+        }
+        else{
+            plusMinusButton.setBackgroundDrawable(resources.getDrawable(R.drawable.gray_disabled_button))
+            plusMinusButton.setTextColor(Color.parseColor("#9C9C9C"))
+            plusMinusButton.isEnabled = false
+        }
+    }
+
+    fun upDownArrows(){
+        if(isTop){
+            bottomButton.setBackgroundDrawable(resources.getDrawable(R.drawable.gray_selector))
+            bottomButton.setTextColor(Color.parseColor("#00C604"))
+            bottomButton.isEnabled = true
+
+            topButton.setBackgroundDrawable(resources.getDrawable(R.drawable.gray_disabled_button))
+            topButton.setTextColor(Color.parseColor("#006303"))
+            topButton.isEnabled = false
+        }
+        else{
+            topButton.setBackgroundDrawable(resources.getDrawable(R.drawable.gray_selector))
+            topButton.setTextColor(Color.parseColor("#00C604"))
+            topButton.isEnabled = true
+
+            bottomButton.setBackgroundDrawable(resources.getDrawable(R.drawable.gray_disabled_button))
+            bottomButton.setTextColor(Color.parseColor("#006303"))
+            bottomButton.isEnabled = false
+        }
+    }
+
+    fun loadUnitTable(buttonName : String, newPosition : Int) : Unit {
+        Log.d("Admin", "ConversionActivity: $buttonName was clicked")
+        buttonHighlight(buttonName)
+        showLayout(buttonName)
+        inputFocus(buttonName)
+        currentButton = buttonName
+        currentPosition = newPosition
+        plusMinusAble()
+        upDownArrows()
+    }
+
+    fun updateLocationTop(view : View) : Unit{
+        Log.d("Admin", "Top text box was clicked")
+        isTop = true
+        loadUnitTable(currentButton ,currentPosition)
+
+    }
+
+    fun updateLocationBottom(view : View) : Unit {
+        Log.d("Admin", "Bottom text box was clicked")
+        isTop = false
+        loadUnitTable(currentButton ,currentPosition)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_conversion)
         //Sets the Area button to be selected as that's the screen we start from
-        areaButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
+        loadUnitTable("areaButton", 0)
 
         /*
         Set up and Functionality of the Spinners
@@ -64,6 +197,7 @@ class ConversionActivity: AppCompatActivity() {
         topSpinnerArea.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 topTextViewArea.text = areaUnits[position]
+                currentTop = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -78,6 +212,7 @@ class ConversionActivity: AppCompatActivity() {
         bottomSpinnerArea.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 bottomTextViewArea.text = areaUnits[position]
+                currentBottom = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -92,6 +227,7 @@ class ConversionActivity: AppCompatActivity() {
         topSpinnerLength.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 topTextViewLength.text = lengthUnits[position]
+                currentTop = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -106,6 +242,7 @@ class ConversionActivity: AppCompatActivity() {
         bottomSpinnerLength.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 bottomTextViewLength.text = lengthUnits[position]
+                currentBottom = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -120,6 +257,7 @@ class ConversionActivity: AppCompatActivity() {
         topSpinnerTemperature.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 topTextViewTemperature.text = temperatureUnits[position]
+                currentTop = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -134,6 +272,7 @@ class ConversionActivity: AppCompatActivity() {
         bottomSpinnerTemperature.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 bottomTextViewTemperature.text = temperatureUnits[position]
+                currentBottom = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -148,6 +287,7 @@ class ConversionActivity: AppCompatActivity() {
         topSpinnerVolume.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 topTextViewVolume.text = volumeUnits[position]
+                currentTop = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -162,6 +302,7 @@ class ConversionActivity: AppCompatActivity() {
         bottomSpinnerVolume.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 bottomTextViewVolume.text = volumeUnits[position]
+                currentBottom = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -176,6 +317,7 @@ class ConversionActivity: AppCompatActivity() {
         topSpinnerMass.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 topTextViewMass.text = massUnits[position]
+                currentTop = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -190,6 +332,7 @@ class ConversionActivity: AppCompatActivity() {
         bottomSpinnerMass.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 bottomTextViewMass.text = massUnits[position]
+                currentBottom = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -204,6 +347,7 @@ class ConversionActivity: AppCompatActivity() {
         topSpinnerData.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 topTextViewData.text = dataUnits[position]
+                currentTop = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -218,6 +362,7 @@ class ConversionActivity: AppCompatActivity() {
         bottomSpinnerData.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 bottomTextViewData.text = dataUnits[position]
+                currentBottom = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -232,6 +377,7 @@ class ConversionActivity: AppCompatActivity() {
         topSpinnerSpeed.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 topTextViewSpeed.text = speedUnits[position]
+                currentTop = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -246,6 +392,7 @@ class ConversionActivity: AppCompatActivity() {
         bottomSpinnerSpeed.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 bottomTextViewSpeed.text = speedUnits[position]
+                currentBottom = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -260,6 +407,7 @@ class ConversionActivity: AppCompatActivity() {
         topSpinnerTime.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 topTextViewTime.text = timeUnits[position]
+                currentTop = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -274,6 +422,7 @@ class ConversionActivity: AppCompatActivity() {
         bottomSpinnerTime.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 bottomTextViewTime.text = timeUnits[position]
+                currentBottom = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -353,91 +502,45 @@ class ConversionActivity: AppCompatActivity() {
         bottomTextEditorTime!!.isFocusable = true
         bottomTextEditorTime!!.setTextIsSelectable(true)
 
-        fun moveScroll(newPosition : Int) : Unit {
-            var counter = abs(currentPosition-newPosition)+1
-            //17 = Left, 66 = Right
-            var direction : Int = 17
-            //currentPosition = 0, newPosition = 2, move to right
-            if(currentPosition <= newPosition){direction = 66} else {direction = 17}
-            while(counter > 0 && currentPosition != newPosition) {
-                Log.d("Admin","Scroll : $direction, Counter : $counter")
-                conversionScroll.pageScroll(direction)
-                counter--
-            }
-        }
-
-        fun loadUnitTable(errorMsg : String, type : String, newPosition : Int) : Unit {
-            Log.d("Admin", "ConversionActivity: $errorMsg was clicked")
-            moveScroll(newPosition)
-            currentPosition = newPosition
-        }
-
-        fun buttonHighlight(type : String) : Unit {
-            areaButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
-            lengthButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
-            temperatureButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
-            volumeButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
-            massButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
-            dataButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
-            speedButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
-            timeButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
-
-            when (type) {
-                "areaButton" -> areaButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-                "lengthButton" -> lengthButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-                "temperatureButton" -> temperatureButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-                "volumeButton" -> volumeButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-                "massButton" -> massButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-                "dataButton" -> dataButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-                "speedButton" -> speedButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-                "timeButton" -> timeButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-            }
-        }
-
         backButton.setOnClickListener {
             Log.d("Admin", "ConversionActivity: backButton was clicked")
             startActivity(Intent(this, MainActivity::class.java))
         }
 
         areaButton.setOnClickListener {
-            loadUnitTable("areaButton", "area", 0)
-            buttonHighlight("areaButton")
+            loadUnitTable("areaButton",  0)
         }
 
         lengthButton.setOnClickListener {
-            loadUnitTable("lengthButton", "length", 1)
-            buttonHighlight("lengthButton")
-
+            loadUnitTable("lengthButton",  1)
         }
 
         temperatureButton.setOnClickListener {
-            loadUnitTable("temperatureButton", "temperature", 2)
-            buttonHighlight("temperatureButton")
+            conversionLogicUnit.conversion(2, currentTop, currentBottom)
+            Log.d("Admin", "Array  ${conversionLogicUnit.conversionValue}")
+            loadUnitTable("temperatureButton",  2)
         }
 
         volumeButton.setOnClickListener {
-            loadUnitTable("volumeButton", "volume", 3)
-            buttonHighlight("volumeButton")
+            loadUnitTable("volumeButton", 3)
         }
 
         massButton.setOnClickListener {
-            loadUnitTable("massButton", "mass",4)
-            buttonHighlight("massButton")
+            loadUnitTable("massButton",4)
         }
 
         dataButton.setOnClickListener {
-            loadUnitTable("dataButton", "data", 5)
-            buttonHighlight("dataButton")
+            loadUnitTable("dataButton", 5)
         }
 
         speedButton.setOnClickListener {
-            loadUnitTable("speedButton", "speed", 6)
-            buttonHighlight("speedButton")
+            loadUnitTable("speedButton", 6)
         }
 
         timeButton.setOnClickListener {
-            loadUnitTable("timeButton", "time", 7)
-            buttonHighlight("timeButton")
+            conversionLogicUnit.conversion(7, currentTop, currentBottom)
+            Log.d("Admin", "Array  ${conversionLogicUnit.conversionValue}")
+            loadUnitTable("timeButton", 7)
         }
     }
 }
