@@ -1,5 +1,7 @@
 package com.example.calculator
 
+import android.util.Log
+
 class ConversionLogic {
 
     /*
@@ -43,13 +45,8 @@ class ConversionLogic {
                               arrayOf(0.0254, 0.00254, 2.54e-5, 2.54e-8, 0.001, 8.3333e-5, 2.7778e-5, 1.5783e-8, 1.3715e-8, 1))
 
     /*
-    Celsius vs: Celsius, Fahrenheit, Kelvin
-    Fahrenheit vs: Celsius, Fahrenheit, Kelvin
-    Kelvin vs: Celsius, Fahrenheit, Kelvin
-     */
-    val temperatureTable = arrayOf(arrayOf(1, 33.8, 274.15),
-                                   arrayOf(-17.22222222222, 1, 255.9277777778),
-                                   arrayOf(-272.15, -457.87, 1))
+    There is no easy table you just have to do formulas which are done in temperatureFormulas
+   */
 
     /*
     UK Gallon vs: UK Gallon, US Gallon, Liter, Milliliter, Cubic Centimeter, Cubic Meter, Cubic Inch, Cubic Foot
@@ -103,12 +100,30 @@ class ConversionLogic {
                             arrayOf(8e+12, 1e+12, 1e+9, 1e+6, 1000, 1))
 
 
-    val speedTable = arrayOf(arrayOf(1, 0.001, 1.6667e-5, 2.7778e-7, 1.1574e-8, 1.6534e-9),
-        arrayOf(1000, 1, 0.0166667, 0.000277778, 1.1574e-5, 1.6534e-6),
-        arrayOf(60000, 60, 1, 0.0166667, 0.000694444, 9.9206e-5),
-        arrayOf(3.6e+6, 3600, 60, 1, 0.0416667, 0.00595238),
-        arrayOf(8.64e+7, 86400, 1440, 24, 1, 0.142857),
-        arrayOf(6.048e+8, 604800, 10080, 168, 7, 1))
+    /*
+    m/s vs: m/s, m/h, km/s, km/h, in/s, in/h, ft/s, ft/h, mi/s, mi/h, kn
+    m/h vs: m/s, m/h, km/s, km/h, in/s, in/h, ft/s, ft/h, mi/s, mi/h, kn
+    km/s vs: m/s, m/h, km/s, km/h, in/s, in/h, ft/s, ft/h, mi/s, mi/h, kn
+    km/h vs: m/s, m/h, km/s, km/h, in/s, in/h, ft/s, ft/h, mi/s, mi/h, kn
+    in/s vs: m/s, m/h, km/s, km/h, in/s, in/h, ft/s, ft/h, mi/s, mi/h, kn
+    in/h vs: m/s, m/h, km/s, km/h, in/s, in/h, ft/s, ft/h, mi/s, mi/h, kn
+    ft/s vs: m/s, m/h, km/s, km/h, in/s, in/h, ft/s, ft/h, mi/s, mi/h, kn
+    ft/h vs: m/s, m/h, km/s, km/h, in/s, in/h, ft/s, ft/h, mi/s, mi/h, kn
+    mi/s vs: m/s, m/h, km/s, km/h, in/s, in/h, ft/s, ft/h, mi/s, mi/h, kn
+    mi/h vs: m/s, m/h, km/s, km/h, in/s, in/h, ft/s, ft/h, mi/s, mi/h, kn
+    kn vs: m/s, m/h, km/s, km/h, in/s, in/h, ft/s, ft/h, mi/s, mi/h, kn
+    */
+    val speedTable = arrayOf(arrayOf(1, 3600, 0.001, 3.6, 39.23, 141732.283, 3.28, 11811.023, 0.000621, 2.2369, 1.9438),
+                             arrayOf(0.0002778, 1, 2.7778e-7, 0.001, 0.01093, 39.37007, 0.000911, 3.2808, 0.000000172, 0.000613, 0.0005399),
+                             arrayOf(1000, 3600000, 1, 3600, 39370.07874, 141732283.46, 3280.839, 11811023.622, 0.6213, 2236.936, 1943.844),
+                             arrayOf(0.2778, 1000, 0.0002778, 1, 10.936, 39370.078, 0.9113, 3280.8398, 0.000172, 0.62137, 0.5399),
+                             arrayOf(0.0254, 91.44, 0.0000254, 0.09144, 1, 3600, 0.08333, 300, 0.00000157, 0.05681, 0.04937),
+                             arrayOf(0.00000705, 0.0254, 0.0000000071, 0.0000254, 0.0002778, 1, 0.0000231, 0.08333, 0.0000000044, 0.00001578, 0.0000137),
+                             arrayOf(0.3048, 1097.28, 0.0003048, 1.09728, 12, 43200, 1, 3600, 0.000189, 0.681, 0.592483),
+                             arrayOf(0.00008467, 0.3048, 0.0000000847, 0.0003048, 0.00333, 12, 0.000277778, 1, 0.0000000526, 0.000189, 0.0001645),
+                             arrayOf(1609.344, 5793638.4, 1.609, 5793.63, 63360, 228096000, 5280, 1900800, 1, 3600, 3128.3144),
+                             arrayOf(0.44704, 1609.344, 0.00044, 1.609344, 17.6, 63360, 1.4667, 5280, 0.0002778, 1, 0.86897),
+                             arrayOf(0.51444, 1852, 0.0005144, 1.852, 20.2537, 72913.385, 1.6878, 6076.1154, 0.000319, 1.1507, 1))
 
     /*
     Milliseconds vs: Milliseconds, Seconds, Minutes, Hours, Days, Weeks
@@ -125,11 +140,6 @@ class ConversionLogic {
                             arrayOf(8.64e+7, 86400, 1440, 24, 1, 0.142857),
                             arrayOf(6.048e+8, 604800, 10080, 168, 7, 1))
 
-    var conversionValue : Double = 0.0
-    var currentTable = arrayOf<Array<Any>>()
-    var inputOne : String = ""
-    var inputTwo : String = ""
-
     /*
     Input: Void
     Output: Boolean
@@ -137,41 +147,100 @@ class ConversionLogic {
     can be displayed on the calcualtorView.
     Purpose: To output Toast that tells the user they input the max number of input
     */
-    fun isMaxLength() : Boolean { return inputOne.length >= 9 }
+    fun isMaxLength(input : String) : Boolean { return input.length >= 9 }
 
-    fun addChar(choice: String) : Unit {
+    fun addChar(inputIn : String, choice: String) : String {
+        var input : String = inputIn
         //Checks if we are not above max length before allowing user to input
-        if(!isMaxLength()){
+        if(!isMaxLength(input)){
             when (choice) {
-                "0" -> inputOne += "0"
-                "1" -> inputOne += "1"
-                "2" -> inputOne += "2"
-                "3" -> inputOne += "3"
-                "4" -> inputOne += "4"
-                "5" -> inputOne += "5"
-                "6" -> inputOne += "6"
-                "7" -> inputOne += "7"
-                "8" -> inputOne += "8"
-                "9" -> inputOne += "9"
-                "." -> if (inputOne == "") inputOne += "0." else inputOne += "."
+                "0" -> input += "0"
+                "1" -> input += "1"
+                "2" -> input += "2"
+                "3" -> input += "3"
+                "4" -> input += "4"
+                "5" -> input += "5"
+                "6" -> input += "6"
+                "7" -> input += "7"
+                "8" -> input += "8"
+                "9" -> input += "9"
+                "." -> if (input == "") input += "0." else input += "."
+                "c" -> input = ""
             }
             //If the user input 0 followed by any number other than '.' it deletes the 0
-            if(inputOne.length >= 2 && inputOne[0] == '0'  && inputOne[1] != '.') { inputOne = inputOne.replaceFirst("0", "")}
+            if(input.length >= 2 && input[0] == '0'  && input[1] != '.') { input = input.replaceFirst("0", "")}
         }
+        if(input != "" && choice == "d"){input = input.substring(0, input.length - 1)}
+        return input
     }
 
-    fun conversion(choice : Int, currentTop : Int, currentBottom : Int){
-        when(choice){
-            0 -> currentTable = areaTable
-            1 -> currentTable = lengthTable
-            2 -> currentTable = temperatureTable
-            3 -> currentTable = volumeTable
-            4 -> currentTable = massTable
-            5 -> currentTable = dataTable
-            6 -> currentTable = speedTable
-            7 -> currentTable = timeTable
+    /*
+    Input: Void
+    Output: String; Will be displayed in calculatorView
+    The negation function adds or removes the negation symbol from the current inputOne
+    Purpose: Place or remove negation symbol
+    */
+    fun negation(input : String) : String {
+        var output = input
+        //Checks for the '-' is inputOne, if is removes it, if it isn't adds it
+        if(output.contains('-')){output = output.replace("-", "")} else {output = "-$input"}
+        return output
+    }
+
+    fun temperatureFormulas(choice : Int, value : String) : String {
+        var outputString : String = ""
+        when(choice)
+        {
+            0 -> outputString = value
+            1 -> outputString = (value.toDouble() * 9/5 + 32).toString()
+            2 -> outputString = (value.toDouble() + 273.15).toString()
+            3 -> outputString = ((value.toDouble() - 32) * 5/9).toString()
+            4 -> outputString = value
+            5 -> outputString = ((value.toDouble() - 32) * 5/9 + 273.15).toString()
+            6 -> outputString = (value.toDouble() - 273.15).toString()
+            7 -> outputString = ((value.toDouble() - 273.15) * 9/5 + 32).toString()
+            8 -> outputString = value
         }
-        conversionValue = currentTable[currentTop][currentBottom].toString().toDouble()
+        return outputString
+    }
+
+    fun conversion(choice : Int, currentTop : Int, currentBottom : Int, value : String, divMul : Boolean) : String{
+        var currentTable = arrayOf<Array<Any>>()
+        var outputString: String
+        var index : Int = 0
+        if(value.isNotEmpty()) {
+            when (choice) {
+                0 -> currentTable = areaTable
+                1 -> currentTable = lengthTable
+                3 -> currentTable = volumeTable
+                4 -> currentTable = massTable
+                5 -> currentTable = dataTable
+                6 -> currentTable = speedTable
+                7 -> currentTable = timeTable
+            }
+
+            if(choice == 2){
+                outputString = temperatureFormulas(currentTop *  3 + currentBottom, value)
+            }
+            else
+            {
+                if (divMul){
+                    outputString = (value.toFloat() * currentTable[currentTop][currentBottom].toString().toFloat()).toString()
+                }
+                else {
+                    outputString = (value.toFloat() / currentTable[currentTop][currentBottom].toString().toFloat()).toString()
+                }
+            }
+
+            if (outputString.toFloat() % 1.0 == 0.0) {
+                index = outputString.indexOf('.')
+                if(index >= 0){outputString = outputString.substring(0, index)}
+            }
+
+            outputString = outputString.trimEnd('0')
+            return outputString
+        }
+        else{ return "" }
     }
 }
 

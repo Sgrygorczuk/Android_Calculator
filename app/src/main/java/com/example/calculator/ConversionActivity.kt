@@ -8,41 +8,64 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_conversion.*
 import android.text.InputType
+import android.view.Gravity
 import android.view.View
 import android.view.View.*
 import android.widget.AdapterView
+import android.widget.Toast
 
 
 class ConversionActivity: AppCompatActivity() {
 
-    val areaTypes = arrayOf("Acre (ac)","Are (a)","Hectare (h)","Square Centimeter (cm2)", "Square Foot (ft2)", "Square Inch (in2)", "Square Meter (m2)")
-    val areaUnits = arrayOf("ac","a","h","cm2","ft2","in2","m2")
-    val lengthTypes = arrayOf("Millimeter (mm)", "Centimeter (cm)", "Meter (m)", "Kilometer (km)", "Inch (in)", "Foot (ft)", "Yard (yard)", "Mile (mi)", "Nautical Mile (NM)", "Mil (mil)")
-    val lengthUnits = arrayOf("mm", "cm", "m", "km", "in", "ft", "yard", "mi", "NM", "mil")
-    val temperatureTypes = arrayOf("Celsius (°C)", "Fahrenheit (°F)", "Kelvin (K)")
-    val temperatureUnits = arrayOf("°C","°F","K")
-    val volumeTypes = arrayOf("UK Gallon (gal)", "US Gallon (gal)", "Liter (L)", "Milliliter (mL)", "Cubic Centimeter (cm3)", "Cubic Meter (m3)", "Cubic Inch (in3)", "Cubic Foot (ft3)")
-    val volumeUnits = arrayOf("gal", "gal", "L", "mL", "cm3", "m3", "in3", "ft3")
-    val massTypes = arrayOf("Ton (t)", "UK Ton (t)", "US Ton (t)", "Pound (lb)", "Ounce (oz)", "Kilogram (kg)", "Gram (g)")
-    val massUnits = arrayOf("t","t","t","lb","oz","kg","g")
-    val dataTypes = arrayOf("Bit (bit)", "Byte (B)", "Kilobyte (KB)", "Megabyte (MB)", "Gigabyte (GM)", "Terabyte (TB)")
-    val dataUnits = arrayOf("bit", "B", "KB", "MB", "GB", "TB")
-    val speedTypes = arrayOf("Meters per Second (m/s)", "Meters per Hour (m/h)", "Kilometers per Second (km/s)", "Kilometers per Hour (km/h)",
+    /*
+    Tables used to fill out the Spinners and the Textboxes
+        Type Tables are for spinners
+        Unit tables are for the textboxes
+    */
+    private val areaTypes = arrayOf("Acre (ac)","Are (a)","Hectare (ha)","Square Centimeter (cm2)", "Square Foot (ft2)", "Square Inch (in2)", "Square Meter (m2)")
+    private val areaUnits = arrayOf("ac","a","ha","cm2","ft2","in2","m2")
+    private val lengthTypes = arrayOf("Millimeter (mm)", "Centimeter (cm)", "Meter (m)", "Kilometer (km)", "Inch (in)", "Foot (ft)", "Yard (yard)", "Mile (mi)", "Nautical Mile (NM)", "Mil (mil)")
+    private val lengthUnits = arrayOf("mm", "cm", "m", "km", "in", "ft", "yard", "mi", "NM", "mil")
+    private val temperatureTypes = arrayOf("Celsius (°C)", "Fahrenheit (°F)", "Kelvin (K)")
+    private val temperatureUnits = arrayOf("°C","°F","K")
+    private val volumeTypes = arrayOf("UK Gallon (gal)", "US Gallon (gal)", "Liter (L)", "Milliliter (mL)", "Cubic Centimeter (cm3)", "Cubic Meter (m3)", "Cubic Inch (in3)", "Cubic Foot (ft3)")
+    private val volumeUnits = arrayOf("gal", "gal", "L", "mL", "cm3", "m3", "in3", "ft3")
+    private val massTypes = arrayOf("Ton (t)", "UK Ton (t)", "US Ton (t)", "Pound (lb)", "Ounce (oz)", "Kilogram (kg)", "Gram (g)")
+    private val massUnits = arrayOf("t","t","t","lb","oz","kg","g")
+    private val dataTypes = arrayOf("Bit (bit)", "Byte (B)", "Kilobyte (KB)", "Megabyte (MB)", "Gigabyte (GM)", "Terabyte (TB)")
+    private val dataUnits = arrayOf("bit", "B", "KB", "MB", "GB", "TB")
+    private val speedTypes = arrayOf("Meters per Second (m/s)", "Meters per Hour (m/h)", "Kilometers per Second (km/s)", "Kilometers per Hour (km/h)",
         "Inches per Second (in/s)", "Inches per Hour (in/h)", "Feet per Second (ft/s)", "Feet per Hour (ft/h)", "Miles per Second (mi/s)", "Miles per Hour (mi/h)",
         "Knots (k)")
-    val speedUnits = arrayOf("m/s", "m/h", "km/s", "km/h", "in/s", "in/h", "ft/s", "ft/h", "mi/s", "mi/h", "kn")
-    val timeTypes = arrayOf("Milliseconds (ms)", "Seconds (s)", "Minutes (m)", "Hours (h)", "Days (d)", "Weeks (wk)")
-    val timeUnits = arrayOf("ms", "s", "min", "h", "d", "wk")
+    private val speedUnits = arrayOf("m/s", "m/h", "km/s", "km/h", "in/s", "in/h", "ft/s", "ft/h", "mi/s", "mi/h", "kn")
+    private val timeTypes = arrayOf("Milliseconds (ms)", "Seconds (s)", "Minutes (m)", "Hours (h)", "Days (d)", "Weeks (wk)")
+    private val timeUnits = arrayOf("ms", "s", "min", "h", "d", "wk")
 
+    /*
+    Initlization of all the of variables update the UI
+    */
+    private var conversionLogicUnit = ConversionLogic() //Initlizes the Logic Class
+    private var isTop: Boolean = true                   //Keeps track of if we are focused on the top or bottom editTextBox
+    private var currentValueTop : String = "1"          //Keeps track of the value of the top editTextBox
+    private var currentValueBottom : String = "1"       //Keeps track of the value of the bottom editTextBox
+    private var currentButton : String = "areaButton"   //Keeps track of what is the string of current button (Same as currentLayoutPosition?)
+    private var currentLayoutPosition : Int = 0         //Keeps track of which layout we are looking at
+    private var currentPositionTop : Int = 0            //Keeps track of which top spinner is setlecte on current layout
+    private var currentPositionBottom : Int = 0         //Keeps track of which bottom spinner is setlecte on current layout
+    private var currentPositionsSpinner = arrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) //Keeps track of each spinner selection for each layout
+    
+    /*
+    Input: Void
+    Output: Void
+    Purpose: Deselects all of the layout buttons and set all of the layouts to GONE
+             Highlights the clicked on layout button and brings up that layout
+    */
+    private fun updateLayout(){
+        Log.d("Admin", "ConversionActivity: $currentButton layout was chosen")
 
-    var conversionLogicUnit = ConversionLogic()
-    var isTop: Boolean = true
-    var currentTop : Int = 0
-    var currentBottom : Int = 0
-    var currentButton : String = "areaButton"
-    var currentPosition : Int = 0
+        var animateView :  View = conversionLayoutArea
+        var position : Int = 0
 
-    fun buttonHighlight(type : String) : Unit {
         areaButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
         lengthButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
         temperatureButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
@@ -52,20 +75,6 @@ class ConversionActivity: AppCompatActivity() {
         speedButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
         timeButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
 
-        Log.d("Admin", "$type")
-        when (type) {
-            "areaButton" -> areaButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-            "lengthButton" -> lengthButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-            "temperatureButton" -> temperatureButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-            "volumeButton" -> volumeButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-            "massButton" -> massButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-            "dataButton" -> dataButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-            "speedButton" -> speedButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-            "timeButton" -> timeButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-        }
-    }
-
-    fun showLayout(type : String) : Unit {
         conversionLayoutArea.visibility = GONE
         conversionLayoutLength.visibility = GONE
         conversionLayoutTemperature.visibility = GONE
@@ -75,22 +84,85 @@ class ConversionActivity: AppCompatActivity() {
         conversionLayoutSpeed.visibility = GONE
         conversionLayoutTime.visibility = GONE
 
-        when (type) {
-            "areaButton" -> conversionLayoutArea.visibility = VISIBLE
-            "lengthButton" -> conversionLayoutLength.visibility = VISIBLE
-            "temperatureButton" -> conversionLayoutTemperature.visibility = VISIBLE
-            "volumeButton" -> conversionVolume.visibility = VISIBLE
-            "massButton" -> conversionLayoutMass.visibility = VISIBLE
-            "dataButton" -> conversionLayoutData.visibility = VISIBLE
-            "speedButton" -> conversionLayoutSpeed.visibility = VISIBLE
-            "timeButton" -> conversionLayoutTime.visibility = VISIBLE
+        when (currentButton) {
+            "areaButton" -> {
+                areaButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
+                conversionLayoutArea.visibility = VISIBLE
+                animateView = conversionLayoutArea
+                position = 0
+            }
+            "lengthButton" -> {
+                lengthButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
+                conversionLayoutLength.visibility = VISIBLE
+                animateView = conversionLayoutLength
+                position = 1
+            }
+            "temperatureButton" -> {
+                temperatureButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
+                conversionLayoutTemperature.visibility = VISIBLE
+                animateView = conversionLayoutTemperature
+                position = 2
+            }
+            "volumeButton" -> {
+                volumeButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
+                conversionVolume.visibility = VISIBLE
+                animateView = conversionVolume
+                position = 3
+            }
+            "massButton" -> {
+                massButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
+                conversionLayoutMass.visibility = VISIBLE
+                animateView = conversionLayoutMass
+                position = 4
+            }
+            "dataButton" -> {
+                dataButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
+                conversionLayoutData.visibility = VISIBLE
+                animateView = conversionLayoutData
+                position = 5
+            }
+            "speedButton" -> {
+                speedButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
+                conversionLayoutSpeed.visibility = VISIBLE
+                animateView = conversionLayoutSpeed
+                position = 6
+            }
+            "timeButton" -> {
+                timeButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
+                conversionLayoutTime.visibility = VISIBLE
+                animateView = conversionLayoutTime
+                position = 7
+            }
         }
+        animateLayoutTransition(animateView, position)
     }
 
-    fun inputFocus(type : String) : Unit{
+    fun animateLayoutTransition(animateView : View, position : Int){
+        var distance : Float = 0f //If position == currentLayoutPosition stays as 0f
+        if(position < currentLayoutPosition){
+            distance = -1000f
+        }
+        else if (position > currentLayoutPosition){
+            distance = 1000f
+        }
+        animateView.translationX = distance
+        animateView.animate()
+            .translationX(0f)
+            .duration = 150
+        currentLayoutPosition = position
+        unitScroll.smoothScrollTo(currentLayoutPosition*150,0)
+    }
+
+    /*
+    Input: Void
+    Output: Void
+    Purpose: When switching between layouts moves focus to editTextBox to current layout
+    */
+    private fun inputFocus(){
+        Log.d("Admin", "ConversionActivity: editTextBox focus updated")
         if(isTop)
         {
-            when (type) {
+            when (currentButton) {
                 "areaButton" -> topTextEditorArea.requestFocus()
                 "lengthButton" -> topTextEditorLength.requestFocus()
                 "temperatureButton" -> topTextEditorTemperature.requestFocus()
@@ -103,7 +175,7 @@ class ConversionActivity: AppCompatActivity() {
         }
         else
         {
-            when (type) {
+            when (currentButton) {
                 "areaButton" -> bottomTextEditorArea.requestFocus()
                 "lengthButton" -> bottomTextEditorLength.requestFocus()
                 "temperatureButton" -> bottomTextEditorTemperature.requestFocus()
@@ -116,8 +188,14 @@ class ConversionActivity: AppCompatActivity() {
         }
     }
 
-    fun plusMinusAble(){
-        if(currentPosition == 2){
+    /*
+    Input: Void
+    Output: Void
+    Purpose: Turns on and off the +/- button based on which layout we are looking at
+    */
+    private fun plusMinusAble(){
+        Log.d("Admin", "ConversionActivity: +/- button updated")
+        if(currentLayoutPosition == 2){
             plusMinusButton.setBackgroundDrawable(resources.getDrawable(R.drawable.gray_selector))
             plusMinusButton.setTextColor(Color.parseColor("#FFFFFF"))
             plusMinusButton.isEnabled = true
@@ -129,7 +207,13 @@ class ConversionActivity: AppCompatActivity() {
         }
     }
 
-    fun upDownArrows(){
+    /*
+    Input: Void
+    Output: Void
+    Purpose: Turns on and off the the Up and Down buttons based on which editTextBox we are focused on
+    */
+    private fun upDownArrows(){
+        Log.d("Admin", "ConversionActivity: editTextBox buttons updated")
         if(isTop){
             bottomButton.setBackgroundDrawable(resources.getDrawable(R.drawable.gray_selector))
             bottomButton.setTextColor(Color.parseColor("#00C604"))
@@ -150,35 +234,198 @@ class ConversionActivity: AppCompatActivity() {
         }
     }
 
-    fun loadUnitTable(buttonName : String, newPosition : Int) : Unit {
+    /*
+    Input: Takes in buttonName which is the name of button that was pressed
+           we also take the position to tell which layout we are on.
+    Output: Void
+    Purpose: This is the function that resets the info and moves to the new layout
+    */
+    private fun loadUnitTable(buttonName : String){
         Log.d("Admin", "ConversionActivity: $buttonName was clicked")
-        buttonHighlight(buttonName)
-        showLayout(buttonName)
-        inputFocus(buttonName)
         currentButton = buttonName
-        currentPosition = newPosition
+        updateLayout()
+        inputFocus()
         plusMinusAble()
         upDownArrows()
+        currentValueTop = "1"
+        passToLogic()
     }
 
-    fun updateLocationTop(view : View) : Unit{
-        Log.d("Admin", "Top text box was clicked")
+    /*
+    Input: The current View (?)
+    Output: Void
+    Purpose: Updates which editTextBox we are looking at using the Button and updates the UI
+    */
+    fun updateLocationTop(view : View){
+        Log.d("Admin", "ConversionActivity: Top text box was clicked")
         isTop = true
-        loadUnitTable(currentButton ,currentPosition)
-
+        upDownArrows()
+        inputFocus()
     }
 
-    fun updateLocationBottom(view : View) : Unit {
-        Log.d("Admin", "Bottom text box was clicked")
+    /*
+    Input: The current View (?)
+    Output: Void
+    Purpose: Updates which editTextBox we are looking at using the Button and updates the UI
+    */
+    fun updateLocationBottom(view : View){
+        Log.d("Admin", "ConversionActivity: Bottom text box was clicked")
         isTop = false
-        loadUnitTable(currentButton ,currentPosition)
+        upDownArrows()
+        inputFocus()
+    }
+
+    /*
+    Input: Void
+    Output: Void
+    Purpose: Tell the user that they reach max length input using Toast
+    */
+    private fun showToast(){
+        if (conversionLogicUnit.isMaxLength(currentValueTop) && isTop || conversionLogicUnit.isMaxLength(currentValueBottom) && !isTop) {
+            val toast = Toast.makeText(this@ConversionActivity, "You reached the max input of 9", Toast.LENGTH_SHORT)
+            toast.setGravity(Gravity.CENTER, 0, 0)
+            toast.show()
+        }
+    }
+
+    /*
+    Input: errorMsg for the debugger to see which button was clicked
+       choice is passed into the logicUnit to perform addChar() function
+    Output: Void
+    Purpose: Input any new numbers or decimals to the input
+    */
+    private fun clickedNumberButton(errorMsg : String, choice : String){
+        Log.d("Admin", "ConversionActivity: $errorMsg was clicked, choice : $choice")
+        showToast()
+        updateChar(choice)
+        passToLogic()
+    }
+
+    /*
+    Input: Choice is passed into the conversionLogicUnit to perform addChar() function
+    Output: Void
+    Purpose: Update the current string to add or subtract chars
+    */
+    private fun updateChar(choice : String){
+        if(isTop){
+            currentValueTop = conversionLogicUnit.addChar(currentValueTop, choice)
+            when (currentButton) {
+                "areaButton" -> topTextEditorArea.setText(currentValueTop)
+                "lengthButton" -> topTextEditorLength.setText(currentValueTop)
+                "temperatureButton" -> topTextEditorTemperature.setText(currentValueTop)
+                "volumeButton" -> topTextEditorVolume.setText(currentValueTop)
+                "massButton" -> topTextEditorMass.setText(currentValueTop)
+                "dataButton" -> topTextEditorData.setText(currentValueTop)
+                "speedButton" -> topTextEditorSpeed.setText(currentValueTop)
+                "timeButton" -> topTextEditorTime.setText(currentValueTop)
+            }
+        }
+        else {
+            currentValueBottom = conversionLogicUnit.addChar(currentValueBottom, choice)
+            when (currentButton) {
+                "areaButton" -> bottomTextEditorArea.setText(currentValueBottom)
+                "lengthButton" -> bottomTextEditorLength.setText(currentValueBottom)
+                "temperatureButton" -> bottomTextEditorTemperature.setText(currentValueBottom)
+                "volumeButton" -> bottomTextEditorVolume.setText(currentValueBottom)
+                "massButton" -> bottomTextEditorMass.setText(currentValueBottom)
+                "dataButton" -> bottomTextEditorData.setText(currentValueBottom)
+                "speedButton" -> bottomTextEditorSpeed.setText(currentValueBottom)
+                "timeButton" -> bottomTextEditorTime.setText(currentValueBottom)
+            }
+        }
+    }
+
+    /*
+    Input: Void
+    Output: Void
+    Purpose: Grabs the current top and bottom values from the editTextBoxes
+             Passes them to the conversionLogicUnit to perform the conversion
+             Then updates the editTextBoxes
+    */
+    private fun passToLogic(){
+        when (currentButton) {
+            "areaButton" -> {
+                currentPositionTop = currentPositionsSpinner[0]
+                currentPositionBottom = currentPositionsSpinner[1]
+                currentValueTop = topTextEditorArea.text.toString()
+                currentValueBottom = bottomTextEditorArea.text.toString()
+            }
+            "lengthButton" -> {
+                currentPositionTop = currentPositionsSpinner[2]
+                currentPositionBottom = currentPositionsSpinner[3]
+                currentValueTop = topTextEditorLength.text.toString()
+                currentValueBottom = bottomTextEditorLength.text.toString()
+            }
+            "temperatureButton" -> {
+                currentPositionTop = currentPositionsSpinner[4]
+                currentPositionBottom = currentPositionsSpinner[5]
+                currentValueTop = topTextEditorTemperature.text.toString()
+                currentValueBottom = bottomTextEditorTemperature.text.toString()
+            }
+            "volumeButton" -> {
+                currentPositionTop = currentPositionsSpinner[6]
+                currentPositionBottom = currentPositionsSpinner[7]
+                currentValueTop = topTextEditorVolume.text.toString()
+                currentValueBottom = bottomTextEditorVolume.text.toString()
+            }
+            "massButton" -> {
+                currentPositionTop = currentPositionsSpinner[8]
+                currentPositionBottom = currentPositionsSpinner[9]
+                currentValueTop = topTextEditorMass.text.toString()
+                currentValueBottom = bottomTextEditorMass.text.toString()
+            }
+            "dataButton" ->{
+                currentPositionTop = currentPositionsSpinner[10]
+                currentPositionBottom = currentPositionsSpinner[11]
+                currentValueTop = topTextEditorData.text.toString()
+                currentValueBottom = bottomTextEditorData.text.toString()
+            }
+            "speedButton" ->{
+                currentPositionTop = currentPositionsSpinner[12]
+                currentPositionBottom = currentPositionsSpinner[13]
+                currentValueTop = topTextEditorSpeed.toString()
+                currentValueBottom = bottomTextEditorSpeed.text.toString()
+            }
+            "timeButton" -> {
+                currentPositionTop = currentPositionsSpinner[14]
+                currentPositionBottom = currentPositionsSpinner[15]
+                currentValueTop = topTextEditorTime.text.toString()
+                currentValueBottom = bottomTextEditorTime.text.toString()
+            }
+        }
+        if(isTop){
+            currentValueBottom = conversionLogicUnit.conversion(currentLayoutPosition, currentPositionTop, currentPositionBottom, currentValueTop, isTop)
+            when (currentButton) {
+                "areaButton" -> bottomTextEditorArea.setText(currentValueBottom)
+                "lengthButton" -> bottomTextEditorLength.setText(currentValueBottom)
+                "temperatureButton" -> bottomTextEditorTemperature.setText(currentValueBottom)
+                "volumeButton" -> bottomTextEditorVolume.setText(currentValueBottom)
+                "massButton" -> bottomTextEditorMass.setText(currentValueBottom)
+                "dataButton" -> bottomTextEditorData.setText(currentValueBottom)
+                "speedButton" -> bottomTextEditorSpeed.setText(currentValueBottom)
+                "timeButton" -> bottomTextEditorTime.setText(currentValueBottom)
+            }
+        }
+        else{
+            currentValueTop = conversionLogicUnit.conversion(currentLayoutPosition, currentPositionTop, currentPositionBottom, currentValueBottom, isTop)
+            when (currentButton) {
+                "areaButton" -> topTextEditorArea.setText(currentValueTop)
+                "lengthButton" -> topTextEditorLength.setText(currentValueTop)
+                "temperatureButton" -> topTextEditorTemperature.setText(currentValueTop)
+                "volumeButton" -> topTextEditorVolume.setText(currentValueTop)
+                "massButton" -> topTextEditorMass.setText(currentValueTop)
+                "dataButton" -> topTextEditorData.setText(currentValueTop)
+                "speedButton" -> topTextEditorSpeed.setText(currentValueTop)
+                "timeButton" -> topTextEditorTime.setText(currentValueTop)
+            }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_conversion)
         //Sets the Area button to be selected as that's the screen we start from
-        loadUnitTable("areaButton", 0)
+        loadUnitTable("areaButton")
 
         /*
         Set up and Functionality of the Spinners
@@ -197,7 +444,8 @@ class ConversionActivity: AppCompatActivity() {
         topSpinnerArea.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 topTextViewArea.text = areaUnits[position]
-                currentTop = position
+                currentPositionsSpinner[0] = position
+                passToLogic()
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -212,7 +460,8 @@ class ConversionActivity: AppCompatActivity() {
         bottomSpinnerArea.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 bottomTextViewArea.text = areaUnits[position]
-                currentBottom = position
+                currentPositionsSpinner[1] = position
+                passToLogic()
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -227,7 +476,8 @@ class ConversionActivity: AppCompatActivity() {
         topSpinnerLength.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 topTextViewLength.text = lengthUnits[position]
-                currentTop = position
+                currentPositionsSpinner[2] = position
+                passToLogic()
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -242,7 +492,8 @@ class ConversionActivity: AppCompatActivity() {
         bottomSpinnerLength.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 bottomTextViewLength.text = lengthUnits[position]
-                currentBottom = position
+                currentPositionsSpinner[3] = position
+                passToLogic()
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -257,7 +508,8 @@ class ConversionActivity: AppCompatActivity() {
         topSpinnerTemperature.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 topTextViewTemperature.text = temperatureUnits[position]
-                currentTop = position
+                currentPositionsSpinner[4] = position
+                passToLogic()
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -272,7 +524,8 @@ class ConversionActivity: AppCompatActivity() {
         bottomSpinnerTemperature.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 bottomTextViewTemperature.text = temperatureUnits[position]
-                currentBottom = position
+                currentPositionsSpinner[5] = position
+                passToLogic()
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -287,7 +540,8 @@ class ConversionActivity: AppCompatActivity() {
         topSpinnerVolume.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 topTextViewVolume.text = volumeUnits[position]
-                currentTop = position
+                currentPositionsSpinner[6] = position
+                passToLogic()
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -302,7 +556,8 @@ class ConversionActivity: AppCompatActivity() {
         bottomSpinnerVolume.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 bottomTextViewVolume.text = volumeUnits[position]
-                currentBottom = position
+                currentPositionsSpinner[7] = position
+                passToLogic()
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -317,7 +572,8 @@ class ConversionActivity: AppCompatActivity() {
         topSpinnerMass.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 topTextViewMass.text = massUnits[position]
-                currentTop = position
+                currentPositionsSpinner[8] = position
+                passToLogic()
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -332,7 +588,8 @@ class ConversionActivity: AppCompatActivity() {
         bottomSpinnerMass.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 bottomTextViewMass.text = massUnits[position]
-                currentBottom = position
+                currentPositionsSpinner[9] = position
+                passToLogic()
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -347,7 +604,8 @@ class ConversionActivity: AppCompatActivity() {
         topSpinnerData.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 topTextViewData.text = dataUnits[position]
-                currentTop = position
+                currentPositionsSpinner[10] = position
+                passToLogic()
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -362,7 +620,8 @@ class ConversionActivity: AppCompatActivity() {
         bottomSpinnerData.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 bottomTextViewData.text = dataUnits[position]
-                currentBottom = position
+                currentPositionsSpinner[11] = position
+                passToLogic()
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -377,7 +636,8 @@ class ConversionActivity: AppCompatActivity() {
         topSpinnerSpeed.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 topTextViewSpeed.text = speedUnits[position]
-                currentTop = position
+                currentPositionsSpinner[12] = position
+                passToLogic()
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -392,7 +652,8 @@ class ConversionActivity: AppCompatActivity() {
         bottomSpinnerSpeed.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 bottomTextViewSpeed.text = speedUnits[position]
-                currentBottom = position
+                currentPositionsSpinner[13] = position
+                passToLogic()
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -407,7 +668,8 @@ class ConversionActivity: AppCompatActivity() {
         topSpinnerTime.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 topTextViewTime.text = timeUnits[position]
-                currentTop = position
+                currentPositionsSpinner[14] = position
+                passToLogic()
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -422,7 +684,8 @@ class ConversionActivity: AppCompatActivity() {
         bottomSpinnerTime.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 bottomTextViewTime.text = timeUnits[position]
-                currentBottom = position
+                currentPositionsSpinner[15] = position
+                passToLogic()
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -508,39 +771,104 @@ class ConversionActivity: AppCompatActivity() {
         }
 
         areaButton.setOnClickListener {
-            loadUnitTable("areaButton",  0)
+            loadUnitTable("areaButton")
         }
 
         lengthButton.setOnClickListener {
-            loadUnitTable("lengthButton",  1)
+            loadUnitTable("lengthButton")
         }
 
         temperatureButton.setOnClickListener {
-            conversionLogicUnit.conversion(2, currentTop, currentBottom)
-            Log.d("Admin", "Array  ${conversionLogicUnit.conversionValue}")
-            loadUnitTable("temperatureButton",  2)
+            loadUnitTable("temperatureButton")
         }
 
         volumeButton.setOnClickListener {
-            loadUnitTable("volumeButton", 3)
+            loadUnitTable("volumeButton")
         }
 
         massButton.setOnClickListener {
-            loadUnitTable("massButton",4)
+            loadUnitTable("massButton")
         }
 
         dataButton.setOnClickListener {
-            loadUnitTable("dataButton", 5)
+            loadUnitTable("dataButton")
         }
 
         speedButton.setOnClickListener {
-            loadUnitTable("speedButton", 6)
+            loadUnitTable("speedButton")
         }
 
         timeButton.setOnClickListener {
-            conversionLogicUnit.conversion(7, currentTop, currentBottom)
-            Log.d("Admin", "Array  ${conversionLogicUnit.conversionValue}")
-            loadUnitTable("timeButton", 7)
+            loadUnitTable("timeButton")
+        }
+
+        /*
+        The string forming buttons all use the clickedNumberButton() function
+        */
+        nineButton.setOnClickListener {
+            clickedNumberButton("nineButton", "9")
+        }
+
+        eightButton.setOnClickListener {
+            clickedNumberButton("eightButton", "8")
+        }
+
+        sevenButton.setOnClickListener {
+            clickedNumberButton("sevenButton", "7")
+        }
+
+        sixButton.setOnClickListener {
+            clickedNumberButton("sixButton", "6")
+        }
+
+        fiveButton.setOnClickListener {
+            clickedNumberButton("fiveButton", "5")
+        }
+
+        fourButton.setOnClickListener {
+            clickedNumberButton("fourButton", "4")
+        }
+
+        threeButton.setOnClickListener {
+            clickedNumberButton("threeButton", "3")
+        }
+
+        twoButton.setOnClickListener {
+            clickedNumberButton("twoButton", "2")
+        }
+
+        oneButton.setOnClickListener {
+            clickedNumberButton("oneButton", "1")
+        }
+
+        zeroButton.setOnClickListener {
+            clickedNumberButton("zeroButton", "0")
+        }
+
+        decimalButton.setOnClickListener {
+            clickedNumberButton("decimalButton", ".")
+        }
+
+        deleteButton.setOnClickListener {
+            clickedNumberButton("deleteButton", "d")
+        }
+
+        clearButton.setOnClickListener {
+            clickedNumberButton("clearButton", "c")
+        }
+
+        /*
+        The negButton will place or remove '-' from the input
+        */
+        plusMinusButton.setOnClickListener {
+            Log.d("Admin", "ConversionActivity: plusMinusButton was clicked")
+            if(isTop){
+                currentValueTop = conversionLogicUnit.negation(currentValueTop)
+                topTextEditorTemperature.setText(currentValueTop)}
+            else{
+                currentValueBottom = conversionLogicUnit.negation(currentValueBottom)
+                bottomTextEditorTemperature.setText(currentValueBottom)}
+            passToLogic()
         }
     }
 }

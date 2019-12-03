@@ -220,5 +220,10 @@ class MainActivity : AppCompatActivity() {
             d("Admin", "MainActivity: conversionButton was clicked")
             startActivity(Intent(this, ConversionActivity::class.java))
         }
+
+        longButton.setOnClickListener {
+            d("Admin", "MainActivity: conversionButton was clicked")
+            startActivity(Intent(this, LongActivity::class.java))
+        }
     }
 }

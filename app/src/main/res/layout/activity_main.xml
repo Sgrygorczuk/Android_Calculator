@@ -375,6 +375,7 @@
         android:id="@+id/divider"
         android:layout_width="409dp"
         android:layout_height="1dp"
+        android:scaleY="0.5"
         android:background="@color/cardview_light_background"
         app:layout_constraintBottom_toTopOf="@+id/buttonLayout"
         app:layout_constraintEnd_toEndOf="parent"
