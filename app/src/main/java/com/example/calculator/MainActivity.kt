@@ -18,6 +18,7 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log.d
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -88,19 +89,19 @@ class MainActivity : AppCompatActivity() {
         }
 
         fun equalAnimation() {
-            resultsView.animate()
-                .translationY(-200F)
-                .scaleY(2F)
-                .scaleX(2F)
-                .duration = 200
-        }
+            calculatorView.setTextColor(Color.parseColor("#6C6C6C"))
+            calculatorView.bringToFront()
+            calculatorView.translationY = 200f
+            calculatorView.translationX = 270f
+            calculatorView.scaleY = 0.5f
+            calculatorView.scaleX = 0.5f
 
-        fun equalBackAnimation(){
-            resultsView.animate()
-                .translationY(0F)
-                .scaleY(1F)
-                .scaleX(1F)
-                .duration = 0
+            calculatorView.animate()
+                .translationY(0f)
+                .translationX(0f)
+                .scaleY(1f)
+                .scaleX(1f)
+                .duration = 300
         }
 
         /*
@@ -193,7 +194,10 @@ class MainActivity : AppCompatActivity() {
             if (logicUnit.operationReady() || logicUnit.modReady()){
                 calculatorView.text =  logicUnit.performEqual()
                 resultsView.text = ""
-                calculatorView.setTextColor(Color.parseColor("#36C23B"))
+                equalAnimation()
+                Handler().postDelayed({
+                    calculatorView.setTextColor(Color.parseColor("#36C23B"))
+                }, 310)
             }
         }
 
@@ -222,7 +226,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         longButton.setOnClickListener {
-            d("Admin", "MainActivity: conversionButton was clicked")
+            d("Admin", "MainActivity: longButton was clicked")
             startActivity(Intent(this, LongActivity::class.java))
         }
     }

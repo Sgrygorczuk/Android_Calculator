@@ -307,7 +307,8 @@
                         android:textColor="#FFFFFF"  />
                 </LinearLayout>
             </LinearLayout>
-                <LinearLayout
+
+            <LinearLayout
                     android:id="@+id/conversionLayoutLength"
                     android:layout_width="410dp"
                     android:layout_height="wrap_content"
@@ -540,8 +541,9 @@
                             android:textColor="#FFFFFF"  />
                         </LinearLayout>
                 </LinearLayout>
+
             <LinearLayout
-                android:id="@+id/conversionVolume"
+                android:id="@+id/conversionLayoutVolume"
                 android:layout_width="410dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">

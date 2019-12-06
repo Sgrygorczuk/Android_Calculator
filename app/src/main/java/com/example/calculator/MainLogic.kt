@@ -120,7 +120,7 @@ class MainLogic {
                 "7" -> inputOne += "7"
                 "8" -> inputOne += "8"
                 "9" -> inputOne += "9"
-                "." -> if (inputOne == "") inputOne += "0." else inputOne += "."
+                "." -> if(!inputOne.contains('.')){if(inputOne == ""){ inputOne += "0."} else {inputOne += "."}}
             }
             //If the user input 0 followed by any number other than '.' it deletes the 0
             if(inputOne.length >= 2 && inputOne[0] == '0'  && inputOne[1] != '.') { inputOne = inputOne.replaceFirst("0", "")}

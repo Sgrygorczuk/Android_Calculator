@@ -3,6 +3,7 @@ package com.example.calculator
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +14,7 @@ import android.view.View
 import android.view.View.*
 import android.widget.AdapterView
 import android.widget.Toast
+import androidx.core.view.isVisible
 
 
 class ConversionActivity: AppCompatActivity() {
@@ -63,8 +65,9 @@ class ConversionActivity: AppCompatActivity() {
     private fun updateLayout(){
         Log.d("Admin", "ConversionActivity: $currentButton layout was chosen")
 
-        var animateView :  View = conversionLayoutArea
-        var position : Int = 0
+        var newButton : View = areaButton
+        var newPosition : Int = 0
+        var distance : Int = 0
 
         areaButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
         lengthButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
@@ -75,82 +78,93 @@ class ConversionActivity: AppCompatActivity() {
         speedButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
         timeButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
 
-        conversionLayoutArea.visibility = GONE
-        conversionLayoutLength.visibility = GONE
-        conversionLayoutTemperature.visibility = GONE
-        conversionVolume.visibility = GONE
-        conversionLayoutMass.visibility = GONE
-        conversionLayoutData.visibility = GONE
-        conversionLayoutSpeed.visibility = GONE
-        conversionLayoutTime.visibility = GONE
-
         when (currentButton) {
             "areaButton" -> {
-                areaButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-                conversionLayoutArea.visibility = VISIBLE
-                animateView = conversionLayoutArea
-                position = 0
+                newButton = areaButton
+                newPosition = 0
+                distance = 0
             }
             "lengthButton" -> {
-                lengthButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-                conversionLayoutLength.visibility = VISIBLE
-                animateView = conversionLayoutLength
-                position = 1
+                newButton = lengthButton
+                newPosition = 1
+                distance = 0
             }
             "temperatureButton" -> {
-                temperatureButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-                conversionLayoutTemperature.visibility = VISIBLE
-                animateView = conversionLayoutTemperature
-                position = 2
+                newButton = temperatureButton
+                newPosition = 2
+                distance = 30
             }
             "volumeButton" -> {
-                volumeButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-                conversionVolume.visibility = VISIBLE
-                animateView = conversionVolume
-                position = 3
+                newButton = volumeButton
+                newPosition = 3
+                distance = 350
             }
             "massButton" -> {
-                massButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-                conversionLayoutMass.visibility = VISIBLE
-                animateView = conversionLayoutMass
-                position = 4
+                newButton = massButton
+                newPosition = 4
+                distance = 600
             }
             "dataButton" -> {
-                dataButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-                conversionLayoutData.visibility = VISIBLE
-                animateView = conversionLayoutData
-                position = 5
+                newButton = dataButton
+                newPosition = 5
+                distance = 750
             }
             "speedButton" -> {
-                speedButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-                conversionLayoutSpeed.visibility = VISIBLE
-                animateView = conversionLayoutSpeed
-                position = 6
+                newButton = speedButton
+                newPosition = 6
+                distance = 850
             }
             "timeButton" -> {
-                timeButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-                conversionLayoutTime.visibility = VISIBLE
-                animateView = conversionLayoutTime
-                position = 7
+                newButton = timeButton
+                newPosition = 7
+                distance = 850
             }
         }
-        animateLayoutTransition(animateView, position)
+
+        newButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
+        animateLayoutTransition(newPosition, distance)
     }
 
-    fun animateLayoutTransition(animateView : View, position : Int){
-        var distance : Float = 0f //If position == currentLayoutPosition stays as 0f
-        if(position < currentLayoutPosition){
-            distance = -1000f
-        }
-        else if (position > currentLayoutPosition){
-            distance = 1000f
-        }
-        animateView.translationX = distance
-        animateView.animate()
-            .translationX(0f)
-            .duration = 150
+    fun animateLayoutTransition(position : Int, scrollDistance : Int){
+        val distance : Float = conversionLayoutArea.width.toFloat()*(currentLayoutPosition-position)
+        val time : Long = 200
+
+        conversionLayoutArea.animate()
+            .translationXBy(distance)
+            .duration = time
+
+        conversionLayoutLength.animate()
+            .translationXBy(distance)
+            .duration = time
+
+        conversionLayoutTemperature.animate()
+            .translationXBy(distance)
+            .duration = time
+
+        conversionLayoutVolume.animate()
+            .translationXBy(distance)
+            .duration = time
+
+        conversionLayoutMass.animate()
+            .translationXBy(distance)
+            .duration = time
+
+        conversionLayoutData.animate()
+            .translationXBy(distance)
+            .duration = time
+
+        conversionLayoutSpeed.animate()
+            .translationXBy(distance)
+            .duration = time
+
+        conversionLayoutTime.animate()
+            .translationXBy(distance)
+            .duration = time
+
+        Log.d("Admin", "Area: ${conversionLayoutArea.isVisible} Length: ${conversionLayoutLength.isVisible}")
+        unitScroll.smoothScrollTo(scrollDistance,0)
+
         currentLayoutPosition = position
-        unitScroll.smoothScrollTo(currentLayoutPosition*150,0)
     }
 
     /*

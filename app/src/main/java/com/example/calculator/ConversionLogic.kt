@@ -164,7 +164,7 @@ class ConversionLogic {
                 "7" -> input += "7"
                 "8" -> input += "8"
                 "9" -> input += "9"
-                "." -> if (input == "") input += "0." else input += "."
+                "." -> if(!input.contains('.')){if(input == ""){ input += "0."} else {input += "."}}
                 "c" -> input = ""
             }
             //If the user input 0 followed by any number other than '.' it deletes the 0
