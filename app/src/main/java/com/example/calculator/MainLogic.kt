@@ -21,6 +21,8 @@ calcualtorView and resultsView
 
 package com.example.calculator
 
+import java.math.BigDecimal
+import java.math.RoundingMode
 import kotlin.math.sqrt
 
 class MainLogic {
@@ -109,6 +111,7 @@ class MainLogic {
     fun addChar(choice: String) : String {
         //Checks if we are not above max length before allowing user to input
         if(!isMaxLength()){
+            var index : Int = 0
             when (choice) {
                 "0" -> inputOne += "0"
                 "1" -> inputOne += "1"
@@ -122,8 +125,13 @@ class MainLogic {
                 "9" -> inputOne += "9"
                 "." -> if(!inputOne.contains('.')){if(inputOne == ""){ inputOne += "0."} else {inputOne += "."}}
             }
+
+            inputOne = BigDecimal(inputOne.toDouble()).setScale(6, RoundingMode.HALF_EVEN).toString()
+
             //If the user input 0 followed by any number other than '.' it deletes the 0
-            if(inputOne.length >= 2 && inputOne[0] == '0'  && inputOne[1] != '.') { inputOne = inputOne.replaceFirst("0", "")}
+            index = inputOne.indexOf('.')
+            if (inputOne.toFloat() % 1.0 == 0.0 && index >= 0){ inputOne = inputOne.substring(0, index)}
+            else if(index >= 0){inputOne = inputOne.trimEnd('0')}
             //Depending on if a mod or operation was input it will display different format
             if(mod.isNotEmpty()) {writeMod(mod)} else {inputString = inputTwo + operation + inputOne}
         }

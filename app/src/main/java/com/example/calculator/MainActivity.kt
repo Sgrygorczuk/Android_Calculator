@@ -14,7 +14,9 @@ They're broken down into 4 types
 
 package com.example.calculator
 
+import android.app.assist.AssistStructure
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -23,12 +25,39 @@ import android.util.Log.d
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import android.view.Gravity
+import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
+import android.view.Window
 
 class MainActivity : AppCompatActivity() {
+
+    fun longButton(view : View){
+        d("Admin", "MainActivity: longButton was clicked")
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+    }
+
+    fun shortButton(view : View){
+        d("Admin", "MainActivity: longButton was clicked")
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+    }
+
+    fun SwitchButtonOne(view : View) {
+        d("Admin", "MainActivity: longButton was clicked")
+        buttonLayoutExtraOne.visibility = GONE
+        buttonLayoutExtraTwo.visibility = VISIBLE
+    }
+
+    fun SwitchButtonTwo(view : View) {
+        d("Admin", "MainActivity: longButton was clicked")
+        buttonLayoutExtraOne.visibility = VISIBLE
+        buttonLayoutExtraTwo.visibility = GONE
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
         //The
         val logicUnit = MainLogic()
@@ -38,7 +67,7 @@ class MainActivity : AppCompatActivity() {
         Output: Void
         Purpose: Tell the user that they reach max length input using Toast
         */
-        fun showToast() : Unit {
+        fun showToast(){
             if (logicUnit.isMaxLength()) {
                 val toast = Toast.makeText(this@MainActivity, "You reached the max input of 9", Toast.LENGTH_SHORT)
                 toast.setGravity(Gravity.CENTER, 0, 0)
@@ -47,16 +76,29 @@ class MainActivity : AppCompatActivity() {
         }
 
         /*
+        Input: Void
+        Output: Void
+        Purpose: Tell the user that they reach max length input using Toast
+        */
+        fun errorToast(resultString : String){
+            var outputString : String = ""
+            if(resultString == "NaN") {outputString = "Can't show undefined result"}
+            else if(resultString == "Infinity") {outputString = "Can't divide by zero"}
+            val toast = Toast.makeText(this@MainActivity, "$outputString", Toast.LENGTH_SHORT)
+            toast.show()
+        }
+
+        /*
         Input: errorMsg for the debugger to see which button was clicked
                choice is passed into the logicUnit to perform addChar() function
         Output: Void
         Purpose: Input any new numbers or decimals to the input
         */
-        fun clickedNumberButton(errorMsg : String, choice : String) : Unit {
+        fun clickedNumberButton(errorMsg : String, choice : String){
             d("Admin", "MainActivity: $errorMsg was clicked")
             showToast()
             calculatorView.setTextColor(Color.parseColor(logicUnit.operationWasPerformed()))
-            calculatorView.text = logicUnit.addChar("$choice")
+            calculatorView.text = logicUnit.addChar(choice)
             resultsView.text = logicUnit.performOperation()
         }
 
@@ -66,11 +108,11 @@ class MainActivity : AppCompatActivity() {
         Output: Void
         Purpose: Input any new operations to the input
         */
-        fun clickedOperationButton(errorMsg : String, choice : String) : Unit{
+        fun clickedOperationButton(errorMsg : String, choice : String){
             d("Admin", "MainActivity: $errorMsg was clicked")
             showToast()
             calculatorView.setTextColor(Color.parseColor("#FFFFFF"))
-            calculatorView.text = logicUnit.operationSetUp("$choice")
+            calculatorView.text = logicUnit.operationSetUp(choice)
             resultsView.text = logicUnit.performOperation()
         }
 
@@ -80,11 +122,11 @@ class MainActivity : AppCompatActivity() {
         Output: Void
         Purpose: Input any new operations to the input
         */
-        fun clickedModButton(errorMsg : String, choice : String) : Unit{
+        fun clickedModButton(errorMsg : String, choice : String){
             d("Admin", "MainActivity: $errorMsg was clicked")
             showToast()
             calculatorView.setTextColor(Color.parseColor("#FFFFFF"))
-            calculatorView.text = logicUnit.modSetUp("$choice")
+            calculatorView.text = logicUnit.modSetUp(choice)
             resultsView.text = logicUnit.performOperation()
         }
 
@@ -191,13 +233,17 @@ class MainActivity : AppCompatActivity() {
         */
         equalButton.setOnClickListener {
             d("Admin", "MainActivity: equalButton was clicked")
+            var viewString : String = logicUnit.performOperation()
             if (logicUnit.operationReady() || logicUnit.modReady()){
-                calculatorView.text =  logicUnit.performEqual()
-                resultsView.text = ""
-                equalAnimation()
-                Handler().postDelayed({
-                    calculatorView.setTextColor(Color.parseColor("#36C23B"))
-                }, 310)
+                if(viewString == "NaN" || viewString == "Infinity"){errorToast(viewString)}
+                else{
+                    calculatorView.text = logicUnit.performEqual()
+                    resultsView.text = ""
+                    equalAnimation()
+                    Handler().postDelayed({
+                        calculatorView.setTextColor(Color.parseColor("#36C23B"))
+                    }, 310)
+                }
             }
         }
 
@@ -225,9 +271,5 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, ConversionActivity::class.java))
         }
 
-        longButton.setOnClickListener {
-            d("Admin", "MainActivity: longButton was clicked")
-            startActivity(Intent(this, LongActivity::class.java))
-        }
     }
 }

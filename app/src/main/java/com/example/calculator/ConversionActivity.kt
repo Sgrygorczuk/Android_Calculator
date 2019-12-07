@@ -3,15 +3,12 @@ package com.example.calculator
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_conversion.*
-import android.text.InputType
 import android.view.Gravity
 import android.view.View
-import android.view.View.*
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.core.view.isVisible
@@ -38,7 +35,7 @@ class ConversionActivity: AppCompatActivity() {
     private val dataUnits = arrayOf("bit", "B", "KB", "MB", "GB", "TB")
     private val speedTypes = arrayOf("Meters per Second (m/s)", "Meters per Hour (m/h)", "Kilometers per Second (km/s)", "Kilometers per Hour (km/h)",
         "Inches per Second (in/s)", "Inches per Hour (in/h)", "Feet per Second (ft/s)", "Feet per Hour (ft/h)", "Miles per Second (mi/s)", "Miles per Hour (mi/h)",
-        "Knots (k)")
+        "Knots (kn)")
     private val speedUnits = arrayOf("m/s", "m/h", "km/s", "km/h", "in/s", "in/h", "ft/s", "ft/h", "mi/s", "mi/h", "kn")
     private val timeTypes = arrayOf("Milliseconds (ms)", "Seconds (s)", "Minutes (m)", "Hours (h)", "Days (d)", "Weeks (wk)")
     private val timeUnits = arrayOf("ms", "s", "min", "h", "d", "wk")
@@ -55,7 +52,7 @@ class ConversionActivity: AppCompatActivity() {
     private var currentPositionTop : Int = 0            //Keeps track of which top spinner is setlecte on current layout
     private var currentPositionBottom : Int = 0         //Keeps track of which bottom spinner is setlecte on current layout
     private var currentPositionsSpinner = arrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) //Keeps track of each spinner selection for each layout
-    
+
     /*
     Input: Void
     Output: Void
@@ -125,7 +122,7 @@ class ConversionActivity: AppCompatActivity() {
         animateLayoutTransition(newPosition, distance)
     }
 
-    fun animateLayoutTransition(position : Int, scrollDistance : Int){
+    private fun animateLayoutTransition(position : Int, scrollDistance : Int){
         val distance : Float = conversionLayoutArea.width.toFloat()*(currentLayoutPosition-position)
         val time : Long = 200
 
@@ -310,8 +307,8 @@ class ConversionActivity: AppCompatActivity() {
     */
     private fun clickedNumberButton(errorMsg : String, choice : String){
         Log.d("Admin", "ConversionActivity: $errorMsg was clicked, choice : $choice")
-        showToast()
         updateChar(choice)
+        showToast()
         passToLogic()
     }
 
@@ -397,7 +394,7 @@ class ConversionActivity: AppCompatActivity() {
             "speedButton" ->{
                 currentPositionTop = currentPositionsSpinner[12]
                 currentPositionBottom = currentPositionsSpinner[13]
-                currentValueTop = topTextEditorSpeed.toString()
+                currentValueTop = topTextEditorSpeed.text.toString()
                 currentValueBottom = bottomTextEditorSpeed.text.toString()
             }
             "timeButton" -> {
@@ -410,7 +407,7 @@ class ConversionActivity: AppCompatActivity() {
         if(isTop){
             currentValueBottom = conversionLogicUnit.conversion(currentLayoutPosition, currentPositionTop, currentPositionBottom, currentValueTop, isTop)
             when (currentButton) {
-                "areaButton" -> bottomTextEditorArea.setText(currentValueBottom)
+                "areaButton" -> bottomTextEditorArea.text = currentValueBottom
                 "lengthButton" -> bottomTextEditorLength.setText(currentValueBottom)
                 "temperatureButton" -> bottomTextEditorTemperature.setText(currentValueBottom)
                 "volumeButton" -> bottomTextEditorVolume.setText(currentValueBottom)
@@ -705,79 +702,12 @@ class ConversionActivity: AppCompatActivity() {
         }
 
         /*
-        Disabling the keyboard when selecting the textEditors
-        */
+        Disabling the keyboard when selecting the textEditors - No Longer Used
         //Area
         topTextEditorArea!!.setRawInputType(InputType.TYPE_NULL)
         topTextEditorArea!!.isFocusable = true
         topTextEditorArea!!.setTextIsSelectable(true)
-
-        bottomTextEditorArea!!.setRawInputType(InputType.TYPE_NULL)
-        bottomTextEditorArea!!.isFocusable = true
-        bottomTextEditorArea!!.setTextIsSelectable(true)
-
-        //Length
-        topTextEditorLength!!.setRawInputType(InputType.TYPE_NULL)
-        topTextEditorLength!!.isFocusable = true
-        topTextEditorLength!!.setTextIsSelectable(true)
-
-        bottomTextEditorLength!!.setRawInputType(InputType.TYPE_NULL)
-        bottomTextEditorLength!!.isFocusable = true
-        bottomTextEditorLength!!.setTextIsSelectable(true)
-
-        //Temperature
-        topTextEditorTemperature!!.setRawInputType(InputType.TYPE_NULL)
-        topTextEditorTemperature!!.isFocusable = true
-        topTextEditorTemperature!!.setTextIsSelectable(true)
-
-        bottomTextEditorTemperature!!.setRawInputType(InputType.TYPE_NULL)
-        bottomTextEditorTemperature!!.isFocusable = true
-        bottomTextEditorTemperature!!.setTextIsSelectable(true)
-
-        //Volume
-        topTextEditorVolume!!.setRawInputType(InputType.TYPE_NULL)
-        topTextEditorVolume!!.isFocusable = true
-        topTextEditorVolume!!.setTextIsSelectable(true)
-
-        bottomTextEditorVolume!!.setRawInputType(InputType.TYPE_NULL)
-        bottomTextEditorVolume!!.isFocusable = true
-        bottomTextEditorVolume!!.setTextIsSelectable(true)
-
-        //Mass
-        topTextEditorMass!!.setRawInputType(InputType.TYPE_NULL)
-        topTextEditorMass!!.isFocusable = true
-        topTextEditorMass!!.setTextIsSelectable(true)
-
-        bottomTextEditorMass!!.setRawInputType(InputType.TYPE_NULL)
-        bottomTextEditorMass!!.isFocusable = true
-        bottomTextEditorMass!!.setTextIsSelectable(true)
-
-        //Data
-        topTextEditorData!!.setRawInputType(InputType.TYPE_NULL)
-        topTextEditorData!!.isFocusable = true
-        topTextEditorData!!.setTextIsSelectable(true)
-
-        bottomTextEditorData!!.setRawInputType(InputType.TYPE_NULL)
-        bottomTextEditorData!!.isFocusable = true
-        bottomTextEditorData!!.setTextIsSelectable(true)
-
-        //Speed
-        topTextEditorSpeed!!.setRawInputType(InputType.TYPE_NULL)
-        topTextEditorSpeed!!.isFocusable = true
-        topTextEditorSpeed!!.setTextIsSelectable(true)
-
-        bottomTextEditorSpeed!!.setRawInputType(InputType.TYPE_NULL)
-        bottomTextEditorSpeed!!.isFocusable = true
-        bottomTextEditorSpeed!!.setTextIsSelectable(true)
-
-        //Time
-        topTextEditorTime!!.setRawInputType(InputType.TYPE_NULL)
-        topTextEditorTime!!.isFocusable = true
-        topTextEditorTime!!.setTextIsSelectable(true)
-
-        bottomTextEditorTime!!.setRawInputType(InputType.TYPE_NULL)
-        bottomTextEditorTime!!.isFocusable = true
-        bottomTextEditorTime!!.setTextIsSelectable(true)
+        */
 
         backButton.setOnClickListener {
             Log.d("Admin", "ConversionActivity: backButton was clicked")

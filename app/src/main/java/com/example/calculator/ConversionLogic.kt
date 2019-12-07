@@ -1,6 +1,8 @@
 package com.example.calculator
 
 import android.util.Log
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 class ConversionLogic {
 
@@ -113,6 +115,7 @@ class ConversionLogic {
     mi/h vs: m/s, m/h, km/s, km/h, in/s, in/h, ft/s, ft/h, mi/s, mi/h, kn
     kn vs: m/s, m/h, km/s, km/h, in/s, in/h, ft/s, ft/h, mi/s, mi/h, kn
     */
+
     val speedTable = arrayOf(arrayOf(1, 3600, 0.001, 3.6, 39.23, 141732.283, 3.28, 11811.023, 0.000621, 2.2369, 1.9438),
                              arrayOf(0.0002778, 1, 2.7778e-7, 0.001, 0.01093, 39.37007, 0.000911, 3.2808, 0.000000172, 0.000613, 0.0005399),
                              arrayOf(1000, 3600000, 1, 3600, 39370.07874, 141732283.46, 3280.839, 11811023.622, 0.6213, 2236.936, 1943.844),
@@ -124,6 +127,7 @@ class ConversionLogic {
                              arrayOf(1609.344, 5793638.4, 1.609, 5793.63, 63360, 228096000, 5280, 1900800, 1, 3600, 3128.3144),
                              arrayOf(0.44704, 1609.344, 0.00044, 1.609344, 17.6, 63360, 1.4667, 5280, 0.0002778, 1, 0.86897),
                              arrayOf(0.51444, 1852, 0.0005144, 1.852, 20.2537, 72913.385, 1.6878, 6076.1154, 0.000319, 1.1507, 1))
+
 
     /*
     Milliseconds vs: Milliseconds, Seconds, Minutes, Hours, Days, Weeks
@@ -152,7 +156,8 @@ class ConversionLogic {
     fun addChar(inputIn : String, choice: String) : String {
         var input : String = inputIn
         //Checks if we are not above max length before allowing user to input
-        if(!isMaxLength(input)){
+        if(choice == "c") {return ""}
+        else if(!isMaxLength(input)){
             when (choice) {
                 "0" -> input += "0"
                 "1" -> input += "1"
@@ -165,7 +170,6 @@ class ConversionLogic {
                 "8" -> input += "8"
                 "9" -> input += "9"
                 "." -> if(!input.contains('.')){if(input == ""){ input += "0."} else {input += "."}}
-                "c" -> input = ""
             }
             //If the user input 0 followed by any number other than '.' it deletes the 0
             if(input.length >= 2 && input[0] == '0'  && input[1] != '.') { input = input.replaceFirst("0", "")}
@@ -208,7 +212,8 @@ class ConversionLogic {
         var currentTable = arrayOf<Array<Any>>()
         var outputString: String
         var index : Int = 0
-        if(value.isNotEmpty()) {
+        if(value.isEmpty() ||(!value[value.length-1].isDigit() && value.indexOf('E')>= 0)) {return ""}
+        else if(value.isNotEmpty()) {
             when (choice) {
                 0 -> currentTable = areaTable
                 1 -> currentTable = lengthTable
@@ -219,28 +224,22 @@ class ConversionLogic {
                 7 -> currentTable = timeTable
             }
 
-            if(choice == 2){
-                outputString = temperatureFormulas(currentTop *  3 + currentBottom, value)
-            }
+            if(choice == 2){outputString = temperatureFormulas(currentTop *  3 + currentBottom, value) }
             else
             {
-                if (divMul){
-                    outputString = (value.toFloat() * currentTable[currentTop][currentBottom].toString().toFloat()).toString()
-                }
-                else {
-                    outputString = (value.toFloat() / currentTable[currentTop][currentBottom].toString().toFloat()).toString()
-                }
+                if (divMul){outputString = (value.toFloat() * currentTable[currentTop][currentBottom].toString().toFloat()).toString() }
+                else {outputString = (value.toFloat() / currentTable[currentTop][currentBottom].toString().toFloat()).toString() }
             }
 
-            if (outputString.toFloat() % 1.0 == 0.0) {
-                index = outputString.indexOf('.')
-                if(index >= 0){outputString = outputString.substring(0, index)}
-            }
+            outputString = BigDecimal(outputString.toDouble()).setScale(6, RoundingMode.HALF_EVEN).toString()
 
-            outputString = outputString.trimEnd('0')
+            index = outputString.indexOf('.')
+            if (outputString.toFloat() % 1.0 == 0.0 && index >= 0){ outputString = outputString.substring(0, index)}
+            else if(index >= 0){outputString = outputString.trimEnd('0')}
+
             return outputString
         }
-        else{ return "" }
+        else{return ""}
     }
 }
 

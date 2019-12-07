@@ -12,10 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/unitScroll"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/unitScroll">
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/backButton"
@@ -25,6 +25,7 @@
             android:layout_weight="1"
             android:background="@drawable/black_selector"
             android:text="@string/back"
+            android:textAllCaps="false"
             android:textColor="@android:color/white"
             android:textSize="15sp" />
 
@@ -45,10 +46,10 @@
         android:id="@+id/unitScroll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/topDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backLayout"
-        app:layout_constraintBottom_toTopOf="@+id/topDivider"
         tools:layout_editor_absoluteY="49dp">
 
         <LinearLayout
@@ -67,6 +68,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/black_selector"
                 android:text="@string/area"
+                android:textAllCaps="false"
                 android:textColor="#FFFFFF" />
 
             <Button
@@ -80,6 +82,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/black_selector"
                 android:text="@string/length"
+                android:textAllCaps="false"
                 android:textColor="#FFFFFF" />
 
             <Button
@@ -93,6 +96,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/black_selector"
                 android:text="@string/temperature"
+                android:textAllCaps="false"
                 android:textColor="#FFFFFF" />
 
             <Button
@@ -106,6 +110,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/black_selector"
                 android:text="@string/volume"
+                android:textAllCaps="false"
                 android:textColor="#FFFFFF" />
 
             <Button
@@ -119,6 +124,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/black_selector"
                 android:text="@string/mass"
+                android:textAllCaps="false"
                 android:textColor="#FFFFFF" />
 
             <Button
@@ -132,6 +138,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/black_selector"
                 android:text="@string/data"
+                android:textAllCaps="false"
                 android:textColor="#FFFFFF" />
 
             <Button
@@ -158,6 +165,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/black_selector"
                 android:text="@string/time"
+                android:textAllCaps="false"
                 android:textColor="#FFFFFF" />
         </LinearLayout>
     </HorizontalScrollView>
@@ -218,7 +226,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/topSpinnerArea">
 
 
-                    <EditText
+                    <TextView
                         android:id="@+id/topTextEditorArea"
                         android:layout_width="350dp"
                         android:layout_height="wrap_content"
@@ -230,7 +238,7 @@
                         android:text="1"
                         android:onClick="updateLocationTop"
                         android:textColor="#FFFFFF"
-                        android:textSize="40sp" />
+                        android:textSize="50sp" />
 
                     <TextView
                         android:id="@+id/topTextViewArea"
@@ -238,7 +246,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="Test"
-                        android:layout_marginBottom="15dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="8dp"
                         android:gravity="bottom"
                         android:textSize="22sp"
                         android:textColor="#FFFFFF" />
@@ -260,7 +269,7 @@
 
                 <Spinner
                     android:id="@+id/bottomSpinnerArea"
-                    android:layout_width="410dp"
+                    android:layout_width="415dp"
                     android:layout_height="40dp"
                     android:layout_margin = "0dp"
                     android:background="#FFFFFF"
@@ -281,7 +290,7 @@
                     tools:layout_editor_absoluteY="161dp">
 
 
-                    <EditText
+                    <TextView
                         android:id="@+id/bottomTextEditorArea"
                         android:layout_width="350dp"
                         android:layout_height="wrap_content"
@@ -293,7 +302,7 @@
                         android:text="1"
                         android:onClick="updateLocationBottom"
                         android:textColor="#FFFFFF"
-                        android:textSize="40sp" />
+                        android:textSize="50sp" />
 
                     <TextView
                         android:id="@+id/bottomTextViewArea"
@@ -301,9 +310,10 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="Test"
-                        android:layout_marginBottom="15dp"
+                        android:layout_marginBottom="8dp"
                         android:gravity="bottom"
-                               android:textSize="22sp"
+                        android:layout_gravity="bottom"
+                        android:textSize="22sp"
                         android:textColor="#FFFFFF"  />
                 </LinearLayout>
             </LinearLayout>
@@ -335,7 +345,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/topSpinnerArea">
 
 
-                        <EditText
+                        <TextView
                             android:id="@+id/topTextEditorLength"
                             android:layout_width="350dp"
                             android:layout_height="wrap_content"
@@ -347,7 +357,7 @@
                             android:text="1"
                             android:onClick="updateLocationTop"
                             android:textColor="#FFFFFF"
-                            android:textSize="40sp" />
+                            android:textSize="50sp" />
 
                         <TextView
                             android:id="@+id/topTextViewLength"
@@ -355,9 +365,10 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:text="Test"
-                            android:layout_marginBottom="15dp"
+                            android:layout_marginBottom="8dp"
                             android:gravity="bottom"
                             android:textSize="22sp"
+                            android:layout_gravity="bottom"
                             android:textColor="#FFFFFF" />
                     </LinearLayout>
 
@@ -398,7 +409,7 @@
                         tools:layout_editor_absoluteY="161dp">
 
 
-                        <EditText
+                        <TextView
                             android:id="@+id/bottomTextEditorLength"
                             android:layout_width="350dp"
                             android:layout_height="wrap_content"
@@ -410,7 +421,7 @@
                             android:inputType="number"
                             android:text="1"
                             android:textColor="#FFFFFF"
-                            android:textSize="40sp" />
+                            android:textSize="50sp" />
 
                         <TextView
                             android:id="@+id/bottomTextViewLength"
@@ -418,9 +429,10 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:text="Test"
-                            android:layout_marginBottom="15dp"
                             android:gravity="bottom"
-                                   android:textSize="22sp"
+                            android:layout_marginBottom="8dp"
+                            android:textSize="22sp"
+                            android:layout_gravity="bottom"
                             android:textColor="#FFFFFF"  />
                     </LinearLayout>
                 </LinearLayout>
@@ -452,7 +464,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/topSpinnerArea">
 
 
-                        <EditText
+                        <TextView
                             android:id="@+id/topTextEditorTemperature"
                             android:layout_width="350dp"
                             android:layout_height="wrap_content"
@@ -464,7 +476,7 @@
                             android:inputType="number"
                             android:text="1"
                             android:textColor="#FFFFFF"
-                            android:textSize="40sp" />
+                            android:textSize="50sp" />
 
                         <TextView
                             android:id="@+id/topTextViewTemperature"
@@ -472,9 +484,10 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:text="Test"
-                            android:layout_marginBottom="15dp"
                             android:gravity="bottom"
-                                   android:textSize="22sp"
+                            android:layout_marginBottom="8dp"
+                            android:textSize="22sp"
+                            android:layout_gravity="bottom"
                             android:textColor="#FFFFFF" />
                     </LinearLayout>
 
@@ -515,7 +528,7 @@
                         tools:layout_editor_absoluteY="161dp">
 
 
-                        <EditText
+                        <TextView
                             android:id="@+id/bottomTextEditorTemperature"
                             android:layout_width="350dp"
                             android:layout_height="wrap_content"
@@ -527,7 +540,7 @@
                             android:inputType="number"
                             android:text="1"
                             android:textColor="#FFFFFF"
-                            android:textSize="40sp" />
+                            android:textSize="50sp" />
 
                         <TextView
                             android:id="@+id/bottomTextViewTemperature"
@@ -535,9 +548,10 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:text="Test"
-                            android:layout_marginBottom="15dp"
                             android:gravity="bottom"
-                                   android:textSize="22sp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_gravity="bottom"
+                            android:textSize="22sp"
                             android:textColor="#FFFFFF"  />
                         </LinearLayout>
                 </LinearLayout>
@@ -569,7 +583,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/topSpinnerVolume">
 
 
-                    <EditText
+                    <TextView
                         android:id="@+id/topTextEditorVolume"
                         android:layout_width="350dp"
                         android:layout_height="wrap_content"
@@ -581,7 +595,7 @@
                         android:inputType="number"
                         android:text="1"
                         android:textColor="#FFFFFF"
-                        android:textSize="40sp" />
+                        android:textSize="50sp" />
 
                     <TextView
                         android:id="@+id/topTextViewVolume"
@@ -589,9 +603,10 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="Test"
-                        android:layout_marginBottom="15dp"
+                        android:layout_marginBottom="8dp"
                         android:gravity="bottom"
-                               android:textSize="22sp"
+                        android:layout_gravity="bottom"
+                        android:textSize="22sp"
                         android:textColor="#FFFFFF" />
                 </LinearLayout>
 
@@ -632,7 +647,7 @@
                     tools:layout_editor_absoluteY="161dp">
 
 
-                    <EditText
+                    <TextView
                         android:id="@+id/bottomTextEditorVolume"
                         android:layout_width="350dp"
                         android:layout_height="wrap_content"
@@ -644,17 +659,18 @@
                         android:inputType="number"
                         android:text="1"
                         android:textColor="#FFFFFF"
-                        android:textSize="40sp" />
+                        android:textSize="50sp" />
 
                     <TextView
                         android:id="@+id/bottomTextViewVolume"
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:layout_marginBottom="8dp"
                         android:text="Test"
-                        android:layout_marginBottom="15dp"
+                        android:layout_gravity="bottom"
                         android:gravity="bottom"
-                               android:textSize="22sp"
+                        android:textSize="22sp"
                         android:textColor="#FFFFFF"  />
                 </LinearLayout>
             </LinearLayout>
@@ -687,7 +703,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/topSpinnerMass">
 
 
-                    <EditText
+                    <TextView
                         android:id="@+id/topTextEditorMass"
                         android:layout_width="350dp"
                         android:layout_height="wrap_content"
@@ -699,7 +715,7 @@
                         android:inputType="number"
                         android:text="1"
                         android:textColor="#FFFFFF"
-                        android:textSize="40sp" />
+                        android:textSize="50sp" />
 
                     <TextView
                         android:id="@+id/topTextViewMass"
@@ -707,9 +723,10 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="Test"
-                        android:layout_marginBottom="15dp"
                         android:gravity="bottom"
-                               android:textSize="22sp"
+                        android:layout_gravity="bottom"
+                        android:textSize="22sp"
+                        android:layout_marginBottom="8dp"
                         android:textColor="#FFFFFF" />
                 </LinearLayout>
 
@@ -749,7 +766,7 @@
                     tools:layout_editor_absoluteY="161dp">
 
 
-                    <EditText
+                    <TextView
                         android:id="@+id/bottomTextEditorMass"
                         android:layout_width="350dp"
                         android:layout_height="wrap_content"
@@ -761,7 +778,7 @@
                         android:inputType="number"
                         android:text="1"
                         android:textColor="#FFFFFF"
-                        android:textSize="40sp" />
+                        android:textSize="50sp" />
 
                     <TextView
                         android:id="@+id/bottomTextViewMass"
@@ -769,9 +786,10 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="Test"
-                        android:layout_marginBottom="15dp"
+                        android:layout_gravity="bottom"
                         android:gravity="bottom"
-                               android:textSize="22sp"
+                        android:layout_marginBottom="8dp"
+                        android:textSize="22sp"
                         android:textColor="#FFFFFF"  />
                 </LinearLayout>
             </LinearLayout>
@@ -803,7 +821,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/topSpinnerData">
 
 
-                    <EditText
+                    <TextView
                         android:id="@+id/topTextEditorData"
                         android:layout_width="350dp"
                         android:layout_height="wrap_content"
@@ -815,7 +833,7 @@
                         android:inputType="number"
                         android:text="1"
                         android:textColor="#FFFFFF"
-                        android:textSize="40sp" />
+                        android:textSize="50sp" />
 
                     <TextView
                         android:id="@+id/topTextViewData"
@@ -823,9 +841,10 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="Test"
-                        android:layout_marginBottom="15dp"
+                        android:layout_gravity="bottom"
                         android:gravity="bottom"
-                               android:textSize="22sp"
+                        android:layout_marginBottom="8dp"
+                        android:textSize="22sp"
                         android:textColor="#FFFFFF" />
                 </LinearLayout>
 
@@ -866,7 +885,7 @@
                     tools:layout_editor_absoluteY="161dp">
 
 
-                    <EditText
+                    <TextView
                         android:id="@+id/bottomTextEditorData"
                         android:layout_width="350dp"
                         android:layout_height="wrap_content"
@@ -878,7 +897,7 @@
                         android:inputType="number"
                         android:text="1"
                         android:textColor="#FFFFFF"
-                        android:textSize="40sp" />
+                        android:textSize="50sp" />
 
                     <TextView
                         android:id="@+id/bottomTextViewData"
@@ -886,9 +905,10 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="Test"
-                        android:layout_marginBottom="15dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="8dp"
                         android:gravity="bottom"
-                               android:textSize="22sp"
+                        android:textSize="22sp"
                         android:textColor="#FFFFFF"  />
                 </LinearLayout>
             </LinearLayout>
@@ -920,7 +940,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/topSpinnerSpeed">
 
 
-                    <EditText
+                    <TextView
                         android:id="@+id/topTextEditorSpeed"
                         android:layout_width="350dp"
                         android:layout_height="wrap_content"
@@ -932,7 +952,7 @@
                         android:inputType="number"
                         android:text="1"
                         android:textColor="#FFFFFF"
-                        android:textSize="40sp" />
+                        android:textSize="50sp" />
 
                     <TextView
                         android:id="@+id/topTextViewSpeed"
@@ -940,9 +960,10 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="Test"
-                        android:layout_marginBottom="15dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_gravity="bottom"
                         android:gravity="bottom"
-                               android:textSize="22sp"
+                        android:textSize="22sp"
                         android:textColor="#FFFFFF" />
                 </LinearLayout>
 
@@ -983,7 +1004,7 @@
                     tools:layout_editor_absoluteY="161dp">
 
 
-                    <EditText
+                    <TextView
                         android:id="@+id/bottomTextEditorSpeed"
                         android:layout_width="350dp"
                         android:layout_height="wrap_content"
@@ -995,7 +1016,7 @@
                         android:inputType="number"
                         android:text="1"
                         android:textColor="#FFFFFF"
-                        android:textSize="40sp" />
+                        android:textSize="50sp" />
 
                     <TextView
                         android:id="@+id/bottomTextViewSpeed"
@@ -1003,7 +1024,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="Test"
-                        android:layout_marginBottom="15dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="8dp"
                         android:gravity="bottom"
                         android:textSize="22sp"
                         android:textColor="#FFFFFF"  />
@@ -1037,7 +1059,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/topSpinnerTime">
 
 
-                    <EditText
+                    <TextView
                         android:id="@+id/topTextEditorTime"
                         android:layout_width="350dp"
                         android:layout_height="wrap_content"
@@ -1049,7 +1071,7 @@
                         android:inputType="number"
                         android:text="1"
                         android:textColor="#FFFFFF"
-                        android:textSize="40sp" />
+                        android:textSize="50sp" />
 
                     <TextView
                         android:id="@+id/topTextViewTime"
@@ -1057,7 +1079,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="Test"
-                        android:layout_marginBottom="15dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="8dp"
                         android:gravity="bottom"
                         android:textSize="22sp"
                         android:textColor="#FFFFFF" />
@@ -1100,7 +1123,7 @@
                     tools:layout_editor_absoluteY="161dp">
 
 
-                    <EditText
+                    <TextView
                         android:id="@+id/bottomTextEditorTime"
                         android:layout_width="350dp"
                         android:layout_height="wrap_content"
@@ -1112,7 +1135,7 @@
                         android:inputType="number"
                         android:text="1"
                         android:textColor="#FFFFFF"
-                        android:textSize="40sp" />
+                        android:textSize="50sp" />
 
                     <TextView
                         android:id="@+id/bottomTextViewTime"
@@ -1120,7 +1143,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="Test"
-                        android:layout_marginBottom="15dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="8dp"
                         android:gravity="bottom"
                         android:textSize="22sp"
                         android:textColor="#FFFFFF"  />
