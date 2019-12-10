@@ -64,6 +64,15 @@ class MainLogic {
     /*
     Input: Void
     Output: Boolean
+    The isMaxLength function returns True if the inputString is larger than the maximum value that
+    can be displayed on the calcualtorView.
+    Purpose: To output Toast that tells the user they input the max number of input
+    */
+    fun isEmpty() : Boolean {return inputString.isEmpty()}
+
+    /*
+    Input: Void
+    Output: Boolean
     The operationReady function checks if we can operate, there is an operator value placed,
     both inputOne and inputTwo are values we can operate with and checks if an operation wasn't performed yet
     Purpose: Making sure we only operate on valid inputs
@@ -131,8 +140,11 @@ class MainLogic {
                  }
             }
             //To get best results we perform the math in Double but if there is no info after the decimal we get rid of it
+            //If we have an integer we remove the "." and any zeros after it
             if (resultString.toDouble() % 1.0 == 0.0) { resultString = resultString.replaceFirst(".0", "") }
-            else if(resultString.toDouble() % 1.0 != 0.0){
+            //Else if we have a fraction and it's a real number we truncate it to the 7th decimal place,
+            //If the result is somehing like 4.4530000 we remove the unnecessary 0s  from the end
+            else if(resultString.toDouble() % 1.0 != 0.0 && resultString != "NaN" && resultString != "Infinity"){
                 resultString = BigDecimal(resultString.toDouble()).setScale(7, RoundingMode.HALF_EVEN).toString()
                 resultString = resultString.trimEnd('0')}
             return resultString
@@ -161,12 +173,7 @@ class MainLogic {
                 "7" -> inputOne += "7"
                 "8" -> inputOne += "8"
                 "9" -> inputOne += "9"
-                "." -> if(!inputOne.contains('.')){
-                    inputOne += if(inputOne == ""){
-                        "0."
-                    } else {
-                        "."
-                    }
+                "." -> if(!inputOne.contains('.')){ inputOne += if(inputOne == ""){ "0." } else { "." }
                 }
             }
 
@@ -250,9 +257,6 @@ class MainLogic {
     The writeMod takes in the current mod value and formats the inputString according
     Purpose: Format different types of mod inputs
     */
-
-    //Operation "x^y",
-    //Char "e", "π"
     private fun writeMod(choice: String) {
         when (choice) {
             "√" -> inputString = "√$inputOne"

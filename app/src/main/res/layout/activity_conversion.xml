@@ -17,16 +17,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
+        <ImageButton
             android:id="@+id/backButton"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
+            android:layout_width="60dp"
+            android:layout_height="25dp"
             android:layout_marginTop="6dp"
+            android:layout_marginStart="5dp"
             android:layout_weight="1"
+            android:scaleType="fitCenter"
             android:background="@drawable/black_selector"
-            android:text="@string/back"
+            android:src="@drawable/ic_back"
             android:textAllCaps="false"
-            android:textColor="@android:color/white"
             android:textSize="15sp" />
 
         <TextView
@@ -35,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="1dp"
             android:layout_weight="1"
             android:text="@string/unit_converter"
             android:textColor="#FFFFFF"
@@ -1218,14 +1219,15 @@
                 android:textColor="#FFFFFF"
                 android:textSize="40sp" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/deleteButton"
-                android:layout_width="wrap_content"
+                android:layout_width="86dp"
                 android:layout_height="55dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
-                android:text="Del"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_del_on"
                 android:textColor="#00C604"
                 android:textSize="40sp" />
 
@@ -1321,14 +1323,15 @@
                 android:textColor="#FFFFFF"
                 android:textSize="40sp" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/topButton"
-                android:layout_width="wrap_content"
+                android:layout_width="86dp"
                 android:layout_height="55dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
-                android:text="∧"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_up_on"
                 android:onClick="updateLocationTop"
                 android:textColor="#00C604"
                 android:textSize="40sp" />
@@ -1373,14 +1376,15 @@
                 android:textColor="#FFFFFF"
                 android:textSize="40sp" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/bottomButton"
-                android:layout_width="wrap_content"
+                android:layout_width="86dp"
                 android:layout_height="55dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
-                android:text="v"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_down_on"
                 android:onClick="updateLocationBottom"
                 android:textColor="#00C604"
                 android:textSize="40sp" />

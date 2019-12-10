@@ -17,9 +17,9 @@ import androidx.core.view.isVisible
 class ConversionActivity: AppCompatActivity() {
 
     /*
-    Tables used to fill out the Spinners and the Textboxes
+    Tables used to fill out the Spinners and the Text boxes
         Type Tables are for spinners
-        Unit tables are for the textboxes
+        Unit tables are for the text boxes
     */
     private val areaTypes = arrayOf("Acre (ac)","Are (a)","Hectare (ha)","Square Centimeter (cm2)", "Square Foot (ft2)", "Square Inch (in2)", "Square Meter (m2)")
     private val areaUnits = arrayOf("ac","a","ha","cm2","ft2","in2","m2")
@@ -41,9 +41,9 @@ class ConversionActivity: AppCompatActivity() {
     private val timeUnits = arrayOf("ms", "s", "min", "h", "d", "wk")
 
     /*
-    Initlization of all the of variables update the UI
+    Initialization of all the of variables update the UI
     */
-    private var conversionLogicUnit = ConversionLogic() //Initlizes the Logic Class
+    private var conversionLogicUnit = ConversionLogic() //Initializes the Logic Class
     private var isTop: Boolean = true                   //Keeps track of if we are focused on the top or bottom editTextBox
     private var currentValueTop : String = "1"          //Keeps track of the value of the top editTextBox
     private var currentValueBottom : String = "1"       //Keeps track of the value of the bottom editTextBox
@@ -117,7 +117,6 @@ class ConversionActivity: AppCompatActivity() {
                 distance = 850
             }
         }
-
         newButton.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
         animateLayoutTransition(newPosition, distance)
     }
@@ -227,20 +226,20 @@ class ConversionActivity: AppCompatActivity() {
         Log.d("Admin", "ConversionActivity: editTextBox buttons updated")
         if(isTop){
             bottomButton.setBackgroundDrawable(resources.getDrawable(R.drawable.gray_selector))
-            bottomButton.setTextColor(Color.parseColor("#00C604"))
+            bottomButton.setImageResource(R.drawable.ic_down_on)
             bottomButton.isEnabled = true
 
             topButton.setBackgroundDrawable(resources.getDrawable(R.drawable.gray_disabled_button))
-            topButton.setTextColor(Color.parseColor("#006303"))
+            topButton.setImageResource(R.drawable.ic_up_off)
             topButton.isEnabled = false
         }
         else{
             topButton.setBackgroundDrawable(resources.getDrawable(R.drawable.gray_selector))
-            topButton.setTextColor(Color.parseColor("#00C604"))
+            topButton.setImageResource(R.drawable.ic_up_on)
             topButton.isEnabled = true
 
             bottomButton.setBackgroundDrawable(resources.getDrawable(R.drawable.gray_disabled_button))
-            bottomButton.setTextColor(Color.parseColor("#006303"))
+            bottomButton.setImageResource(R.drawable.ic_down_off)
             bottomButton.isEnabled = false
         }
     }

@@ -436,63 +436,60 @@
         app:layout_constraintTop_toBottomOf="@+id/resultsView">
 
 
-        <Button
+        <ImageButton
             android:id="@+id/historyButton"
-            android:layout_width="70dp"
-            android:layout_height="25dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginBottom="5dp"
             android:layout_weight="1"
-            android:background="@drawable/green_selector"
-            android:text="History"
+            android:scaleType="fitXY"
+            android:background="@drawable/black_selector"
+            android:src="@drawable/ic_history"
             android:textColor="#FFFFFF"
             android:layout_gravity="center"
             android:textSize="12sp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/conversionButton"
-            android:layout_width="70dp"
-            android:layout_height="25dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_width="50dp"
+            android:layout_height="45dp"
+            android:layout_marginHorizontal="5dp"
             android:layout_weight="1"
-            android:background="@drawable/green_selector"
-            android:text="Conversion"
+            android:scaleType="fitXY"
+            android:background="@drawable/black_selector"
+            android:src="@drawable/ic_unit"
             android:tag="Conversion"
             android:onClick="conversionButton"
             android:layout_gravity="center"
             android:textColor="#FFFFFF"
             android:textSize="12sp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/longButton"
-            android:layout_width="70dp"
-            android:layout_height="25dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginBottom="5dp"
             android:layout_weight="1"
-            android:background="@drawable/green_selector"
-            android:text="SideView"
+            android:scaleType="fitXY"
+            android:background="@drawable/black_selector"
+            android:src="@drawable/ic_science"
             android:tag="Port"
             android:onClick="orientationButton"
-            android:layout_gravity="center"  android:textColor="#FFFFFF"
+            android:layout_gravity="center"
             android:textSize="12sp" />
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/deleteButton"
+    <ImageButton
+        android:id="@+id/deleteButtonOne"
         android:layout_width="wrap_content"
-        android:layout_height="25dp"
+        android:layout_height="50dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/green_selector"
-        android:text="Delete"
+        android:scaleType="fitCenter"
+        android:background="@drawable/black_selector"
+        android:src="@drawable/ic_del_off"
         android:textColor="#FFFFFF"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/divider"
