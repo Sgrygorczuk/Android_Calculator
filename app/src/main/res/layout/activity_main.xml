@@ -38,6 +38,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/c"
+                android:tag="C"
+                android:onClick="clearButton"
                 android:textColor="#FA7650"
                 android:textSize="40sp" />
 
@@ -52,6 +54,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/rad"
+                android:tag="@string/rad"
+                android:onClick="clickedButton"
                 android:textColor="#00C604"
                 android:textSize="40sp" />
 
@@ -66,6 +70,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/per"
+                android:tag="@string/per"
+                android:onClick="clickedButton"
                 android:textColor="#00C604"
                 android:textSize="40sp" />
 
@@ -80,6 +86,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/div"
+                android:tag="@string/div"
+                android:onClick="clickedButton"
                 android:textColor="#00C604"
                 android:textSize="40sp" />
         </LinearLayout>
@@ -100,6 +108,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_7"
+                android:tag="@string/_7"
+                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="40sp" />
 
@@ -114,6 +124,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_8"
+                android:tag="@string/_8"
+                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="40sp" />
 
@@ -128,6 +140,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_9"
+                android:tag="@string/_9"
+                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="40sp" />
 
@@ -142,6 +156,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/times"
+                android:tag="@string/times"
+                android:onClick="clickedButton"
                 android:textColor="#00C604"
                 android:textSize="40sp" />
 
@@ -163,6 +179,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_4"
+                android:tag="@string/_4"
+                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="40sp" />
 
@@ -177,6 +195,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_5"
+                android:tag="@string/_5"
+                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="40sp" />
 
@@ -191,6 +211,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_6"
+                android:tag="@string/_6"
+                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="40sp" />
 
@@ -205,6 +227,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/minus"
+                android:tag="@string/minus"
+                android:onClick="clickedButton"
                 android:textColor="#00C604"
                 android:textSize="40sp" />
 
@@ -227,6 +251,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_1"
+                android:tag="@string/_1"
+                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="40sp" />
 
@@ -241,6 +267,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_2"
+                android:tag="@string/_2"
+                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="40sp" />
 
@@ -255,6 +283,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_3"
+                android:tag="@string/_3"
+                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="40sp" />
 
@@ -269,6 +299,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/plus"
+                android:tag="@string/plus"
+                android:onClick="clickedButton"
                 android:textColor="#00C604"
                 android:textSize="40sp" />
 
@@ -290,6 +322,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/plusMinus"
+                android:tag="@string/plusMinus"
+                android:onClick="negButton"
                 android:textColor="#FFFF"
                 android:textSize="40sp" />
 
@@ -304,6 +338,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_0"
+                android:tag="@string/_0"
+                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="40sp" />
 
@@ -318,6 +354,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/decimal"
+                android:tag="@string/decimal"
+                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="40sp" />
 
@@ -332,6 +370,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/green_selector"
                 android:text="@string/equal"
+                android:tag="@string/equal"
+                android:onClick="equalButton"
                 android:textColor="#FFFFFF"
                 android:textSize="40sp" />
 
@@ -349,7 +389,7 @@
         android:background="@android:color/black"
         android:gravity="end"
         android:textColor="#FFFFFF"
-        android:textSize="70sp"
+        android:textSize="60sp"
         app:layout_constraintBottom_toTopOf="@+id/resultsView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.888"
@@ -422,6 +462,8 @@
             android:layout_weight="1"
             android:background="@drawable/green_selector"
             android:text="Conversion"
+            android:tag="Conversion"
+            android:onClick="conversionButton"
             android:layout_gravity="center"
             android:textColor="#FFFFFF"
             android:textSize="12sp" />
@@ -437,7 +479,8 @@
             android:layout_weight="1"
             android:background="@drawable/green_selector"
             android:text="SideView"
-            android:onClick="longButton"
+            android:tag="Port"
+            android:onClick="orientationButton"
             android:layout_gravity="center"  android:textColor="#FFFFFF"
             android:textSize="12sp" />
 

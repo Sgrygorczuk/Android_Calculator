@@ -231,11 +231,10 @@ class ConversionLogic {
                 else {outputString = (value.toFloat() / currentTable[currentTop][currentBottom].toString().toFloat()).toString() }
             }
 
-            outputString = BigDecimal(outputString.toDouble()).setScale(6, RoundingMode.HALF_EVEN).toString()
-
-            index = outputString.indexOf('.')
-            if (outputString.toFloat() % 1.0 == 0.0 && index >= 0){ outputString = outputString.substring(0, index)}
-            else if(index >= 0){outputString = outputString.trimEnd('0')}
+            if (outputString.toDouble() % 1.0 == 0.0) { outputString = outputString.replaceFirst(".0", "") }
+            else if(outputString.toDouble() % 1.0 != 0.0){
+                outputString = BigDecimal(outputString.toDouble()).setScale(7, RoundingMode.HALF_EVEN).toString()
+                outputString = outputString.trimEnd('0')}
 
             return outputString
         }

@@ -152,6 +152,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/black_selector"
                 android:text="@string/speed"
+                android:textAllCaps="false"
                 android:textColor="#FFFFFF" />
 
             <Button

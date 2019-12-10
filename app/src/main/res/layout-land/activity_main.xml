@@ -19,7 +19,6 @@
         app:layout_constraintTop_toBottomOf="@+id/divider">
 
      <LinearLayout
-         android:visibility="gone"
         android:id="@+id/buttonLayoutExtraOne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,7 +34,6 @@
              android:orientation="horizontal">
 
              <Button
-                 android:id="@+id/switchButtonOne"
                  android:layout_width="70dp"
                  android:layout_height="30dp"
                  android:layout_marginHorizontal="12dp"
@@ -44,7 +42,8 @@
                  android:background="@drawable/gray_selector"
                  android:text="SW"
                  android:textColor="@android:color/white"
-                 android:onClick="SwitchButtonOne"
+                 android:onClick="switchLayoutButton"
+                 android:tag="One"
                  android:textSize="20sp" />
 
              <Button
@@ -61,14 +60,15 @@
                  android:textSize="20sp" />
 
              <Button
-                 android:id="@+id/radicalButton"
+                 android:id="@+id/piButton"
                  android:layout_width="70dp"
                  android:layout_height="30dp"
                  android:layout_marginHorizontal="12dp"
                  android:layout_marginVertical="5dp"
                  android:layout_weight="1"
                  android:background="@drawable/gray_selector"
-                 android:text="@string/rad"
+                 android:text="π"
+                 android:textAllCaps="false"
                  android:textColor="@android:color/white"
                  android:textSize="20sp" />
          </LinearLayout>
@@ -87,6 +87,8 @@
                  android:layout_weight="1"
                  android:background="@drawable/gray_selector"
                  android:text="sin"
+                 android:tag="sin"
+                 android:onClick="clickedButton"
                  android:textAllCaps="false"
                  android:textColor="@android:color/white"
                  android:textSize="20sp" />
@@ -100,6 +102,8 @@
                  android:layout_weight="1"
                  android:background="@drawable/gray_selector"
                  android:text="cos"
+                 android:tag="cos"
+                 android:onClick="clickedButton"
                  android:textAllCaps="false"
                  android:textColor="@android:color/white"
                  android:textSize="20sp" />
@@ -113,6 +117,8 @@
                  android:layout_weight="1"
                  android:background="@drawable/gray_selector"
                  android:text="tan"
+                 android:tag="tan"
+                 android:onClick="clickedButton"
                  android:textAllCaps="false"
                  android:textColor="@android:color/white"
                  android:textSize="20sp" />
@@ -132,6 +138,8 @@
                  android:layout_weight="1"
                  android:background="@drawable/gray_selector"
                  android:text="ln"
+                 android:tag="ln"
+                 android:onClick="clickedButton"
                  android:textAllCaps="false"
                  android:textColor="@android:color/white"
                  android:textSize="20sp" />
@@ -145,6 +153,9 @@
                  android:layout_weight="1"
                  android:background="@drawable/gray_selector"
                  android:text="log"
+                 android:tag="log"
+                 android:onClick="clickedButton"
+                 android:textAllCaps="false"
                  android:textColor="@android:color/white"
                  android:textSize="20sp" />
 
@@ -157,6 +168,8 @@
                  android:layout_weight="1"
                  android:background="@drawable/gray_selector"
                  android:text="1/x"
+                 android:tag="1/x"
+                 android:onClick="clickedButton"
                  android:textAllCaps="false"
                  android:textColor="@android:color/white"
                  android:textSize="20sp" />
@@ -176,6 +189,8 @@
                  android:layout_weight="1"
                  android:background="@drawable/gray_selector"
                  android:text="e^x"
+                 android:tag="e^x"
+                 android:onClick="clickedButton"
                  android:textAllCaps="false"
                  android:textColor="@android:color/white"
                  android:textSize="20sp" />
@@ -189,6 +204,9 @@
                  android:layout_weight="1"
                  android:background="@drawable/gray_selector"
                  android:text="x^2"
+                 android:tag="x^2"
+                 android:onClick="clickedButton"
+                 android:textAllCaps="false"
                  android:textColor="@android:color/white"
                  android:textSize="20sp" />
 
@@ -212,7 +230,20 @@
              android:orientation="horizontal">
 
              <Button
-                 android:id="@+id/absoluteButton"
+                 android:id="@+id/plusMinusExponentButton"
+                 android:layout_width="70dp"
+                 android:layout_height="30dp"
+                 android:layout_marginHorizontal="12dp"
+                 android:layout_marginVertical="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/gray_selector"
+                 android:text="x^+/-y"
+                 android:textAllCaps="false"
+                 android:textColor="@android:color/white"
+                 android:textSize="20sp" />
+
+             <Button
+                 android:id="@+id/absoluteButtonButton"
                  android:layout_width="70dp"
                  android:layout_height="30dp"
                  android:layout_marginHorizontal="12dp"
@@ -220,19 +251,8 @@
                  android:layout_weight="1"
                  android:background="@drawable/gray_selector"
                  android:text="|x|"
-                 android:textAllCaps="false"
-                 android:textColor="@android:color/white"
-                 android:textSize="20sp" />
-
-             <Button
-                 android:id="@+id/piButton"
-                 android:layout_width="70dp"
-                 android:layout_height="30dp"
-                 android:layout_marginHorizontal="12dp"
-                 android:layout_marginVertical="5dp"
-                 android:layout_weight="1"
-                 android:background="@drawable/gray_selector"
-                 android:text="π"
+                 android:tag="|x|"
+                 android:onClick="clickedButton"
                  android:textAllCaps="false"
                  android:textColor="@android:color/white"
                  android:textSize="20sp" />
@@ -246,6 +266,7 @@
                  android:layout_weight="1"
                  android:background="@drawable/gray_selector"
                  android:text="e"
+                 android:textAllCaps="false"
                  android:textColor="@android:color/white"
                  android:textSize="20sp" />
          </LinearLayout>
@@ -253,6 +274,7 @@
 
         <LinearLayout
             android:id="@+id/buttonLayoutExtraTwo"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
@@ -275,7 +297,8 @@
                     android:layout_marginVertical="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/gray_selector"
-                    android:onClick="SwitchButtonTwo"
+                    android:onClick="switchLayoutButton"
+                    android:tag="Two"
                     android:text="SW"
                     android:textColor="@android:color/white"
                     android:textSize="20sp" />
@@ -301,7 +324,9 @@
                     android:layout_marginVertical="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/gray_selector"
-                    android:text="cubroot"
+                    android:text="cbrt"
+                    android:tag="cbrt"
+                    android:onClick="clickedButton"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     android:textSize="15sp" />
@@ -313,14 +338,16 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/arcsinButton"
+                    android:id="@+id/asinButton"
                     android:layout_width="70dp"
                     android:layout_height="30dp"
                     android:layout_marginHorizontal="12dp"
                     android:layout_marginVertical="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/gray_selector"
-                    android:text="arcsin"
+                    android:text="asin"
+                    android:tag="asin"
+                    android:onClick="clickedButton"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     android:textSize="15sp" />
@@ -333,7 +360,9 @@
                     android:layout_marginVertical="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/gray_selector"
-                    android:text="arccos"
+                    android:text="acos"
+                    android:tag="acos"
+                    android:onClick="clickedButton"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     android:textSize="15sp" />
@@ -346,7 +375,9 @@
                     android:layout_marginVertical="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/gray_selector"
-                    android:text="arctan"
+                    android:text="atan"
+                    android:tag="atan"
+                    android:onClick="clickedButton"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     android:textSize="15sp" />
@@ -366,6 +397,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/gray_selector"
                     android:text="sinh"
+                    android:tag="sinh"
+                    android:onClick="clickedButton"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     android:textSize="20sp" />
@@ -379,6 +412,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/gray_selector"
                     android:text="cosh"
+                    android:tag="cosh"
+                    android:onClick="clickedButton"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     android:textSize="20sp" />
@@ -392,6 +427,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/gray_selector"
                     android:text="tanh"
+                    android:tag="tanh"
+                    android:onClick="clickedButton"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     android:textSize="20sp" />
@@ -410,7 +447,9 @@
                     android:layout_marginVertical="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/gray_selector"
-                    android:text="arcsinh"
+                    android:text="asinh"
+                    android:tag="asinh"
+                    android:onClick="clickedButton"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     android:textSize="15sp" />
@@ -423,7 +462,9 @@
                     android:layout_marginVertical="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/gray_selector"
-                    android:text="arccosh"
+                    android:text="acosh"
+                    android:tag="acosh"
+                    android:onClick="clickedButton"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     android:textSize="15sp" />
@@ -436,7 +477,9 @@
                     android:layout_marginVertical="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/gray_selector"
-                    android:text="arctanh"
+                    android:text="atanh"
+                    android:tag="atanh"
+                    android:onClick="clickedButton"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     android:textSize="15sp" />
@@ -456,6 +499,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/gray_selector"
                     android:text="2^x"
+                    android:tag="2^x"
+                    android:onClick="clickedButton"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     android:textSize="20sp" />
@@ -469,6 +514,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/gray_selector"
                     android:text="x^3"
+                    android:tag="x^3"
+                    android:onClick="clickedButton"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     android:textSize="20sp" />
@@ -482,6 +529,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/gray_selector"
                     android:text="x!"
+                    android:tag="x!"
+                    android:onClick="clickedButton"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     android:textSize="20sp" />
@@ -517,6 +566,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/c"
+                android:tag="C"
+                android:onClick="clearButton"
                 android:textColor="#FA7650"
                 android:textSize="20sp" />
 
@@ -529,6 +580,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/rad"
+                android:tag="@string/rad"
+                android:onClick="clickedButton"
                 android:textColor="#00C604"
                 android:textSize="20sp" />
 
@@ -541,6 +594,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/per"
+                android:tag="@string/per"
+                android:onClick="clickedButton"
                 android:textColor="#00C604"
                 android:textSize="20sp" />
 
@@ -553,6 +608,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/div"
+                android:tag="@string/div"
+                android:onClick="clickedButton"
                 android:textColor="#00C604"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -571,6 +628,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_7"
+                android:tag="@string/_7"
+                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -583,6 +642,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_8"
+                android:tag="@string/_8"
+                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -595,6 +656,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_9"
+                android:tag="@string/_9"
+                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -607,6 +670,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/times"
+                android:tag="@string/times"
+                android:onClick="clickedButton"
                 android:textColor="#00C604"
                 android:textSize="20sp" />
 
@@ -626,6 +691,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_4"
+                android:tag="@string/_9"
+                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -638,6 +705,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_5"
+                android:tag="@string/_5"
+                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -650,6 +719,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_6"
+                android:tag="@string/_6"
+                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -662,6 +733,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/minus"
+                android:tag="@string/minus"
+                android:onClick="clickedButton"
                 android:textColor="#00C604"
                 android:textSize="20sp" />
 
@@ -682,6 +755,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_1"
+                android:tag="@string/_1"
+                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -694,6 +769,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_2"
+                android:tag="@string/_2"
+                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -706,6 +783,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_3"
+                android:tag="@string/_3"
+                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -718,6 +797,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/plus"
+                android:tag="@string/plus"
+                android:onClick="clickedButton"
                 android:textColor="#00C604"
                 android:textSize="20sp" />
 
@@ -737,6 +818,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/plusMinus"
+                android:tag="@string/plusMinus"
+                android:onClick="negButton"
                 android:textColor="#FFFF"
                 android:textSize="20sp" />
 
@@ -749,6 +832,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_0"
+                android:tag="@string/_0"
+                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -761,6 +846,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/decimal"
+                android:tag="@string/decimal"
+                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -773,6 +860,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/green_selector"
                 android:text="@string/equal"
+                android:tag="@string/equal"
+                android:onClick="equalButton"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp" />
 
@@ -854,15 +943,18 @@
         <Button
             android:id="@+id/conversionButton"
             android:layout_width="70dp"
-            android:layout_height="25dp"
+            android:layout_height="17dp"
+            android:layout_gravity="center"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"
             android:layout_weight="1"
-            android:background="@drawable/green_selector"
-            android:text="Conversion"
-            android:layout_gravity="center"
+            android:background="@drawable/black_selector"
+            android:drawableLeft="@mipmap/ic_launcher"
+            android:text="conversion"
+            android:tag="Conversion"
+            android:onClick="conversionButton"
             android:textColor="#FFFFFF"
             android:textSize="12sp" />
 
@@ -877,7 +969,8 @@
             android:layout_weight="1"
             android:background="@drawable/green_selector"
             android:text="NormalView"
-            android:onClick="shortButton"
+            android:onClick="orientationButton"
+            android:tag="Land"
             android:layout_gravity="center"  android:textColor="#FFFFFF"
             android:textSize="12sp" />
 

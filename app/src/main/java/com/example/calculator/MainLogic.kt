@@ -21,25 +21,27 @@ calcualtorView and resultsView
 
 package com.example.calculator
 
+import java.lang.Math.cbrt
+import java.lang.Math.pow
 import java.math.BigDecimal
 import java.math.RoundingMode
-import kotlin.math.sqrt
+import kotlin.math.*
 
 class MainLogic {
     //Used to keep track of the first input
-    var inputOne : String = ""
+    private var inputOne : String = ""
     //Used to save the second input
-    var inputTwo : String = ""
+    private var inputTwo : String = ""
     //Used to tell which operation we are performing
-    var operation : String = ""
+    private var operation : String = ""
     //Used to tell which modification we are performing
-    var mod : String = ""
+    private var mod : String = ""
     //Used to display the computation in the calcualtorView
-    var inputString : String = ""
+    private var inputString : String = ""
     //Used to display the result of the clcuation on the resultsView
-    var resultString : String = ""
+    private var resultString : String = ""
     //Used to keep track of if we clicked perfomrEqual()
-    var operationPerformed : Boolean = false
+    private var operationPerformed : Boolean = false
 
     /*
     Input: Void
@@ -48,7 +50,16 @@ class MainLogic {
     can be displayed on the calcualtorView.
     Purpose: To output Toast that tells the user they input the max number of input
     */
-    fun isMaxLength() : Boolean { return inputString.length >= 9 }
+    fun isMaxLength() : Boolean { return inputString.length >= 15}
+
+    /*
+    Input: Void
+    Output: Boolean
+    The isMaxLength function returns True if the inputString is larger than the maximum value that
+    can be displayed on the calcualtorView.
+    Purpose: To output Toast that tells the user they input the max number of input
+    */
+    fun isAdjustLength() : Boolean { return inputString.length >= 9}
 
     /*
     Input: Void
@@ -92,10 +103,38 @@ class MainLogic {
                  when (mod) {
                      "√" -> resultString = (sqrt(inputOne.toDouble())).toString()
                      "%" -> resultString = (inputOne.toDouble() * .01).toString()
+                     //Have if for deg and rad
+                     "sin" -> resultString = (sin(inputOne.toDouble())).toString()
+                     "cos" -> resultString = (cos(inputOne.toDouble())).toString()
+                     "tan" -> resultString = (tan(inputOne.toDouble())).toString()
+                     "ln" -> resultString = (ln(inputOne.toDouble())).toString()
+                     "log" -> resultString = (log(inputOne.toDouble(), 10.0)).toString()
+                     "1/x" -> resultString = (1/inputOne.toDouble()).toString()
+                     "e^x" -> resultString = (pow(E,inputOne.toDouble())).toString()
+                     "x^2" -> resultString = (pow(inputOne.toDouble(), 2.0)).toString()
+                     "|x|" -> resultString = (abs(inputOne.toDouble())).toString()
+                     "cbrt" -> resultString = (cbrt(inputOne.toDouble())).toString()
+                     //Have if for deg and rad
+                     "asin" -> resultString = (asin(inputOne.toDouble())).toString()
+                     "acos" -> resultString = (acos(inputOne.toDouble())).toString()
+                     "atan" -> resultString = (atan(inputOne.toDouble())).toString()
+                     "sinh" -> resultString = (sinh(inputOne.toDouble())).toString()
+                     "cosh" -> resultString = (cosh(inputOne.toDouble())).toString()
+                     "tanh" -> resultString = (tanh(inputOne.toDouble())).toString()
+                     "asinh" -> resultString = (asinh(inputOne.toDouble())).toString()
+                     "acosh" -> resultString = (acosh(inputOne.toDouble())).toString()
+                     "atanh" -> resultString = (atanh(inputOne.toDouble())).toString()
+                     "2^x" -> resultString = (pow(2.0, inputOne.toDouble())).toString()
+                     "x^3" -> resultString = (pow(inputOne.toDouble(), 3.0)).toString()
+                     //Need to make a function for factorials
+                     "x!" -> resultString = ((inputOne.toDouble())).toString()
                  }
             }
             //To get best results we perform the math in Double but if there is no info after the decimal we get rid of it
             if (resultString.toDouble() % 1.0 == 0.0) { resultString = resultString.replaceFirst(".0", "") }
+            else if(resultString.toDouble() % 1.0 != 0.0){
+                resultString = BigDecimal(resultString.toDouble()).setScale(7, RoundingMode.HALF_EVEN).toString()
+                resultString = resultString.trimEnd('0')}
             return resultString
         }
         else { return "" }
@@ -111,7 +150,6 @@ class MainLogic {
     fun addChar(choice: String) : String {
         //Checks if we are not above max length before allowing user to input
         if(!isMaxLength()){
-            var index : Int = 0
             when (choice) {
                 "0" -> inputOne += "0"
                 "1" -> inputOne += "1"
@@ -123,15 +161,17 @@ class MainLogic {
                 "7" -> inputOne += "7"
                 "8" -> inputOne += "8"
                 "9" -> inputOne += "9"
-                "." -> if(!inputOne.contains('.')){if(inputOne == ""){ inputOne += "0."} else {inputOne += "."}}
+                "." -> if(!inputOne.contains('.')){
+                    inputOne += if(inputOne == ""){
+                        "0."
+                    } else {
+                        "."
+                    }
+                }
             }
 
-            inputOne = BigDecimal(inputOne.toDouble()).setScale(6, RoundingMode.HALF_EVEN).toString()
-
             //If the user input 0 followed by any number other than '.' it deletes the 0
-            index = inputOne.indexOf('.')
-            if (inputOne.toFloat() % 1.0 == 0.0 && index >= 0){ inputOne = inputOne.substring(0, index)}
-            else if(index >= 0){inputOne = inputOne.trimEnd('0')}
+            if(inputOne.length >= 2 && inputOne[0] == '0'  && inputOne[1] != '.') { inputOne = inputOne.replaceFirst("0", "")}
             //Depending on if a mod or operation was input it will display different format
             if(mod.isNotEmpty()) {writeMod(mod)} else {inputString = inputTwo + operation + inputOne}
         }
@@ -176,6 +216,28 @@ class MainLogic {
             when (choice) {
                 "√" -> mod = "√"
                 "%" -> mod = "%"
+                "sin" -> mod = "sin"
+                "cos" -> mod = "cos"
+                "tan" -> mod = "tan"
+                "ln" -> mod = "ln"
+                "log" -> mod = "log"
+                "1/x" -> mod = "1/x"
+                "e^x" -> mod = "e^x"
+                "x^2" -> mod = "x^2"
+                "|x|" -> mod = "|x|"
+                "cbrt" -> mod = "cbrt"
+                "asin" -> mod = "asin"
+                "acos" -> mod = "acos"
+                "atan" -> mod = "atan"
+                "sinh" -> mod = "sinh"
+                "cosh" -> mod = "cosh"
+                "tanh" -> mod = "tanh"
+                "asinh" -> mod = "sinh"
+                "acosh" -> mod = "cosh"
+                "atanh" -> mod = "tanh"
+                "2^x" -> mod = "2^x"
+                "x^3" -> mod = "x^3"
+                "x!" -> mod = "x!"
             }
             writeMod(choice)
         }
@@ -188,10 +250,35 @@ class MainLogic {
     The writeMod takes in the current mod value and formats the inputString according
     Purpose: Format different types of mod inputs
     */
-    fun writeMod(choice: String) : Unit {
+
+    //Operation "x^y",
+    //Char "e", "π"
+    private fun writeMod(choice: String) {
         when (choice) {
             "√" -> inputString = "√$inputOne"
             "%" -> inputString = "$inputOne%"
+            "sin" -> inputString = "sin($inputOne)"
+            "cos" -> inputString = "cos($inputOne)"
+            "tan" -> inputString = "tan($inputOne)"
+            "ln" -> inputString = "ln($inputOne)"
+            "log" -> inputString = "log($inputOne)"
+            "1/x" -> inputString = "1/$inputOne"
+            "e^x" -> inputString = "e^$inputOne"
+            "x^2" -> inputString = "$inputOne^2"
+            "|x|" -> inputString = "|$inputOne|"
+            "cbrt" -> inputString = "cbrt($inputOne)"
+            "asin" -> inputString = "asin($inputOne)"
+            "acos" -> inputString = "acos($inputOne)"
+            "atan" -> inputString = "atan($inputOne)"
+            "sinh" -> inputString = "sinh($inputOne)"
+            "cosh" -> inputString = "cosh($inputOne)"
+            "tanh" -> inputString = "tanh($inputOne)"
+            "asinh" -> inputString = "sinh($inputOne)"
+            "acosh" -> inputString = "cosh($inputOne)"
+            "atanh" -> inputString = "tanh($inputOne)"
+            "2^x" -> inputString = "2^$inputOne"
+            "x^3" -> inputString = "$inputOne^3"
+            "x!" -> inputString = "$inputOne!"
         }
     }
 
@@ -203,7 +290,7 @@ class MainLogic {
     */
     fun negation() : String {
         //Checks for the '-' is inputOne, if is removes it, if it isn't adds it
-        if(inputOne.contains('-')) inputOne = inputOne.replace("-", "") else inputOne = "-$inputOne"
+        inputOne = if(inputOne.contains('-')) inputOne.replace("-", "") else "-$inputOne"
         //Formats the inputString based on if we're in the mod mode or operation mode
         if(mod.isNotEmpty()) {writeMod(mod)} else {inputString = inputTwo + operation + inputOne}
         return inputString
@@ -215,7 +302,7 @@ class MainLogic {
     The clear function clears all of the variables
     Purpose: Clear all the preset data
     */
-    fun clear() : Unit {
+    fun clear(){
         inputOne = ""
         inputTwo = ""
         operation = ""
