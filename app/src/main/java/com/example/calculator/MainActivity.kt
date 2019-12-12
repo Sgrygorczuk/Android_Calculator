@@ -38,14 +38,15 @@ class MainActivity : AppCompatActivity() {
         operation table keeps track of all the possible two input operations a user might want to execute
         mod table keeps track of all of the one input operation a user might want to execute
     */
-    private val charTable = arrayOf("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "π")
-    private val operationTable = arrayOf("+", "-", "/", "*")
-    private val modTable = arrayOf("%", "√", "sin", "cos", "tan", "ln", "log", "1/x", "e^x", "x^2", "x^y",
+    private val charTable = arrayOf("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "π", "e")
+    private val operationTable = arrayOf("+", "-", "/", "*", "^")
+    private val modTable = arrayOf("%", "√", "sin", "cos", "tan", "ln", "log", "1/x", "e^x", "x^2", "x^-1",
         "|x|", "e", "cbrt", "asin", "acos", "atan", "sinh", "cosh", "tanh", "asinh", "acosh", "atanh",
         "2^x", "x^3", "x!")
 
     //Keeps track of if we are in landscape or portrait mode
     private var orientation : String = ""
+    var degRad : Boolean = false
 
     //The object that performs all of the arithmetic that this screen requires
     private val logicUnit = MainLogic()
@@ -174,7 +175,7 @@ class MainActivity : AppCompatActivity() {
         //Updates rest of UI
         updateUI()
         //Make sure we don't display or let user interact with "NaN" and "Infinity"
-        val viewString : String = logicUnit.performOperation()
+        val viewString : String = logicUnit.performOperation(degRad)
         if(viewString == "NaN" || viewString == "Infinity"){resultsView.text = ""}
         else{resultsView.text = viewString}
     }
@@ -188,7 +189,7 @@ class MainActivity : AppCompatActivity() {
         d("Admin", "MainActivity ($orientation):${view.tag} button was clicked")
         calculatorView.text = logicUnit.negation()
         updateUI()
-        resultsView.text = logicUnit.performOperation()
+        resultsView.text = logicUnit.performOperation(degRad)
     }
 
     /*
@@ -202,7 +203,7 @@ class MainActivity : AppCompatActivity() {
         calculatorView.text = ""
         textAdjustment()
         delButtonUpdate()
-        resultsView.text = logicUnit.performOperation()
+        resultsView.text = logicUnit.performOperation(degRad)
     }
 
     /*
@@ -215,7 +216,7 @@ class MainActivity : AppCompatActivity() {
     fun equalButton(view:View){
         d("Admin", "MainActivity ($orientation): ${view.tag} button was clicked")
         //Preps viewString to see if current result is valid
-        val viewString : String = logicUnit.performOperation()
+        val viewString : String = logicUnit.performOperation(degRad)
         //Checks if we have an operation that can be executed
         if (logicUnit.operationReady() || logicUnit.modReady()){
             //If we have an operation but the result is bad send a error toast
@@ -237,6 +238,29 @@ class MainActivity : AppCompatActivity() {
     /*
     UI Updates and Animations
     */
+
+    /*
+    Input: view (Button)
+    Output: Void
+    Purpose: Switches between the two sets of extra buttons in the scientific (landscape) main view
+    */
+    fun switchRadDeg(view : View) {
+        d("Admin", "MainActivity ($orientation): layout $degRad was clicked")
+        if(degRad) {
+            DegRadTextView.text = ""
+            radiansButton.text = "Rad"
+            radiansButtonTwo.text = "Rad"
+            degRad = false
+        }
+        else{
+            DegRadTextView.text = "Rad"
+            radiansButton.text = "Deg"
+            radiansButtonTwo.text = "Deg"
+            degRad = true
+        }
+        updateUI()
+        resultsView.text = logicUnit.performOperation(degRad)
+    }
 
     /*
     Input: Void
@@ -321,7 +345,7 @@ class MainActivity : AppCompatActivity() {
         calculatorView.setTextColor(Color.parseColor("#6C6C6C"))
         calculatorView.bringToFront()
         calculatorView.translationY = 200f
-        if(orientation == "Port"){ calculatorView.translationX =  270f} else if (orientation == "Land") {calculatorView.translationX = 440f}
+        if(orientation == "Port"){ calculatorView.translationX =  270f} else if (orientation == "Land") {calculatorView.translationX = 60f}
         calculatorView.scaleY = 0.5f
         calculatorView.scaleX = 0.5f
 

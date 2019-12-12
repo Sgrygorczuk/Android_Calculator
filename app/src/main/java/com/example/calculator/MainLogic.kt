@@ -21,6 +21,7 @@ calcualtorView and resultsView
 
 package com.example.calculator
 
+import android.util.Log
 import java.lang.Math.cbrt
 import java.lang.Math.pow
 import java.math.BigDecimal
@@ -77,7 +78,7 @@ class MainLogic {
     both inputOne and inputTwo are values we can operate with and checks if an operation wasn't performed yet
     Purpose: Making sure we only operate on valid inputs
     */
-    fun operationReady() : Boolean { return  operation.isNotEmpty() && inputOne.toDoubleOrNull() is Double && inputTwo.toDoubleOrNull() is Double && !operationPerformed}
+    fun operationReady() : Boolean { return  operation.isNotEmpty() && (inputOne.toDoubleOrNull()  is Double || inputOne.contains("e") || inputOne.contains("π")) && (inputTwo.toDoubleOrNull()  is Double || inputTwo.contains("e") || inputTwo.contains("π")) && !operationPerformed}
 
     /*
     Input: Void
@@ -86,7 +87,7 @@ class MainLogic {
     and if inputOne is something that can be operated on
     Purpose: Making sure we only operate on valid inputs
     */
-    fun modReady() : Boolean { return mod.isNotEmpty() && inputOne.toDoubleOrNull() is Double && inputOne.isNotEmpty()}
+    fun modReady() : Boolean { return mod.isNotEmpty() && (inputOne.toDoubleOrNull()  is Double || inputOne.contains("e") || inputOne.contains("π")) && inputOne.isNotEmpty()}
 
     /*
     Input: Void
@@ -95,61 +96,81 @@ class MainLogic {
     if possible operates to display them to the resultsView
     Purpose: Perform mathematical operations
     */
-    fun performOperation() : String {
+    fun performOperation(degRad : Boolean) : String {
+        var firstInput: Double
+        var secondInput: Double
+        var output = 0.0
         //Checks if either the mod or operation is viable
         if(operationReady() || modReady()){
-            //If operation is viable then we perform a +,-,/, or * on the two inputs
+            Log.d("Admin", "$inputOne")
+            //If operation is viable then we perform a +,-,/,*, or ^ on the two inputs
+            Log.d("Admin", "Test 2")
             if (operationReady()) {
+                firstInput = if(inputOne.contains("π")){PI} else if(inputOne.contains("e")) {E} else {inputOne.toDouble()}
+                secondInput = if(inputTwo.contains("π")){PI} else if(inputTwo.contains("e")) {E} else{inputTwo.toDouble()}
                 when (operation) {
-                    "/" -> resultString = (inputTwo.toDouble() / inputOne.toDouble()).toString()
-                    "*" -> resultString = (inputTwo.toDouble() * inputOne.toDouble()).toString()
-                    "-" -> resultString = (inputTwo.toDouble() - inputOne.toDouble()).toString()
-                    "+" -> resultString = (inputTwo.toDouble() + inputOne.toDouble()).toString()
+                    "/" -> output = (secondInput / firstInput)
+                    "*" -> output = (secondInput * firstInput)
+                    "-" -> output = (secondInput - firstInput)
+                    "+" -> output = (secondInput + firstInput)
+                    "^" -> output = (secondInput.pow(firstInput))
                 }
             }
             //If mod is viable we perform √ or % on the first input
             else if (modReady()) {
-                 when (mod) {
-                     "√" -> resultString = (sqrt(inputOne.toDouble())).toString()
-                     "%" -> resultString = (inputOne.toDouble() * .01).toString()
-                     //Have if for deg and rad
-                     "sin" -> resultString = (sin(inputOne.toDouble())).toString()
-                     "cos" -> resultString = (cos(inputOne.toDouble())).toString()
-                     "tan" -> resultString = (tan(inputOne.toDouble())).toString()
-                     "ln" -> resultString = (ln(inputOne.toDouble())).toString()
-                     "log" -> resultString = (log(inputOne.toDouble(), 10.0)).toString()
-                     "1/x" -> resultString = (1/inputOne.toDouble()).toString()
-                     "e^x" -> resultString = (pow(E,inputOne.toDouble())).toString()
-                     "x^2" -> resultString = (pow(inputOne.toDouble(), 2.0)).toString()
-                     "|x|" -> resultString = (abs(inputOne.toDouble())).toString()
-                     "cbrt" -> resultString = (cbrt(inputOne.toDouble())).toString()
-                     //Have if for deg and rad
-                     "asin" -> resultString = (asin(inputOne.toDouble())).toString()
-                     "acos" -> resultString = (acos(inputOne.toDouble())).toString()
-                     "atan" -> resultString = (atan(inputOne.toDouble())).toString()
-                     "sinh" -> resultString = (sinh(inputOne.toDouble())).toString()
-                     "cosh" -> resultString = (cosh(inputOne.toDouble())).toString()
-                     "tanh" -> resultString = (tanh(inputOne.toDouble())).toString()
-                     "asinh" -> resultString = (asinh(inputOne.toDouble())).toString()
-                     "acosh" -> resultString = (acosh(inputOne.toDouble())).toString()
-                     "atanh" -> resultString = (atanh(inputOne.toDouble())).toString()
-                     "2^x" -> resultString = (pow(2.0, inputOne.toDouble())).toString()
-                     "x^3" -> resultString = (pow(inputOne.toDouble(), 3.0)).toString()
-                     //Need to make a function for factorials
-                     "x!" -> resultString = ((inputOne.toDouble())).toString()
+                Log.d("Admin", "Test 3")
+                firstInput = if(inputOne.contains("π")){PI} else if(inputOne.contains("e")) {E} else {inputOne.toDouble()}
+                when (mod) {
+                     "√" -> output = sqrt(firstInput)
+                     "%" -> output = firstInput * .01
+                     "sin" -> output = if(degRad){sin(firstInput)}else{sin(firstInput*PI/180)}
+                     "cos" -> output = if(degRad){cos(firstInput)}else{cos(firstInput*PI/180)}
+                     "tan" -> output = if(degRad){tan(firstInput)}else{tan(firstInput*PI/180)}
+                     "ln" -> output = ln(firstInput)
+                     "log" -> output = log(firstInput, 10.0)
+                     "1/x" -> output = 1/firstInput
+                     "e^x" -> output = E.pow(firstInput)
+                     "x^2" -> output = firstInput.pow(2.0)
+                     "x^-1"-> output = firstInput.pow(-1.0)
+                     "|x|" -> output = abs(firstInput)
+                     "cbrt" -> output = cbrt(firstInput)
+                     "asin" -> output = if(degRad){asin(firstInput)}else{asin(firstInput*PI/180)}
+                     "acos" -> output = if(degRad){acos(firstInput)}else{acos(firstInput*PI/180)}
+                     "atan" -> output = if(degRad){atan(firstInput)}else{atan(firstInput*PI/180)}
+                     "sinh" -> output = if(degRad){sinh(firstInput)}else{sinh(firstInput*PI/180)}
+                     "cosh" -> output = if(degRad){cosh(firstInput)}else{cosh(firstInput*PI/180)}
+                     "tanh" -> output = if(degRad){tanh(firstInput)}else{tanh(firstInput*PI/180)}
+                     "asinh" -> output = if(degRad){asinh(firstInput)}else{asinh(firstInput*PI/180)}
+                     "acosh" -> output = if(degRad){acosh(firstInput)}else{acosh(firstInput*PI/180)}
+                     "atanh" -> output = if(degRad){atanh(firstInput)}else{atanh(firstInput*PI/180)}
+                     "2^x" -> output = 2.0.pow(firstInput)
+                     "x^3" -> output = firstInput.pow(3.0)
+                     "x!" -> resultString = factorial(firstInput.toString())
                  }
             }
+            resultString = output.toString()
             //To get best results we perform the math in Double but if there is no info after the decimal we get rid of it
             //If we have an integer we remove the "." and any zeros after it
             if (resultString.toDouble() % 1.0 == 0.0) { resultString = resultString.replaceFirst(".0", "") }
             //Else if we have a fraction and it's a real number we truncate it to the 7th decimal place,
-            //If the result is somehing like 4.4530000 we remove the unnecessary 0s  from the end
+            //If the result is something like 4.4530000 we remove the unnecessary 0s  from the end
             else if(resultString.toDouble() % 1.0 != 0.0 && resultString != "NaN" && resultString != "Infinity"){
                 resultString = BigDecimal(resultString.toDouble()).setScale(7, RoundingMode.HALF_EVEN).toString()
                 resultString = resultString.trimEnd('0')}
             return resultString
         }
         else { return "" }
+    }
+
+    private fun factorial(input : String) : String {
+        var output : Long = 1
+        return if(input.trimEnd('!').toDouble() % 1.0 == 0.0) {
+            for (i in 1 until input.trimEnd('!').toInt()+1) {
+                // factorial = factorial * i;
+                output *= i.toLong()
+            }
+            output.toString()
+        } else { "NaN" }
     }
 
     /*
@@ -161,7 +182,7 @@ class MainLogic {
     */
     fun addChar(choice: String) : String {
         //Checks if we are not above max length before allowing user to input
-        if(!isMaxLength()){
+        if(!isMaxLength() && !inputOne.contains('π') && !inputOne.contains('e')){
             when (choice) {
                 "0" -> inputOne += "0"
                 "1" -> inputOne += "1"
@@ -173,6 +194,8 @@ class MainLogic {
                 "7" -> inputOne += "7"
                 "8" -> inputOne += "8"
                 "9" -> inputOne += "9"
+                "e" -> if(inputOne.isEmpty()) {inputOne += "e"}
+                "π" -> if(inputOne.isEmpty()) {inputOne += "π"}
                 "." -> if(!inputOne.contains('.')){ inputOne += if(inputOne == ""){ "0." } else { "." }
                 }
             }
@@ -204,6 +227,7 @@ class MainLogic {
                     "*" -> operation = "*"
                     "-" -> operation = "-"
                     "+" -> operation = "+"
+                    "^" -> operation = "^"
                 }
             }
             inputString = inputTwo + operation + inputOne
@@ -231,6 +255,7 @@ class MainLogic {
                 "1/x" -> mod = "1/x"
                 "e^x" -> mod = "e^x"
                 "x^2" -> mod = "x^2"
+                "x^-1" -> mod = "x^-1"
                 "|x|" -> mod = "|x|"
                 "cbrt" -> mod = "cbrt"
                 "asin" -> mod = "asin"
@@ -269,6 +294,7 @@ class MainLogic {
             "1/x" -> inputString = "1/$inputOne"
             "e^x" -> inputString = "e^$inputOne"
             "x^2" -> inputString = "$inputOne^2"
+            "x^-1" -> inputString = "$inputOne^-1"
             "|x|" -> inputString = "|$inputOne|"
             "cbrt" -> inputString = "cbrt($inputOne)"
             "asin" -> inputString = "asin($inputOne)"
