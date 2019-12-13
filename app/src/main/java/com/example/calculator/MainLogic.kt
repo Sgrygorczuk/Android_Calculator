@@ -102,9 +102,7 @@ class MainLogic {
         var output = 0.0
         //Checks if either the mod or operation is viable
         if(operationReady() || modReady()){
-            Log.d("Admin", "$inputOne")
             //If operation is viable then we perform a +,-,/,*, or ^ on the two inputs
-            Log.d("Admin", "Test 2")
             if (operationReady()) {
                 firstInput = if(inputOne.contains("π")){PI} else if(inputOne.contains("e")) {E} else {inputOne.toDouble()}
                 secondInput = if(inputTwo.contains("π")){PI} else if(inputTwo.contains("e")) {E} else{inputTwo.toDouble()}
@@ -118,7 +116,6 @@ class MainLogic {
             }
             //If mod is viable we perform √ or % on the first input
             else if (modReady()) {
-                Log.d("Admin", "Test 3")
                 firstInput = if(inputOne.contains("π")){PI} else if(inputOne.contains("e")) {E} else {inputOne.toDouble()}
                 when (mod) {
                      "√" -> output = sqrt(firstInput)

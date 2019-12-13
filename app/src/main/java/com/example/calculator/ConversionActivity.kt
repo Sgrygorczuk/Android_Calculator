@@ -9,9 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_conversion.*
 import android.view.Gravity
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.core.view.isVisible
+import com.example.spinnertest.SpinnerAdapter
 
 
 class ConversionActivity: AppCompatActivity() {
@@ -21,23 +24,78 @@ class ConversionActivity: AppCompatActivity() {
         Type Tables are for spinners
         Unit tables are for the text boxes
     */
-    private val areaTypes = arrayOf("Acre (ac)","Are (a)","Hectare (ha)","Square Centimeter (cm2)", "Square Foot (ft2)", "Square Inch (in2)", "Square Meter (m2)")
+    private val areaTypes = listOf(SpinnerItem(GONE, "Acre (ac)", "#FFFFFF"),
+                                    SpinnerItem(GONE, "Are (a)", "#FFFFFF"),
+                                    SpinnerItem(GONE, "Hectare (ha)", "#FFFFFF"),
+                                    SpinnerItem(GONE, "Square Centimeter (cm2)", "#FFFFFF"),
+                                    SpinnerItem(GONE, "Square Foot (ft2)", "#FFFFFF"),
+                                    SpinnerItem(GONE, "Square Inch (in2)", "#FFFFFF"),
+                                    SpinnerItem(GONE, "Square Meter (m2)", "#FFFFFF"))
     private val areaUnits = arrayOf("ac","a","ha","cm2","ft2","in2","m2")
-    private val lengthTypes = arrayOf("Millimeter (mm)", "Centimeter (cm)", "Meter (m)", "Kilometer (km)", "Inch (in)", "Foot (ft)", "Yard (yard)", "Mile (mi)", "Nautical Mile (NM)", "Mil (mil)")
+
+    private val lengthTypes = listOf(SpinnerItem(GONE, "Millimeter (mm)", "#FFFFFF"),
+                                      SpinnerItem(GONE, "Centimeter (cm)", "#FFFFFF"),
+                                      SpinnerItem(GONE, "Meter (m)", "#FFFFFF"),
+                                      SpinnerItem(GONE, "Kilometer (km)", "#FFFFFF"),
+                                      SpinnerItem(GONE, "Inch (in)", "#FFFFFF"),
+                                      SpinnerItem(GONE, "Foot (ft)", "#FFFFFF"),
+                                      SpinnerItem(GONE, "Yard (yard)", "#FFFFFF"),
+                                      SpinnerItem(GONE, "Mile (mi)", "#FFFFFF"),
+                                      SpinnerItem(GONE, "Nautical Mile (NM)", "#FFFFFF"),
+                                      SpinnerItem(GONE, "Mil (mil)", "#FFFFFF"))
     private val lengthUnits = arrayOf("mm", "cm", "m", "km", "in", "ft", "yard", "mi", "NM", "mil")
-    private val temperatureTypes = arrayOf("Celsius (°C)", "Fahrenheit (°F)", "Kelvin (K)")
+
+    private val temperatureTypes = listOf(SpinnerItem(GONE, "Celsius (°C)","#FFFFFF"),
+                                          SpinnerItem(GONE, "Fahrenheit (°F)", "#FFFFFF"),
+                                          SpinnerItem(GONE, "Kelvin (K)", "#FFFFFF"))
     private val temperatureUnits = arrayOf("°C","°F","K")
-    private val volumeTypes = arrayOf("UK Gallon (gal)", "US Gallon (gal)", "Liter (L)", "Milliliter (mL)", "Cubic Centimeter (cm3)", "Cubic Meter (m3)", "Cubic Inch (in3)", "Cubic Foot (ft3)")
+
+    private val volumeTypes = listOf(SpinnerItem(GONE, "UK Gallon (gal)","#FFFFFF"),
+                                     SpinnerItem(GONE, "US Gallon (gal)","#FFFFFF"),
+                                     SpinnerItem(GONE, "Liter (L)","#FFFFFF"),
+                                     SpinnerItem(GONE, "Milliliter (mL)","#FFFFFF"),
+                                     SpinnerItem(GONE, "Cubic Centimeter (cm3)","#FFFFFF"),
+                                     SpinnerItem(GONE, "Cubic Meter (m3)","#FFFFFF"),
+                                     SpinnerItem(GONE, "Cubic Inch (in3)","#FFFFFF"),
+                                     SpinnerItem(GONE, "Cubic Foot (ft3)","#FFFFFF"))
     private val volumeUnits = arrayOf("gal", "gal", "L", "mL", "cm3", "m3", "in3", "ft3")
-    private val massTypes = arrayOf("Ton (t)", "UK Ton (t)", "US Ton (t)", "Pound (lb)", "Ounce (oz)", "Kilogram (kg)", "Gram (g)")
+
+    private val massTypes = listOf(SpinnerItem(GONE, "Ton (t)","#FFFFFF"),
+                                   SpinnerItem(GONE, "UK Ton (t)","#FFFFFF"),
+                                   SpinnerItem(GONE, "US Ton (t)","#FFFFFF"),
+                                   SpinnerItem(GONE, "Pound (lb)","#FFFFFF"),
+                                   SpinnerItem(GONE, "Ounce (oz)","#FFFFFF"),
+                                   SpinnerItem(GONE, "Kilogram (kg)","#FFFFFF"),
+                                   SpinnerItem(GONE, "Gram (g)","#FFFFFF"))
     private val massUnits = arrayOf("t","t","t","lb","oz","kg","g")
-    private val dataTypes = arrayOf("Bit (bit)", "Byte (B)", "Kilobyte (KB)", "Megabyte (MB)", "Gigabyte (GM)", "Terabyte (TB)")
+
+    private val dataTypes = listOf(SpinnerItem(GONE, "Bit (bit)", "#FFFFFF"),
+                                   SpinnerItem(GONE, "Byte (B)","#FFFFFF"),
+                                   SpinnerItem(GONE, "Kilobyte (KB)","#FFFFFF"),
+                                   SpinnerItem(GONE, "Megabyte (MB)","#FFFFFF"),
+                                   SpinnerItem(GONE, "Gigabyte (GM)","#FFFFFF"),
+                                   SpinnerItem(GONE, "Terabyte (TB)","#FFFFFF"))
     private val dataUnits = arrayOf("bit", "B", "KB", "MB", "GB", "TB")
-    private val speedTypes = arrayOf("Meters per Second (m/s)", "Meters per Hour (m/h)", "Kilometers per Second (km/s)", "Kilometers per Hour (km/h)",
-        "Inches per Second (in/s)", "Inches per Hour (in/h)", "Feet per Second (ft/s)", "Feet per Hour (ft/h)", "Miles per Second (mi/s)", "Miles per Hour (mi/h)",
-        "Knots (kn)")
+
+    private val speedTypes = listOf(SpinnerItem(GONE, "Meters per Second (m/s)", "#FFFFFF"),
+                                    SpinnerItem(GONE, "Meters per Hour (m/h)", "#FFFFFF"),
+                                    SpinnerItem(GONE, "Kilometers per Second (km/s)", "#FFFFFF"),
+                                    SpinnerItem(GONE, "Kilometers per Hour (km/h)", "#FFFFFF"),
+                                    SpinnerItem(GONE, "Inches per Second (in/s)", "#FFFFFF"),
+                                    SpinnerItem(GONE, "Inches per Hour (in/h)", "#FFFFFF"),
+                                    SpinnerItem(GONE, "Feet per Second (ft/s)", "#FFFFFF"),
+                                    SpinnerItem(GONE, "Feet per Hour (ft/h)", "#FFFFFF"),
+                                    SpinnerItem(GONE, "Miles per Second (mi/s)", "#FFFFFF"),
+                                    SpinnerItem(GONE, "Miles per Hour (mi/h)", "#FFFFFF"),
+                                    SpinnerItem(GONE, "Knots (kn)", "#FFFFFF"))
     private val speedUnits = arrayOf("m/s", "m/h", "km/s", "km/h", "in/s", "in/h", "ft/s", "ft/h", "mi/s", "mi/h", "kn")
-    private val timeTypes = arrayOf("Milliseconds (ms)", "Seconds (s)", "Minutes (m)", "Hours (h)", "Days (d)", "Weeks (wk)")
+
+    private val timeTypes = listOf(SpinnerItem(GONE, "Milliseconds (ms)", "#FFFFFF"),
+                                    SpinnerItem(GONE, "Seconds (s)", "#FFFFFF"),
+                                    SpinnerItem(GONE, "Minutes (m)", "#FFFFFF"),
+                                    SpinnerItem(GONE, "Hours (h)", "#FFFFFF"),
+                                    SpinnerItem(GONE, "Days (d)", "#FFFFFF"),
+                                    SpinnerItem(GONE, "Weeks (wk)", "#FFFFFF"))
     private val timeUnits = arrayOf("ms", "s", "min", "h", "d", "wk")
 
     /*
@@ -49,10 +107,10 @@ class ConversionActivity: AppCompatActivity() {
     private var currentValueBottom : String = "1"       //Keeps track of the value of the bottom editTextBox
     private var currentButton : String = "areaButton"   //Keeps track of what is the string of current button (Same as currentLayoutPosition?)
     private var currentLayoutPosition : Int = 0         //Keeps track of which layout we are looking at
-    private var currentPositionTop : Int = 0            //Keeps track of which top spinner is setlecte on current layout
-    private var currentPositionBottom : Int = 0         //Keeps track of which bottom spinner is setlecte on current layout
+    private var currentPositionTop : Int = 0            //Keeps track of which top spinner is selected on current layout
+    private var currentPositionBottom : Int = 0         //Keeps track of which bottom spinner is selected on current layout
     private var currentPositionsSpinner = arrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) //Keeps track of each spinner selection for each layout
-
+    private var oldPositionsSpinner = arrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) //Keeps track of each spinner selection for each layout
     /*
     Input: Void
     Output: Void
@@ -63,8 +121,8 @@ class ConversionActivity: AppCompatActivity() {
         Log.d("Admin", "ConversionActivity: $currentButton layout was chosen")
 
         var newButton : View = areaButton
-        var newPosition : Int = 0
-        var distance : Int = 0
+        var newPosition = 0
+        var distance = 0
 
         areaButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
         lengthButton.setBackgroundDrawable(resources.getDrawable(R.drawable.black_selector))
@@ -447,15 +505,23 @@ class ConversionActivity: AppCompatActivity() {
         /*
         Top Area Spinner
          */
-        val areaTop = ArrayAdapter(this, android.R.layout.simple_spinner_item, areaTypes)
-        areaTop.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        topSpinnerArea!!.adapter = areaTop
+        topSpinnerArea.adapter = SpinnerAdapter(this, areaTypes)
 
         topSpinnerArea.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                areaTypes[oldPositionsSpinner[0]].color = "#FFFFFF"
+                areaTypes[oldPositionsSpinner[0]].visibility = GONE
+
+                areaTypes[position].color = "#00C604"
+                areaTypes[position].visibility = VISIBLE
+
                 topTextViewArea.text = areaUnits[position]
                 currentPositionsSpinner[0] = position
                 passToLogic()
+
+                oldPositionsSpinner[0] = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -463,15 +529,23 @@ class ConversionActivity: AppCompatActivity() {
         /*
         Bottom Area Spinner
         */
-        val areaBottom = ArrayAdapter(this, android.R.layout.simple_spinner_item, areaTypes)
-        areaBottom.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        bottomSpinnerArea!!.adapter = areaBottom
+        bottomSpinnerArea.adapter = SpinnerAdapter(this, areaTypes)
 
         bottomSpinnerArea.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                areaTypes[oldPositionsSpinner[1]].color = "#FFFFFF"
+                areaTypes[oldPositionsSpinner[1]].visibility = GONE
+
+                areaTypes[position].color = "#00C604"
+                areaTypes[position].visibility = VISIBLE
+
                 bottomTextViewArea.text = areaUnits[position]
                 currentPositionsSpinner[1] = position
                 passToLogic()
+
+                oldPositionsSpinner[1] = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -479,15 +553,23 @@ class ConversionActivity: AppCompatActivity() {
         /*
         Top Length Spinner
         */
-        val lengthTop = ArrayAdapter(this, android.R.layout.simple_spinner_item, lengthTypes)
-        lengthTop.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        topSpinnerLength!!.adapter = lengthTop
+        topSpinnerLength.adapter = SpinnerAdapter(this, lengthTypes)
 
         topSpinnerLength.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                lengthTypes[oldPositionsSpinner[2]].color = "#FFFFFF"
+                lengthTypes[oldPositionsSpinner[2]].visibility = GONE
+
+                lengthTypes[position].color = "#00C604"
+                lengthTypes[position].visibility = VISIBLE
+
                 topTextViewLength.text = lengthUnits[position]
                 currentPositionsSpinner[2] = position
                 passToLogic()
+
+                oldPositionsSpinner[2] = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -495,15 +577,23 @@ class ConversionActivity: AppCompatActivity() {
         /*
         Bottom Length Spinner
         */
-        val lengthBottom = ArrayAdapter(this, android.R.layout.simple_spinner_item, lengthTypes)
-        lengthBottom.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        bottomSpinnerLength!!.adapter = lengthBottom
+        bottomSpinnerLength.adapter = SpinnerAdapter(this, lengthTypes)
 
         bottomSpinnerLength.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                lengthTypes[oldPositionsSpinner[3]].color = "#FFFFFF"
+                lengthTypes[oldPositionsSpinner[3]].visibility = GONE
+
+                lengthTypes[position].color = "#00C604"
+                lengthTypes[position].visibility = VISIBLE
+
                 bottomTextViewLength.text = lengthUnits[position]
                 currentPositionsSpinner[3] = position
                 passToLogic()
+
+                oldPositionsSpinner[3] = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -511,15 +601,23 @@ class ConversionActivity: AppCompatActivity() {
         /*
         Top Temperature Spinner
         */
-        val temperatureTop = ArrayAdapter(this, android.R.layout.simple_spinner_item, temperatureTypes)
-        temperatureTop.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        topSpinnerTemperature!!.adapter = temperatureTop
+        topSpinnerTemperature.adapter = SpinnerAdapter(this, temperatureTypes)
 
         topSpinnerTemperature.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                temperatureTypes[oldPositionsSpinner[4]].color = "#FFFFFF"
+                temperatureTypes[oldPositionsSpinner[4]].visibility = GONE
+
+                temperatureTypes[position].color = "#00C604"
+                temperatureTypes[position].visibility = VISIBLE
+
                 topTextViewTemperature.text = temperatureUnits[position]
                 currentPositionsSpinner[4] = position
                 passToLogic()
+
+                oldPositionsSpinner[4] = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -527,15 +625,23 @@ class ConversionActivity: AppCompatActivity() {
         /*
         Bottom Temperature Spinner
         */
-        val temperatureBottom = ArrayAdapter(this, android.R.layout.simple_spinner_item, temperatureTypes)
-        temperatureBottom.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        bottomSpinnerTemperature!!.adapter = temperatureBottom
+        bottomSpinnerTemperature.adapter = SpinnerAdapter(this, temperatureTypes)
 
         bottomSpinnerTemperature.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                temperatureTypes[oldPositionsSpinner[5]].color = "#FFFFFF"
+                temperatureTypes[oldPositionsSpinner[5]].visibility = GONE
+
+                temperatureTypes[position].color = "#00C604"
+                temperatureTypes[position].visibility = VISIBLE
+
                 bottomTextViewTemperature.text = temperatureUnits[position]
                 currentPositionsSpinner[5] = position
                 passToLogic()
+
+                oldPositionsSpinner[5] = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -543,15 +649,23 @@ class ConversionActivity: AppCompatActivity() {
         /*
         Top Volume Spinner
         */
-        val volumeTop = ArrayAdapter(this, android.R.layout.simple_spinner_item, volumeTypes)
-        volumeTop.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        topSpinnerVolume!!.adapter = volumeTop
+        topSpinnerVolume.adapter = SpinnerAdapter(this, volumeTypes)
 
         topSpinnerVolume.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                volumeTypes[oldPositionsSpinner[6]].color = "#FFFFFF"
+                volumeTypes[oldPositionsSpinner[6]].visibility = GONE
+
+                volumeTypes[position].color = "#00C604"
+                volumeTypes[position].visibility = VISIBLE
+
                 topTextViewVolume.text = volumeUnits[position]
                 currentPositionsSpinner[6] = position
                 passToLogic()
+
+                oldPositionsSpinner[6] = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -559,15 +673,23 @@ class ConversionActivity: AppCompatActivity() {
         /*
         Bottom Volume Spinner
         */
-        val volumeBottom = ArrayAdapter(this, android.R.layout.simple_spinner_item, volumeTypes)
-        volumeBottom.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        bottomSpinnerVolume!!.adapter = volumeBottom
+        bottomSpinnerVolume.adapter = SpinnerAdapter(this, volumeTypes)
 
         bottomSpinnerVolume.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                volumeTypes[oldPositionsSpinner[7]].color = "#FFFFFF"
+                volumeTypes[oldPositionsSpinner[7]].visibility = GONE
+
+                volumeTypes[position].color = "#00C604"
+                volumeTypes[position].visibility = VISIBLE
+
                 bottomTextViewVolume.text = volumeUnits[position]
                 currentPositionsSpinner[7] = position
                 passToLogic()
+
+                oldPositionsSpinner[7] = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -575,15 +697,23 @@ class ConversionActivity: AppCompatActivity() {
         /*
         Top Mass Spinner
         */
-        val massTop = ArrayAdapter(this, android.R.layout.simple_spinner_item, massTypes)
-        massTop.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        topSpinnerMass!!.adapter = massTop
+        topSpinnerMass.adapter = SpinnerAdapter(this, massTypes)
 
         topSpinnerMass.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                massTypes[oldPositionsSpinner[8]].color = "#FFFFFF"
+                massTypes[oldPositionsSpinner[8]].visibility = GONE
+
+                massTypes[position].color = "#00C604"
+                massTypes[position].visibility = VISIBLE
+
                 topTextViewMass.text = massUnits[position]
                 currentPositionsSpinner[8] = position
                 passToLogic()
+
+                oldPositionsSpinner[8] = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -591,15 +721,23 @@ class ConversionActivity: AppCompatActivity() {
         /*
         Bottom Mass Spinner
         */
-        val massBottom = ArrayAdapter(this, android.R.layout.simple_spinner_item, massTypes)
-        massBottom.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        bottomSpinnerMass!!.adapter = massBottom
+        bottomSpinnerMass.adapter = SpinnerAdapter(this, massTypes)
 
         bottomSpinnerMass.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                massTypes[oldPositionsSpinner[9]].color = "#FFFFFF"
+                massTypes[oldPositionsSpinner[9]].visibility = GONE
+
+                massTypes[position].color = "#00C604"
+                massTypes[position].visibility = VISIBLE
+
                 bottomTextViewMass.text = massUnits[position]
                 currentPositionsSpinner[9] = position
                 passToLogic()
+
+                oldPositionsSpinner[9] = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -607,15 +745,23 @@ class ConversionActivity: AppCompatActivity() {
         /*
         Top Data Spinner
         */
-        val dataTop = ArrayAdapter(this, android.R.layout.simple_spinner_item, dataTypes)
-        dataTop.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        topSpinnerData!!.adapter = dataTop
+        topSpinnerData.adapter = SpinnerAdapter(this, dataTypes)
 
         topSpinnerData.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                dataTypes[oldPositionsSpinner[10]].color = "#FFFFFF"
+                dataTypes[oldPositionsSpinner[10]].visibility = GONE
+
+                dataTypes[position].color = "#00C604"
+                dataTypes[position].visibility = VISIBLE
+
                 topTextViewData.text = dataUnits[position]
                 currentPositionsSpinner[10] = position
                 passToLogic()
+
+                oldPositionsSpinner[10] = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -623,15 +769,23 @@ class ConversionActivity: AppCompatActivity() {
         /*
         Bottom Data Spinner
         */
-        val dataBottom = ArrayAdapter(this, android.R.layout.simple_spinner_item, dataTypes)
-        dataBottom.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        bottomSpinnerData!!.adapter = dataBottom
+        bottomSpinnerData.adapter = SpinnerAdapter(this, dataTypes)
 
         bottomSpinnerData.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                dataTypes[oldPositionsSpinner[11]].color = "#FFFFFF"
+                dataTypes[oldPositionsSpinner[11]].visibility = GONE
+
+                dataTypes[position].color = "#00C604"
+                dataTypes[position].visibility = VISIBLE
+
                 bottomTextViewData.text = dataUnits[position]
                 currentPositionsSpinner[11] = position
                 passToLogic()
+
+                oldPositionsSpinner[11] = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -639,15 +793,23 @@ class ConversionActivity: AppCompatActivity() {
         /*
         Top Speed Spinner
         */
-        val speedTop = ArrayAdapter(this, android.R.layout.simple_spinner_item, speedTypes)
-        speedTop.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        topSpinnerSpeed!!.adapter = speedTop
+        topSpinnerSpeed.adapter = SpinnerAdapter(this, speedTypes)
 
         topSpinnerSpeed.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                speedTypes[oldPositionsSpinner[12]].color = "#FFFFFF"
+                speedTypes[oldPositionsSpinner[12]].visibility = GONE
+
+                speedTypes[position].color = "#00C604"
+                speedTypes[position].visibility = VISIBLE
+
                 topTextViewSpeed.text = speedUnits[position]
                 currentPositionsSpinner[12] = position
                 passToLogic()
+
+                oldPositionsSpinner[12] = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -655,31 +817,48 @@ class ConversionActivity: AppCompatActivity() {
         /*
         Bottom Speed Spinner
         */
-        val speedBottom = ArrayAdapter(this, android.R.layout.simple_spinner_item, speedTypes)
-        speedBottom.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        bottomSpinnerSpeed!!.adapter = speedBottom
+        bottomSpinnerSpeed.adapter = SpinnerAdapter(this, speedTypes)
 
         bottomSpinnerSpeed.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                speedTypes[oldPositionsSpinner[13]].color = "#FFFFFF"
+                speedTypes[oldPositionsSpinner[13]].visibility = GONE
+
+                speedTypes[position].color = "#00C604"
+                speedTypes[position].visibility = VISIBLE
+
                 bottomTextViewSpeed.text = speedUnits[position]
                 currentPositionsSpinner[13] = position
                 passToLogic()
+
+                oldPositionsSpinner[13] = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
+
         /*
         Top Time Spinner
         */
-        val timeTop = ArrayAdapter(this, android.R.layout.simple_spinner_item, timeTypes)
-        timeTop.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        topSpinnerTime!!.adapter = timeTop
+        topSpinnerTime.adapter = SpinnerAdapter(this, timeTypes)
 
         topSpinnerTime.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                timeTypes[oldPositionsSpinner[14]].color = "#FFFFFF"
+                timeTypes[oldPositionsSpinner[14]].visibility = GONE
+
+                timeTypes[position].color = "#00C604"
+                timeTypes[position].visibility = VISIBLE
+
                 topTextViewTime.text = timeUnits[position]
                 currentPositionsSpinner[14] = position
                 passToLogic()
+
+                oldPositionsSpinner[14] = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -687,15 +866,23 @@ class ConversionActivity: AppCompatActivity() {
         /*
         Bottom Time Spinner
         */
-        val timeBottom = ArrayAdapter(this, android.R.layout.simple_spinner_item, timeTypes)
-        timeBottom.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        bottomSpinnerTime!!.adapter = timeBottom
+        bottomSpinnerTime.adapter = SpinnerAdapter(this, timeTypes)
 
         bottomSpinnerTime.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                timeTypes[oldPositionsSpinner[15]].color = "#FFFFFF"
+                timeTypes[oldPositionsSpinner[15]].visibility = GONE
+
+                timeTypes[position].color = "#00C604"
+                timeTypes[position].visibility = VISIBLE
+
                 bottomTextViewTime.text = timeUnits[position]
                 currentPositionsSpinner[15] = position
                 passToLogic()
+
+                oldPositionsSpinner[15] = position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
