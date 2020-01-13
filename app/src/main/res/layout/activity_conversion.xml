@@ -230,8 +230,8 @@
 
                     <TextView
                         android:id="@+id/topTextEditorArea"
-                        android:layout_width="350dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="330dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="10"
                         android:ems="10"
                         android:gravity="end"
@@ -241,6 +241,17 @@
                         android:onClick="updateLocationTop"
                         android:textColor="#FFFFFF"
                         android:textSize="50sp" />
+
+                    <TextView
+                        android:id="@+id/topCursorArea"
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:ems="10"
+                        android:textSize="50sp"
+
+                        android:textColor="@android:color/white"
+                        />
 
                     <TextView
                         android:id="@+id/topTextViewArea"
@@ -307,6 +318,17 @@
                         android:textSize="50sp" />
 
                     <TextView
+                        android:id="@+id/bottomCursorArea"
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:ems="10"
+                        android:textSize="50sp"
+
+                        android:textColor="@android:color/white"
+                        />
+
+                    <TextView
                         android:id="@+id/bottomTextViewArea"
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
@@ -349,7 +371,7 @@
 
                         <TextView
                             android:id="@+id/topTextEditorLength"
-                            android:layout_width="350dp"
+                            android:layout_width="330dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="10"
                             android:ems="10"
@@ -360,6 +382,17 @@
                             android:onClick="updateLocationTop"
                             android:textColor="#FFFFFF"
                             android:textSize="50sp" />
+
+                        <TextView
+                            android:id="@+id/topCursorLength"
+                            android:layout_width="10dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="5dp"
+                            android:ems="10"
+                            android:textSize="50sp"
+                            android:text="|"
+                            android:textColor="@android:color/white"
+                            />
 
                         <TextView
                             android:id="@+id/topTextViewLength"
@@ -413,7 +446,7 @@
 
                         <TextView
                             android:id="@+id/bottomTextEditorLength"
-                            android:layout_width="350dp"
+                            android:layout_width="330dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="10"
                             android:ems="10"
@@ -424,6 +457,17 @@
                             android:text="1"
                             android:textColor="#FFFFFF"
                             android:textSize="50sp" />
+
+                        <TextView
+                            android:id="@+id/bottomCursorLength"
+                            android:layout_width="10dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="5dp"
+                            android:ems="10"
+                            android:textSize="50sp"
+                            android:text="|"
+                            android:textColor="@android:color/white"
+                            />
 
                         <TextView
                             android:id="@+id/bottomTextViewLength"
@@ -468,7 +512,7 @@
 
                         <TextView
                             android:id="@+id/topTextEditorTemperature"
-                            android:layout_width="350dp"
+                            android:layout_width="330dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="10"
                             android:ems="10"
@@ -479,6 +523,17 @@
                             android:text="1"
                             android:textColor="#FFFFFF"
                             android:textSize="50sp" />
+
+                        <TextView
+                            android:id="@+id/topCursorTemperature"
+                            android:layout_width="10dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="5dp"
+                            android:ems="10"
+                            android:textSize="50sp"
+                            android:text="|"
+                            android:textColor="@android:color/white"
+                            />
 
                         <TextView
                             android:id="@+id/topTextViewTemperature"
@@ -532,7 +587,7 @@
 
                         <TextView
                             android:id="@+id/bottomTextEditorTemperature"
-                            android:layout_width="350dp"
+                            android:layout_width="330dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="10"
                             android:ems="10"
@@ -543,6 +598,17 @@
                             android:text="1"
                             android:textColor="#FFFFFF"
                             android:textSize="50sp" />
+
+                        <TextView
+                            android:id="@+id/bottomCursorTemperature"
+                            android:layout_width="10dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="5dp"
+                            android:ems="10"
+                            android:textSize="50sp"
+                            android:text="|"
+                            android:textColor="@android:color/white"
+                            />
 
                         <TextView
                             android:id="@+id/bottomTextViewTemperature"
@@ -587,7 +653,7 @@
 
                     <TextView
                         android:id="@+id/topTextEditorVolume"
-                        android:layout_width="350dp"
+                        android:layout_width="330dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="10"
                         android:onClick="updateLocationTop"
@@ -598,6 +664,17 @@
                         android:text="1"
                         android:textColor="#FFFFFF"
                         android:textSize="50sp" />
+
+                    <TextView
+                        android:id="@+id/topCursorVolume"
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:ems="10"
+                        android:textSize="50sp"
+
+                        android:textColor="@android:color/white"
+                        />
 
                     <TextView
                         android:id="@+id/topTextViewVolume"
@@ -651,7 +728,7 @@
 
                     <TextView
                         android:id="@+id/bottomTextEditorVolume"
-                        android:layout_width="350dp"
+                        android:layout_width="330dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="10"
                         android:onClick="updateLocationBottom"
@@ -662,6 +739,17 @@
                         android:text="1"
                         android:textColor="#FFFFFF"
                         android:textSize="50sp" />
+
+                    <TextView
+                        android:id="@+id/bottomCursorVolume"
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:ems="10"
+                        android:textSize="50sp"
+
+                        android:textColor="@android:color/white"
+                        />
 
                     <TextView
                         android:id="@+id/bottomTextViewVolume"
@@ -707,7 +795,7 @@
 
                     <TextView
                         android:id="@+id/topTextEditorMass"
-                        android:layout_width="350dp"
+                        android:layout_width="330dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="10"
                         android:ems="10"
@@ -718,6 +806,17 @@
                         android:text="1"
                         android:textColor="#FFFFFF"
                         android:textSize="50sp" />
+
+                    <TextView
+                        android:id="@+id/topCursorMass"
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:ems="10"
+                        android:textSize="50sp"
+
+                        android:textColor="@android:color/white"
+                        />
 
                     <TextView
                         android:id="@+id/topTextViewMass"
@@ -770,7 +869,7 @@
 
                     <TextView
                         android:id="@+id/bottomTextEditorMass"
-                        android:layout_width="350dp"
+                        android:layout_width="330dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="10"
                         android:ems="10"
@@ -781,6 +880,17 @@
                         android:text="1"
                         android:textColor="#FFFFFF"
                         android:textSize="50sp" />
+
+                    <TextView
+                        android:id="@+id/bottomCursorMass"
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:ems="10"
+                        android:textSize="50sp"
+
+                        android:textColor="@android:color/white"
+                        />
 
                     <TextView
                         android:id="@+id/bottomTextViewMass"
@@ -825,7 +935,7 @@
 
                     <TextView
                         android:id="@+id/topTextEditorData"
-                        android:layout_width="350dp"
+                        android:layout_width="330dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="10"
                         android:ems="10"
@@ -836,6 +946,17 @@
                         android:text="1"
                         android:textColor="#FFFFFF"
                         android:textSize="50sp" />
+
+                    <TextView
+                        android:id="@+id/topCursorData"
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:ems="10"
+                        android:textSize="50sp"
+
+                        android:textColor="@android:color/white"
+                        />
 
                     <TextView
                         android:id="@+id/topTextViewData"
@@ -889,7 +1010,7 @@
 
                     <TextView
                         android:id="@+id/bottomTextEditorData"
-                        android:layout_width="350dp"
+                        android:layout_width="330dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="10"
                         android:ems="10"
@@ -900,6 +1021,17 @@
                         android:text="1"
                         android:textColor="#FFFFFF"
                         android:textSize="50sp" />
+
+                    <TextView
+                        android:id="@+id/bottomCursorData"
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:ems="10"
+                        android:textSize="50sp"
+
+                        android:textColor="@android:color/white"
+                        />
 
                     <TextView
                         android:id="@+id/bottomTextViewData"
@@ -944,7 +1076,7 @@
 
                     <TextView
                         android:id="@+id/topTextEditorSpeed"
-                        android:layout_width="350dp"
+                        android:layout_width="330dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="10"
                         android:ems="10"
@@ -955,6 +1087,17 @@
                         android:text="1"
                         android:textColor="#FFFFFF"
                         android:textSize="50sp" />
+
+                    <TextView
+                        android:id="@+id/topCursorSpeed"
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:ems="10"
+                        android:textSize="50sp"
+
+                        android:textColor="@android:color/white"
+                        />
 
                     <TextView
                         android:id="@+id/topTextViewSpeed"
@@ -1008,7 +1151,7 @@
 
                     <TextView
                         android:id="@+id/bottomTextEditorSpeed"
-                        android:layout_width="350dp"
+                        android:layout_width="330dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="10"
                         android:ems="10"
@@ -1019,6 +1162,17 @@
                         android:text="1"
                         android:textColor="#FFFFFF"
                         android:textSize="50sp" />
+
+                    <TextView
+                        android:id="@+id/bottomCursorSpeed"
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:ems="10"
+                        android:textSize="50sp"
+
+                        android:textColor="@android:color/white"
+                        />
 
                     <TextView
                         android:id="@+id/bottomTextViewSpeed"
@@ -1063,7 +1217,7 @@
 
                     <TextView
                         android:id="@+id/topTextEditorTime"
-                        android:layout_width="350dp"
+                        android:layout_width="330dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="10"
                         android:ems="10"
@@ -1074,6 +1228,17 @@
                         android:text="1"
                         android:textColor="#FFFFFF"
                         android:textSize="50sp" />
+
+                    <TextView
+                        android:id="@+id/topCursorTime"
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:ems="10"
+                        android:textSize="50sp"
+
+                        android:textColor="@android:color/white"
+                        />
 
                     <TextView
                         android:id="@+id/topTextViewTime"
@@ -1127,7 +1292,7 @@
 
                     <TextView
                         android:id="@+id/bottomTextEditorTime"
-                        android:layout_width="350dp"
+                        android:layout_width="330dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="10"
                         android:ems="10"
@@ -1138,6 +1303,17 @@
                         android:text="1"
                         android:textColor="#FFFFFF"
                         android:textSize="50sp" />
+
+                    <TextView
+                        android:id="@+id/bottomCursorTime"
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:ems="10"
+                        android:textSize="50sp"
+
+                        android:textColor="@android:color/white"
+                        />
 
                     <TextView
                         android:id="@+id/bottomTextViewTime"

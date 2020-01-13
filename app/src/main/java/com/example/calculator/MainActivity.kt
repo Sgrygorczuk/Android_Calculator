@@ -22,6 +22,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.util.Log.d
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -47,6 +48,8 @@ class MainActivity : AppCompatActivity() {
     //Keeps track of if we are in landscape or portrait mode
     private var orientation : String = ""
     var degRad : Boolean = false
+
+    var blink = false
 
     //The object that performs all of the arithmetic that this screen requires
     private val logicUnit = MainLogic()
@@ -375,6 +378,17 @@ class MainActivity : AppCompatActivity() {
             .duration = 300
     }
 
+    private fun blinking() {
+        if(blink) {
+            curosorTextView.text = ""
+            blink = false
+        }
+        else{
+            curosorTextView.text = "|"
+            blink = true
+        }
+    }
+
     /*
     Input: Void
     Output: Void
@@ -384,5 +398,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         delButtonUpdate()
+
+        val mainHandler = Handler(Looper.getMainLooper())
+        mainHandler.post(object : Runnable {
+            override fun run() {
+                blinking()
+                mainHandler.postDelayed(this, 400)
+            }
+        })
     }
 }

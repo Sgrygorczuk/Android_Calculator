@@ -3,6 +3,8 @@ package com.example.calculator
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +14,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.AdapterView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import com.example.spinnertest.SpinnerAdapter
@@ -111,6 +114,7 @@ class ConversionActivity: AppCompatActivity() {
     private var currentPositionBottom : Int = 0         //Keeps track of which bottom spinner is selected on current layout
     private var currentPositionsSpinner = arrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) //Keeps track of each spinner selection for each layout
     private var oldPositionsSpinner = arrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) //Keeps track of each spinner selection for each layout
+    private var blink = false
     /*
     Input: Void
     Output: Void
@@ -378,27 +382,27 @@ class ConversionActivity: AppCompatActivity() {
         if(isTop){
             currentValueTop = conversionLogicUnit.addChar(currentValueTop, choice)
             when (currentButton) {
-                "areaButton" -> topTextEditorArea.setText(currentValueTop)
-                "lengthButton" -> topTextEditorLength.setText(currentValueTop)
-                "temperatureButton" -> topTextEditorTemperature.setText(currentValueTop)
-                "volumeButton" -> topTextEditorVolume.setText(currentValueTop)
-                "massButton" -> topTextEditorMass.setText(currentValueTop)
-                "dataButton" -> topTextEditorData.setText(currentValueTop)
-                "speedButton" -> topTextEditorSpeed.setText(currentValueTop)
-                "timeButton" -> topTextEditorTime.setText(currentValueTop)
+                "areaButton" -> topTextEditorArea.text = currentValueTop
+                "lengthButton" -> topTextEditorLength.text = currentValueTop
+                "temperatureButton" -> topTextEditorTemperature.text = currentValueTop
+                "volumeButton" -> topTextEditorVolume.text = currentValueTop
+                "massButton" -> topTextEditorMass.text = currentValueTop
+                "dataButton" -> topTextEditorData.text = currentValueTop
+                "speedButton" -> topTextEditorSpeed.text = currentValueTop
+                "timeButton" -> topTextEditorTime.text = currentValueTop
             }
         }
         else {
             currentValueBottom = conversionLogicUnit.addChar(currentValueBottom, choice)
             when (currentButton) {
-                "areaButton" -> bottomTextEditorArea.setText(currentValueBottom)
-                "lengthButton" -> bottomTextEditorLength.setText(currentValueBottom)
-                "temperatureButton" -> bottomTextEditorTemperature.setText(currentValueBottom)
-                "volumeButton" -> bottomTextEditorVolume.setText(currentValueBottom)
-                "massButton" -> bottomTextEditorMass.setText(currentValueBottom)
-                "dataButton" -> bottomTextEditorData.setText(currentValueBottom)
-                "speedButton" -> bottomTextEditorSpeed.setText(currentValueBottom)
-                "timeButton" -> bottomTextEditorTime.setText(currentValueBottom)
+                "areaButton" -> bottomTextEditorArea.text = currentValueBottom
+                "lengthButton" -> bottomTextEditorLength.text = currentValueBottom
+                "temperatureButton" -> bottomTextEditorTemperature.text = currentValueBottom
+                "volumeButton" -> bottomTextEditorVolume.text = currentValueBottom
+                "massButton" -> bottomTextEditorMass.text = currentValueBottom
+                "dataButton" -> bottomTextEditorData.text = currentValueBottom
+                "speedButton" -> bottomTextEditorSpeed.text = currentValueBottom
+                "timeButton" -> bottomTextEditorTime.text = currentValueBottom
             }
         }
     }
@@ -465,28 +469,69 @@ class ConversionActivity: AppCompatActivity() {
             currentValueBottom = conversionLogicUnit.conversion(currentLayoutPosition, currentPositionTop, currentPositionBottom, currentValueTop, isTop)
             when (currentButton) {
                 "areaButton" -> bottomTextEditorArea.text = currentValueBottom
-                "lengthButton" -> bottomTextEditorLength.setText(currentValueBottom)
-                "temperatureButton" -> bottomTextEditorTemperature.setText(currentValueBottom)
-                "volumeButton" -> bottomTextEditorVolume.setText(currentValueBottom)
-                "massButton" -> bottomTextEditorMass.setText(currentValueBottom)
-                "dataButton" -> bottomTextEditorData.setText(currentValueBottom)
-                "speedButton" -> bottomTextEditorSpeed.setText(currentValueBottom)
-                "timeButton" -> bottomTextEditorTime.setText(currentValueBottom)
+                "lengthButton" -> bottomTextEditorLength.text = currentValueBottom
+                "temperatureButton" -> bottomTextEditorTemperature.text = currentValueBottom
+                "volumeButton" -> bottomTextEditorVolume.text = currentValueBottom
+                "massButton" -> bottomTextEditorMass.text = currentValueBottom
+                "dataButton" -> bottomTextEditorData.text = currentValueBottom
+                "speedButton" -> bottomTextEditorSpeed.text = currentValueBottom
+                "timeButton" -> bottomTextEditorTime.text = currentValueBottom
             }
         }
         else{
             currentValueTop = conversionLogicUnit.conversion(currentLayoutPosition, currentPositionTop, currentPositionBottom, currentValueBottom, isTop)
             when (currentButton) {
-                "areaButton" -> topTextEditorArea.setText(currentValueTop)
-                "lengthButton" -> topTextEditorLength.setText(currentValueTop)
-                "temperatureButton" -> topTextEditorTemperature.setText(currentValueTop)
-                "volumeButton" -> topTextEditorVolume.setText(currentValueTop)
-                "massButton" -> topTextEditorMass.setText(currentValueTop)
-                "dataButton" -> topTextEditorData.setText(currentValueTop)
-                "speedButton" -> topTextEditorSpeed.setText(currentValueTop)
-                "timeButton" -> topTextEditorTime.setText(currentValueTop)
+                "areaButton" -> topTextEditorArea.text = currentValueTop
+                "lengthButton" -> topTextEditorLength.text = currentValueTop
+                "temperatureButton" -> topTextEditorTemperature.text = currentValueTop
+                "volumeButton" -> topTextEditorVolume.text = currentValueTop
+                "massButton" -> topTextEditorMass.text = currentValueTop
+                "dataButton" -> topTextEditorData.text = currentValueTop
+                "speedButton" -> topTextEditorSpeed.text = currentValueTop
+                "timeButton" -> topTextEditorTime.text = currentValueTop
             }
         }
+    }
+
+    private fun blinking() {
+        var cursorText : TextView = topCursorArea
+
+        //Blanks out all of the Cursors
+        topCursorArea.text = ""
+        topCursorLength.text = ""
+        topCursorTemperature.text = ""
+        topCursorMass.text = ""
+        topCursorData.text = ""
+        topCursorSpeed.text = ""
+        topCursorTime.text = ""
+        bottomCursorArea.text = ""
+        bottomCursorLength.text = ""
+        bottomCursorTemperature.text = ""
+        bottomCursorVolume.text = ""
+        bottomCursorMass.text = ""
+        bottomCursorData.text = ""
+        bottomCursorSpeed.text = ""
+        bottomCursorTime.text = ""
+
+        //Picks which TextView we are currently looking at
+        when (currentLayoutPosition) {
+            0 -> {cursorText = if(isTop) {topCursorArea} else {bottomCursorArea}}
+            1 -> {cursorText = if(isTop) {topCursorLength} else {bottomCursorLength}}
+            2 -> {cursorText = if(isTop) {topCursorTemperature} else {bottomCursorTemperature}}
+            3 -> {cursorText = if(isTop) {topCursorVolume} else {bottomCursorVolume}}
+            4 -> {cursorText = if(isTop) {topCursorMass} else {bottomCursorMass}}
+            5 -> {cursorText = if(isTop) {topCursorData} else {bottomCursorData}}
+            6 -> {cursorText = if(isTop) {topCursorSpeed} else {bottomCursorSpeed}}
+            7 -> {cursorText = if(isTop) {topCursorTime} else {bottomCursorTime}}
+            }
+
+        //The blinking animation
+        if(blink) {
+            cursorText.text = ""
+            blink = false }
+        else{
+            cursorText.text = "|"
+            blink = true }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -494,6 +539,15 @@ class ConversionActivity: AppCompatActivity() {
         setContentView(R.layout.activity_conversion)
         //Sets the Area button to be selected as that's the screen we start from
         loadUnitTable("areaButton")
+
+        //Starts an endless loop that animates the blinking of the cursor
+        val mainHandler = Handler(Looper.getMainLooper())
+        mainHandler.post(object : Runnable {
+            override fun run() {
+                blinking()
+                mainHandler.postDelayed(this, 400)
+            }
+        })
 
         /*
         Set up and Functionality of the Spinners
