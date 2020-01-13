@@ -116,9 +116,15 @@ class MainActivity : AppCompatActivity() {
     Output: Void
     Purpose: Tell the user that they reach max length input using Toast
     */
-    private fun showToast(){
-        if (logicUnit.isMaxLength()) {
-            val toast = Toast.makeText(this@MainActivity, "You reached the max input of 15", Toast.LENGTH_SHORT)
+    private fun showToast(toastType : Int){
+        var text = ""
+        when {
+            logicUnit.isMaxLength() -> {text = "You reached the max input of 15"}
+            toastType == 0 -> {text = "Input Necessary"}
+            toastType == 1 -> {text = "Can only perform one operation at a time"}
+        }
+        if(logicUnit.isMaxLength() || toastType == 0 || toastType == 1){
+            val toast = Toast.makeText(this@MainActivity, text, Toast.LENGTH_SHORT)
             toast.setGravity(Gravity.CENTER, 0, 0)
             toast.show()
         }
@@ -154,6 +160,7 @@ class MainActivity : AppCompatActivity() {
              When that is done it updates the rest of the UI element based on whatever input was provided
     */
     fun clickedButton(view:View){
+        var toastType = -1
         d("Admin", "MainActivity ($orientation): ${view.tag} button was clicked")
         when {
             //Adds a new character to current string
@@ -163,13 +170,24 @@ class MainActivity : AppCompatActivity() {
             }
             //Save current string, connect it to new string using chosen operation
             operationTable.contains(view.tag) -> {
+                //Checks for current operation set up
+                //If user can click something that won't respond it chooses right toast to show
+                if(logicUnit.isEmpty()){toastType = 0}
+                else if(logicUnit.isOperation()){toastType = 1}
+                showToast(toastType)
                 calculatorView.setTextColor(Color.parseColor("#FFFFFF"))
                 calculatorView.text = logicUnit.operationSetUp(view.tag.toString())
             }
             //Put a one input operation around current string
             modTable.contains(view.tag) -> {
+                if(logicUnit.isOperation()){toastType = 1}
+                showToast(toastType)
                 calculatorView.setTextColor(Color.parseColor("#FFFFFF"))
                 calculatorView.text = logicUnit.modSetUp(view.tag.toString())
+            }
+            view.tag == "delete" -> {
+                calculatorView.setTextColor(Color.parseColor("#FFFFFF"))
+                calculatorView.text = logicUnit.delete()
             }
         }
         //Updates rest of UI
@@ -225,7 +243,7 @@ class MainActivity : AppCompatActivity() {
             else{
                 calculatorView.text = logicUnit.performEqual()
                 resultsView.text = ""
-                //Performs the animationaniamtion
+                //Performs the animation
                 equalAnimation()
                 //After animation finishes we update the color of the text
                 Handler().postDelayed({
@@ -268,7 +286,7 @@ class MainActivity : AppCompatActivity() {
     Purpose: Executes all of the functions that update different parts of the UI
     */
     private fun updateUI(){
-        showToast()
+        showToast(-1)
         isOrientation()
         textAdjustment()
         delButtonUpdate()

@@ -23,7 +23,6 @@ package com.example.calculator
 
 import android.util.Log
 import java.lang.Math.cbrt
-import java.lang.Math.pow
 import java.math.BigDecimal
 import java.math.RoundingMode
 import kotlin.math.*
@@ -37,18 +36,18 @@ class MainLogic {
     private var operation : String = ""
     //Used to tell which modification we are performing
     private var mod : String = ""
-    //Used to display the computation in the calcualtorView
+    //Used to display the computation in the calculatorView
     private var inputString : String = ""
-    //Used to display the result of the clcuation on the resultsView
+    //Used to display the result of the calculation on the resultsView
     private var resultString : String = ""
-    //Used to keep track of if we clicked perfomrEqual()
+    //Used to keep track of if we clicked performEqual()
     private var operationPerformed : Boolean = false
 
     /*
     Input: Void
     Output: Boolean
     The isMaxLength function returns True if the inputString is larger than the maximum value that
-    can be displayed on the calcualtorView.
+    can be displayed on the calculatorView.
     Purpose: To output Toast that tells the user they input the max number of input
     */
     fun isMaxLength() : Boolean { return inputString.length >= 15}
@@ -57,16 +56,18 @@ class MainLogic {
     Input: Void
     Output: Boolean
     The isMaxLength function returns True if the inputString is larger than the maximum value that
-    can be displayed on the calcualtorView.
+    can be displayed on the calculatorView.
     Purpose: To output Toast that tells the user they input the max number of input
     */
     fun isAdjustLength() : Boolean { return inputString.length >= 9}
+
+    fun isOperation() : Boolean {return operation.isNotEmpty() || mod.isNotEmpty()}
 
     /*
     Input: Void
     Output: Boolean
     The isMaxLength function returns True if the inputString is larger than the maximum value that
-    can be displayed on the calcualtorView.
+    can be displayed on the calculatorView.
     Purpose: To output Toast that tells the user they input the max number of input
     */
     fun isEmpty() : Boolean {return inputString.isEmpty()}
@@ -78,7 +79,7 @@ class MainLogic {
     both inputOne and inputTwo are values we can operate with and checks if an operation wasn't performed yet
     Purpose: Making sure we only operate on valid inputs
     */
-    fun operationReady() : Boolean { return  operation.isNotEmpty() && (inputOne.toDoubleOrNull()  is Double || inputOne.contains("e") || inputOne.contains("π")) && (inputTwo.toDoubleOrNull()  is Double || inputTwo.contains("e") || inputTwo.contains("π")) && !operationPerformed}
+    fun operationReady() : Boolean { return  operation.isNotEmpty() && (inputOne.toDoubleOrNull() is Double || inputOne.contains("e") || inputOne.contains("π")) && (inputTwo.toDoubleOrNull()  is Double || inputTwo.contains("e") || inputTwo.contains("π")) && !operationPerformed}
 
     /*
     Input: Void
@@ -142,7 +143,7 @@ class MainLogic {
                      "atanh" -> output = if(degRad){atanh(firstInput)}else{atanh(firstInput*PI/180)}
                      "2^x" -> output = 2.0.pow(firstInput)
                      "x^3" -> output = firstInput.pow(3.0)
-                     "x!" -> resultString = factorial(firstInput.toString())
+                     "x!" -> output = factorial(firstInput.toString())
                  }
             }
             resultString = output.toString()
@@ -159,15 +160,14 @@ class MainLogic {
         else { return "" }
     }
 
-    private fun factorial(input : String) : String {
-        var output : Long = 1
+    private fun factorial(input : String) : Double {
+        var output = 1
         return if(input.trimEnd('!').toDouble() % 1.0 == 0.0) {
-            for (i in 1 until input.trimEnd('!').toInt()+1) {
-                // factorial = factorial * i;
-                output *= i.toLong()
+            for (i in 1 until input.replaceFirst(".0", "").toInt()+1) {
+                output *= i
             }
-            output.toString()
-        } else { "NaN" }
+            output.toDouble()
+        } else {0.0/0.0}
     }
 
     /*
@@ -199,6 +199,7 @@ class MainLogic {
 
             //If the user input 0 followed by any number other than '.' it deletes the 0
             if(inputOne.length >= 2 && inputOne[0] == '0'  && inputOne[1] != '.') { inputOne = inputOne.replaceFirst("0", "")}
+            if(inputOne.length >= 3 && inputOne[0] == '-' && inputOne[1] == '0' && inputOne[2] != '.') { inputOne = inputOne.replaceFirst("0", "")}
             //Depending on if a mod or operation was input it will display different format
             if(mod.isNotEmpty()) {writeMod(mod)} else {inputString = inputTwo + operation + inputOne}
         }
@@ -215,7 +216,7 @@ class MainLogic {
     Purpose: Ability to input operations
     */
     fun operationSetUp(choice : String) : String{
-        if(mod.isEmpty() && operation.isEmpty()) {
+        if(mod.isEmpty() && operation.isEmpty() && inputOne != "-") {
             inputTwo = inputOne
             inputOne = ""
             if (inputString.isNotEmpty()) {
@@ -307,6 +308,29 @@ class MainLogic {
             "x^3" -> inputString = "$inputOne^3"
             "x!" -> inputString = "$inputOne!"
         }
+    }
+
+    fun delete() : String {
+        if(mod.isNotEmpty() && inputOne.isNotEmpty()){
+            inputOne = inputOne.substring(0, inputOne.length - 1)
+        }
+        else if(mod.isNotEmpty() && inputOne.isEmpty()){
+            inputOne = ""
+            mod = ""
+        }
+        else if(operation.isNotEmpty() && inputOne.isNotEmpty()){
+            inputOne = inputOne.substring(0, inputOne.length - 1)
+        }
+        else if(operation.isNotEmpty() && inputOne.isEmpty()){
+            inputOne = inputTwo
+            inputTwo = ""
+            operation = ""
+        }
+        else if(mod.isEmpty() && operation.isEmpty() && inputOne.isNotEmpty()){
+            inputOne = inputOne.substring(0, inputOne.length - 1)
+        }
+        if(mod.isNotEmpty()) {writeMod(mod)} else {inputString = inputTwo + operation + inputOne}
+        return inputString
     }
 
     /*

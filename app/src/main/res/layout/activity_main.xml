@@ -490,6 +490,8 @@
         android:scaleType="fitCenter"
         android:background="@drawable/black_selector"
         android:src="@drawable/ic_del_off"
+        android:tag="delete"
+        android:onClick="clickedButton"
         android:textColor="#FFFFFF"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/divider"

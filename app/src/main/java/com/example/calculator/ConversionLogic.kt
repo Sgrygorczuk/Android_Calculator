@@ -211,7 +211,6 @@ class ConversionLogic {
     fun conversion(choice : Int, currentTop : Int, currentBottom : Int, value : String, divMul : Boolean) : String{
         var currentTable = arrayOf<Array<Any>>()
         var outputString: String
-        var index : Int = 0
         if(value.isEmpty() ||(!value[value.length-1].isDigit() && value.indexOf('E')>= 0)) {return ""}
         else if(value.isNotEmpty()) {
             when (choice) {
