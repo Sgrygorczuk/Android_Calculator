@@ -230,9 +230,9 @@
 
                     <TextView
                         android:id="@+id/topTextEditorArea"
-                        android:layout_width="330dp"
+                        android:layout_width="70dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="10"
+                        android:layout_weight="5"
                         android:ems="10"
                         android:gravity="end"
                         android:importantForAutofill="no"
@@ -305,9 +305,9 @@
 
                     <TextView
                         android:id="@+id/bottomTextEditorArea"
-                        android:layout_width="350dp"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="10"
+                        android:layout_weight="5"
                         android:ems="10"
                         android:gravity="end"
                         android:importantForAutofill="no"
@@ -371,9 +371,9 @@
 
                         <TextView
                             android:id="@+id/topTextEditorLength"
-                            android:layout_width="330dp"
+                            android:layout_width="70dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="10"
+                            android:layout_weight="5"
                             android:ems="10"
                             android:gravity="end"
                             android:importantForAutofill="no"
@@ -446,9 +446,9 @@
 
                         <TextView
                             android:id="@+id/bottomTextEditorLength"
-                            android:layout_width="330dp"
+                            android:layout_width="70dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="10"
+                            android:layout_weight="5"
                             android:ems="10"
                             android:onClick="updateLocationBottom"
                             android:gravity="end"
@@ -512,9 +512,9 @@
 
                         <TextView
                             android:id="@+id/topTextEditorTemperature"
-                            android:layout_width="330dp"
+                            android:layout_width="70dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="10"
+                            android:layout_weight="5"
                             android:ems="10"
                             android:onClick="updateLocationTop"
                             android:gravity="end"
@@ -587,9 +587,9 @@
 
                         <TextView
                             android:id="@+id/bottomTextEditorTemperature"
-                            android:layout_width="330dp"
+                            android:layout_width="70dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="10"
+                            android:layout_weight="5"
                             android:ems="10"
                             android:onClick="updateLocationBottom"
                             android:gravity="end"
@@ -653,9 +653,9 @@
 
                     <TextView
                         android:id="@+id/topTextEditorVolume"
-                        android:layout_width="330dp"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="10"
+                        android:layout_weight="5"
                         android:onClick="updateLocationTop"
                         android:ems="10"
                         android:gravity="end"
@@ -728,9 +728,9 @@
 
                     <TextView
                         android:id="@+id/bottomTextEditorVolume"
-                        android:layout_width="330dp"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="10"
+                        android:layout_weight="5"
                         android:onClick="updateLocationBottom"
                         android:ems="10"
                         android:gravity="end"
@@ -795,9 +795,9 @@
 
                     <TextView
                         android:id="@+id/topTextEditorMass"
-                        android:layout_width="330dp"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="10"
+                        android:layout_weight="5"
                         android:ems="10"
                         android:onClick="updateLocationTop"
                         android:gravity="end"
@@ -869,9 +869,9 @@
 
                     <TextView
                         android:id="@+id/bottomTextEditorMass"
-                        android:layout_width="330dp"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="10"
+                        android:layout_weight="5"
                         android:ems="10"
                         android:onClick="updateLocationBottom"
                         android:gravity="end"
@@ -935,9 +935,9 @@
 
                     <TextView
                         android:id="@+id/topTextEditorData"
-                        android:layout_width="330dp"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="10"
+                        android:layout_weight="5"
                         android:ems="10"
                         android:onClick="updateLocationTop"
                         android:gravity="end"
@@ -1010,9 +1010,9 @@
 
                     <TextView
                         android:id="@+id/bottomTextEditorData"
-                        android:layout_width="330dp"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="10"
+                        android:layout_weight="5"
                         android:ems="10"
                         android:onClick="updateLocationBottom"
                         android:gravity="end"
@@ -1076,9 +1076,9 @@
 
                     <TextView
                         android:id="@+id/topTextEditorSpeed"
-                        android:layout_width="330dp"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="10"
+                        android:layout_weight="5"
                         android:ems="10"
                         android:onClick="updateLocationTop"
                         android:gravity="end"
@@ -1151,9 +1151,9 @@
 
                     <TextView
                         android:id="@+id/bottomTextEditorSpeed"
-                        android:layout_width="330dp"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="10"
+                        android:layout_weight="5"
                         android:ems="10"
                         android:onClick="updateLocationBottom"
                         android:gravity="end"
@@ -1217,9 +1217,9 @@
 
                     <TextView
                         android:id="@+id/topTextEditorTime"
-                        android:layout_width="330dp"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="10"
+                        android:layout_weight="5"
                         android:ems="10"
                         android:onClick="updateLocationTop"
                         android:gravity="end"
@@ -1292,9 +1292,9 @@
 
                     <TextView
                         android:id="@+id/bottomTextEditorTime"
-                        android:layout_width="330dp"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="10"
+                        android:layout_weight="5"
                         android:ems="10"
                         android:gravity="end"
                         android:onClick="updateLocationBottom"
