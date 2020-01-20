@@ -1,12 +1,14 @@
 package com.example.calculator.History
 
-/*
-Data class that stores the information that is fed to the history recycler
-it stores the input string so something like "3+3" and the result string
-which would display as "= 6"
- */
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "history_table")
 data class HistoryEntry(
-    var input: String,
-    var result: String
-) {
+    @ColumnInfo(name = "input") var input: String,
+    @ColumnInfo(name = "result") var result: String,
+    @ColumnInfo(name = "orientation") var orientation: String){
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
 }

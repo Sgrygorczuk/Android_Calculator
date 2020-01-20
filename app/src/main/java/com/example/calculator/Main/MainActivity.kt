@@ -30,15 +30,19 @@ import android.view.Gravity
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.calculator.Conversion.ConversionActivity
-import com.example.calculator.History.DataSource
-import com.example.calculator.History.HistoryRecyclerAdapter
+import com.example.calculator.History.HistoryEntry
+import com.example.calculator.History.HistoryViewModel
 import com.example.calculator.R
+import com.example.roomtestthree.HistoryListAdapter
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var historyAdapter: HistoryRecyclerAdapter
+    private lateinit var historyViewModel: HistoryViewModel
 
     /*
     Tables are used to identify what the input button was pressed
@@ -262,6 +266,21 @@ class MainActivity : AppCompatActivity() {
         resultsView.text = logicUnit.performOperation(degRad)
     }
 
+    fun historyClear (view:View){
+        if(orientation == "Port") {
+            historyNumbers.visibility = VISIBLE
+            history.visibility = GONE
+            historyOn = false
+        }
+        if(orientation == "Land") {
+            historyOrExtra.visibility = VISIBLE
+            history.visibility = GONE
+            historyOn = false
+        }
+        historyViewModel.clear()
+    }
+
+
     /*
     Input: view (Button)
     Output: Void
@@ -279,7 +298,9 @@ class MainActivity : AppCompatActivity() {
             if(viewString == "NaN" || viewString == "Infinity"){errorToast(viewString)}
             //If everything works we perform the operation
             else{
+                var input = logicUnit.returnInput()
                 calculatorView.text = logicUnit.performEqual()
+                historyViewModel.insert(HistoryEntry(input, "= ${calculatorView.text}", orientation))
                 resultsView.text = ""
                 //Performs the animation
                 equalAnimation()
@@ -303,7 +324,7 @@ class MainActivity : AppCompatActivity() {
     fun switchRadDeg(view : View) {
         d("Admin", "MainActivity ($orientation): layout $degRad was clicked")
         if(degRad) {
-            DegRadTextView.text = ""
+            DegRadTextView.text = "Deg"
             radiansButton.text = "Rad"
             radiansButtonTwo.text = "Rad"
             degRad = false
@@ -424,22 +445,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun addDataSet(){
-        //Grabs the data from the data source
-        val data = DataSource.createDataSet()
-        //Adds the data to the adapter
-        historyAdapter.submitList(data)
-    }
-
-    //Creates the recycler view
-    private fun initRecyclerView(){
-        recycler_view.apply {
-            layoutManager = LinearLayoutManager(this@MainActivity)
-            historyAdapter = HistoryRecyclerAdapter()
-            adapter = historyAdapter
-        }
-    }
-
     /*
     Input: Void
     Output: Void
@@ -453,8 +458,22 @@ class MainActivity : AppCompatActivity() {
         delButtonUpdate()
 
         //Calls Recycler View Functions
-        initRecyclerView()
-        addDataSet()
+        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
+        val adapter = HistoryListAdapter(this)
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        // Get a new or existing ViewModel from the ViewModelProvider.
+        historyViewModel = ViewModelProvider(this).get(HistoryViewModel::class.java)
+        historyViewModel.initilizeOrientation(orientation)
+
+        // Add an observer on the LiveData returned by getAlphabetizedWords.
+        // The onChanged() method fires when the observed data changes and the activity is
+        // in the foreground.
+        historyViewModel.allEntries.observe(this, Observer { words ->
+            // Update the cached copy of the words in the adapter.
+            words?.let { adapter.setHistory(it) }
+        })
 
         //Sets Up the Blinking Effect
         val mainHandler = Handler(Looper.getMainLooper())

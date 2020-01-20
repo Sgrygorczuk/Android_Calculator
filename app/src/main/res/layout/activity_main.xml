@@ -334,7 +334,7 @@
                         android:background="@drawable/green_selector"
                         android:text="Clear History"
                         android:tag="Clear History"
-                        android:onClick="clickedButton"
+                        android:onClick="historyClear"
                         android:textColor="#FFFFFF"
                         android:textSize="15sp" />
                 </LinearLayout>

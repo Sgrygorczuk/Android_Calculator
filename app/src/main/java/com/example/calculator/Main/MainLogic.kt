@@ -89,6 +89,11 @@ class MainLogic {
     */
     fun modReady() : Boolean { return mod.isNotEmpty() && (inputOne.toDoubleOrNull()  is Double || inputOne.contains("e") || inputOne.contains("π")) && inputOne.isNotEmpty()}
 
+
+    fun returnInput() :String {
+        return inputString
+    }
+
     /*
     Input: Void
     Output: String; Will be displayed in resultsView
