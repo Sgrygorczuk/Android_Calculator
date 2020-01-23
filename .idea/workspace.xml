@@ -10,43 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b3215cf-6c35-4fdc-bc65-12a5256cb7da" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_1_0_rc01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_1_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_common_2_1_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_testing_2_1_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_collection_collection_1_1_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_2_0_rc01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_2_0_rc02_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_extensions_2_2_0_rc02_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_2_0_rc02_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_process_2_2_0_rc02_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_service_2_2_0_rc02_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_ktx_2_2_0_rc02_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_savedstate_1_0_0_rc01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_room_room_common_2_2_1_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_room_room_ktx_2_2_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_room_room_migration_2_2_1_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_room_room_runtime_2_2_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_room_room_testing_2_2_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_savedstate_savedstate_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_sqlite_sqlite_2_0_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_sqlite_sqlite_framework_2_0_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_ext_junit_1_1_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_monitor_1_2_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_runner_1_2_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_transition_transition_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_material_material_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_gson_gson_2_8_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_1_3_61_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_common_1_3_61_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_jdk7_1_3_61_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlinx_kotlinx_coroutines_android_1_3_2_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlinx_kotlinx_coroutines_core_1_3_2_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_mockito_mockito_core_2_19_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_objenesis_objenesis_2_6_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryRepository.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryRoomDataBase.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -55,65 +18,23 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_0_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_common_2_0_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_asynclayoutinflater_asynclayoutinflater_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_asynclayoutinflater_asynclayoutinflater_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cardview_cardview_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cardview_cardview_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_collection_collection_1_0_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_1_1_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_1_1_3_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_coordinatorlayout_coordinatorlayout_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_coordinatorlayout_coordinatorlayout_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_ktx_1_0_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_ktx_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_documentfile_documentfile_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_documentfile_documentfile_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_ui_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_ui_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_utils_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_utils_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_0_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_2_0_rc02_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_2_0_rc02_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_2_0_rc02_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_print_print_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_print_print_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_recyclerview_recyclerview_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_recyclerview_recyclerview_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_slidingpanelayout_slidingpanelayout_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_slidingpanelayout_slidingpanelayout_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_swiperefreshlayout_swiperefreshlayout_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_swiperefreshlayout_swiperefreshlayout_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_core_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_core_1_2_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_2_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_2_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_ext_junit_1_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_monitor_1_1_1_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_runner_1_1_1_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_0_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_android_extensions_runtime_1_3_50_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_android_extensions_runtime_1_3_61_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_1_3_50_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_common_1_3_50_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_jdk7_1_3_50_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/DataSource.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryEntry.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryEntry.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryRecyclerAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryRecyclerAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/Main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/Main/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/Main/MainLogic.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/Main/MainLogic.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/Conversion/ConversionActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/conversion/ConversionActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/Conversion/ConversionLogic.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/conversion/ConversionLogic.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/history/HistoryDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryEntry.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/history/HistoryEntry.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryRecyclerAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/history/HistoryRecyclerAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/history/HistoryRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryRoomDataBase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/history/HistoryRoomDataBase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/history/HistoryViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/Main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/main/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/Main/MainLogic.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/main/MainLogic.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/Spinner/SpinnerAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/spinner/SpinnerAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/Spinner/SpinnerItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/spinner/SpinnerItem.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout-land/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout-land/activity_main.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -150,110 +71,35 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/Main/MainActivity.kt">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/main/MainActivity.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="301" column="25" selection-start-line="301" selection-start-column="25" selection-end-line="301" selection-end-column="25" />
+            <state relative-caret-position="84">
+              <caret line="452" column="35" lean-forward="true" selection-start-line="452" selection-start-column="35" selection-end-line="452" selection-end-column="35" />
               <folding>
-                <element signature="e#514#1355#0" expanded="true" />
+                <element signature="e#0#478#0" expanded="true" />
+                <element signature="e#517#1415#0" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="326" column="36" selection-start-line="326" selection-start-column="36" selection-end-line="326" selection-end-column="36" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-land/activity_main.xml">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/main/MainLogic.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="940" column="47" lean-forward="true" selection-start-line="940" selection-start-column="47" selection-end-line="940" selection-end-column="47" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/Main/MainLogic.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="92" column="16" lean-forward="true" selection-start-line="92" selection-start-column="16" selection-end-line="92" selection-end-column="16" />
+            <state relative-caret-position="-6468">
+              <caret line="38" column="18" lean-forward="true" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryEntry.kt">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/history/HistoryRecyclerAdapter.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+            <state relative-caret-position="112">
+              <caret line="28" column="54" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="54" />
               <folding>
-                <element signature="e#41#132#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryRecyclerAdapter.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="35" column="28" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="28" />
-              <folding>
-                <element signature="e#36#234#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryRepository.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryDao.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="15" column="41" lean-forward="true" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
-              <folding>
-                <element signature="e#40#194#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryRoomDataBase.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="45" column="1" lean-forward="true" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
-              <folding>
-                <element signature="e#40#320#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryViewModel.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="21" column="52" selection-start-line="21" selection-start-column="52" selection-end-line="21" selection-end-column="52" />
-              <folding>
-                <element signature="e#40#222#0" expanded="true" />
+                <element signature="e#0#446#0" expanded="true" />
+                <element signature="e#489#772#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -270,8 +116,8 @@
         <option value="Kotlin File" />
         <option value="resourceFile" />
         <option value="layoutResourceFile_vertical" />
-        <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
+        <option value="Kotlin Interface" />
       </list>
     </option>
   </component>
@@ -306,6 +152,7 @@
       <find>Hist</find>
       <find>notifyDataSetChanged</find>
       <find>history</find>
+      <find>isOperation</find>
     </findStrings>
     <replaceStrings>
       <replace>android:layout_marginRight=&quot;2dp&quot;</replace>
@@ -334,17 +181,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout-land/acivity_long.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout-land/acivity_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout-land/activity_long.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/LongActivity.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/ruler_calculator_symbol_selector.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/normal_selector.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/history_selector.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/science_selector.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/history.svg" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_2_to_x.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/SpinnerItem.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/spinner_unpressed.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/spinner_middle.xml" />
@@ -375,16 +211,27 @@
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryEntry.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryRecyclerAdapter.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/Main/MainLogic.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout-land/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryRoomDataBase.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryDao.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/Main/MainActivity.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryViewModel.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryRepository.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryViewModel.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/Main/MainLogic.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/Main/MainActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryRecyclerAdapter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryDao.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryEntry.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/Spinner/SpinnerAdapter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/spinner/SpinnerAdapter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/conversion/ConversionActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/history/HistoryEntry.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/history/HistoryRepository.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-land/activity_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/history/HistoryViewModel.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/history/HistoryRoomDataBase.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/history/HistoryClickListener.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/history/HistoryRecyclerAdapter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/main/MainActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/main/MainLogic.kt" />
       </list>
     </option>
   </component>
@@ -399,15 +246,15 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="374b354638573398" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-12-20T15:22:53.012Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_2_API_28" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-01-23T20:43:57.260Z" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$PROJECT_DIR$/../Android/Sdk" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
@@ -598,47 +445,19 @@
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.3298731" />
       <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.5008489" side_tool="true" weight="0.47635525" />
       <window_info anchor="bottom" id="Version Control" order="5" weight="0.3298731" />
-      <window_info anchor="bottom" id="Build" order="6" sideWeight="0.4991511" weight="0.47866204" />
+      <window_info anchor="bottom" id="Build" order="6" sideWeight="0.4991511" weight="0.47750866" />
       <window_info anchor="bottom" id="Android Profiler" order="7" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.3298731" />
       <window_info anchor="bottom" id="Run" order="9" sideWeight="0.49971703" weight="0.32871974" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="right" id="Theme Preview" order="1" />
       <window_info anchor="right" id="Palette&#9;" order="2" />
-      <window_info active="true" anchor="right" id="Preview" order="3" visible="true" weight="0.33220148" />
+      <window_info anchor="right" id="Preview" order="3" weight="0.33220148" />
       <window_info anchor="right" id="Gradle" order="4" weight="0.32993776" />
       <window_info anchor="right" id="Device File Explorer" order="5" weight="0.32993776" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Captures" order="0" side_tool="true" weight="0.24957556" />
-      <window_info id="Structure" order="1" side_tool="true" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info id="Build Variants" order="3" side_tool="true" />
-      <window_info id="Image Layers" order="4" />
-      <window_info id="Designer" order="5" />
-      <window_info content_ui="combo" id="Project" order="6" weight="0.22071308" />
-      <window_info id="Resources Explorer" order="7" weight="0.32993776" />
-      <window_info id="Capture Tool" order="8" />
-      <window_info anchor="bottom" id="Logcat" order="0" weight="0.3298731" />
-      <window_info anchor="bottom" id="TODO" order="1" weight="0.3298731" />
-      <window_info anchor="bottom" id="Debug" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="3" weight="0.3298731" />
-      <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.50028294" side_tool="true" weight="0.32871974" />
-      <window_info anchor="bottom" id="Version Control" order="5" weight="0.3298731" />
-      <window_info anchor="bottom" id="Build" order="6" weight="0.47750866" />
-      <window_info anchor="bottom" id="Android Profiler" order="7" />
-      <window_info anchor="bottom" id="Run" order="8" sideWeight="0.49971703" weight="0.32871974" />
-      <window_info anchor="bottom" id="Find" order="9" weight="0.3298731" />
-      <window_info anchor="right" id="Capture Analysis" order="0" />
-      <window_info anchor="right" id="Gradle" order="1" />
-      <window_info anchor="right" id="Theme Preview" order="2" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info active="true" anchor="right" id="Preview" order="4" visible="true" weight="0.311262" />
-      <window_info anchor="right" id="Device File Explorer" order="5" side_tool="true" weight="0.32993776" />
-    </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/science_unpressed.png" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/science_selector.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/history.svg" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_history.xml">
@@ -736,16 +555,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/Conversion/ConversionLogic.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1315">
-          <caret line="174" column="36" lean-forward="true" selection-start-line="174" selection-start-column="36" selection-end-line="174" selection-end-column="36" />
-          <folding>
-            <element signature="e#32#113#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.3.50/8ac406cf33e942265c4abb33ee0acdee79292dd6/kotlin-stdlib-common-1.3.50-sources.jar!/kotlin/text/Strings.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="583">
@@ -784,13 +593,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/Conversion/ConversionActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="468" column="20" lean-forward="true" selection-start-line="468" selection-start-column="20" selection-end-line="468" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_conversion.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -799,7 +601,7 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/Spinner/SpinnerItem.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/spinner/SpinnerItem.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="56">
           <caret line="2" column="37" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="37" />
@@ -824,16 +626,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/Spinner/SpinnerAdapter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-196">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="e#33#360#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -868,13 +660,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/DataSource.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/DataSource.kt" />
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="552">
@@ -896,95 +682,123 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryEntry.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-          <folding>
-            <element signature="e#41#132#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/Main/MainLogic.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="92" column="16" lean-forward="true" selection-start-line="92" selection-start-column="16" selection-end-line="92" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryRecyclerAdapter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="35" column="28" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="28" />
-          <folding>
-            <element signature="e#36#234#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryDao.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="15" column="41" lean-forward="true" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
-          <folding>
-            <element signature="e#40#194#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryRoomDataBase.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="45" column="1" lean-forward="true" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
-          <folding>
-            <element signature="e#40#320#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryRepository.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/History/HistoryViewModel.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="21" column="52" selection-start-line="21" selection-start-column="52" selection-end-line="21" selection-end-column="52" />
-          <folding>
-            <element signature="e#40#222#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/Main/MainActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="301" column="25" selection-start-line="301" selection-start-column="25" selection-end-line="301" selection-end-column="25" />
-          <folding>
-            <element signature="e#514#1355#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
+        <state relative-caret-position="9128">
           <caret line="326" column="36" selection-start-line="326" selection-start-column="36" selection-end-line="326" selection-end-column="36" />
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/history/HistoryDao.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/conversion/ConversionActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="39" selection-start-column="39" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/conversion/ConversionLogic.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4844">
+          <caret line="174" column="9" lean-forward="true" selection-start-line="174" selection-start-column="9" selection-end-line="174" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/spinner/SpinnerAdapter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="35" lean-forward="true" selection-start-column="35" selection-end-column="35" />
+          <folding>
+            <element signature="e#33#360#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/history/HistoryEntry.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#478#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-land/activity_main.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="940" column="47" lean-forward="true" selection-start-line="940" selection-start-column="47" selection-end-line="940" selection-end-column="47" />
+        <state relative-caret-position="192">
+          <caret line="960" column="19" lean-forward="true" selection-start-line="960" selection-start-column="19" selection-end-line="960" selection-end-column="19" />
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/history/HistoryRoomDataBase.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="812">
+          <caret line="29" column="19" lean-forward="true" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#261#0" expanded="true" />
+            <element signature="e#40#320#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/history/HistoryViewModel.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-252">
+          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/history/HistoryRepository.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-160">
+          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/history/HistoryClickListener.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="3" column="19" lean-forward="true" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/main/MainActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="452" column="35" lean-forward="true" selection-start-line="452" selection-start-column="35" selection-end-line="452" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#478#0" expanded="true" />
+            <element signature="e#517#1415#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/history/HistoryRecyclerAdapter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="28" column="54" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#446#0" expanded="true" />
+            <element signature="e#489#772#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/main/MainLogic.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6468">
+          <caret line="38" column="18" lean-forward="true" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
