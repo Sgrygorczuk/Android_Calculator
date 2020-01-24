@@ -1,4 +1,4 @@
-#Samsung Calculator Replica#
+# Samsung Calculator Replica #
 
 This repository stores the code used to create an Android replica of the Samsung Calculator using Kotlin. It will discuss the process of creating the layouts, activities and logic as well as potential improvements if I were to start the project from the start. It will go over every class and layout and how they function. We’ll go through the by their modules in this order:
 
