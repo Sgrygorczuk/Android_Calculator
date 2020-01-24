@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/backLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/zerothDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:tag="backButton"
+            android:background="@drawable/black_selector"
+            android:onClick="backButton"
+            android:src="@drawable/ic_back"
+            android:textAllCaps="false"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="1dp"
+            android:layout_weight="1"
+            android:text="Tip Calculator"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/zerothDivider"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_margin="5dp"
+        android:background="@color/cardview_light_background"
+        android:scaleY="0.1"
+        app:layout_constraintBottom_toTopOf="@id/tipSelectionLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backLayout" />
+
+    <LinearLayout
+        android:id="@+id/tipSelectionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/firstDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/zerothDivider">
+
+        <Button
+            android:id="@+id/tenPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/black_selector"
+            android:text="10%"
+            android:tag="10%"
+            android:onClick="percentButton"
+            android:textSize="20dp"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/fifteenPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/black_selector"
+            android:text="15%"
+            android:tag="15%"
+            android:onClick="percentButton"
+            android:textSize="20dp"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/twentyPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:background="@drawable/black_selector"
+            android:text="20%"
+            android:tag="20%"
+            android:onClick="percentButton"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/firstDivider"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_margin="5dp"
+        android:background="@color/cardview_light_background"
+        android:scaleY="0.1"
+        app:layout_constraintBottom_toTopOf="@id/tipSelectionLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inputLayout" />
+
+    <LinearLayout
+        android:id="@+id/inputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/secondDivider"
+        app:layout_constraintTop_toBottomOf="@id/firstDivider">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Initial Balance:"
+            android:layout_margin="5dp"
+            android:gravity="bottom"
+            android:layout_gravity="bottom"
+            android:textSize="25sp"
+            android:textColor="#FFFFFF"  />
+        <TextView
+            android:id="@+id/inputText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="right"
+            android:text="$"
+            android:layout_gravity="bottom"
+            android:textSize="30sp"
+            android:textColor="#FFFFFF"  />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/secondDivider"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_margin="5dp"
+        android:background="@color/cardview_light_background"
+        android:scaleY="0.1"
+        app:layout_constraintBottom_toTopOf="@id/tipLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inputLayout" />
+
+    <LinearLayout
+        android:id="@+id/tipLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/thirdDivider"
+        app:layout_constraintTop_toBottomOf="@id/secondDivider">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Tip:"
+            android:layout_margin="5dp"
+            android:gravity="bottom"
+            android:layout_gravity="bottom"
+            android:textSize="25sp"
+            android:textColor="#FFFFFF"  />
+        <TextView
+            android:id="@+id/tipText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="right"
+            android:text="$"
+            android:layout_gravity="bottom"
+            android:textSize="30sp"
+            android:textColor="#FFFFFF"  />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/thirdDivider"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_margin="5dp"
+        android:background="@color/cardview_light_background"
+        android:scaleY="0.1"
+        app:layout_constraintBottom_toTopOf="@id/totalLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tipLayout" />
+
+    <LinearLayout
+        android:id="@+id/totalLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/fourthDivider"
+        app:layout_constraintTop_toBottomOf="@id/thirdDivider">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Total:"
+            android:layout_margin="5dp"
+            android:gravity="bottom"
+            android:layout_gravity="bottom"
+            android:textSize="25sp"
+            android:textColor="#FFFFFF"  />
+        <TextView
+            android:id="@+id/totalText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginBottom="8dp"
+            android:gravity="right"
+            android:text="$"
+            android:layout_margin="5dp"
+            android:layout_gravity="bottom"
+            android:textSize="30sp"
+            android:textColor="#FFFFFF"  />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/fourthDivider"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_margin="5dp"
+        android:background="@color/cardview_light_background"
+        android:scaleY="0.1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/totalLayout"
+        app:layout_constraintBottom_toTopOf="@id/buttonLayout"/>
+
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:background="@android:color/black"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@android:color/black"
+            android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/sevenButton"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/gray_selector"
+                android:text="@string/_7"
+                android:tag="@string/_7"
+                android:onClick="clickedNumberButton"
+                android:textColor="#FFFFFF"
+                android:textSize="40sp" />
+
+            <Button
+                android:id="@+id/eightButton"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/gray_selector"
+                android:text="@string/_8"
+                android:tag="@string/_8"
+                android:onClick="clickedNumberButton"
+                android:textColor="#FFFFFF"
+                android:textSize="40sp" />
+
+            <Button
+                android:id="@+id/nineButton"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/gray_selector"
+                android:text="@string/_9"
+                android:tag="@string/_9"
+                android:onClick="clickedNumberButton"
+                android:textColor="#FFFFFF"
+                android:textSize="40sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/fourButton"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/gray_selector"
+                android:text="@string/_4"
+                android:onClick="clickedNumberButton"
+                android:tag="@string/_4"
+                android:textColor="#FFFFFF"
+                android:textSize="40sp" />
+
+            <Button
+                android:id="@+id/fiveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/gray_selector"
+                android:text="@string/_5"
+                android:onClick="clickedNumberButton"
+                android:tag="@string/_5"
+                android:textColor="#FFFFFF"
+                android:textSize="40sp" />
+
+            <Button
+                android:id="@+id/sixButton"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/gray_selector"
+                android:text="@string/_6"
+                android:onClick="clickedNumberButton"
+                android:tag="@string/_6"
+                android:textColor="#FFFFFF"
+                android:textSize="40sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/oneButton"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/gray_selector"
+                android:text="@string/_1"
+                android:onClick="clickedNumberButton"
+                android:tag="@string/_1"
+                android:textColor="#FFFFFF"
+                android:textSize="40sp" />
+
+            <Button
+                android:id="@+id/twoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/gray_selector"
+                android:text="@string/_2"
+                android:onClick="clickedNumberButton"
+                android:tag="@string/_2"
+                android:textColor="#FFFFFF"
+                android:textSize="40sp" />
+
+            <Button
+                android:id="@+id/threeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/gray_selector"
+                android:text="@string/_3"
+                android:onClick="clickedNumberButton"
+                android:tag="@string/_3"
+                android:textColor="#FFFFFF"
+                android:textSize="40sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/deleteButton"
+                    android:layout_width="86dp"
+                    android:layout_height="55dp"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/gray_selector"
+                    android:scaleType="fitCenter"
+                    android:tag="d"
+                    android:onClick="clickedNumberButton"
+                    android:src="@drawable/ic_del_on"
+                    android:textColor="#00C604"
+                    android:textSize="40sp" />
+
+                <Button
+                    android:id="@+id/zeroButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/gray_selector"
+                    android:text="@string/_0"
+                    android:onClick="clickedNumberButton"
+                    android:tag="@string/_0"
+                    android:textColor="#FFFFFF"
+                    android:textSize="40sp" />
+
+                <Button
+                    android:id="@+id/decimalButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/gray_selector"
+                    android:text="@string/decimal"
+                    android:tag="."
+                    android:onClick="clickedNumberButton"
+                    android:textColor="#FFFFFF"
+                    android:textSize="40sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    <Button
+        android:id="@+id/clearButton"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="2dp"
+        android:layout_weight="1"
+        android:background="@drawable/gray_selector"
+        android:text="@string/c"
+        android:tag="c"
+        android:onClick="clickedNumberButton"
+        android:textColor="#FA7650"
+        android:textSize="40sp" />
+
+    </LinearLayout>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

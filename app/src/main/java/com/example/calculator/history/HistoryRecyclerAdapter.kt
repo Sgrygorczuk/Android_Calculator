@@ -90,7 +90,3 @@ class HistoryRecyclerAdapter(val adapterOnClick : (Any) -> Unit) : RecyclerView.
     */
     override fun getItemCount() = items.size
 }
-
-interface HistoryOnClick {
-    fun onClick(item: Any)
-}

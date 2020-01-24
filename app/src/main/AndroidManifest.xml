@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".conversion.ConversionActivity" />
-        <activity android:name=".LongActivity" />
+        <activity android:name=".tip.TipActivity" />
     </application>
 
 </manifest>

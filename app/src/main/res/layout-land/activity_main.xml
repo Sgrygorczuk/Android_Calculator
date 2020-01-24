@@ -102,15 +102,15 @@
                  android:layout_height="wrap_content"
                  android:orientation="horizontal">
 
-                 <Button
+                 <ImageButton
                      android:layout_width="70dp"
                      android:layout_height="30dp"
                      android:layout_marginHorizontal="12dp"
                      android:layout_marginVertical="2dp"
                      android:layout_weight="1"
                      android:background="@drawable/gray_selector"
-                     android:text="SW"
-                     android:textColor="@android:color/white"
+                     android:scaleType="fitCenter"
+                     android:src="@drawable/ic_switch"
                      android:onClick="switchLayoutButton"
                      android:tag="One"
                      android:textSize="20sp" />
@@ -370,7 +370,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/switchButtonTwo"
                         android:layout_width="70dp"
                         android:layout_height="30dp"
@@ -378,6 +378,8 @@
                         android:layout_marginVertical="2dp"
                         android:layout_weight="1"
                         android:background="@drawable/gray_selector"
+                        android:src="@drawable/ic_switch"
+                        android:scaleType="fitCenter"
                         android:onClick="switchLayoutButton"
                         android:tag="Two"
                         android:text="SW"
@@ -1077,6 +1079,21 @@
             android:layout_gravity="center"
             android:textColor="#FFFFFF"
             android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/tipButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/black_selector"
+            android:text="%"
+            android:textColor="#D6D6D6"
+            android:tag="Port"
+            android:onClick="tipButton"
+            android:layout_gravity="center"
+            android:textSize="25sp" />
 
     </LinearLayout>
 

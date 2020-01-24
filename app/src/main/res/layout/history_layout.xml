@@ -17,6 +17,7 @@
         android:background="@drawable/square_black_selector"
         android:gravity="right"
         android:text="4+4"
+        android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="40sp" />
 

@@ -109,9 +109,7 @@ class MainLogic {
     Output: String
     Purpose: To return the input string that will be a saved to the database
     */
-    fun returnInput() :String {
-        return inputString
-    }
+    fun returnInput() :String { return inputString }
 
     /*
     Input: Void
@@ -263,16 +261,80 @@ class MainLogic {
     }
 
     fun addResult(input : String) : String{
-        //Need do deal with additonal negation and addital decimals
-        if(inputOne.isEmpty()) {inputOne = input} else { inputOne += input }
+        if(inputOne.isEmpty()) {inputOne = input}
+        else if(!input.contains('.') && !input.contains('.') && inputOne.length + input.length < 15){
+            inputOne += input }
         if(mod.isNotEmpty()) {writeMod(mod)} else {inputString = inputTwo + operation + inputOne}
         return inputString
     }
 
     fun addInput(input : String) : String{
         var operationIndex : Int = 0
+        inputOne = ""
+        inputTwo = ""
+        mod = ""
+        operation = ""
 
-        if(input.contains('/') || input.contains('+') || input.contains('-') || input.contains('*') || input.contains('^')){
+        when {
+            input[0] == 'a' && input.contains('h') -> when{
+                input.contains("asinh") -> {inputOne = input.substring(6,input.length-1)
+                    mod = "asinh"}
+                input.contains("acosh") -> {inputOne = input.substring(6,input.length-1)
+                    mod = "acosh"}
+                input.contains("atanh") -> {inputOne = input.substring(6,input.length-1)
+                    mod = "atanh"}
+            }
+            input[0] == 'a' -> when {
+                input.contains("asin") -> {inputOne = input.substring(5,input.length-1)
+                    mod = "asin"}
+                input.contains("acos") -> {inputOne = input.substring(5,input.length-1)
+                    mod = "acos"}
+                input.contains("atan") -> {inputOne = input.substring(5,input.length-1)
+                    mod = "atan"}
+            }
+            input.contains('h') -> when {
+                input.contains("sinh") -> {inputOne = input.substring(5,input.length-1)
+                    mod = "sinh"}
+                input.contains("cosh") -> {inputOne = input.substring(5,input.length-1)
+                    mod = "cosh"}
+                input.contains("tanh") -> {inputOne = input.substring(5,input.length-1)
+                    mod = "tanh"}
+            }
+            input.contains('%') -> {inputOne = input.substring(0,input.length-1)
+                mod = "%"}
+            input.contains('√') -> {inputOne = input.substring(1)
+                mod = "√"}
+            input.contains("sin") -> {inputOne = input.substring(4,input.length-1)
+                mod = "sin"}
+            input.contains("cos") -> {inputOne = input.substring(4,input.length-1)
+                mod = "cos"}
+            input.contains("tan") -> {inputOne = input.substring(4,input.length-1)
+                mod = "tan"}
+            input.contains("ln") -> {inputOne = input.substring(3,input.length-1)
+                mod = "ln"}
+            input.contains("log") -> {inputOne = input.substring(4,input.length-1)
+                mod = "log"}
+            input.contains("1/") -> {inputOne = input.substring(2)
+                mod = "1/x"}
+            input.contains("e^") -> {inputOne = input.substring(2)
+                mod = "e^x"}
+            input.contains("^2") -> {inputOne = input.substring(0,input.length-2)
+                mod = "x^2"}
+            input.contains("^-1") -> {inputOne = input.substring(0,input.length-3)
+                mod = "x^-1"}
+            input.contains("|") -> {inputOne = input.substring(1,input.length-1)
+                mod = "|x|"}
+            input.contains("cbrt") -> {inputOne = input.substring(5,input.length-1)
+                mod = "cbrt"}
+            input.contains("2^") -> {inputOne = input.substring(3)
+                mod = "2^x"}
+            input.contains("^3") -> {inputOne = input.substring(0,input.length-2)
+                mod = "x^3"}
+            input.contains("x!") -> {inputOne = input.substring(0,input.length-1)
+                mod = "x!"}
+        }
+        if(mod.isEmpty() && (input.contains('/') || input.contains('+') || input.contains('-')
+                    || input.contains('*') || input.contains('^'))){
             when {
                 input.contains('/') -> {operationIndex = input.indexOf('/')}
                 input.contains('+') -> {operationIndex = input.indexOf('+')}
@@ -283,12 +345,6 @@ class MainLogic {
             inputTwo = input.substring(0,operationIndex)
             inputOne = input.substring(operationIndex+1)
             operation = input[operationIndex].toString()
-        }
-        else{
-            when {
-                input.contains('%') -> {inputOne = input.substring(0,input.length-1)
-                                            mod = "%"}
-            }
         }
         if(mod.isNotEmpty()) {writeMod(mod)} else {inputString = inputTwo + operation + inputOne}
         return inputString
@@ -323,9 +379,9 @@ class MainLogic {
                 "sinh" -> mod = "sinh"
                 "cosh" -> mod = "cosh"
                 "tanh" -> mod = "tanh"
-                "asinh" -> mod = "sinh"
-                "acosh" -> mod = "cosh"
-                "atanh" -> mod = "tanh"
+                "asinh" -> mod = "asinh"
+                "acosh" -> mod = "acosh"
+                "atanh" -> mod = "atanh"
                 "2^x" -> mod = "2^x"
                 "x^3" -> mod = "x^3"
                 "x!" -> mod = "x!"
@@ -362,9 +418,9 @@ class MainLogic {
             "sinh" -> inputString = "sinh($inputOne)"
             "cosh" -> inputString = "cosh($inputOne)"
             "tanh" -> inputString = "tanh($inputOne)"
-            "asinh" -> inputString = "sinh($inputOne)"
-            "acosh" -> inputString = "cosh($inputOne)"
-            "atanh" -> inputString = "tanh($inputOne)"
+            "asinh" -> inputString = "asinh($inputOne)"
+            "acosh" -> inputString = "acosh($inputOne)"
+            "atanh" -> inputString = "atanh($inputOne)"
             "2^x" -> inputString = "2^$inputOne"
             "x^3" -> inputString = "$inputOne^3"
             "x!" -> inputString = "$inputOne!"

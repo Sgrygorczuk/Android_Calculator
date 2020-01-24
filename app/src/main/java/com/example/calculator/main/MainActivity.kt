@@ -10,7 +10,7 @@ They're broken down into 5 types
 2) Operations inputs such as +,-,/,*, ->   Needs to be implemented ^
 3) Mod inputs such as  % and  √
 4) UI updating buttons such as equal, neg, clear
-5) Activity switching buttons that move us to other acitivites or modes
+5) Activity switching buttons that move us to other activities or modes
  */
 
 package com.example.calculator.main
@@ -39,6 +39,7 @@ import com.example.calculator.conversion.ConversionActivity
 import com.example.calculator.history.HistoryEntry
 import com.example.calculator.history.HistoryRecyclerAdapter
 import com.example.calculator.history.HistoryViewModel
+import com.example.calculator.tip.TipActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -101,6 +102,16 @@ class MainActivity : AppCompatActivity() {
     /*
     Input: view (Button)
     Output: Void
+    Purpose: Switches the activity to Tip Activity
+    */
+    fun tipButton(view : View){
+        d("Admin", "MainActivity ($orientation): ${view.tag} button was clicked")
+        startActivity(Intent(this, TipActivity::class.java))
+    }
+
+    /*
+    Input: view (Button)
+    Output: Void
     Purpose: Takes us to the conversion activity
     */
     fun conversionButton(view : View) {
@@ -112,10 +123,12 @@ class MainActivity : AppCompatActivity() {
         d("Admin", "MainActivity ($orientation): ${view.tag} button was clicked")
         if(orientation == "Port") {
             if (historyOn) {
+                historyButton.setImageResource(R.drawable.ic_history)
                 historyNumbers.visibility = VISIBLE
                 history.visibility = GONE
                 historyOn = false
             } else {
+                historyButton.setImageResource(R.drawable.ic_keypad)
                 historyNumbers.visibility = GONE
                 history.visibility = VISIBLE
                 historyOn = true
@@ -123,10 +136,12 @@ class MainActivity : AppCompatActivity() {
         }
         if(orientation == "Land") {
             if (historyOn) {
+                historyButton.setImageResource(R.drawable.ic_history)
                 historyOrExtra.visibility = VISIBLE
                 history.visibility = GONE
                 historyOn = false
             } else {
+                historyButton.setImageResource(R.drawable.ic_keypad)
                 historyOrExtra.visibility = GONE
                 history.visibility = VISIBLE
                 historyOn = true
@@ -271,14 +286,18 @@ class MainActivity : AppCompatActivity() {
 
     fun historyClear (view:View){
         if(orientation == "Port") {
+            historyButton.setImageResource(R.drawable.ic_history_off)
             historyNumbers.visibility = VISIBLE
             history.visibility = GONE
             historyOn = false
+            historyButton.isEnabled = false
         }
         if(orientation == "Land") {
+            historyButton.setImageResource(R.drawable.ic_history_off)
             historyOrExtra.visibility = VISIBLE
             history.visibility = GONE
             historyOn = false
+            historyButton.isEnabled = false
         }
         historyViewModel.clear()
     }
@@ -304,8 +323,10 @@ class MainActivity : AppCompatActivity() {
                 var input = logicUnit.returnInput()
                 var type = logicUnit.getOrientation()
                 calculatorView.text = logicUnit.performEqual()
-                historyViewModel.insert(HistoryEntry(input.toLowerCase(), "= ${calculatorView.text}", type))
+                historyViewModel.insert(HistoryEntry(input, "= ${calculatorView.text}", type))
                 resultsView.text = ""
+                historyButton.isEnabled = true
+                historyButton.setImageResource(R.drawable.ic_history)
                 //Performs the animation
                 equalAnimation()
                 //After animation finishes we update the color of the text
@@ -314,6 +335,29 @@ class MainActivity : AppCompatActivity() {
                 }, 310)
             }
         }
+    }
+
+    /*
+    Input: Anything that is passed from the Recycler View Buttons
+    Output: Void
+    Purpose: the doClick function
+    */
+    private fun doClick(item:Any) {
+        calculatorView.setTextColor(Color.parseColor(logicUnit.operationWasPerformed()))
+        if(item.toString().contains('=')){
+            d("Admin", "Main Activity ($orientation): Result: ${item}, Recycler Entry Clicked button was clicked")
+            calculatorView.text = logicUnit.addResult(item.toString().substring(2))
+        }
+        else{
+            d("Admin", "Main Activity ($orientation): Input: ${item}, Recycler Entry Clicked button was clicked")
+            calculatorView.text = logicUnit.addInput(item.toString())
+        }
+        //Updates rest of UI
+        updateUI()
+        //Make sure we don't display or let user interact with "NaN" and "Infinity"
+        val viewString : String = logicUnit.performOperation(degRad)
+        if(viewString == "NaN" || viewString == "Infinity"){resultsView.text = ""}
+        else{resultsView.text = viewString}
     }
 
     /*
@@ -390,8 +434,7 @@ class MainActivity : AppCompatActivity() {
     /*
     Input: Void
     Output: Void
-    Purpose: Changes the text to be smaller if enough chars are put in, only
-             works in portrait view
+    Purpose: Changes the text to be smaller if enough chars are put in, only done in portrait view
     */
     private fun textAdjustment(){
         if(orientation == "Port"){
@@ -400,9 +443,16 @@ class MainActivity : AppCompatActivity() {
                     .scaleY(.9f)
                     .scaleX(.9f)
                     .translationY(-50f)
-                    .translationX(70f)
+                    .translationX(40f)
                     .duration = 200
                 calculatorView.textSize = 40F
+
+                curosorTextView.animate()
+                    .scaleY(.9f)
+                    .scaleX(.9f)
+                    .translationY(-50f)
+                    .duration = 200
+                curosorTextView.textSize = 40F
                 }
             else{
                 calculatorView.animate()
@@ -412,6 +462,14 @@ class MainActivity : AppCompatActivity() {
                     .scaleX(1f)
                     .duration = 0
                 calculatorView.textSize = 60F
+
+                curosorTextView.animate()
+                    .translationY(0f)
+                    .translationX(0f)
+                    .scaleY(1f)
+                    .scaleX(1f)
+                    .duration = 0
+                curosorTextView.textSize = 60F
             }
         }
     }
@@ -447,23 +505,6 @@ class MainActivity : AppCompatActivity() {
             curosorTextView.text = "|"
             blink = true
         }
-    }
-
-    //creating method to make it look simpler
-    private fun doClick(item:Any) {
-        d("Admin", "Main Activity ($orientation): Input: ${item}, Recycler Entry Clicked button was clicked")
-        if(item.toString().contains('=')){
-            calculatorView.text = logicUnit.addResult(item.toString().substring(2))
-        }
-        else{
-            calculatorView.text = logicUnit.addInput(item.toString())
-        }
-        //Updates rest of UI
-        updateUI()
-        //Make sure we don't display or let user interact with "NaN" and "Infinity"
-        val viewString : String = logicUnit.performOperation(degRad)
-        if(viewString == "NaN" || viewString == "Infinity"){resultsView.text = ""}
-        else{resultsView.text = viewString}
     }
 
     /*
