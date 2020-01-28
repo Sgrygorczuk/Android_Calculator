@@ -18,14 +18,9 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/conversion/ConversionLogic.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/conversion/ConversionLogic.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/main/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/main/MainLogic.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/main/MainLogic.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/tip/TipLogic.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/calculator/tip/TipLogic.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,8 +59,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/main/MainActivity.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="245" column="57" selection-start-line="245" selection-start-column="57" selection-end-line="245" selection-end-column="57" />
+            <state relative-caret-position="292">
+              <caret line="322" column="38" lean-forward="true" selection-start-line="322" selection-start-column="38" selection-end-line="322" selection-end-column="38" />
               <folding>
                 <element signature="e#0#478#0" expanded="true" />
               </folding>
@@ -73,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/main/MainLogic.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3908">
-              <caret line="388" column="36" lean-forward="true" selection-start-line="388" selection-start-column="36" selection-end-line="388" selection-end-column="36" />
+            <state relative-caret-position="488">
+              <caret line="624" column="54" selection-start-line="624" selection-start-column="54" selection-end-line="624" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -91,7 +86,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/conversion/ConversionLogic.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="56">
@@ -235,10 +230,10 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_tip.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/history/HistoryRecyclerAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/tip/TipLogic.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/main/MainActivity.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/main/MainLogic.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/conversion/ConversionLogic.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/conversion/ConversionActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/main/MainActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/calculator/main/MainLogic.kt" />
       </list>
     </option>
   </component>
@@ -770,20 +765,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/main/MainActivity.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/conversion/ConversionLogic.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="245" column="57" selection-start-line="245" selection-start-column="57" selection-end-line="245" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#478#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/main/MainLogic.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3908">
-          <caret line="388" column="36" lean-forward="true" selection-start-line="388" selection-start-column="36" selection-end-line="388" selection-end-column="36" />
+        <state relative-caret-position="56">
+          <caret line="159" selection-start-line="159" selection-end-line="159" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -794,10 +779,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/conversion/ConversionLogic.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/main/MainActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="159" selection-start-line="159" selection-end-line="159" selection-end-column="36" />
+        <state relative-caret-position="292">
+          <caret line="322" column="38" lean-forward="true" selection-start-line="322" selection-start-column="38" selection-end-line="322" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#478#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/calculator/main/MainLogic.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="488">
+          <caret line="624" column="54" selection-start-line="624" selection-start-column="54" selection-end-line="624" selection-end-column="54" />
         </state>
       </provider>
     </entry>

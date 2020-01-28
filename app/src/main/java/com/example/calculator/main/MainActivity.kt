@@ -440,16 +440,16 @@ class MainActivity : AppCompatActivity() {
         if(orientation == "Port"){
             if(logicUnit.isAdjustLength()){
                 calculatorView.animate()
-                    .scaleY(.9f)
-                    .scaleX(.9f)
+                    .scaleY(.85f)
+                    .scaleX(.85f)
                     .translationY(-50f)
                     .translationX(40f)
                     .duration = 200
                 calculatorView.textSize = 40F
 
                 curosorTextView.animate()
-                    .scaleY(.9f)
-                    .scaleX(.9f)
+                    .scaleY(.85f)
+                    .scaleX(.85f)
                     .translationY(-50f)
                     .duration = 200
                 curosorTextView.textSize = 40F

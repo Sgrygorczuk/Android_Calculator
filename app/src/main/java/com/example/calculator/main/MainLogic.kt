@@ -109,7 +109,7 @@ class MainLogic {
     Output: String
     Purpose: To return the input string that will be a saved to the database
     */
-    fun returnInput() :String { return inputString }
+    fun returnInput() :String { return addCommas(inputTwo) + operation + addCommas(inputOne)}
 
     /*
     Input: Void
@@ -264,8 +264,13 @@ class MainLogic {
         if(inputOne.isEmpty()) {inputOne = input}
         else if(!input.contains('.') && !input.contains('.') && inputOne.length + input.length < 15){
             inputOne += input }
-        if(mod.isNotEmpty()) {writeMod(mod)} else {inputString = inputTwo + operation + inputOne}
-        return addCommas(inputTwo) + operation + addCommas(inputOne)
+        inputTwo = inputTwo.replace(",","")
+        inputOne = inputOne.replace(",","")
+        return if(mod.isNotEmpty()) { writeMod(mod) }
+        else {
+            inputString = inputTwo + operation + inputOne
+            addCommas(inputTwo) + operation + addCommas(inputOne)
+        }
     }
 
     fun addInput(input : String) : String{
@@ -346,11 +351,12 @@ class MainLogic {
             inputOne = input.substring(operationIndex+1)
             operation = input[operationIndex].toString()
         }
-        if(mod.isNotEmpty()) {
-            return writeMod(mod)
-        } else {
+        inputTwo = inputTwo.replace(",","")
+        inputOne = inputOne.replace(",","")
+        return if(mod.isNotEmpty()) { writeMod(mod) }
+        else {
             inputString = inputTwo + operation + inputOne
-            return addCommas(inputTwo) + operation + addCommas(inputOne)
+            addCommas(inputTwo) + operation + addCommas(inputOne)
         }
     }
 
@@ -605,6 +611,7 @@ class MainLogic {
     private fun addCommas(input : String) : String {
         var output = ""
         var adjustedInput : String = if(input.contains('.')) { input.substring(0,input.indexOf('.')) } else{ input }
+        if(adjustedInput.contains('-')) {adjustedInput  =  adjustedInput.substring(1)}
         var i : Int = adjustedInput.length
         if(adjustedInput.length > 3) {
             while(i > 3){
@@ -615,6 +622,7 @@ class MainLogic {
         Log.d("Admin", "$i")
         output = adjustedInput.substring(0, i) + output
         if(input.contains('.')) { output += input.substring(input.indexOf('.'))}
+        if(input.contains('-')) { output  =  "-$output"}
         return output
     }
 }
