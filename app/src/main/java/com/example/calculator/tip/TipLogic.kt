@@ -27,7 +27,7 @@ class TipLogic {
         } else {
             tip = (input.toDouble() * percentage.substring(0, 2).toDouble() / 100).toString()
             tip = BigDecimal(tip.toDouble()).setScale(2, RoundingMode.HALF_EVEN).toString()
-            "$$tip"
+            "$${addCommas(tip)}"
         }
     }
 
@@ -36,7 +36,7 @@ class TipLogic {
         } else {
             var total: String = (tip.toDouble() + input.toDouble()).toString()
             total = BigDecimal(total.toDouble()).setScale(2, RoundingMode.HALF_EVEN).toString()
-            "$$total"
+            "$${addCommas(total)}"
         }
     }
 
@@ -64,7 +64,27 @@ class TipLogic {
             if(input.length >= 2 && input[0] == '0'  && input[1] != '.') { input = input.replaceFirst("0", "")}
         }
         if(input != "" && choice == "d"){input = input.substring(0, input.length - 1)}
-        return "$$input"
+        return "$${addCommas(input)}"
+    }
+
+    /*
+    Input:
+    Output:
+    Purpose:
+    */
+    private fun addCommas(input : String) : String {
+        var output = ""
+        var adjustedInput : String = if(input.contains('.')) { input.substring(0,input.indexOf('.')) } else{ input }
+        var i : Int = adjustedInput.length
+        if(adjustedInput.length > 3) {
+            while(i > 3){
+                output = output + "," + adjustedInput.substring(i-3,i)
+                i -= 3
+            }
+        }
+        output = adjustedInput.substring(0, i) + output
+        if(input.contains('.')) { output += input.substring(input.indexOf('.'))}
+        return output
     }
 
 }

@@ -484,11 +484,24 @@ class MainActivity : AppCompatActivity() {
         calculatorView.setTextColor(Color.parseColor("#6C6C6C"))
         calculatorView.bringToFront()
         calculatorView.translationY = 200f
-        if(orientation == "Port"){ calculatorView.translationX =  270f} else if (orientation == "Land") {calculatorView.translationX = 60f}
+        if(orientation == "Port"){ calculatorView.translationX =  120f} else if (orientation == "Land") {calculatorView.translationX = 60f}
         calculatorView.scaleY = 0.5f
         calculatorView.scaleX = 0.5f
 
         calculatorView.animate()
+            .translationY(0f)
+            .translationX(0f)
+            .scaleY(1f)
+            .scaleX(1f)
+            .duration = 300
+
+        curosorTextView.bringToFront()
+        curosorTextView.translationY = 200f
+        if(orientation == "Port"){ curosorTextView.translationX =  120f} else if (orientation == "Land") {curosorTextView.translationX = 60f}
+        curosorTextView.scaleY = 0.5f
+        curosorTextView.scaleX = 0.5f
+
+        curosorTextView.animate()
             .translationY(0f)
             .translationX(0f)
             .scaleY(1f)

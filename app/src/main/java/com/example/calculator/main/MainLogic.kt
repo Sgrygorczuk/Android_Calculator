@@ -176,7 +176,7 @@ class MainLogic {
             else if(resultString.toDouble() % 1.0 != 0.0 && resultString != "NaN" && resultString != "Infinity"){
                 resultString = BigDecimal(resultString.toDouble()).setScale(7, RoundingMode.HALF_EVEN).toString()
                 resultString = resultString.trimEnd('0')}
-            return resultString
+            return addCommas(resultString)
         }
         else { return "" }
     }
@@ -230,7 +230,7 @@ class MainLogic {
             //Depending on if a mod or operation was input it will display different format
             if(mod.isNotEmpty()) {writeMod(mod)} else {inputString = inputTwo + operation + inputOne}
         }
-        return inputString
+        return if(mod.isNotEmpty()) {writeMod(mod)} else {addCommas(inputTwo) + operation + addCommas(inputOne)}
     }
 
     /*
@@ -257,7 +257,7 @@ class MainLogic {
             }
             inputString = inputTwo + operation + inputOne
         }
-        return inputString
+        return addCommas(inputTwo) + operation + addCommas(inputOne)
     }
 
     fun addResult(input : String) : String{
@@ -265,7 +265,7 @@ class MainLogic {
         else if(!input.contains('.') && !input.contains('.') && inputOne.length + input.length < 15){
             inputOne += input }
         if(mod.isNotEmpty()) {writeMod(mod)} else {inputString = inputTwo + operation + inputOne}
-        return inputString
+        return addCommas(inputTwo) + operation + addCommas(inputOne)
     }
 
     fun addInput(input : String) : String{
@@ -346,8 +346,12 @@ class MainLogic {
             inputOne = input.substring(operationIndex+1)
             operation = input[operationIndex].toString()
         }
-        if(mod.isNotEmpty()) {writeMod(mod)} else {inputString = inputTwo + operation + inputOne}
-        return inputString
+        if(mod.isNotEmpty()) {
+            return writeMod(mod)
+        } else {
+            inputString = inputTwo + operation + inputOne
+            return addCommas(inputTwo) + operation + addCommas(inputOne)
+        }
     }
 
     /*
@@ -386,9 +390,8 @@ class MainLogic {
                 "x^3" -> mod = "x^3"
                 "x!" -> mod = "x!"
             }
-            writeMod(choice)
         }
-        return inputString
+        return writeMod(mod)
     }
 
     /*
@@ -397,34 +400,112 @@ class MainLogic {
     The writeMod takes in the current mod value and formats the inputString according
     Purpose: Format different types of mod inputs
     */
-    private fun writeMod(choice: String) {
-        when (choice) {
-            "√" -> inputString = "√$inputOne"
-            "%" -> inputString = "$inputOne%"
-            "sin" -> inputString = "sin($inputOne)"
-            "cos" -> inputString = "cos($inputOne)"
-            "tan" -> inputString = "tan($inputOne)"
-            "ln" -> inputString = "ln($inputOne)"
-            "log" -> inputString = "log($inputOne)"
-            "1/x" -> inputString = "1/$inputOne"
-            "e^x" -> inputString = "e^$inputOne"
-            "x^2" -> inputString = "$inputOne^2"
-            "x^-1" -> inputString = "$inputOne^-1"
-            "|x|" -> inputString = "|$inputOne|"
-            "cbrt" -> inputString = "cbrt($inputOne)"
-            "asin" -> inputString = "asin($inputOne)"
-            "acos" -> inputString = "acos($inputOne)"
-            "atan" -> inputString = "atan($inputOne)"
-            "sinh" -> inputString = "sinh($inputOne)"
-            "cosh" -> inputString = "cosh($inputOne)"
-            "tanh" -> inputString = "tanh($inputOne)"
-            "asinh" -> inputString = "asinh($inputOne)"
-            "acosh" -> inputString = "acosh($inputOne)"
-            "atanh" -> inputString = "atanh($inputOne)"
-            "2^x" -> inputString = "2^$inputOne"
-            "x^3" -> inputString = "$inputOne^3"
-            "x!" -> inputString = "$inputOne!"
+    private fun writeMod(choice: String) : String{
+        var output = ""
+            when (choice) {
+                "√" -> {
+                    inputString = "√$inputOne"
+                    output = "√${addCommas(inputOne)}"
+                }
+                "%" -> {
+                    inputString = "$inputOne%"
+                    output = "${addCommas(inputOne)}%"
+                }
+                "sin" -> {
+                    inputString = "sin($inputOne)"
+                    output = "sin${addCommas(inputOne)})"
+                }
+                "cos" -> {
+                    inputString = "cos($inputOne)"
+                    output = "cos${addCommas(inputOne)})"
+                }
+                "tan" -> {
+                    inputString = "tan($inputOne)"
+                    output = "tan${addCommas(inputOne)})"
+                }
+                "ln" -> {
+                    inputString = "ln($inputOne)"
+                    output = "ln(${addCommas(inputOne)})"
+                }
+                "log" -> {
+                    inputString = "log($inputOne)"
+                    output = "log(${addCommas(inputOne)})"
+                }
+                "1/x" -> {
+                    inputString = "1/$inputOne"
+                    output = "1/${addCommas(inputOne)}"
+                }
+                "e^x" -> {
+                    inputString = "e^$inputOne"
+                    output = "e^${addCommas(inputOne)}"
+                }
+                "x^2" -> {
+                    inputString = "$inputOne^2"
+                    output = "${addCommas(inputOne)}^2"
+                }
+                "x^-1" -> {
+                    inputString = "$inputOne^-1"
+                    output = "${addCommas(inputOne)}^-1"
+                }
+                "|x|" -> {
+                    inputString = "|$inputOne|"
+                    output = "|${addCommas(inputOne)}|"
+                }
+                "cbrt" -> {
+                    inputString = "cbrt($inputOne)"
+                    output = "cbrt(${addCommas(inputOne)})"
+                }
+                "asin" -> {
+                    inputString = "asin($inputOne)"
+                    output = "asin(${addCommas(inputOne)})"
+                }
+                "acos" -> {
+                    inputString = "acos($inputOne)"
+                    output = "acos(${addCommas(inputOne)})"
+                }
+                "atan" -> {
+                    inputString = "atan($inputOne)"
+                    output = "atan(${addCommas(inputOne)})"
+
+                }
+                "sinh" -> {
+                    inputString = "sinh($inputOne)"
+                    output = "sinh(${addCommas(inputOne)})"
+                }
+                "cosh" -> {
+                    inputString = "cosh($inputOne)"
+                    output = "cosh(${addCommas(inputOne)})"
+                }
+                "tanh" -> {
+                    inputString = "tanh($inputOne)"
+                    output = "tanh(${addCommas(inputOne)})"
+                }
+                "asinh" -> {
+                    inputString = "asinh($inputOne)"
+                    output = "asinh(${addCommas(inputOne)})"
+                }
+                "acosh" -> {
+                    inputString = "acosh($inputOne)"
+                    output = "acosh(${addCommas(inputOne)})"
+                }
+                "atanh" -> {
+                    inputString = "atanh($inputOne)"
+                    output = "atanh(${addCommas(inputOne)})"
+                }
+                "2^x" -> {
+                    inputString = "2^$inputOne"
+                    output = "2^${addCommas(inputOne)}"
+                }
+                "x^3" -> {
+                    inputString = "$inputOne^3"
+                    output = "${addCommas(inputOne)}^3"
+                }
+                "x!" -> {
+                    inputString = "$inputOne!"
+                    output = "${addCommas(inputOne)}!"
+                }
         }
+        return output
     }
 
     /*
@@ -452,7 +533,7 @@ class MainLogic {
             inputOne = inputOne.substring(0, inputOne.length - 1)
         }
         if(mod.isNotEmpty()) {writeMod(mod)} else {inputString = inputTwo + operation + inputOne}
-        return inputString
+        return addCommas(inputTwo) + operation + addCommas(inputOne)
     }
 
     /*
@@ -466,7 +547,7 @@ class MainLogic {
         inputOne = if(inputOne.contains('-')) inputOne.replace("-", "") else "-$inputOne"
         //Formats the inputString based on if we're in the mod mode or operation mode
         if(mod.isNotEmpty()) {writeMod(mod)} else {inputString = inputTwo + operation + inputOne}
-        return inputString
+        return addCommas(inputTwo) + operation + addCommas(inputOne)
     }
 
     /*
@@ -497,7 +578,7 @@ class MainLogic {
         operation = ""
         mod = ""
         operationPerformed = true
-        return inputOne
+        return addCommas(inputOne)
     }
 
     /*
@@ -514,5 +595,26 @@ class MainLogic {
             operationPerformed = false
         }
         return "#FFFFFF"
+    }
+
+    /*
+    Input:
+    Output:
+    Purpose:
+    */
+    private fun addCommas(input : String) : String {
+        var output = ""
+        var adjustedInput : String = if(input.contains('.')) { input.substring(0,input.indexOf('.')) } else{ input }
+        var i : Int = adjustedInput.length
+        if(adjustedInput.length > 3) {
+            while(i > 3){
+                output = output + "," + adjustedInput.substring(i-3,i)
+                i -= 3
+            }
+        }
+        Log.d("Admin", "$i")
+        output = adjustedInput.substring(0, i) + output
+        if(input.contains('.')) { output += input.substring(input.indexOf('.'))}
+        return output
     }
 }

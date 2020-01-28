@@ -1,5 +1,6 @@
 package com.example.calculator.conversion
 
+import android.util.Log
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -136,12 +137,15 @@ class ConversionLogic {
     Days vs: Milliseconds, Seconds, Minutes, Hours, Days, Weeks
     Weeks vs: Milliseconds, Seconds, Minutes, Hours, Days, Weeks
     */
-    val timeTable = arrayOf(arrayOf(1, 0.001, 1.6667e-5, 2.7778e-7, 1.1574e-8, 1.6534e-9),
+    private val timeTable = arrayOf(arrayOf(1, 0.001, 1.6667e-5, 2.7778e-7, 1.1574e-8, 1.6534e-9),
                             arrayOf(1000, 1, 0.0166667, 0.000277778, 1.1574e-5, 1.6534e-6),
                             arrayOf(60000, 60, 1, 0.0166667, 0.000694444, 9.9206e-5),
                             arrayOf(3.6e+6, 3600, 60, 1, 0.0416667, 0.00595238),
                             arrayOf(8.64e+7, 86400, 1440, 24, 1, 0.142857),
                             arrayOf(6.048e+8, 604800, 10080, 168, 7, 1))
+
+
+    var inputOne = ""
 
     /*
     Input: Void
@@ -174,7 +178,7 @@ class ConversionLogic {
             if(input.length >= 2 && input[0] == '0'  && input[1] != '.') { input = input.replaceFirst("0", "")}
         }
         if(input != "" && choice == "d"){input = input.substring(0, input.length - 1)}
-        return input
+        return addCommas(input)
     }
 
     /*
@@ -237,6 +241,26 @@ class ConversionLogic {
             return outputString
         }
         else{return ""}
+    }
+
+    /*
+    Input:
+    Output:
+    Purpose:
+    */
+    private fun addCommas(input : String) : String {
+        var output = ""
+        var adjustedInput : String = if(input.contains('.')) { input.substring(0,input.indexOf('.')) } else{ input }
+        var i : Int = adjustedInput.length
+        if(adjustedInput.length > 3) {
+            while(i > 3){
+                output = output + "," + adjustedInput.substring(i-3,i)
+                i -= 3
+            }
+        }
+        output = adjustedInput.substring(0, i) + output
+        if(input.contains('.')) { output += input.substring(input.indexOf('.'))}
+        return output
     }
 }
 
