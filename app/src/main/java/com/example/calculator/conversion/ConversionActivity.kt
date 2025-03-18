@@ -16,13 +16,15 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import com.example.calculator.main.MainActivity
-import com.example.calculator.R
 import com.example.calculator.spinner.SpinnerItem
 import com.example.calculator.spinner.SpinnerAdapter
-
+import com.example.roomtestthree.R
+import com.example.roomtestthree.databinding.ActivityConversionBinding
 
 class ConversionActivity: AppCompatActivity() {
 
+    private var binding: ActivityConversionBinding? = null
+    
     /*
     Tables used to fill out the Spinners and the Text boxes
         Type Tables are for spinners
@@ -303,7 +305,7 @@ class ConversionActivity: AppCompatActivity() {
     Purpose: Deselects all of the layout buttons and set all of the layouts to GONE
              Highlights the clicked on layout button and brings up that layout
     */
-    private fun updateLayout(){
+    private fun ActivityConversionBinding.updateLayout(){
         Log.d("Admin", "ConversionActivity: $currentButton layout was chosen")
 
         var newButton : View = areaButton
@@ -365,7 +367,7 @@ class ConversionActivity: AppCompatActivity() {
         animateLayoutTransition(newPosition, distance)
     }
 
-    private fun animateLayoutTransition(position : Int, scrollDistance : Int){
+    private fun ActivityConversionBinding.animateLayoutTransition(position : Int, scrollDistance : Int){
         val distance : Float = conversionLayoutArea.width.toFloat()*(currentLayoutPosition-position)
         val time : Long = 200
 
@@ -412,7 +414,7 @@ class ConversionActivity: AppCompatActivity() {
     Output: Void
     Purpose: When switching between layouts moves focus to editTextBox to current layout
     */
-    private fun inputFocus(){
+    private fun ActivityConversionBinding.inputFocus(){
         Log.d("Admin", "ConversionActivity: editTextBox focus updated")
         if(isTop)
         {
@@ -447,7 +449,7 @@ class ConversionActivity: AppCompatActivity() {
     Output: Void
     Purpose: Turns on and off the +/- button based on which layout we are looking at
     */
-    private fun plusMinusAble(){
+    private fun ActivityConversionBinding.plusMinusAble(){
         Log.d("Admin", "ConversionActivity: +/- button updated")
         if(currentLayoutPosition == 2){
             plusMinusButton.setBackgroundDrawable(resources.getDrawable(R.drawable.gray_selector))
@@ -466,7 +468,7 @@ class ConversionActivity: AppCompatActivity() {
     Output: Void
     Purpose: Turns on and off the the Up and Down buttons based on which editTextBox we are focused on
     */
-    private fun upDownArrows(){
+    private fun ActivityConversionBinding.upDownArrows(){
         Log.d("Admin", "ConversionActivity: editTextBox buttons updated")
         if(isTop){
             bottomButton.setBackgroundDrawable(resources.getDrawable(R.drawable.gray_selector))
@@ -494,7 +496,7 @@ class ConversionActivity: AppCompatActivity() {
     Output: Void
     Purpose: This is the function that resets the info and moves to the new layout
     */
-    private fun loadUnitTable(buttonName : String){
+    private fun ActivityConversionBinding.loadUnitTable(buttonName : String){
         Log.d("Admin", "ConversionActivity: $buttonName was clicked")
         currentButton = buttonName
         updateLayout()
@@ -510,7 +512,7 @@ class ConversionActivity: AppCompatActivity() {
     Output: Void
     Purpose: Updates which editTextBox we are looking at using the Button and updates the UI
     */
-    fun updateLocationTop(view : View){
+    fun ActivityConversionBinding.updateLocationTop(view : View){
         Log.d("Admin", "ConversionActivity: Top text box was clicked")
         isTop = true
         upDownArrows()
@@ -522,7 +524,7 @@ class ConversionActivity: AppCompatActivity() {
     Output: Void
     Purpose: Updates which editTextBox we are looking at using the Button and updates the UI
     */
-    fun updateLocationBottom(view : View){
+    fun ActivityConversionBinding.updateLocationBottom(view : View){
         Log.d("Admin", "ConversionActivity: Bottom text box was clicked")
         isTop = false
         upDownArrows()
@@ -548,7 +550,7 @@ class ConversionActivity: AppCompatActivity() {
     Output: Void
     Purpose: Input any new numbers or decimals to the input
     */
-    private fun clickedNumberButton(errorMsg : String, choice : String){
+    private fun ActivityConversionBinding.clickedNumberButton(errorMsg : String, choice : String){
         Log.d("Admin", "ConversionActivity: $errorMsg was clicked, choice : $choice")
         updateChar(choice)
         showToast()
@@ -560,7 +562,7 @@ class ConversionActivity: AppCompatActivity() {
     Output: Void
     Purpose: Update the current string to add or subtract chars
     */
-    private fun updateChar(choice : String){
+    private fun ActivityConversionBinding.updateChar(choice : String){
         if(isTop){
             currentValueTop = conversionLogicUnit.addChar(currentValueTop, choice)
             when (currentButton) {
@@ -596,7 +598,7 @@ class ConversionActivity: AppCompatActivity() {
              Passes them to the conversionLogicUnit to perform the conversion
              Then updates the editTextBoxes
     */
-    private fun passToLogic(){
+    private fun ActivityConversionBinding.passToLogic(){
         when (currentButton) {
             "areaButton" -> {
                 currentPositionTop = currentPositionsSpinner[0]
@@ -675,7 +677,7 @@ class ConversionActivity: AppCompatActivity() {
         }
     }
 
-    private fun blinking() {
+    private fun ActivityConversionBinding.blinking() {
         var cursorText : TextView = topCursorArea
 
         //Blanks out all of the Cursors
@@ -718,523 +720,527 @@ class ConversionActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_conversion)
-        //Sets the Area button to be selected as that's the screen we start from
-        loadUnitTable("areaButton")
-
-        //Starts an endless loop that animates the blinking of the cursor
-        val mainHandler = Handler(Looper.getMainLooper())
-        mainHandler.post(object : Runnable {
-            override fun run() {
-                blinking()
-                mainHandler.postDelayed(this, 400)
-            }
-        })
-
-        /*
-        Set up and Functionality of the Spinners
-            First 3 Lines connect the spinner to the array that will be displayed in the drop down menu
-            Then we have the object that will handle the clicking and selecting that will change information
-            in the text boxes
-         */
-
-        /*
-        Top Area Spinner
-         */
-        topSpinnerArea.adapter = SpinnerAdapter(this, areaTypes)
-
-        topSpinnerArea.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                view?.setBackgroundResource(R.drawable.spinner_unpressed)
-
-                areaTypes[oldPositionsSpinner[0]].color = "#FFFFFF"
-                areaTypes[oldPositionsSpinner[0]].visibility = GONE
-
-                areaTypes[position].color = "#00C604"
-                areaTypes[position].visibility = VISIBLE
-
-                topTextViewArea.text = areaUnits[position]
-                currentPositionsSpinner[0] = position
-                passToLogic()
-
-                oldPositionsSpinner[0] = position
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
-
-        /*
-        Bottom Area Spinner
-        */
-        bottomSpinnerArea.adapter = SpinnerAdapter(this, areaTypes)
-
-        bottomSpinnerArea.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                view?.setBackgroundResource(R.drawable.spinner_unpressed)
-
-                areaTypes[oldPositionsSpinner[1]].color = "#FFFFFF"
-                areaTypes[oldPositionsSpinner[1]].visibility = GONE
-
-                areaTypes[position].color = "#00C604"
-                areaTypes[position].visibility = VISIBLE
-
-                bottomTextViewArea.text = areaUnits[position]
-                currentPositionsSpinner[1] = position
-                passToLogic()
-
-                oldPositionsSpinner[1] = position
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
-
-        /*
-        Top Length Spinner
-        */
-        topSpinnerLength.adapter = SpinnerAdapter(this, lengthTypes)
-
-        topSpinnerLength.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                view?.setBackgroundResource(R.drawable.spinner_unpressed)
-
-                lengthTypes[oldPositionsSpinner[2]].color = "#FFFFFF"
-                lengthTypes[oldPositionsSpinner[2]].visibility = GONE
-
-                lengthTypes[position].color = "#00C604"
-                lengthTypes[position].visibility = VISIBLE
-
-                topTextViewLength.text = lengthUnits[position]
-                currentPositionsSpinner[2] = position
-                passToLogic()
-
-                oldPositionsSpinner[2] = position
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
-
-        /*
-        Bottom Length Spinner
-        */
-        bottomSpinnerLength.adapter = SpinnerAdapter(this, lengthTypes)
-
-        bottomSpinnerLength.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                view?.setBackgroundResource(R.drawable.spinner_unpressed)
-
-                lengthTypes[oldPositionsSpinner[3]].color = "#FFFFFF"
-                lengthTypes[oldPositionsSpinner[3]].visibility = GONE
-
-                lengthTypes[position].color = "#00C604"
-                lengthTypes[position].visibility = VISIBLE
-
-                bottomTextViewLength.text = lengthUnits[position]
-                currentPositionsSpinner[3] = position
-                passToLogic()
-
-                oldPositionsSpinner[3] = position
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
-
-        /*
-        Top Temperature Spinner
-        */
-        topSpinnerTemperature.adapter = SpinnerAdapter(this, temperatureTypes)
-
-        topSpinnerTemperature.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                view?.setBackgroundResource(R.drawable.spinner_unpressed)
-
-                temperatureTypes[oldPositionsSpinner[4]].color = "#FFFFFF"
-                temperatureTypes[oldPositionsSpinner[4]].visibility = GONE
-
-                temperatureTypes[position].color = "#00C604"
-                temperatureTypes[position].visibility = VISIBLE
-
-                topTextViewTemperature.text = temperatureUnits[position]
-                currentPositionsSpinner[4] = position
-                passToLogic()
-
-                oldPositionsSpinner[4] = position
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
-
-        /*
-        Bottom Temperature Spinner
-        */
-        bottomSpinnerTemperature.adapter = SpinnerAdapter(this, temperatureTypes)
-
-        bottomSpinnerTemperature.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                view?.setBackgroundResource(R.drawable.spinner_unpressed)
-
-                temperatureTypes[oldPositionsSpinner[5]].color = "#FFFFFF"
-                temperatureTypes[oldPositionsSpinner[5]].visibility = GONE
-
-                temperatureTypes[position].color = "#00C604"
-                temperatureTypes[position].visibility = VISIBLE
-
-                bottomTextViewTemperature.text = temperatureUnits[position]
-                currentPositionsSpinner[5] = position
-                passToLogic()
-
-                oldPositionsSpinner[5] = position
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
-
-        /*
-        Top Volume Spinner
-        */
-        topSpinnerVolume.adapter = SpinnerAdapter(this, volumeTypes)
-
-        topSpinnerVolume.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                view?.setBackgroundResource(R.drawable.spinner_unpressed)
-
-                volumeTypes[oldPositionsSpinner[6]].color = "#FFFFFF"
-                volumeTypes[oldPositionsSpinner[6]].visibility = GONE
-
-                volumeTypes[position].color = "#00C604"
-                volumeTypes[position].visibility = VISIBLE
-
-                topTextViewVolume.text = volumeUnits[position]
-                currentPositionsSpinner[6] = position
-                passToLogic()
-
-                oldPositionsSpinner[6] = position
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
-
-        /*
-        Bottom Volume Spinner
-        */
-        bottomSpinnerVolume.adapter = SpinnerAdapter(this, volumeTypes)
-
-        bottomSpinnerVolume.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                view?.setBackgroundResource(R.drawable.spinner_unpressed)
-
-                volumeTypes[oldPositionsSpinner[7]].color = "#FFFFFF"
-                volumeTypes[oldPositionsSpinner[7]].visibility = GONE
-
-                volumeTypes[position].color = "#00C604"
-                volumeTypes[position].visibility = VISIBLE
-
-                bottomTextViewVolume.text = volumeUnits[position]
-                currentPositionsSpinner[7] = position
-                passToLogic()
-
-                oldPositionsSpinner[7] = position
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
-
-        /*
-        Top Mass Spinner
-        */
-        topSpinnerMass.adapter = SpinnerAdapter(this, massTypes)
-
-        topSpinnerMass.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                view?.setBackgroundResource(R.drawable.spinner_unpressed)
-
-                massTypes[oldPositionsSpinner[8]].color = "#FFFFFF"
-                massTypes[oldPositionsSpinner[8]].visibility = GONE
-
-                massTypes[position].color = "#00C604"
-                massTypes[position].visibility = VISIBLE
-
-                topTextViewMass.text = massUnits[position]
-                currentPositionsSpinner[8] = position
-                passToLogic()
-
-                oldPositionsSpinner[8] = position
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
-
-        /*
-        Bottom Mass Spinner
-        */
-        bottomSpinnerMass.adapter = SpinnerAdapter(this, massTypes)
-
-        bottomSpinnerMass.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                view?.setBackgroundResource(R.drawable.spinner_unpressed)
-
-                massTypes[oldPositionsSpinner[9]].color = "#FFFFFF"
-                massTypes[oldPositionsSpinner[9]].visibility = GONE
-
-                massTypes[position].color = "#00C604"
-                massTypes[position].visibility = VISIBLE
-
-                bottomTextViewMass.text = massUnits[position]
-                currentPositionsSpinner[9] = position
-                passToLogic()
-
-                oldPositionsSpinner[9] = position
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
-
-        /*
-        Top Data Spinner
-        */
-        topSpinnerData.adapter = SpinnerAdapter(this, dataTypes)
-
-        topSpinnerData.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                view?.setBackgroundResource(R.drawable.spinner_unpressed)
-
-                dataTypes[oldPositionsSpinner[10]].color = "#FFFFFF"
-                dataTypes[oldPositionsSpinner[10]].visibility = GONE
-
-                dataTypes[position].color = "#00C604"
-                dataTypes[position].visibility = VISIBLE
-
-                topTextViewData.text = dataUnits[position]
-                currentPositionsSpinner[10] = position
-                passToLogic()
-
-                oldPositionsSpinner[10] = position
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
-
-        /*
-        Bottom Data Spinner
-        */
-        bottomSpinnerData.adapter = SpinnerAdapter(this, dataTypes)
-
-        bottomSpinnerData.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                view?.setBackgroundResource(R.drawable.spinner_unpressed)
-
-                dataTypes[oldPositionsSpinner[11]].color = "#FFFFFF"
-                dataTypes[oldPositionsSpinner[11]].visibility = GONE
-
-                dataTypes[position].color = "#00C604"
-                dataTypes[position].visibility = VISIBLE
-
-                bottomTextViewData.text = dataUnits[position]
-                currentPositionsSpinner[11] = position
-                passToLogic()
-
-                oldPositionsSpinner[11] = position
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
-
-        /*
-        Top Speed Spinner
-        */
-        topSpinnerSpeed.adapter = SpinnerAdapter(this, speedTypes)
-
-        topSpinnerSpeed.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                view?.setBackgroundResource(R.drawable.spinner_unpressed)
-
-                speedTypes[oldPositionsSpinner[12]].color = "#FFFFFF"
-                speedTypes[oldPositionsSpinner[12]].visibility = GONE
-
-                speedTypes[position].color = "#00C604"
-                speedTypes[position].visibility = VISIBLE
-
-                topTextViewSpeed.text = speedUnits[position]
-                currentPositionsSpinner[12] = position
-                passToLogic()
-
-                oldPositionsSpinner[12] = position
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
-
-        /*
-        Bottom Speed Spinner
-        */
-        bottomSpinnerSpeed.adapter = SpinnerAdapter(this, speedTypes)
-
-        bottomSpinnerSpeed.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                view?.setBackgroundResource(R.drawable.spinner_unpressed)
-
-                speedTypes[oldPositionsSpinner[13]].color = "#FFFFFF"
-                speedTypes[oldPositionsSpinner[13]].visibility = GONE
-
-                speedTypes[position].color = "#00C604"
-                speedTypes[position].visibility = VISIBLE
-
-                bottomTextViewSpeed.text = speedUnits[position]
-                currentPositionsSpinner[13] = position
-                passToLogic()
-
-                oldPositionsSpinner[13] = position
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
-
-
-        /*
-        Top Time Spinner
-        */
-        topSpinnerTime.adapter = SpinnerAdapter(this, timeTypes)
-
-        topSpinnerTime.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                view?.setBackgroundResource(R.drawable.spinner_unpressed)
-
-                timeTypes[oldPositionsSpinner[14]].color = "#FFFFFF"
-                timeTypes[oldPositionsSpinner[14]].visibility = GONE
-
-                timeTypes[position].color = "#00C604"
-                timeTypes[position].visibility = VISIBLE
-
-                topTextViewTime.text = timeUnits[position]
-                currentPositionsSpinner[14] = position
-                passToLogic()
-
-                oldPositionsSpinner[14] = position
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
-
-        /*
-        Bottom Time Spinner
-        */
-        bottomSpinnerTime.adapter = SpinnerAdapter(this, timeTypes)
-
-        bottomSpinnerTime.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                view?.setBackgroundResource(R.drawable.spinner_unpressed)
-
-                timeTypes[oldPositionsSpinner[15]].color = "#FFFFFF"
-                timeTypes[oldPositionsSpinner[15]].visibility = GONE
-
-                timeTypes[position].color = "#00C604"
-                timeTypes[position].visibility = VISIBLE
-
-                bottomTextViewTime.text = timeUnits[position]
-                currentPositionsSpinner[15] = position
-                passToLogic()
-
-                oldPositionsSpinner[15] = position
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
-
-        /*
-        Disabling the keyboard when selecting the textEditors - No Longer Used
-        //Area
-        topTextEditorArea!!.setRawInputType(InputType.TYPE_NULL)
-        topTextEditorArea!!.isFocusable = true
-        topTextEditorArea!!.setTextIsSelectable(true)
-        */
-
-        backButton.setOnClickListener {
-            Log.d("Admin", "ConversionActivity: backButton was clicked")
-            startActivity(Intent(this, MainActivity::class.java))
-        }
-
-        areaButton.setOnClickListener {
+        
+        binding = ActivityConversionBinding.inflate(layoutInflater).apply {
+            setContentView(root)
+
+            //Sets the Area button to be selected as that's the screen we start from
             loadUnitTable("areaButton")
-        }
 
-        lengthButton.setOnClickListener {
-            loadUnitTable("lengthButton")
-        }
+            //Starts an endless loop that animates the blinking of the cursor
+            val mainHandler = Handler(Looper.getMainLooper())
+            mainHandler.post(object : Runnable {
+                override fun run() {
+                    blinking()
+                    mainHandler.postDelayed(this, 400)
+                }
+            })
 
-        temperatureButton.setOnClickListener {
-            loadUnitTable("temperatureButton")
-        }
+            /*
+            Set up and Functionality of the Spinners
+                First 3 Lines connect the spinner to the array that will be displayed in the drop down menu
+                Then we have the object that will handle the clicking and selecting that will change information
+                in the text boxes
+             */
 
-        volumeButton.setOnClickListener {
-            loadUnitTable("volumeButton")
-        }
+            /*
+            Top Area Spinner
+             */
+            topSpinnerArea.adapter = SpinnerAdapter(this@ConversionActivity, areaTypes)
 
-        massButton.setOnClickListener {
-            loadUnitTable("massButton")
-        }
+            topSpinnerArea.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    view?.setBackgroundResource(R.drawable.spinner_unpressed)
 
-        dataButton.setOnClickListener {
-            loadUnitTable("dataButton")
-        }
+                    areaTypes[oldPositionsSpinner[0]].color = "#FFFFFF"
+                    areaTypes[oldPositionsSpinner[0]].visibility = GONE
 
-        speedButton.setOnClickListener {
-            loadUnitTable("speedButton")
-        }
+                    areaTypes[position].color = "#00C604"
+                    areaTypes[position].visibility = VISIBLE
 
-        timeButton.setOnClickListener {
-            loadUnitTable("timeButton")
-        }
+                    topTextViewArea.text = areaUnits[position]
+                    currentPositionsSpinner[0] = position
+                    passToLogic()
 
-        /*
-        The string forming buttons all use the clickedNumberButton() function
-        */
-        nineButton.setOnClickListener {
-            clickedNumberButton("nineButton", "9")
-        }
+                    oldPositionsSpinner[0] = position
+                }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
 
-        eightButton.setOnClickListener {
-            clickedNumberButton("eightButton", "8")
-        }
+            /*
+            Bottom Area Spinner
+            */
+            bottomSpinnerArea.adapter = SpinnerAdapter(this@ConversionActivity, areaTypes)
 
-        sevenButton.setOnClickListener {
-            clickedNumberButton("sevenButton", "7")
-        }
+            bottomSpinnerArea.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    view?.setBackgroundResource(R.drawable.spinner_unpressed)
 
-        sixButton.setOnClickListener {
-            clickedNumberButton("sixButton", "6")
-        }
+                    areaTypes[oldPositionsSpinner[1]].color = "#FFFFFF"
+                    areaTypes[oldPositionsSpinner[1]].visibility = GONE
 
-        fiveButton.setOnClickListener {
-            clickedNumberButton("fiveButton", "5")
-        }
+                    areaTypes[position].color = "#00C604"
+                    areaTypes[position].visibility = VISIBLE
 
-        fourButton.setOnClickListener {
-            clickedNumberButton("fourButton", "4")
-        }
+                    bottomTextViewArea.text = areaUnits[position]
+                    currentPositionsSpinner[1] = position
+                    passToLogic()
 
-        threeButton.setOnClickListener {
-            clickedNumberButton("threeButton", "3")
-        }
+                    oldPositionsSpinner[1] = position
+                }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
 
-        twoButton.setOnClickListener {
-            clickedNumberButton("twoButton", "2")
-        }
+            /*
+            Top Length Spinner
+            */
+            topSpinnerLength.adapter = SpinnerAdapter(this@ConversionActivity, lengthTypes)
 
-        oneButton.setOnClickListener {
-            clickedNumberButton("oneButton", "1")
-        }
+            topSpinnerLength.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    view?.setBackgroundResource(R.drawable.spinner_unpressed)
 
-        zeroButton.setOnClickListener {
-            clickedNumberButton("zeroButton", "0")
-        }
+                    lengthTypes[oldPositionsSpinner[2]].color = "#FFFFFF"
+                    lengthTypes[oldPositionsSpinner[2]].visibility = GONE
 
-        decimalButton.setOnClickListener {
-            clickedNumberButton("decimalButton", ".")
-        }
+                    lengthTypes[position].color = "#00C604"
+                    lengthTypes[position].visibility = VISIBLE
 
-        deleteButton.setOnClickListener {
-            clickedNumberButton("deleteButton", "d")
-        }
+                    topTextViewLength.text = lengthUnits[position]
+                    currentPositionsSpinner[2] = position
+                    passToLogic()
 
-        clearButton.setOnClickListener {
-            clickedNumberButton("clearButton", "c")
-        }
+                    oldPositionsSpinner[2] = position
+                }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
 
-        /*
-        The negButton will place or remove '-' from the input
-        */
-        plusMinusButton.setOnClickListener {
-            Log.d("Admin", "ConversionActivity: plusMinusButton was clicked")
-            if(isTop){
-                currentValueTop = conversionLogicUnit.negation(currentValueTop)
-                topTextEditorTemperature.setText(currentValueTop)}
-            else{
-                currentValueBottom = conversionLogicUnit.negation(currentValueBottom)
-                bottomTextEditorTemperature.setText(currentValueBottom)}
-            passToLogic()
+            /*
+            Bottom Length Spinner
+            */
+            bottomSpinnerLength.adapter = SpinnerAdapter(this@ConversionActivity, lengthTypes)
+
+            bottomSpinnerLength.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                    lengthTypes[oldPositionsSpinner[3]].color = "#FFFFFF"
+                    lengthTypes[oldPositionsSpinner[3]].visibility = GONE
+
+                    lengthTypes[position].color = "#00C604"
+                    lengthTypes[position].visibility = VISIBLE
+
+                    bottomTextViewLength.text = lengthUnits[position]
+                    currentPositionsSpinner[3] = position
+                    passToLogic()
+
+                    oldPositionsSpinner[3] = position
+                }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
+
+            /*
+            Top Temperature Spinner
+            */
+            topSpinnerTemperature.adapter = SpinnerAdapter(this@ConversionActivity, temperatureTypes)
+
+            topSpinnerTemperature.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                    temperatureTypes[oldPositionsSpinner[4]].color = "#FFFFFF"
+                    temperatureTypes[oldPositionsSpinner[4]].visibility = GONE
+
+                    temperatureTypes[position].color = "#00C604"
+                    temperatureTypes[position].visibility = VISIBLE
+
+                    topTextViewTemperature.text = temperatureUnits[position]
+                    currentPositionsSpinner[4] = position
+                    passToLogic()
+
+                    oldPositionsSpinner[4] = position
+                }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
+
+            /*
+            Bottom Temperature Spinner
+            */
+            bottomSpinnerTemperature.adapter = SpinnerAdapter(this@ConversionActivity, temperatureTypes)
+
+            bottomSpinnerTemperature.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                    temperatureTypes[oldPositionsSpinner[5]].color = "#FFFFFF"
+                    temperatureTypes[oldPositionsSpinner[5]].visibility = GONE
+
+                    temperatureTypes[position].color = "#00C604"
+                    temperatureTypes[position].visibility = VISIBLE
+
+                    bottomTextViewTemperature.text = temperatureUnits[position]
+                    currentPositionsSpinner[5] = position
+                    passToLogic()
+
+                    oldPositionsSpinner[5] = position
+                }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
+
+            /*
+            Top Volume Spinner
+            */
+            topSpinnerVolume.adapter = SpinnerAdapter(this@ConversionActivity, volumeTypes)
+
+            topSpinnerVolume.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                    volumeTypes[oldPositionsSpinner[6]].color = "#FFFFFF"
+                    volumeTypes[oldPositionsSpinner[6]].visibility = GONE
+
+                    volumeTypes[position].color = "#00C604"
+                    volumeTypes[position].visibility = VISIBLE
+
+                    topTextViewVolume.text = volumeUnits[position]
+                    currentPositionsSpinner[6] = position
+                    passToLogic()
+
+                    oldPositionsSpinner[6] = position
+                }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
+
+            /*
+            Bottom Volume Spinner
+            */
+            bottomSpinnerVolume.adapter = SpinnerAdapter(this@ConversionActivity, volumeTypes)
+
+            bottomSpinnerVolume.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                    volumeTypes[oldPositionsSpinner[7]].color = "#FFFFFF"
+                    volumeTypes[oldPositionsSpinner[7]].visibility = GONE
+
+                    volumeTypes[position].color = "#00C604"
+                    volumeTypes[position].visibility = VISIBLE
+
+                    bottomTextViewVolume.text = volumeUnits[position]
+                    currentPositionsSpinner[7] = position
+                    passToLogic()
+
+                    oldPositionsSpinner[7] = position
+                }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
+
+            /*
+            Top Mass Spinner
+            */
+            topSpinnerMass.adapter = SpinnerAdapter(this@ConversionActivity, massTypes)
+
+            topSpinnerMass.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                    massTypes[oldPositionsSpinner[8]].color = "#FFFFFF"
+                    massTypes[oldPositionsSpinner[8]].visibility = GONE
+
+                    massTypes[position].color = "#00C604"
+                    massTypes[position].visibility = VISIBLE
+
+                    topTextViewMass.text = massUnits[position]
+                    currentPositionsSpinner[8] = position
+                    passToLogic()
+
+                    oldPositionsSpinner[8] = position
+                }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
+
+            /*
+            Bottom Mass Spinner
+            */
+            bottomSpinnerMass.adapter = SpinnerAdapter(this@ConversionActivity, massTypes)
+
+            bottomSpinnerMass.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                    massTypes[oldPositionsSpinner[9]].color = "#FFFFFF"
+                    massTypes[oldPositionsSpinner[9]].visibility = GONE
+
+                    massTypes[position].color = "#00C604"
+                    massTypes[position].visibility = VISIBLE
+
+                    bottomTextViewMass.text = massUnits[position]
+                    currentPositionsSpinner[9] = position
+                    passToLogic()
+
+                    oldPositionsSpinner[9] = position
+                }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
+
+            /*
+            Top Data Spinner
+            */
+            topSpinnerData.adapter = SpinnerAdapter(this@ConversionActivity, dataTypes)
+
+            topSpinnerData.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                    dataTypes[oldPositionsSpinner[10]].color = "#FFFFFF"
+                    dataTypes[oldPositionsSpinner[10]].visibility = GONE
+
+                    dataTypes[position].color = "#00C604"
+                    dataTypes[position].visibility = VISIBLE
+
+                    topTextViewData.text = dataUnits[position]
+                    currentPositionsSpinner[10] = position
+                    passToLogic()
+
+                    oldPositionsSpinner[10] = position
+                }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
+
+            /*
+            Bottom Data Spinner
+            */
+            bottomSpinnerData.adapter = SpinnerAdapter(this@ConversionActivity, dataTypes)
+
+            bottomSpinnerData.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                    dataTypes[oldPositionsSpinner[11]].color = "#FFFFFF"
+                    dataTypes[oldPositionsSpinner[11]].visibility = GONE
+
+                    dataTypes[position].color = "#00C604"
+                    dataTypes[position].visibility = VISIBLE
+
+                    bottomTextViewData.text = dataUnits[position]
+                    currentPositionsSpinner[11] = position
+                    passToLogic()
+
+                    oldPositionsSpinner[11] = position
+                }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
+
+            /*
+            Top Speed Spinner
+            */
+            topSpinnerSpeed.adapter = SpinnerAdapter(this@ConversionActivity, speedTypes)
+
+            topSpinnerSpeed.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                    speedTypes[oldPositionsSpinner[12]].color = "#FFFFFF"
+                    speedTypes[oldPositionsSpinner[12]].visibility = GONE
+
+                    speedTypes[position].color = "#00C604"
+                    speedTypes[position].visibility = VISIBLE
+
+                    topTextViewSpeed.text = speedUnits[position]
+                    currentPositionsSpinner[12] = position
+                    passToLogic()
+
+                    oldPositionsSpinner[12] = position
+                }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
+
+            /*
+            Bottom Speed Spinner
+            */
+            bottomSpinnerSpeed.adapter = SpinnerAdapter(this@ConversionActivity, speedTypes)
+
+            bottomSpinnerSpeed.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                    speedTypes[oldPositionsSpinner[13]].color = "#FFFFFF"
+                    speedTypes[oldPositionsSpinner[13]].visibility = GONE
+
+                    speedTypes[position].color = "#00C604"
+                    speedTypes[position].visibility = VISIBLE
+
+                    bottomTextViewSpeed.text = speedUnits[position]
+                    currentPositionsSpinner[13] = position
+                    passToLogic()
+
+                    oldPositionsSpinner[13] = position
+                }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
+
+
+            /*
+            Top Time Spinner
+            */
+            topSpinnerTime.adapter = SpinnerAdapter(this@ConversionActivity, timeTypes)
+
+            topSpinnerTime.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                    timeTypes[oldPositionsSpinner[14]].color = "#FFFFFF"
+                    timeTypes[oldPositionsSpinner[14]].visibility = GONE
+
+                    timeTypes[position].color = "#00C604"
+                    timeTypes[position].visibility = VISIBLE
+
+                    topTextViewTime.text = timeUnits[position]
+                    currentPositionsSpinner[14] = position
+                    passToLogic()
+
+                    oldPositionsSpinner[14] = position
+                }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
+
+            /*
+            Bottom Time Spinner
+            */
+            bottomSpinnerTime.adapter = SpinnerAdapter(this@ConversionActivity, timeTypes)
+
+            bottomSpinnerTime.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    view?.setBackgroundResource(R.drawable.spinner_unpressed)
+
+                    timeTypes[oldPositionsSpinner[15]].color = "#FFFFFF"
+                    timeTypes[oldPositionsSpinner[15]].visibility = GONE
+
+                    timeTypes[position].color = "#00C604"
+                    timeTypes[position].visibility = VISIBLE
+
+                    bottomTextViewTime.text = timeUnits[position]
+                    currentPositionsSpinner[15] = position
+                    passToLogic()
+
+                    oldPositionsSpinner[15] = position
+                }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
+
+            /*
+            Disabling the keyboard when selecting the textEditors - No Longer Used
+            //Area
+            topTextEditorArea!!.setRawInputType(InputType.TYPE_NULL)
+            topTextEditorArea!!.isFocusable = true
+            topTextEditorArea!!.setTextIsSelectable(true)
+            */
+
+            backButton.setOnClickListener {
+                Log.d("Admin", "ConversionActivity: backButton was clicked")
+                startActivity(Intent(this@ConversionActivity, MainActivity::class.java))
+            }
+
+            areaButton.setOnClickListener {
+                loadUnitTable("areaButton")
+            }
+
+            lengthButton.setOnClickListener {
+                loadUnitTable("lengthButton")
+            }
+
+            temperatureButton.setOnClickListener {
+                loadUnitTable("temperatureButton")
+            }
+
+            volumeButton.setOnClickListener {
+                loadUnitTable("volumeButton")
+            }
+
+            massButton.setOnClickListener {
+                loadUnitTable("massButton")
+            }
+
+            dataButton.setOnClickListener {
+                loadUnitTable("dataButton")
+            }
+
+            speedButton.setOnClickListener {
+                loadUnitTable("speedButton")
+            }
+
+            timeButton.setOnClickListener {
+                loadUnitTable("timeButton")
+            }
+
+            /*
+            The string forming buttons all use the clickedNumberButton() function
+            */
+            nineButton.setOnClickListener {
+                clickedNumberButton("nineButton", "9")
+            }
+
+            eightButton.setOnClickListener {
+                clickedNumberButton("eightButton", "8")
+            }
+
+            sevenButton.setOnClickListener {
+                clickedNumberButton("sevenButton", "7")
+            }
+
+            sixButton.setOnClickListener {
+                clickedNumberButton("sixButton", "6")
+            }
+
+            fiveButton.setOnClickListener {
+                clickedNumberButton("fiveButton", "5")
+            }
+
+            fourButton.setOnClickListener {
+                clickedNumberButton("fourButton", "4")
+            }
+
+            threeButton.setOnClickListener {
+                clickedNumberButton("threeButton", "3")
+            }
+
+            twoButton.setOnClickListener {
+                clickedNumberButton("twoButton", "2")
+            }
+
+            oneButton.setOnClickListener {
+                clickedNumberButton("oneButton", "1")
+            }
+
+            zeroButton.setOnClickListener {
+                clickedNumberButton("zeroButton", "0")
+            }
+
+            decimalButton.setOnClickListener {
+                clickedNumberButton("decimalButton", ".")
+            }
+
+            deleteButton.setOnClickListener {
+                clickedNumberButton("deleteButton", "d")
+            }
+
+            clearButton.setOnClickListener {
+                clickedNumberButton("clearButton", "c")
+            }
+
+            /*
+            The negButton will place or remove '-' from the input
+            */
+            plusMinusButton.setOnClickListener {
+                Log.d("Admin", "ConversionActivity: plusMinusButton was clicked")
+                if(isTop){
+                    currentValueTop = conversionLogicUnit.negation(currentValueTop)
+                    topTextEditorTemperature.setText(currentValueTop)}
+                else{
+                    currentValueBottom = conversionLogicUnit.negation(currentValueBottom)
+                    bottomTextEditorTemperature.setText(currentValueBottom)}
+                passToLogic()
+            }
         }
     }
 }

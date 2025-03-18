@@ -6,8 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import com.example.calculator.R
-import kotlinx.android.synthetic.main.spinner_layout.view.*
+import com.example.roomtestthree.R
 
 class SpinnerAdapter(ctx: Context, private val spinnerItems: List<SpinnerItem>) : ArrayAdapter<SpinnerItem>(ctx, 0, spinnerItems) {
     override fun getView(position: Int, recycledView: View?, parent: ViewGroup): View {

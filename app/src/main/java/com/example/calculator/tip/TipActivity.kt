@@ -5,21 +5,23 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.calculator.R
 import com.example.calculator.main.MainActivity
-import kotlinx.android.synthetic.main.activity_tip.*
+import com.example.roomtestthree.R
+import com.example.roomtestthree.databinding.ActivityTipBinding
 
 class TipActivity : AppCompatActivity()  {
 
     private val logicUnit = TipLogic()
+    private var binding: ActivityTipBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tip)
 
-        tenPercent.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
-
+        binding = ActivityTipBinding.inflate(layoutInflater).apply {
+            setContentView(root)
+            tenPercent.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
         }
+    }
 
     fun backButton (view : View) {
         Log.d("Admin", "TipActivity: ${view.tag} was clicked")
@@ -32,14 +34,14 @@ class TipActivity : AppCompatActivity()  {
     Output: Void
     Purpose: Input any new numbers or decimals to the input
     */
-    fun clickedNumberButton(view : View){
+    fun ActivityTipBinding.clickedNumberButton(view : View){
         Log.d("Admin", "TipActivity: ${view.tag} was clicked")
         inputText.text = logicUnit.addChar(view.tag.toString())
         tipText.text = logicUnit.getTip()
         totalText.text = logicUnit.getTotal()
     }
 
-    fun percentButton(view : View){
+    fun ActivityTipBinding.percentButton(view : View){
         Log.d("Admin", "TipActivity: ${view.tag} was clicked")
         var newButton : View = tenPercent
 
