@@ -21,6 +21,12 @@ class TipActivity : AppCompatActivity()  {
             setContentView(root)
             tenPercent.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
 
+            backButton.setOnClickListener { backButton(it) }
+
+            listOf(tenPercent, fifteenPercent, twentyPercent).forEach {
+                button -> button.setOnClickListener { percentButton(it) }
+            }
+
             listOf(
                 oneButton, twoButton, threeButton,
                 fourButton, fiveButton, sixButton,
