@@ -17,22 +17,19 @@ the entries in the RecyclerView.
 package com.example.calculator.history
 
 
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
-import com.example.calculator.R
-import kotlinx.android.synthetic.main.history_layout.view.*
+import com.example.roomtestthree.databinding.HistoryLayoutBinding
 
 class HistoryRecyclerAdapter(val adapterOnClick : (Any) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     //This is a class that describe the layout of one entry in the RecyclerView
-    inner class HistoryViewHolder constructor(itemView : View): RecyclerView.ViewHolder(itemView){
+    inner class HistoryViewHolder(binding : HistoryLayoutBinding): RecyclerView.ViewHolder(binding.root){
         //Connects the variables to the components on the layout
-        private var inputText: Button = itemView.inputButton
-        private var resultText: Button = itemView.resultButton
+        private var inputText: Button = binding.inputButton
+        private var resultText: Button = binding.resultButton
 
         /*
         Input: historyEntry
@@ -67,7 +64,8 @@ class HistoryRecyclerAdapter(val adapterOnClick : (Any) -> Unit) : RecyclerView.
     Purpose: Brings up all of the HistoryViewHolder entries into the RecyclerView
     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return HistoryViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.history_layout, parent, false))
+        val binding = HistoryLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return HistoryViewHolder(binding)
     }
 
     /*

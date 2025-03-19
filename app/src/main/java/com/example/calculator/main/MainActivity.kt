@@ -22,7 +22,6 @@ import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.util.Log.d
 import android.view.Gravity
 import android.view.View
@@ -34,16 +33,18 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.calculator.R
 import com.example.calculator.conversion.ConversionActivity
 import com.example.calculator.history.HistoryEntry
 import com.example.calculator.history.HistoryRecyclerAdapter
 import com.example.calculator.history.HistoryViewModel
 import com.example.calculator.tip.TipActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.roomtestthree.R
+import com.example.roomtestthree.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
+
+    private var binding: ActivityMainBinding? = null
 
     private lateinit var historyViewModel: HistoryViewModel
 
@@ -119,17 +120,17 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(this, ConversionActivity::class.java))
     }
 
-    fun historyButton(view : View) {
+    fun ActivityMainBinding.historyButton(view : View) {
         d("Admin", "MainActivity ($orientation): ${view.tag} button was clicked")
         if(orientation == "Port") {
             if (historyOn) {
                 historyButton.setImageResource(R.drawable.ic_history)
-                historyNumbers.visibility = VISIBLE
+                historyNumbers?.visibility = VISIBLE
                 history.visibility = GONE
                 historyOn = false
             } else {
                 historyButton.setImageResource(R.drawable.ic_keypad)
-                historyNumbers.visibility = GONE
+                historyNumbers?.visibility = GONE
                 history.visibility = VISIBLE
                 historyOn = true
             }
@@ -137,12 +138,12 @@ class MainActivity : AppCompatActivity() {
         if(orientation == "Land") {
             if (historyOn) {
                 historyButton.setImageResource(R.drawable.ic_history)
-                historyOrExtra.visibility = VISIBLE
+                historyOrExtra?.visibility = VISIBLE
                 history.visibility = GONE
                 historyOn = false
             } else {
                 historyButton.setImageResource(R.drawable.ic_keypad)
-                historyOrExtra.visibility = GONE
+                historyOrExtra?.visibility = GONE
                 history.visibility = VISIBLE
                 historyOn = true
             }
@@ -155,15 +156,15 @@ class MainActivity : AppCompatActivity() {
     Output: Void
     Purpose: Switches between the two sets of extra buttons in the scientific (landscape) main view
     */
-    fun switchLayoutButton(view : View) {
+    fun ActivityMainBinding.switchLayoutButton(view : View) {
         d("Admin", "MainActivity ($orientation): layout ${view.tag} button was clicked")
         if(view.tag.toString() == "One") {
-            this.buttonLayoutExtraOne.visibility = GONE
-            this.buttonLayoutExtraTwo.visibility = VISIBLE
+            this.buttonLayoutExtraOne?.visibility = GONE
+            this.buttonLayoutExtraTwo?.visibility = VISIBLE
         }
         else if(view.tag.toString() == "Two"){
-            this.buttonLayoutExtraOne.visibility = VISIBLE
-            this.buttonLayoutExtraTwo.visibility = GONE
+            this.buttonLayoutExtraOne?.visibility = VISIBLE
+            this.buttonLayoutExtraTwo?.visibility = GONE
         }
     }
 
@@ -219,7 +220,7 @@ class MainActivity : AppCompatActivity() {
              input.
              When that is done it updates the rest of the UI element based on whatever input was provided
     */
-    fun clickedButton(view:View){
+    fun ActivityMainBinding.clickedButton(view:View){
         var toastType = -1
         d("Admin", "MainActivity ($orientation): ${view.tag} button was clicked")
         when {
@@ -263,7 +264,7 @@ class MainActivity : AppCompatActivity() {
     Output: Void
     Purpose: The negButton will place or remove '-' from the input
     */
-    fun negButton (view:View){
+    fun ActivityMainBinding.negButton (view:View){
         d("Admin", "MainActivity ($orientation):${view.tag} button was clicked")
         calculatorView.text = logicUnit.negation()
         updateUI()
@@ -275,7 +276,7 @@ class MainActivity : AppCompatActivity() {
     Output: Void
     Purpose: The clearButton clears the data and screen
     */
-    fun clearButton (view:View){
+    fun ActivityMainBinding.clearButton (view:View){
         d("Admin", "MainActivity ($orientation): ${view.tag} was clicked")
         logicUnit.clear()
         calculatorView.text = ""
@@ -284,17 +285,17 @@ class MainActivity : AppCompatActivity() {
         resultsView.text = logicUnit.performOperation(degRad)
     }
 
-    fun historyClear (view:View){
+    fun ActivityMainBinding.historyClear (view:View){
         if(orientation == "Port") {
             historyButton.setImageResource(R.drawable.ic_history_off)
-            historyNumbers.visibility = VISIBLE
+            historyNumbers?.visibility = VISIBLE
             history.visibility = GONE
             historyOn = false
             historyButton.isEnabled = false
         }
         if(orientation == "Land") {
             historyButton.setImageResource(R.drawable.ic_history_off)
-            historyOrExtra.visibility = VISIBLE
+            historyOrExtra?.visibility = VISIBLE
             history.visibility = GONE
             historyOn = false
             historyButton.isEnabled = false
@@ -310,7 +311,7 @@ class MainActivity : AppCompatActivity() {
              and if it has performs the equal putting the output from result view into
              input in the calculator view
     */
-    fun equalButton(view:View){
+    fun ActivityMainBinding.equalButton(view:View){
         d("Admin", "MainActivity ($orientation): ${view.tag} button was clicked")
         //Preps viewString to see if current result is valid
         val viewString : String = logicUnit.performOperation(degRad)
@@ -342,7 +343,7 @@ class MainActivity : AppCompatActivity() {
     Output: Void
     Purpose: the doClick function
     */
-    private fun doClick(item:Any) {
+    private fun ActivityMainBinding.doClick(item:Any) {
         calculatorView.setTextColor(Color.parseColor(logicUnit.operationWasPerformed()))
         if(item.toString().contains('=')){
             d("Admin", "Main Activity ($orientation): Result: ${item}, Recycler Entry Clicked button was clicked")
@@ -369,18 +370,18 @@ class MainActivity : AppCompatActivity() {
     Output: Void
     Purpose: Switches between the two sets of extra buttons in the scientific (landscape) main view
     */
-    fun switchRadDeg(view : View) {
+    fun ActivityMainBinding.switchRadDeg(view : View) {
         d("Admin", "MainActivity ($orientation): layout $degRad was clicked")
         if(degRad) {
-            DegRadTextView.text = "Deg"
-            radiansButton.text = "Rad"
-            radiansButtonTwo.text = "Rad"
+            DegRadTextView?.text = "Deg"
+            radiansButton?.text = "Rad"
+            radiansButtonTwo?.text = "Rad"
             degRad = false
         }
         else{
-            DegRadTextView.text = "Rad"
-            radiansButton.text = "Deg"
-            radiansButtonTwo.text = "Deg"
+            DegRadTextView?.text = "Rad"
+            radiansButton?.text = "Deg"
+            radiansButtonTwo?.text = "Deg"
             degRad = true
         }
         updateUI()
@@ -392,7 +393,7 @@ class MainActivity : AppCompatActivity() {
     Output: Void
     Purpose: Executes all of the functions that update different parts of the UI
     */
-    private fun updateUI(){
+    private fun ActivityMainBinding.updateUI(){
         showToast(-1)
         isOrientation()
         textAdjustment()
@@ -405,27 +406,27 @@ class MainActivity : AppCompatActivity() {
     Purpose: Updates the delete button to be on or off based on if there is input provided
              have to do separate updates for landscape and portrait activates
     */
-    private fun delButtonUpdate(){
+    private fun ActivityMainBinding.delButtonUpdate(){
         d("Admin", "MainActivity ($orientation): button was clicked")
         when(orientation){
             "Port" -> {
                 if (logicUnit.isEmpty()) {
-                    deleteButtonOne.isEnabled = false
-                    deleteButtonOne.setImageResource(R.drawable.ic_del_off)
+                    deleteButtonOne?.isEnabled = false
+                    deleteButtonOne?.setImageResource(R.drawable.ic_del_off)
                 }
                 else {
-                    deleteButtonOne.isEnabled = true
-                    deleteButtonOne.setImageResource(R.drawable.ic_del_on)
+                    deleteButtonOne?.isEnabled = true
+                    deleteButtonOne?.setImageResource(R.drawable.ic_del_on)
                 }
             }
             "Land" -> {
                 if (logicUnit.isEmpty()) {
-                    deleteButtonTwo.isEnabled = false
-                    deleteButtonTwo.setImageResource(R.drawable.ic_del_off)
+                    deleteButtonTwo?.isEnabled = false
+                    deleteButtonTwo?.setImageResource(R.drawable.ic_del_off)
                 }
                 else{
-                    deleteButtonTwo.isEnabled = true
-                    deleteButtonTwo.setImageResource(R.drawable.ic_del_on)
+                    deleteButtonTwo?.isEnabled = true
+                    deleteButtonTwo?.setImageResource(R.drawable.ic_del_on)
                 }
             }
         }
@@ -436,7 +437,7 @@ class MainActivity : AppCompatActivity() {
     Output: Void
     Purpose: Changes the text to be smaller if enough chars are put in, only done in portrait view
     */
-    private fun textAdjustment(){
+    private fun ActivityMainBinding.textAdjustment(){
         if(orientation == "Port"){
             if(logicUnit.isAdjustLength()){
                 calculatorView.animate()
@@ -480,7 +481,7 @@ class MainActivity : AppCompatActivity() {
     Purpose: Performs an animation where the calculator view moves from result view back to
              its original position to give it a illusion that it moves from the output to input
     */
-    private fun equalAnimation() {
+    private fun ActivityMainBinding.equalAnimation() {
         calculatorView.setTextColor(Color.parseColor("#6C6C6C"))
         calculatorView.bringToFront()
         calculatorView.translationY = 200f
@@ -509,7 +510,7 @@ class MainActivity : AppCompatActivity() {
             .duration = 300
     }
 
-    private fun blinking() {
+    private fun ActivityMainBinding.blinking() {
         if(blink) {
             curosorTextView.text = ""
             blink = false
@@ -527,33 +528,71 @@ class MainActivity : AppCompatActivity() {
     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        //Calls Activity Initialization Functions
-        isOrientation()
-        delButtonUpdate()
 
-        //Calls Recycler View Functions
-        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
-        val adapter = HistoryRecyclerAdapter{ item -> doClick(item) }
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        binding = ActivityMainBinding.inflate(layoutInflater).apply {
+            setContentView(root)
 
-        // Get a new or existing ViewModel from the ViewModelProvider.
-        historyViewModel = ViewModelProvider(this).get(HistoryViewModel::class.java)
-        historyViewModel.initializeOrientation(orientation)
+            clearButton.let { button -> button.setOnClickListener { clearButton(it) } }
+            negButton.let { button -> button.setOnClickListener { negButton(it) } }
+            ClearHistory.let { button -> button.setOnClickListener { historyClear(it) } }
+            equalButton.let { button -> button.setOnClickListener { equalButton(it) } }
+            historyButton.let { button -> button.setOnClickListener { historyButton(it) } }
+            conversionButton.let { button -> button.setOnClickListener { conversionButton(it) } }
+            listOf(longButton, portButton).forEach {
+                button -> button?.setOnClickListener { orientationButton(it) }
+            }
+            tipButton.let { button -> button.setOnClickListener { tipButton(it) } }
+            listOf(switchButton, switchButtonTwo).forEach {
+                button -> button?.setOnClickListener { switchLayoutButton(it) }
+            }
+            listOf(DegRadTextView, radiansButton, radiansButtonTwo).forEach {
+                    button -> button?.setOnClickListener { switchRadDeg(it) }
+            }
 
-        // Add an observer on the LiveData returned by getAlphabetizedWords.
-        // The onChanged() method fires when the observed data changes and the activity is
-        // in the foreground.
-        historyViewModel.allEntries.observe(this, Observer { words ->
-            // Update the cached copy of the words in the adapter.
-            words?.let { adapter.setHistory(it) }
-        })
+            listOf(
+                oneButton, twoButton, threeButton,
+                fourButton, fiveButton, sixButton,
+                sevenButton, eightButton, nineButton,
+                deleteButtonOne, deleteButtonTwo, zeroButton, decimalButton,
+                radButton, perButton, divButton, timesButton, minusButton, plusButton,
+                piButton, sinButton, cosButton, tanButton,
+                lnButton, ralogButton, fractionButton,
+                exponentButton, squaredButton, exponentYButton,
+                plusMinusExponentButton, absoluteButtonButton, eButton,
+                cuberootButton,
+                asinButton, arccosButton, arctanButton,
+                sinhButton, coshButton, tanhButton,
+                arcsinhButton, arccoshButton, arctanhButton,
+                twoToXButton, xCubedButton, factorialButton,
+            ).forEach { button -> button?.setOnClickListener { clickedButton(it) } }
 
-        //Sets Up the Blinking Effect
-        val mainHandler = Handler(Looper.getMainLooper())
-        mainHandler.post(object : Runnable {override fun run() {
+            //Calls Activity Initialization Functions
+            isOrientation()
+            delButtonUpdate()
+
+            //Calls Recycler View Functions
+            val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
+            val adapter = HistoryRecyclerAdapter{ item -> doClick(item) }
+            recyclerView.adapter = adapter
+            recyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
+
+            // Get a new or existing ViewModel from the ViewModelProvider.
+            historyViewModel = ViewModelProvider(this@MainActivity)[HistoryViewModel::class.java]
+            historyViewModel.initializeOrientation(orientation)
+
+            // Add an observer on the LiveData returned by getAlphabetizedWords.
+            // The onChanged() method fires when the observed data changes and the activity is
+            // in the foreground.
+            historyViewModel.allEntries.observe(this@MainActivity, Observer { words ->
+                // Update the cached copy of the words in the adapter.
+                words?.let { adapter.setHistory(it) }
+            })
+
+            //Sets Up the Blinking Effect
+            val mainHandler = Handler(Looper.getMainLooper())
+            mainHandler.post(object : Runnable {override fun run() {
                 blinking()
                 mainHandler.postDelayed(this, 400)}})
-    }
+            }
+        }
 }

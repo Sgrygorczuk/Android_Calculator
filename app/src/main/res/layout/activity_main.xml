@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/black"
-    tools:context=".main.MainActivity">
+    tools:context="com.example.calculator.main.MainActivity">
 
     <LinearLayout
         android:id="@+id/buttonLayout"
@@ -54,7 +54,6 @@
                         android:background="@drawable/gray_selector"
                         android:text="@string/c"
                         android:tag="C"
-                        android:onClick="clearButton"
                         android:textColor="#FA7650"
                         android:textSize="40sp" />
 
@@ -70,7 +69,6 @@
                         android:background="@drawable/gray_selector"
                         android:text="@string/_7"
                         android:tag="@string/_7"
-                        android:onClick="clickedButton"
                         android:textColor="@android:color/white"
                         android:textSize="40sp" />
 
@@ -86,7 +84,6 @@
                         android:background="@drawable/gray_selector"
                         android:text="@string/_4"
                         android:tag="@string/_4"
-                        android:onClick="clickedButton"
                         android:textColor="@android:color/white"
                         android:textSize="40sp" />
 
@@ -102,7 +99,6 @@
                         android:background="@drawable/gray_selector"
                         android:text="@string/_1"
                         android:tag="@string/_1"
-                        android:onClick="clickedButton"
                         android:textColor="@android:color/white"
                         android:textSize="40sp" />
 
@@ -118,7 +114,6 @@
                         android:background="@drawable/gray_selector"
                         android:text="@string/plusMinus"
                         android:tag="@string/plusMinus"
-                        android:onClick="negButton"
                         android:textColor="#FFFF"
                         android:textSize="40sp" />
                 </LinearLayout>
@@ -141,7 +136,6 @@
                         android:background="@drawable/gray_selector"
                         android:text="@string/rad"
                         android:tag="@string/rad"
-                        android:onClick="clickedButton"
                         android:textColor="#00C604"
                         android:textSize="40sp" />
 
@@ -157,7 +151,6 @@
                         android:background="@drawable/gray_selector"
                         android:text="@string/_8"
                         android:tag="@string/_8"
-                        android:onClick="clickedButton"
                         android:textColor="@android:color/white"
                         android:textSize="40sp" />
 
@@ -173,7 +166,6 @@
                         android:background="@drawable/gray_selector"
                         android:text="@string/_5"
                         android:tag="@string/_5"
-                        android:onClick="clickedButton"
                         android:textColor="@android:color/white"
                         android:textSize="40sp" />
 
@@ -190,7 +182,6 @@
                         android:background="@drawable/gray_selector"
                         android:text="@string/_2"
                         android:tag="@string/_2"
-                        android:onClick="clickedButton"
                         android:textColor="@android:color/white"
                         android:textSize="40sp" />
 
@@ -206,7 +197,6 @@
                         android:background="@drawable/gray_selector"
                         android:text="@string/_0"
                         android:tag="@string/_0"
-                        android:onClick="clickedButton"
                         android:textColor="@android:color/white"
                         android:textSize="40sp" />
 
@@ -229,7 +219,6 @@
                         android:background="@drawable/gray_selector"
                         android:text="@string/per"
                         android:tag="@string/per"
-                        android:onClick="clickedButton"
                         android:textColor="#00C604"
                         android:textSize="40sp" />
 
@@ -245,7 +234,6 @@
                         android:background="@drawable/gray_selector"
                         android:text="@string/_9"
                         android:tag="@string/_9"
-                        android:onClick="clickedButton"
                         android:textColor="@android:color/white"
                         android:textSize="40sp" />
 
@@ -261,7 +249,6 @@
                         android:background="@drawable/gray_selector"
                         android:text="@string/_6"
                         android:tag="@string/_6"
-                        android:onClick="clickedButton"
                         android:textColor="@android:color/white"
                         android:textSize="40sp" />
 
@@ -277,7 +264,6 @@
                         android:background="@drawable/gray_selector"
                         android:text="@string/_3"
                         android:tag="@string/_3"
-                        android:onClick="clickedButton"
                         android:textColor="@android:color/white"
                         android:textSize="40sp" />
 
@@ -293,7 +279,6 @@
                         android:background="@drawable/gray_selector"
                         android:text="@string/decimal"
                         android:tag="@string/decimal"
-                        android:onClick="clickedButton"
                         android:textColor="@android:color/white"
                         android:textSize="40sp" />
 
@@ -334,7 +319,6 @@
                         android:background="@drawable/green_selector"
                         android:text="Clear History"
                         android:tag="Clear History"
-                        android:onClick="historyClear"
                         android:textColor="#FFFFFF"
                         android:textSize="15sp" />
                 </LinearLayout>
@@ -367,7 +351,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/div"
                 android:tag="@string/div"
-                android:onClick="clickedButton"
                 android:textColor="#00C604"
                 android:textSize="40sp" />
 
@@ -383,7 +366,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/times"
                 android:tag="@string/times"
-                android:onClick="clickedButton"
                 android:textColor="#00C604"
                 android:textSize="40sp" />
 
@@ -399,7 +381,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/minus"
                 android:tag="@string/minus"
-                android:onClick="clickedButton"
                 android:textColor="#00C604"
                 android:textSize="40sp" />
 
@@ -415,7 +396,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/plus"
                 android:tag="@string/plus"
-                android:onClick="clickedButton"
                 android:textColor="#00C604"
                 android:textSize="40sp" />
             <Button
@@ -430,7 +410,6 @@
                 android:background="@drawable/green_selector"
                 android:text="@string/equal"
                 android:tag="@string/equal"
-                android:onClick="equalButton"
                 android:textColor="#FFFFFF"
                 android:textSize="40sp" />
 
@@ -516,7 +495,6 @@
             android:layout_weight="1"
             android:scaleType="fitXY"
             android:background="@drawable/black_selector"
-            android:onClick="historyButton"
             android:src="@drawable/ic_history"
             android:textColor="#FFFFFF"
             android:layout_gravity="center"
@@ -532,7 +510,6 @@
             android:background="@drawable/black_selector"
             android:src="@drawable/ic_unit"
             android:tag="Conversion"
-            android:onClick="conversionButton"
             android:layout_gravity="center"
             android:textColor="#FFFFFF"
             android:textSize="12sp" />
@@ -548,7 +525,6 @@
             android:background="@drawable/black_selector"
             android:src="@drawable/ic_science"
             android:tag="Port"
-            android:onClick="orientationButton"
             android:layout_gravity="center"
             android:textSize="12sp" />
 
@@ -563,7 +539,6 @@
             android:text="%"
             android:textColor="#D6D6D6"
             android:tag="Port"
-            android:onClick="tipButton"
             android:layout_gravity="center"
             android:textSize="25sp" />
 
@@ -578,7 +553,6 @@
         android:background="@drawable/black_selector"
         android:src="@drawable/ic_del_off"
         android:tag="delete"
-        android:onClick="clickedButton"
         android:textColor="#FFFFFF"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/divider"

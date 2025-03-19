@@ -408,108 +408,108 @@ class MainLogic {
     */
     private fun writeMod(choice: String) : String{
         var output = ""
-            when (choice) {
-                "√" -> {
-                    inputString = "√$inputOne"
-                    output = "√${addCommas(inputOne)}"
-                }
-                "%" -> {
-                    inputString = "$inputOne%"
-                    output = "${addCommas(inputOne)}%"
-                }
-                "sin" -> {
-                    inputString = "sin($inputOne)"
-                    output = "sin${addCommas(inputOne)})"
-                }
-                "cos" -> {
-                    inputString = "cos($inputOne)"
-                    output = "cos${addCommas(inputOne)})"
-                }
-                "tan" -> {
-                    inputString = "tan($inputOne)"
-                    output = "tan${addCommas(inputOne)})"
-                }
-                "ln" -> {
-                    inputString = "ln($inputOne)"
-                    output = "ln(${addCommas(inputOne)})"
-                }
-                "log" -> {
-                    inputString = "log($inputOne)"
-                    output = "log(${addCommas(inputOne)})"
-                }
-                "1/x" -> {
-                    inputString = "1/$inputOne"
-                    output = "1/${addCommas(inputOne)}"
-                }
-                "e^x" -> {
-                    inputString = "e^$inputOne"
-                    output = "e^${addCommas(inputOne)}"
-                }
-                "x^2" -> {
-                    inputString = "$inputOne^2"
-                    output = "${addCommas(inputOne)}^2"
-                }
-                "x^-1" -> {
-                    inputString = "$inputOne^-1"
-                    output = "${addCommas(inputOne)}^-1"
-                }
-                "|x|" -> {
-                    inputString = "|$inputOne|"
-                    output = "|${addCommas(inputOne)}|"
-                }
-                "cbrt" -> {
-                    inputString = "cbrt($inputOne)"
-                    output = "cbrt(${addCommas(inputOne)})"
-                }
-                "asin" -> {
-                    inputString = "asin($inputOne)"
-                    output = "asin(${addCommas(inputOne)})"
-                }
-                "acos" -> {
-                    inputString = "acos($inputOne)"
-                    output = "acos(${addCommas(inputOne)})"
-                }
-                "atan" -> {
-                    inputString = "atan($inputOne)"
-                    output = "atan(${addCommas(inputOne)})"
+        when (choice) {
+            "√" -> {
+                inputString = "√$inputOne"
+                output = "√${addCommas(inputOne)}"
+            }
+            "%" -> {
+                inputString = "$inputOne%"
+                output = "${addCommas(inputOne)}%"
+            }
+            "sin" -> {
+                inputString = "sin($inputOne)"
+                output = "sin${addCommas(inputOne)})"
+            }
+            "cos" -> {
+                inputString = "cos($inputOne)"
+                output = "cos${addCommas(inputOne)})"
+            }
+            "tan" -> {
+                inputString = "tan($inputOne)"
+                output = "tan${addCommas(inputOne)})"
+            }
+            "ln" -> {
+                inputString = "ln($inputOne)"
+                output = "ln(${addCommas(inputOne)})"
+            }
+            "log" -> {
+                inputString = "log($inputOne)"
+                output = "log(${addCommas(inputOne)})"
+            }
+            "1/x" -> {
+                inputString = "1/$inputOne"
+                output = "1/${addCommas(inputOne)}"
+            }
+            "e^x" -> {
+                inputString = "e^$inputOne"
+                output = "e^${addCommas(inputOne)}"
+            }
+            "x^2" -> {
+                inputString = "$inputOne^2"
+                output = "${addCommas(inputOne)}^2"
+            }
+            "x^-1" -> {
+                inputString = "$inputOne^-1"
+                output = "${addCommas(inputOne)}^-1"
+            }
+            "|x|" -> {
+                inputString = "|$inputOne|"
+                output = "|${addCommas(inputOne)}|"
+            }
+            "cbrt" -> {
+                inputString = "cbrt($inputOne)"
+                output = "cbrt(${addCommas(inputOne)})"
+            }
+            "asin" -> {
+                inputString = "asin($inputOne)"
+                output = "asin(${addCommas(inputOne)})"
+            }
+            "acos" -> {
+                inputString = "acos($inputOne)"
+                output = "acos(${addCommas(inputOne)})"
+            }
+            "atan" -> {
+                inputString = "atan($inputOne)"
+                output = "atan(${addCommas(inputOne)})"
 
-                }
-                "sinh" -> {
-                    inputString = "sinh($inputOne)"
-                    output = "sinh(${addCommas(inputOne)})"
-                }
-                "cosh" -> {
-                    inputString = "cosh($inputOne)"
-                    output = "cosh(${addCommas(inputOne)})"
-                }
-                "tanh" -> {
-                    inputString = "tanh($inputOne)"
-                    output = "tanh(${addCommas(inputOne)})"
-                }
-                "asinh" -> {
-                    inputString = "asinh($inputOne)"
-                    output = "asinh(${addCommas(inputOne)})"
-                }
-                "acosh" -> {
-                    inputString = "acosh($inputOne)"
-                    output = "acosh(${addCommas(inputOne)})"
-                }
-                "atanh" -> {
-                    inputString = "atanh($inputOne)"
-                    output = "atanh(${addCommas(inputOne)})"
-                }
-                "2^x" -> {
-                    inputString = "2^$inputOne"
-                    output = "2^${addCommas(inputOne)}"
-                }
-                "x^3" -> {
-                    inputString = "$inputOne^3"
-                    output = "${addCommas(inputOne)}^3"
-                }
-                "x!" -> {
-                    inputString = "$inputOne!"
-                    output = "${addCommas(inputOne)}!"
-                }
+            }
+            "sinh" -> {
+                inputString = "sinh($inputOne)"
+                output = "sinh(${addCommas(inputOne)})"
+            }
+            "cosh" -> {
+                inputString = "cosh($inputOne)"
+                output = "cosh(${addCommas(inputOne)})"
+            }
+            "tanh" -> {
+                inputString = "tanh($inputOne)"
+                output = "tanh(${addCommas(inputOne)})"
+            }
+            "asinh" -> {
+                inputString = "asinh($inputOne)"
+                output = "asinh(${addCommas(inputOne)})"
+            }
+            "acosh" -> {
+                inputString = "acosh($inputOne)"
+                output = "acosh(${addCommas(inputOne)})"
+            }
+            "atanh" -> {
+                inputString = "atanh($inputOne)"
+                output = "atanh(${addCommas(inputOne)})"
+            }
+            "2^x" -> {
+                inputString = "2^$inputOne"
+                output = "2^${addCommas(inputOne)}"
+            }
+            "x^3" -> {
+                inputString = "$inputOne^3"
+                output = "${addCommas(inputOne)}^3"
+            }
+            "x!" -> {
+                inputString = "$inputOne!"
+                output = "${addCommas(inputOne)}!"
+            }
         }
         return output
     }
