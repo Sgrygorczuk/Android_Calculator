@@ -238,7 +238,6 @@
                         android:importantForAutofill="no"
                         android:inputType="number"
                         android:text="1"
-                        android:onClick="updateLocationTop"
                         android:textColor="#FFFFFF"
                         android:textSize="50sp" />
 
@@ -313,7 +312,6 @@
                         android:importantForAutofill="no"
                         android:inputType="number"
                         android:text="1"
-                        android:onClick="updateLocationBottom"
                         android:textColor="#FFFFFF"
                         android:textSize="50sp" />
 
@@ -379,7 +377,6 @@
                             android:importantForAutofill="no"
                             android:inputType="number"
                             android:text="1"
-                            android:onClick="updateLocationTop"
                             android:textColor="#FFFFFF"
                             android:textSize="50sp" />
 
@@ -450,7 +447,6 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="5"
                             android:ems="10"
-                            android:onClick="updateLocationBottom"
                             android:gravity="end"
                             android:importantForAutofill="no"
                             android:inputType="number"
@@ -516,7 +512,6 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="5"
                             android:ems="10"
-                            android:onClick="updateLocationTop"
                             android:gravity="end"
                             android:importantForAutofill="no"
                             android:inputType="number"
@@ -591,7 +586,6 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="5"
                             android:ems="10"
-                            android:onClick="updateLocationBottom"
                             android:gravity="end"
                             android:importantForAutofill="no"
                             android:inputType="number"
@@ -656,7 +650,6 @@
                         android:layout_width="70dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="5"
-                        android:onClick="updateLocationTop"
                         android:ems="10"
                         android:gravity="end"
                         android:importantForAutofill="no"
@@ -731,7 +724,6 @@
                         android:layout_width="70dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="5"
-                        android:onClick="updateLocationBottom"
                         android:ems="10"
                         android:gravity="end"
                         android:importantForAutofill="no"
@@ -799,7 +791,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="5"
                         android:ems="10"
-                        android:onClick="updateLocationTop"
                         android:gravity="end"
                         android:importantForAutofill="no"
                         android:inputType="number"
@@ -873,7 +864,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="5"
                         android:ems="10"
-                        android:onClick="updateLocationBottom"
                         android:gravity="end"
                         android:importantForAutofill="no"
                         android:inputType="number"
@@ -939,7 +929,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="5"
                         android:ems="10"
-                        android:onClick="updateLocationTop"
                         android:gravity="end"
                         android:importantForAutofill="no"
                         android:inputType="number"
@@ -1014,7 +1003,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="5"
                         android:ems="10"
-                        android:onClick="updateLocationBottom"
                         android:gravity="end"
                         android:importantForAutofill="no"
                         android:inputType="number"
@@ -1080,7 +1068,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="5"
                         android:ems="10"
-                        android:onClick="updateLocationTop"
                         android:gravity="end"
                         android:importantForAutofill="no"
                         android:inputType="number"
@@ -1155,7 +1142,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="5"
                         android:ems="10"
-                        android:onClick="updateLocationBottom"
                         android:gravity="end"
                         android:importantForAutofill="no"
                         android:inputType="number"
@@ -1221,7 +1207,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="5"
                         android:ems="10"
-                        android:onClick="updateLocationTop"
                         android:gravity="end"
                         android:importantForAutofill="no"
                         android:inputType="number"
@@ -1297,7 +1282,6 @@
                         android:layout_weight="5"
                         android:ems="10"
                         android:gravity="end"
-                        android:onClick="updateLocationBottom"
                         android:importantForAutofill="no"
                         android:inputType="number"
                         android:text="1"
@@ -1508,7 +1492,6 @@
                 android:background="@drawable/gray_selector"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_up_on"
-                android:onClick="updateLocationTop"
                 android:textColor="#00C604"
                 android:textSize="40sp" />
 
@@ -1561,7 +1544,6 @@
                 android:background="@drawable/gray_selector"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_down_on"
-                android:onClick="updateLocationBottom"
                 android:textColor="#00C604"
                 android:textSize="40sp" />
 

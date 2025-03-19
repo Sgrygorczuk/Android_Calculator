@@ -25,7 +25,6 @@
             android:scaleType="fitCenter"
             android:tag="backButton"
             android:background="@drawable/black_selector"
-            android:onClick="backButton"
             android:src="@drawable/ic_back"
             android:textAllCaps="false"
             android:textSize="15sp" />
@@ -78,7 +77,6 @@
             android:background="@drawable/black_selector"
             android:text="10%"
             android:tag="10%"
-            android:onClick="percentButton"
             android:textSize="20dp"
             android:textAllCaps="false"
             android:textColor="#FFFFFF" />
@@ -95,7 +93,6 @@
             android:background="@drawable/black_selector"
             android:text="15%"
             android:tag="15%"
-            android:onClick="percentButton"
             android:textSize="20dp"
             android:textAllCaps="false"
             android:textColor="#FFFFFF" />
@@ -113,7 +110,6 @@
             android:background="@drawable/black_selector"
             android:text="20%"
             android:tag="20%"
-            android:onClick="percentButton"
             android:textAllCaps="false"
             android:textColor="#FFFFFF" />
     </LinearLayout>
@@ -307,7 +303,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/_7"
                 android:tag="@string/_7"
-                android:onClick="clickedNumberButton"
                 android:textColor="#FFFFFF"
                 android:textSize="40sp" />
 
@@ -320,7 +315,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/_8"
                 android:tag="@string/_8"
-                android:onClick="clickedNumberButton"
                 android:textColor="#FFFFFF"
                 android:textSize="40sp" />
 
@@ -333,7 +327,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/_9"
                 android:tag="@string/_9"
-                android:onClick="clickedNumberButton"
                 android:textColor="#FFFFFF"
                 android:textSize="40sp" />
 
@@ -352,7 +345,6 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_4"
-                android:onClick="clickedNumberButton"
                 android:tag="@string/_4"
                 android:textColor="#FFFFFF"
                 android:textSize="40sp" />
@@ -365,7 +357,6 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_5"
-                android:onClick="clickedNumberButton"
                 android:tag="@string/_5"
                 android:textColor="#FFFFFF"
                 android:textSize="40sp" />
@@ -378,7 +369,6 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_6"
-                android:onClick="clickedNumberButton"
                 android:tag="@string/_6"
                 android:textColor="#FFFFFF"
                 android:textSize="40sp" />
@@ -399,7 +389,6 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_1"
-                android:onClick="clickedNumberButton"
                 android:tag="@string/_1"
                 android:textColor="#FFFFFF"
                 android:textSize="40sp" />
@@ -412,7 +401,6 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_2"
-                android:onClick="clickedNumberButton"
                 android:tag="@string/_2"
                 android:textColor="#FFFFFF"
                 android:textSize="40sp" />
@@ -425,7 +413,6 @@
                 android:layout_weight="1"
                 android:background="@drawable/gray_selector"
                 android:text="@string/_3"
-                android:onClick="clickedNumberButton"
                 android:tag="@string/_3"
                 android:textColor="#FFFFFF"
                 android:textSize="40sp" />
@@ -446,7 +433,6 @@
                     android:background="@drawable/gray_selector"
                     android:scaleType="fitCenter"
                     android:tag="d"
-                    android:onClick="clickedNumberButton"
                     android:src="@drawable/ic_del_on"
                     android:textColor="#00C604"
                     android:textSize="40sp" />
@@ -459,7 +445,6 @@
                     android:layout_weight="1"
                     android:background="@drawable/gray_selector"
                     android:text="@string/_0"
-                    android:onClick="clickedNumberButton"
                     android:tag="@string/_0"
                     android:textColor="#FFFFFF"
                     android:textSize="40sp" />
@@ -473,7 +458,6 @@
                     android:background="@drawable/gray_selector"
                     android:text="@string/decimal"
                     android:tag="."
-                    android:onClick="clickedNumberButton"
                     android:textColor="#FFFFFF"
                     android:textSize="40sp" />
 
@@ -489,7 +473,6 @@
         android:background="@drawable/gray_selector"
         android:text="@string/c"
         android:tag="c"
-        android:onClick="clickedNumberButton"
         android:textColor="#FA7650"
         android:textSize="40sp" />
 

@@ -66,7 +66,6 @@
                     android:background="@drawable/green_selector"
                     android:text="Clear History"
                     android:tag="Clear History"
-                    android:onClick="historyClear"
                     android:textColor="#FFFFFF"
                     android:textSize="15sp" />
             </LinearLayout>
@@ -111,7 +110,6 @@
                      android:background="@drawable/gray_selector"
                      android:scaleType="fitCenter"
                      android:src="@drawable/ic_switch"
-                     android:onClick="switchLayoutButton"
                      android:tag="One"
                      android:textSize="20sp" />
 
@@ -125,7 +123,6 @@
                      android:background="@drawable/gray_selector"
                      android:text="Rad"
                      android:textAllCaps="false"
-                     android:onClick="switchRadDeg"
                      android:textColor="@android:color/white"
                      android:textSize="20sp" />
 
@@ -139,7 +136,6 @@
                      android:background="@drawable/gray_selector"
                      android:text="π"
                      android:tag="π"
-                     android:onClick="clickedButton"
                      android:textAllCaps="false"
                      android:textColor="@android:color/white"
                      android:textSize="20sp" />
@@ -160,7 +156,6 @@
                      android:background="@drawable/gray_selector"
                      android:text="sin"
                      android:tag="sin"
-                     android:onClick="clickedButton"
                      android:textAllCaps="false"
                      android:textColor="@android:color/white"
                      android:textSize="20sp" />
@@ -175,7 +170,6 @@
                      android:background="@drawable/gray_selector"
                      android:text="cos"
                      android:tag="cos"
-                     android:onClick="clickedButton"
                      android:textAllCaps="false"
                      android:textColor="@android:color/white"
                      android:textSize="20sp" />
@@ -190,7 +184,6 @@
                      android:background="@drawable/gray_selector"
                      android:text="tan"
                      android:tag="tan"
-                     android:onClick="clickedButton"
                      android:textAllCaps="false"
                      android:textColor="@android:color/white"
                      android:textSize="20sp" />
@@ -211,7 +204,6 @@
                      android:background="@drawable/gray_selector"
                      android:text="ln"
                      android:tag="ln"
-                     android:onClick="clickedButton"
                      android:textAllCaps="false"
                      android:textColor="@android:color/white"
                      android:textSize="20sp" />
@@ -224,7 +216,6 @@
                      android:layout_marginVertical="2dp"
                      android:layout_weight="1"
                      android:background="@drawable/gray_selector"
-                     android:onClick="clickedButton"
                      android:tag="log"
                      android:text="log"
                      android:textAllCaps="false"
@@ -241,7 +232,6 @@
                      android:background="@drawable/gray_selector"
                      android:text="1/x"
                      android:tag="1/x"
-                     android:onClick="clickedButton"
                      android:textAllCaps="false"
                      android:textColor="@android:color/white"
                      android:textSize="20sp" />
@@ -263,7 +253,6 @@
                      android:scaleType="fitCenter"
                      android:src="@drawable/ic_e_to_x"
                      android:tag="e^x"
-                     android:onClick="clickedButton"
                      android:textAllCaps="false"
                      android:textColor="@android:color/white"
                      android:textSize="20sp" />
@@ -279,7 +268,6 @@
                      android:scaleType="fitCenter"
                      android:src="@drawable/ic_x_squared"
                      android:tag="x^2"
-                     android:onClick="clickedButton"
                      android:textAllCaps="false"
                      android:textColor="@android:color/white"
                      android:textSize="20sp" />
@@ -295,7 +283,6 @@
                      android:src="@drawable/ic_x_to_y"
                      android:scaleType="fitCenter"
                      android:tag="^"
-                     android:onClick="clickedButton"
                      android:textAllCaps="false"
                      android:textColor="@android:color/white"
                      android:textSize="20sp" />
@@ -316,7 +303,6 @@
                      android:background="@drawable/gray_selector"
                      android:text="x^-1"
                      android:tag="x^-1"
-                     android:onClick="clickedButton"
                      android:textAllCaps="false"
                      android:textColor="@android:color/white"
                      android:textSize="20sp" />
@@ -331,7 +317,6 @@
                      android:background="@drawable/gray_selector"
                      android:text="|x|"
                      android:tag="|x|"
-                     android:onClick="clickedButton"
                      android:textAllCaps="false"
                      android:textColor="@android:color/white"
                      android:textSize="20sp" />
@@ -346,7 +331,6 @@
                      android:background="@drawable/gray_selector"
                      android:text="e"
                      android:tag="e"
-                     android:onClick="clickedButton"
                      android:textAllCaps="false"
                      android:textColor="@android:color/white"
                      android:textSize="20sp" />
@@ -380,7 +364,6 @@
                         android:background="@drawable/gray_selector"
                         android:src="@drawable/ic_switch"
                         android:scaleType="fitCenter"
-                        android:onClick="switchLayoutButton"
                         android:tag="Two"
                         android:text="SW"
                         android:textColor="@android:color/white"
@@ -396,7 +379,6 @@
                         android:background="@drawable/gray_selector"
                         android:text="Rad"
                         android:textAllCaps="false"
-                        android:onClick="switchRadDeg"
                         android:textColor="@android:color/white"
                         android:textSize="20sp" />
 
@@ -411,7 +393,6 @@
                         android:src="@drawable/ic_cbrt"
                         android:scaleType="fitCenter"
                         android:tag="cbrt"
-                        android:onClick="clickedButton"
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"
                         android:textSize="20sp" />
@@ -433,7 +414,6 @@
                         android:scaleType="fitCenter"
                         android:src="@drawable/ic_asin"
                         android:tag="asin"
-                        android:onClick="clickedButton"
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"
                         android:textSize="15sp" />
@@ -449,7 +429,6 @@
                         android:scaleType="fitCenter"
                         android:src="@drawable/ic_acos"
                         android:tag="acos"
-                        android:onClick="clickedButton"
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"
                         android:textSize="15sp" />
@@ -465,7 +444,6 @@
                         android:scaleType="fitCenter"
                         android:src="@drawable/ic_atan"
                         android:tag="atan"
-                        android:onClick="clickedButton"
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"
                         android:textSize="15sp" />
@@ -486,7 +464,6 @@
                         android:background="@drawable/gray_selector"
                         android:text="sinh"
                         android:tag="sinh"
-                        android:onClick="clickedButton"
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"
                         android:textSize="20sp" />
@@ -501,7 +478,6 @@
                         android:background="@drawable/gray_selector"
                         android:text="cosh"
                         android:tag="cosh"
-                        android:onClick="clickedButton"
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"
                         android:textSize="20sp" />
@@ -516,7 +492,6 @@
                         android:background="@drawable/gray_selector"
                         android:text="tanh"
                         android:tag="tanh"
-                        android:onClick="clickedButton"
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"
                         android:textSize="20sp" />
@@ -538,7 +513,6 @@
                         android:scaleType="fitCenter"
                         android:src="@drawable/ic_asinh"
                         android:tag="asinh"
-                        android:onClick="clickedButton"
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"
                         android:textSize="15sp" />
@@ -554,7 +528,6 @@
                         android:scaleType="fitCenter"
                         android:src="@drawable/ic_acosh"
                         android:tag="acosh"
-                        android:onClick="clickedButton"
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"
                         android:textSize="15sp" />
@@ -570,7 +543,6 @@
                         android:scaleType="fitCenter"
                         android:src="@drawable/ic_atanh"
                         android:tag="atanh"
-                        android:onClick="clickedButton"
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"
                         android:textSize="15sp" />
@@ -592,7 +564,6 @@
                         android:scaleType="fitCenter"
                         android:src="@drawable/ic_2_to_x"
                         android:tag="2^x"
-                        android:onClick="clickedButton"
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"
                         android:textSize="20sp" />
@@ -608,7 +579,6 @@
                         android:scaleType="fitCenter"
                         android:src="@drawable/ic_x_cubed"
                         android:tag="x^3"
-                        android:onClick="clickedButton"
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"
                         android:textSize="20sp" />
@@ -623,7 +593,6 @@
                         android:background="@drawable/gray_selector"
                         android:text="x!"
                         android:tag="x!"
-                        android:onClick="clickedButton"
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"
                         android:textSize="20sp" />
@@ -660,7 +629,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/c"
                 android:tag="C"
-                android:onClick="clearButton"
                 android:textColor="#FA7650"
                 android:textSize="20sp" />
 
@@ -674,7 +642,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/rad"
                 android:tag="@string/rad"
-                android:onClick="clickedButton"
                 android:textColor="#00C604"
                 android:textSize="20sp" />
 
@@ -688,7 +655,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/per"
                 android:tag="@string/per"
-                android:onClick="clickedButton"
                 android:textColor="#00C604"
                 android:textSize="20sp" />
 
@@ -702,7 +668,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/div"
                 android:tag="@string/div"
-                android:onClick="clickedButton"
                 android:textColor="#00C604"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -722,7 +687,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/_7"
                 android:tag="@string/_7"
-                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -736,7 +700,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/_8"
                 android:tag="@string/_8"
-                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -750,7 +713,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/_9"
                 android:tag="@string/_9"
-                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -764,7 +726,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/times"
                 android:tag="@string/times"
-                android:onClick="clickedButton"
                 android:textColor="#00C604"
                 android:textSize="20sp" />
 
@@ -785,7 +746,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/_4"
                 android:tag="@string/_4"
-                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -799,7 +759,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/_5"
                 android:tag="@string/_5"
-                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -813,7 +772,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/_6"
                 android:tag="@string/_6"
-                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -827,7 +785,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/minus"
                 android:tag="@string/minus"
-                android:onClick="clickedButton"
                 android:textColor="#00C604"
                 android:textSize="20sp" />
 
@@ -849,7 +806,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/_1"
                 android:tag="@string/_1"
-                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -863,7 +819,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/_2"
                 android:tag="@string/_2"
-                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -877,7 +832,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/_3"
                 android:tag="@string/_3"
-                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -891,7 +845,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/plus"
                 android:tag="@string/plus"
-                android:onClick="clickedButton"
                 android:textColor="#00C604"
                 android:textSize="20sp" />
 
@@ -912,7 +865,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/plusMinus"
                 android:tag="@string/plusMinus"
-                android:onClick="negButton"
                 android:textColor="#FFFF"
                 android:textSize="20sp" />
 
@@ -926,7 +878,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/_0"
                 android:tag="@string/_0"
-                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -940,7 +891,6 @@
                 android:background="@drawable/gray_selector"
                 android:text="@string/decimal"
                 android:tag="@string/decimal"
-                android:onClick="clickedButton"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -954,7 +904,6 @@
                 android:background="@drawable/green_selector"
                 android:text="@string/equal"
                 android:tag="@string/equal"
-                android:onClick="equalButton"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp" />
 
@@ -972,7 +921,6 @@
         app:layout_constraintTop_toTopOf="parent"
         android:textAlignment="textStart"
         android:text="Deg"
-        android:onClick="switchRadDeg"
         android:textColor="#FFFFFF"
         android:textSize="20dp"
         tools:layout_editor_absoluteY="48dp" />
@@ -1043,7 +991,6 @@
             android:layout_weight="1"
             android:scaleType="fitCenter"
             android:background="@drawable/black_selector"
-            android:onClick="historyButton"
             android:tag="historyButton"
             android:src="@drawable/ic_history"
             android:textColor="#FFFFFF"
@@ -1061,7 +1008,6 @@
             android:background="@drawable/black_selector"
             android:src="@drawable/ic_unit"
             android:tag="Conversion"
-            android:onClick="conversionButton"
             android:textColor="#FFFFFF"
             android:textSize="12sp" />
 
@@ -1074,7 +1020,6 @@
             android:scaleType="fitCenter"
             android:background="@drawable/black_selector"
             android:src="@drawable/ic_normal"
-            android:onClick="orientationButton"
             android:tag="Land"
             android:layout_gravity="center"
             android:textColor="#FFFFFF"
@@ -1091,7 +1036,6 @@
             android:text="%"
             android:textColor="#D6D6D6"
             android:tag="Port"
-            android:onClick="tipButton"
             android:layout_gravity="center"
             android:textSize="25sp" />
 
@@ -1104,7 +1048,6 @@
         android:layout_marginTop="2dp"
         android:scaleType="fitCenter"
         android:tag="delete"
-        android:onClick="clickedButton"
         android:background="@drawable/black_selector"
         android:src="@drawable/ic_del_off"
         android:textColor="#FFFFFF"
