@@ -125,12 +125,12 @@ class MainActivity : AppCompatActivity() {
         if(orientation == "Port") {
             if (historyOn) {
                 historyButton.setImageResource(R.drawable.ic_history)
-                historyNumbers.visibility = VISIBLE
+                historyNumbers?.visibility = VISIBLE
                 history.visibility = GONE
                 historyOn = false
             } else {
                 historyButton.setImageResource(R.drawable.ic_keypad)
-                historyNumbers.visibility = GONE
+                historyNumbers?.visibility = GONE
                 history.visibility = VISIBLE
                 historyOn = true
             }
@@ -138,12 +138,12 @@ class MainActivity : AppCompatActivity() {
         if(orientation == "Land") {
             if (historyOn) {
                 historyButton.setImageResource(R.drawable.ic_history)
-                historyOrExtra.visibility = VISIBLE
+                historyOrExtra?.visibility = VISIBLE
                 history.visibility = GONE
                 historyOn = false
             } else {
                 historyButton.setImageResource(R.drawable.ic_keypad)
-                historyOrExtra.visibility = GONE
+                historyOrExtra?.visibility = GONE
                 history.visibility = VISIBLE
                 historyOn = true
             }
@@ -159,12 +159,12 @@ class MainActivity : AppCompatActivity() {
     fun ActivityMainBinding.switchLayoutButton(view : View) {
         d("Admin", "MainActivity ($orientation): layout ${view.tag} button was clicked")
         if(view.tag.toString() == "One") {
-            this.buttonLayoutExtraOne.visibility = GONE
-            this.buttonLayoutExtraTwo.visibility = VISIBLE
+            this.buttonLayoutExtraOne?.visibility = GONE
+            this.buttonLayoutExtraTwo?.visibility = VISIBLE
         }
         else if(view.tag.toString() == "Two"){
-            this.buttonLayoutExtraOne.visibility = VISIBLE
-            this.buttonLayoutExtraTwo.visibility = GONE
+            this.buttonLayoutExtraOne?.visibility = VISIBLE
+            this.buttonLayoutExtraTwo?.visibility = GONE
         }
     }
 
@@ -288,14 +288,14 @@ class MainActivity : AppCompatActivity() {
     fun ActivityMainBinding.historyClear (view:View){
         if(orientation == "Port") {
             historyButton.setImageResource(R.drawable.ic_history_off)
-            historyNumbers.visibility = VISIBLE
+            historyNumbers?.visibility = VISIBLE
             history.visibility = GONE
             historyOn = false
             historyButton.isEnabled = false
         }
         if(orientation == "Land") {
             historyButton.setImageResource(R.drawable.ic_history_off)
-            historyOrExtra.visibility = VISIBLE
+            historyOrExtra?.visibility = VISIBLE
             history.visibility = GONE
             historyOn = false
             historyButton.isEnabled = false
@@ -373,15 +373,15 @@ class MainActivity : AppCompatActivity() {
     fun ActivityMainBinding.switchRadDeg(view : View) {
         d("Admin", "MainActivity ($orientation): layout $degRad was clicked")
         if(degRad) {
-            DegRadTextView.text = "Deg"
-            radiansButton.text = "Rad"
-            radiansButtonTwo.text = "Rad"
+            DegRadTextView?.text = "Deg"
+            radiansButton?.text = "Rad"
+            radiansButtonTwo?.text = "Rad"
             degRad = false
         }
         else{
-            DegRadTextView.text = "Rad"
-            radiansButton.text = "Deg"
-            radiansButtonTwo.text = "Deg"
+            DegRadTextView?.text = "Rad"
+            radiansButton?.text = "Deg"
+            radiansButtonTwo?.text = "Deg"
             degRad = true
         }
         updateUI()
@@ -411,22 +411,22 @@ class MainActivity : AppCompatActivity() {
         when(orientation){
             "Port" -> {
                 if (logicUnit.isEmpty()) {
-                    deleteButtonOne.isEnabled = false
-                    deleteButtonOne.setImageResource(R.drawable.ic_del_off)
+                    deleteButtonOne?.isEnabled = false
+                    deleteButtonOne?.setImageResource(R.drawable.ic_del_off)
                 }
                 else {
-                    deleteButtonOne.isEnabled = true
-                    deleteButtonOne.setImageResource(R.drawable.ic_del_on)
+                    deleteButtonOne?.isEnabled = true
+                    deleteButtonOne?.setImageResource(R.drawable.ic_del_on)
                 }
             }
             "Land" -> {
                 if (logicUnit.isEmpty()) {
-                    deleteButtonTwo.isEnabled = false
-                    deleteButtonTwo.setImageResource(R.drawable.ic_del_off)
+                    deleteButtonTwo?.isEnabled = false
+                    deleteButtonTwo?.setImageResource(R.drawable.ic_del_off)
                 }
                 else{
-                    deleteButtonTwo.isEnabled = true
-                    deleteButtonTwo.setImageResource(R.drawable.ic_del_on)
+                    deleteButtonTwo?.isEnabled = true
+                    deleteButtonTwo?.setImageResource(R.drawable.ic_del_on)
                 }
             }
         }
@@ -510,7 +510,7 @@ class MainActivity : AppCompatActivity() {
             .duration = 300
     }
 
-    private fun blinking() {
+    private fun ActivityMainBinding.blinking() {
         if(blink) {
             curosorTextView.text = ""
             blink = false
@@ -540,16 +540,16 @@ class MainActivity : AppCompatActivity() {
             val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
             val adapter = HistoryRecyclerAdapter{ item -> doClick(item) }
             recyclerView.adapter = adapter
-            recyclerView.layoutManager = LinearLayoutManager(this)
+            recyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
 
             // Get a new or existing ViewModel from the ViewModelProvider.
-            historyViewModel = ViewModelProvider(this).get(HistoryViewModel::class.java)
+            historyViewModel = ViewModelProvider(this@MainActivity)[HistoryViewModel::class.java]
             historyViewModel.initializeOrientation(orientation)
 
             // Add an observer on the LiveData returned by getAlphabetizedWords.
             // The onChanged() method fires when the observed data changes and the activity is
             // in the foreground.
-            historyViewModel.allEntries.observe(this, Observer { words ->
+            historyViewModel.allEntries.observe(this@MainActivity, Observer { words ->
                 // Update the cached copy of the words in the adapter.
                 words?.let { adapter.setHistory(it) }
             })

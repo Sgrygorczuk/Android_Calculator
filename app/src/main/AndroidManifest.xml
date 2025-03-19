@@ -8,7 +8,7 @@
         android:roundIcon="@drawable/ic_icon_circle"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".main.MainActivity"
+        <activity android:name="com.example.calculator.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,8 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".conversion.ConversionActivity" />
-        <activity android:name=".tip.TipActivity" />
+        <activity android:name="com.example.calculator.conversion.ConversionActivity" />
+        <activity android:name="com.example.calculator.tip.TipActivity" />
     </application>
 
 </manifest>

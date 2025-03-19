@@ -6,7 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.TextView
 import com.example.roomtestthree.R
+import com.example.roomtestthree.databinding.SpinnerLayoutBinding
 
 class SpinnerAdapter(ctx: Context, private val spinnerItems: List<SpinnerItem>) : ArrayAdapter<SpinnerItem>(ctx, 0, spinnerItems) {
     override fun getView(position: Int, recycledView: View?, parent: ViewGroup): View {
@@ -19,13 +22,13 @@ class SpinnerAdapter(ctx: Context, private val spinnerItems: List<SpinnerItem>) 
         //Sets the background behind the textboxes to be black, otherwise it'd be white
         parent.setBackgroundResource(R.drawable.spinner_unpressed)
         //Connects the view to the custom layout
-        val view = recycledView ?: LayoutInflater.from(context).inflate(R.layout.spinner_layout, parent, false)
+        val view = recycledView ?: SpinnerLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false).root
         //Connects the position to the current data class
         val spinnerItem = getItem(position)
         if (spinnerItem != null) {
-            view.spinnerText.text = spinnerItem.description
-            view.spinnerText.setTextColor(Color.parseColor(spinnerItem.color))
-            view.spinnerImage.visibility = spinnerItem.visibility }
+            view.findViewById<TextView>(R.id.spinnerText).text = spinnerItem.description
+            view.findViewById<TextView>(R.id.spinnerText).setTextColor(Color.parseColor(spinnerItem.color))
+            view.findViewById<ImageView>(R.id.spinnerImage).visibility = spinnerItem.visibility }
 
         //Picks what kind of corners the textbox will have
         when (position) {
