@@ -20,6 +20,14 @@ class TipActivity : AppCompatActivity()  {
         binding = ActivityTipBinding.inflate(layoutInflater).apply {
             setContentView(root)
             tenPercent.setBackgroundDrawable(resources.getDrawable(R.drawable.selected_black_selector))
+
+            listOf(
+                oneButton, twoButton, threeButton,
+                fourButton, fiveButton, sixButton,
+                sevenButton, eightButton, nineButton,
+                deleteButton, zeroButton, decimalButton,
+                clearButton
+            ).forEach { button -> button.setOnClickListener { clickedNumberButton(it) } }
         }
     }
 

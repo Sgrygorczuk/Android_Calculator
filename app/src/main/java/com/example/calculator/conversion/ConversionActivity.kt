@@ -724,6 +724,18 @@ class ConversionActivity: AppCompatActivity() {
         binding = ActivityConversionBinding.inflate(layoutInflater).apply {
             setContentView(root)
 
+            listOf(
+                topTextEditorArea, topTextEditorLength, topTextEditorTemperature,
+                topTextEditorVolume, topTextEditorMass, topTextEditorData,
+                topTextEditorSpeed, topTextEditorTime, topButton
+            ).forEach { button -> button.setOnClickListener { updateLocationTop(it) } }
+
+            listOf(
+                bottomTextEditorArea, bottomTextEditorLength, bottomTextEditorTemperature,
+                bottomTextEditorVolume, bottomTextEditorMass, bottomTextEditorData,
+                bottomTextEditorSpeed, bottomTextEditorTime, bottomButton
+            ).forEach { button -> button.setOnClickListener { updateLocationTop(it) } }
+
             //Sets the Area button to be selected as that's the screen we start from
             loadUnitTable("areaButton")
 

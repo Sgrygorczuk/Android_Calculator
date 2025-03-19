@@ -532,6 +532,40 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater).apply {
             setContentView(root)
 
+            clearButton.let { button -> button.setOnClickListener { clearButton(it) } }
+            negButton.let { button -> button.setOnClickListener { negButton(it) } }
+            ClearHistory.let { button -> button.setOnClickListener { historyClear(it) } }
+            equalButton.let { button -> button.setOnClickListener { equalButton(it) } }
+            historyButton.let { button -> button.setOnClickListener { historyButton(it) } }
+            conversionButton.let { button -> button.setOnClickListener { conversionButton(it) } }
+            listOf(longButton, portButton).forEach {
+                button -> button?.setOnClickListener { orientationButton(it) }
+            }
+            tipButton.let { button -> button.setOnClickListener { tipButton(it) } }
+            listOf(switchButton, switchButtonTwo).forEach {
+                button -> button?.setOnClickListener { switchLayoutButton(it) }
+            }
+            listOf(DegRadTextView, radiansButton, radiansButtonTwo).forEach {
+                    button -> button?.setOnClickListener { switchRadDeg(it) }
+            }
+
+            listOf(
+                oneButton, twoButton, threeButton,
+                fourButton, fiveButton, sixButton,
+                sevenButton, eightButton, nineButton,
+                deleteButtonOne, deleteButtonTwo, zeroButton, decimalButton,
+                radButton, perButton, divButton, timesButton, minusButton, plusButton,
+                piButton, sinButton, cosButton, tanButton,
+                lnButton, ralogButton, fractionButton,
+                exponentButton, squaredButton, exponentYButton,
+                plusMinusExponentButton, absoluteButtonButton, eButton,
+                cuberootButton,
+                asinButton, arccosButton, arctanButton,
+                sinhButton, coshButton, tanhButton,
+                arcsinhButton, arccoshButton, arctanhButton,
+                twoToXButton, xCubedButton, factorialButton,
+            ).forEach { button -> button?.setOnClickListener { clickedButton(it) } }
+
             //Calls Activity Initialization Functions
             isOrientation()
             delButtonUpdate()
